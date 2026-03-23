@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Tree Editor — Fortney Family Heritage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --fortney:   #1d3a6c;
+      --sodergren: #2d6e5e;
+      --mulhearn:  #3a5c2d;
+      --anderson:  #7a2b3a;
+      --bg:        #f7f5f0;
+      --panel-bg:  #ffffff;
+      --border:    #ddd8ce;
+      --text:      #2c1a10;
+      --text-mid:  #5c3d2e;
+      --text-light:#8b6b52;
+      --accent:    #b8962e;
+      --danger:    #b91c1c;
+      --success:   #166534;
+      --radius:    6px;
+      --shadow:    0 2px 8px rgba(0,0,0,0.08);
+      --nav-h:     52px;
+      --sans:      'Inter', system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    /* ── Top nav ─────────────────────────────────────── */
+    .admin-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      background: var(--text);
+      color: #e8e0d5;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 1.25rem;
+      border-bottom: 2px solid var(--accent);
+    }
+    .admin-nav h1 { font-size: 0.95rem; font-weight: 600; letter-spacing: 0.02em; }
+    .admin-nav .spacer { flex: 1; }
+    .nav-status { font-size: 0.78rem; color: var(--accent); min-width: 120px; }
+
+    .nav-btn {
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color: #e8e0d5;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.18); }
+    .nav-btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .nav-btn.primary:hover { background: #c9a035; }
+
+    /* ── Layout ──────────────────────────────────────── */
+    .admin-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      height: calc(100vh - var(--nav-h));
+      margin-top: var(--nav-h);
+      overflow: hidden;
+    }
+
+    /* ── Left: tree list ─────────────────────────────── */
+    .tree-panel {
+      overflow-y: auto;
+      padding: 1rem 0.5rem 2rem;
+      background: var(--bg);
+      border-right: 1px solid var(--border);
+    }
+
+    .tree-panel-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0.5rem;
+    }
+    .tree-panel-header h2 { font-size: 0.8rem; font-weight: 600; color: var(--text-mid); flex: 1; }
+    .tree-panel-header .hint { font-size: 0.72rem; color: var(--text-light); }
+
+    /* ── Tree list items ─────────────────────────────── */
+    ul.tree-list, ul.tree-children {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    ul.tree-children { display: none; }
+    ul.tree-children.open { display: block; }
+
+    .tree-item-row {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.12s;
+    }
+    .tree-item-row:hover { background: rgba(184,150,46,0.08); }
+    .tree-item-row.selected { background: var(--accent); color: #fff; }
+    .tree-item-row.selected .item-meta { color: rgba(255,255,255,0.7); }
+
+    .tree-toggle {
+      width: 16px;
+      text-align: center;
+      font-size: 0.65rem;
+      color: var(--text-light);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .tree-item-row.selected .tree-toggle { color: rgba(255,255,255,0.7); }
+    .toggle-spacer { width: 16px; flex-shrink: 0; }
+
+    .branch-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .branch-dot.fortney   { background: var(--fortney); }
+    .branch-dot.sodergren { background: var(--sodergren); }
+    .branch-dot.mulhearn  { background: var(--mulhearn); }
+    .branch-dot.anderson  { background: var(--anderson); }
+    .branch-dot.root      { background: var(--accent); }
+    .branch-dot.branch    { background: var(--text-mid); }
+
+    .item-name { font-weight: 500; flex: 1; }
+    .item-meta { font-size: 0.72rem; color: var(--text-light); }
+
+    /* ── Right: edit form ────────────────────────────── */
+    .edit-panel {
+      overflow-y: auto;
+      background: var(--panel-bg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .edit-panel-header {
+      padding: 1rem 1.25rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      background: #faf8f4;
+    }
+    .edit-panel-header h2 { font-size: 0.9rem; font-weight: 600; }
+    .edit-panel-header .sub { font-size: 0.75rem; color: var(--text-light); margin-top: 0.15rem; }
+
+    .no-selection {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .edit-form {
+      flex: 1;
+      padding: 1rem 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.25rem; }
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-mid);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--text);
+      background: #faf8f4;
+      transition: border-color 0.15s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: #fff;
+    }
+    .form-group input[readonly] {
+      background: #f0ede7;
+      color: var(--text-light);
+      cursor: default;
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0.25rem;
+    }
+    .form-actions .spacer { flex: 1; }
+
+    .btn {
+      padding: 0.38rem 0.8rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn:hover { background: var(--bg); border-color: var(--text-mid); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn.primary:hover { background: #c9a035; }
+    .btn.danger { background: var(--danger); border-color: var(--danger); color: #fff; }
+    .btn.danger:hover { background: #991b1b; }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ── Load overlay ────────────────────────────────── */
+    .load-overlay {
+      position: fixed; inset: 0;
+      background: rgba(44,26,16,0.55);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 200;
+    }
+    .load-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 2.5rem 3rem;
+      text-align: center;
+      max-width: 420px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .load-card h2 { margin-bottom: 0.5rem; }
+    .load-card p { color: var(--text-mid); font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .load-card .btn-group { display: flex; gap: 0.75rem; justify-content: center; }
+    .load-card .or { color: var(--text-light); font-size: 0.78rem; margin: 0.75rem 0; }
+
+    /* ── Toast ───────────────────────────────────────── */
+    #toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--text);
+      color: #e8e0d5;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      font-size: 0.82rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.25s;
+      pointer-events: none;
+      z-index: 300;
+    }
+    #toast.show { opacity: 1; transform: translateY(0); }
+    #toast.success { background: var(--success); }
+    #toast.error   { background: var(--danger); }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ───────────────────────────────────────────── -->
+<nav class="admin-nav">
+  <h1>Family Tree Editor</h1>
+  <div class="spacer"></div>
+  <span class="nav-status" id="status-msg"></span>
+  <button class="nav-btn" onclick="openFilePicker()" title="Open family.json directly (Chrome/Edge)">📂 Open File</button>
+  <button class="nav-btn primary" id="btn-save" onclick="saveFile()">💾 Save</button>
+  <button class="nav-btn" onclick="downloadJSON()">⬇ Download JSON</button>
+  <a class="nav-btn" href="index.html">← Back to Site</a>
+</nav>
+
+<!-- ── Main layout ────────────────────────────────────── -->
+<div class="admin-layout">
+
+  <!-- Left: tree list -->
+  <div class="tree-panel" id="tree-panel">
+    <div class="tree-panel-header">
+      <h2>Family Tree</h2>
+      <span class="hint">Click to select · ▶ to expand</span>
+    </div>
+    <ul class="tree-list" id="tree-list"></ul>
+  </div>
+
+  <!-- Right: edit form -->
+  <div class="edit-panel" id="edit-panel">
+    <div class="edit-panel-header">
+      <h2 id="panel-title">Edit Person</h2>
+      <div class="sub" id="panel-path"></div>
+    </div>
+
+    <div class="no-selection" id="no-selection">
+      <div>
+        <div style="font-size:2rem;margin-bottom:0.5rem;">👈</div>
+        Select a person from the tree to edit their details
+      </div>
+    </div>
+
+    <div class="edit-form" id="edit-form" style="display:none;">
+      <div class="form-group">
+        <label>ID (read-only)</label>
+        <input type="text" id="f-id" readonly>
+      </div>
+      <div class="form-group">
+        <label>Name *</label>
+        <input type="text" id="f-name" placeholder="Full name">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Branch</label>
+          <select id="f-branch">
+            <option value="">— none —</option>
+            <option value="fortney">Fortney / Forthun</option>
+            <option value="sodergren">Södergren</option>
+            <option value="mulhearn">Mulhearn / O'Brien</option>
+            <option value="anderson">Anderson</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Gender</label>
+          <select id="f-gender">
+            <option value="">—</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Birth Year</label>
+          <input type="number" id="f-birth" min="1400" max="2030" placeholder="e.g. 1881">
+        </div>
+        <div class="form-group">
+          <label>Death Year</label>
+          <input type="number" id="f-death" min="1400" max="2030" placeholder="e.g. 1941">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Birthplace</label>
+        <input type="text" id="f-birthplace" placeholder="City, Country">
+      </div>
+      <div class="form-group">
+        <label>Death Place</label>
+        <input type="text" id="f-deathplace" placeholder="City, Country">
+      </div>
+      <div class="form-group">
+        <label>Notes / Biography</label>
+        <textarea id="f-notes" rows="7" placeholder="Biographical notes…"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn primary" onclick="applyEdit()">✓ Apply Changes</button>
+        <button class="btn" onclick="addChild()">+ Add Child</button>
+        <button class="btn" onclick="moveUp()" id="btn-move-up">↑ Up</button>
+        <button class="btn" onclick="moveDown()" id="btn-move-down">↓ Down</button>
+        <div class="spacer"></div>
+        <button class="btn danger" onclick="deletePerson()">✕ Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Load overlay (shown when no data yet) ─────────── -->
+<div class="load-overlay" id="load-overlay" style="display:none;">
+  <div class="load-card">
+    <h2>Open family.json</h2>
+    <p>Load the family data file to start editing. Changes are saved back to the file directly (Chrome/Edge) or downloaded as a new file.</p>
+    <div class="btn-group">
+      <button class="btn primary" onclick="openFilePicker()">📂 Open File…</button>
+    </div>
+    <div class="or">— or —</div>
+    <p style="margin-bottom:0.5rem;">If the site is running on a local server, it will auto-load.</p>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+  /* ── State ──────────────────────────────────────────── */
+  let familyData   = null;   // root JSON object
+  let selectedPath = null;   // array of child-indices to reach selected node
+  let fileHandle   = null;   // FileSystemFileHandle (File Access API)
+  let dirty        = false;  // unsaved changes
+
+  /* ── Boot ──────────────────────────────────────────── */
+  window.addEventListener('load', () => {
+    fetch('data/family.json')
+      .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+      .then(data => { familyData = data; renderTree(); toast('Loaded from server', 'success'); })
+      .catch(() => { document.getElementById('load-overlay').style.display = 'flex'; });
+  });
+
+  window.addEventListener('beforeunload', e => {
+    if (dirty) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  /* ── Tree path helpers ─────────────────────────────── */
+  function nodeAt(path) {
+    let n = familyData;
+    for (const i of path) n = n.children[i];
+    return n;
+  }
+
+  function parentOf(path) {
+    if (path.length === 0) return null;
+    let n = familyData;
+    for (let i = 0; i < path.length - 1; i++) n = n.children[path[i]];
+    return n;
+  }
+
+  function pathKey(path) { return path.join('-'); }
+
+  /* ── Render tree ───────────────────────────────────── */
+  function renderTree() {
+    const ul = document.getElementById('tree-list');
+    ul.innerHTML = '';
+    buildList(familyData, [], ul, true);
+  }
+
+  function buildList(node, path, parentUl, forceOpen) {
+    const li  = document.createElement('li');
+    const row = document.createElement('div');
+    row.className = 'tree-item-row';
+    row.dataset.path = pathKey(path);
+
+    if (selectedPath && pathKey(selectedPath) === pathKey(path)) {
+      row.classList.add('selected');
+    }
+
+    // Toggle indicator
+    const hasKids = node.children && node.children.length > 0;
+    if (hasKids) {
+      const tog = document.createElement('span');
+      tog.className = 'tree-toggle';
+      tog.textContent = '▶';
+      tog.addEventListener('click', e => { e.stopPropagation(); toggleExpand(li, tog); });
+      row.appendChild(tog);
+    } else {
+      const sp = document.createElement('span');
+      sp.className = 'toggle-spacer';
+      row.appendChild(sp);
+    }
+
+    // Branch dot
+    const dotCls = node.type === 'root' ? 'root' : (node.type === 'branch' ? 'branch' : (node.branch || ''));
+    const dot = document.createElement('span');
+    dot.className = `branch-dot ${dotCls}`;
+    row.appendChild(dot);
+
+    // Name + dates
+    const nameEl = document.createElement('span');
+    nameEl.className = 'item-name';
+    const name = node.name || '(unnamed)';
+    nameEl.textContent = name.length > 38 ? name.slice(0, 36) + '…' : name;
+    row.appendChild(nameEl);
+
+    if (node.birth || node.death) {
+      const meta = document.createElement('span');
+      meta.className = 'item-meta';
+      const b = node.birth || ''; const d = node.death || '';
+      meta.textContent = (b && d) ? `${b}–${d}` : b ? `b.${b}` : `d.${d}`;
+      row.appendChild(meta);
+    }
+
+    row.addEventListener('click', () => selectNode(path));
+    li.appendChild(row);
+
+    // Children
+    if (hasKids) {
+      const ul = document.createElement('ul');
+      ul.className = 'tree-children' + (forceOpen || path.length === 0 ? ' open' : '');
+      if (ul.classList.contains('open')) {
+        const tog = row.querySelector('.tree-toggle');
+        if (tog) tog.textContent = '▼';
+      }
+      node.children.forEach((child, i) => buildList(child, [...path, i], ul, false));
+      li.appendChild(ul);
+    }
+
+    parentUl.appendChild(li);
+  }
+
+  function toggleExpand(li, tog) {
+    const ul = li.querySelector(':scope > ul.tree-children');
+    if (!ul) return;
+    const open = ul.classList.toggle('open');
+    tog.textContent = open ? '▼' : '▶';
+  }
+
+  /* ── Select node ───────────────────────────────────── */
+  function selectNode(path) {
+    // Deselect old
+    document.querySelectorAll('.tree-item-row.selected')
+      .forEach(el => el.classList.remove('selected'));
+
+    selectedPath = path;
+
+    // Select new
+    const row = document.querySelector(`.tree-item-row[data-path="${pathKey(path)}"]`);
+    if (row) {
+      row.classList.add('selected');
+      // Expand ancestors
+      expandAncestors(path);
+    }
+
+    populateForm(nodeAt(path), path);
+  }
+
+  function expandAncestors(path) {
+    for (let len = 1; len < path.length; len++) {
+      const ancestorKey = pathKey(path.slice(0, len));
+      const ancestorRow = document.querySelector(`.tree-item-row[data-path="${ancestorKey}"]`);
+      if (ancestorRow) {
+        const li = ancestorRow.closest('li');
+        const ul = li?.querySelector(':scope > ul.tree-children');
+        const tog = ancestorRow.querySelector('.tree-toggle');
+        if (ul && !ul.classList.contains('open')) {
+          ul.classList.add('open');
+          if (tog) tog.textContent = '▼';
+        }
+      }
+    }
+  }
+
+  /* ── Populate edit form ────────────────────────────── */
+  function populateForm(node, path) {
+    document.getElementById('no-selection').style.display = 'none';
+    document.getElementById('edit-form').style.display = 'flex';
+
+    const isRoot   = node.type === 'root';
+    const isBranch = node.type === 'branch';
+    document.getElementById('panel-title').textContent = isRoot ? 'Root Node' : isBranch ? 'Branch Node' : 'Edit Person';
+    document.getElementById('panel-path').textContent  = path.length === 0 ? 'Root' : 'Depth ' + path.length;
+
+    document.getElementById('f-id').value         = node.id          || '';
+    document.getElementById('f-name').value       = node.name        || '';
+    document.getElementById('f-branch').value     = node.branch      || '';
+    document.getElementById('f-gender').value     = node.gender      || '';
+    document.getElementById('f-birth').value      = node.birth       || '';
+    document.getElementById('f-death').value      = node.death       || '';
+    document.getElementById('f-birthplace').value = node.birthplace  || '';
+    document.getElementById('f-deathplace').value = node.deathplace  || '';
+    document.getElementById('f-notes').value      = node.notes       || '';
+
+    // Up/down button state
+    const siblingCount = path.length === 0 ? 0 : (parentOf(path).children || []).length;
+    const idx = path.length === 0 ? 0 : path[path.length - 1];
+    document.getElementById('btn-move-up').disabled   = path.length === 0 || idx === 0;
+    document.getElementById('btn-move-down').disabled = path.length === 0 || idx >= siblingCount - 1;
+  }
+
+  /* ── Apply edits ───────────────────────────────────── */
+  function applyEdit() {
+    if (!selectedPath) return;
+    const node = nodeAt(selectedPath);
+
+    node.name = document.getElementById('f-name').value.trim();
+
+    setOrDelete(node, 'branch',      document.getElementById('f-branch').value);
+    setOrDelete(node, 'gender',      document.getElementById('f-gender').value);
+    setOrDelete(node, 'birthplace',  document.getElementById('f-birthplace').value.trim());
+    setOrDelete(node, 'deathplace',  document.getElementById('f-deathplace').value.trim());
+    setOrDelete(node, 'notes',       document.getElementById('f-notes').value.trim());
+
+    const birth = parseInt(document.getElementById('f-birth').value, 10);
+    const death = parseInt(document.getElementById('f-death').value, 10);
+    if (isNaN(birth)) delete node.birth; else node.birth = birth;
+    if (isNaN(death)) delete node.death; else node.death = death;
+
+    // Update name in tree list without full re-render
+    const row = document.querySelector(`.tree-item-row[data-path="${pathKey(selectedPath)}"]`);
+    if (row) {
+      const nameEl = row.querySelector('.item-name');
+      if (nameEl) nameEl.textContent = node.name.length > 38 ? node.name.slice(0,36)+'…' : node.name;
+    }
+
+    dirty = true;
+    updateSaveBtn();
+    toast('Changes applied', 'success');
+  }
+
+  function setOrDelete(obj, key, val) {
+    if (val) obj[key] = val; else delete obj[key];
+  }
+
+  /* ── Add child ─────────────────────────────────────── */
+  function addChild() {
+    if (selectedPath === null) return;
+    const node = nodeAt(selectedPath);
+    if (!node.children) node.children = [];
+
+    const newPerson = {
+      id:       'person_' + Date.now(),
+      name:     'New Person',
+      branch:   node.branch || '',
+      children: []
+    };
+    node.children.push(newPerson);
+    dirty = true;
+    updateSaveBtn();
+
+    // Re-render the subtree from the parent down
+    renderTree();
+
+    // Select the new child
+    const childPath = [...selectedPath, node.children.length - 1];
+    selectNode(childPath);
+    toast('Child added');
+  }
+
+  /* ── Move up / down ────────────────────────────────── */
+  function moveUp() {
+    if (!selectedPath || selectedPath.length === 0) return;
+    const idx    = selectedPath[selectedPath.length - 1];
+    if (idx === 0) return;
+    const parent = parentOf(selectedPath);
+    [parent.children[idx - 1], parent.children[idx]] = [parent.children[idx], parent.children[idx - 1]];
+    dirty = true;
+    updateSaveBtn();
+    const newPath = [...selectedPath.slice(0, -1), idx - 1];
+    renderTree();
+    selectNode(newPath);
+  }
+
+  function moveDown() {
+    if (!selectedPath || selectedPath.length === 0) return;
+    const parent = parentOf(selectedPath);
+    const idx    = selectedPath[selectedPath.length - 1];
+    if (idx >= parent.children.length - 1) return;
+    [parent.children[idx], parent.children[idx + 1]] = [parent.children[idx + 1], parent.children[idx]];
+    dirty = true;
+    updateSaveBtn();
+    const newPath = [...selectedPath.slice(0, -1), idx + 1];
+    renderTree();
+    selectNode(newPath);
+  }
+
+  /* ── Delete ────────────────────────────────────────── */
+  function deletePerson() {
+    if (!selectedPath || selectedPath.length === 0) {
+      toast('Cannot delete the root node', 'error'); return;
+    }
+    const node     = nodeAt(selectedPath);
+    const kidsCount = (node.children || []).length;
+    const msg = kidsCount > 0
+      ? `Delete "${node.name}" and all ${kidsCount} descendant(s)? This cannot be undone.`
+      : `Delete "${node.name}"?`;
+    if (!confirm(msg)) return;
+
+    const parent = parentOf(selectedPath);
+    const idx    = selectedPath[selectedPath.length - 1];
+    parent.children.splice(idx, 1);
+    dirty = true;
+    updateSaveBtn();
+
+    selectedPath = null;
+    document.getElementById('edit-form').style.display    = 'none';
+    document.getElementById('no-selection').style.display = 'flex';
+    renderTree();
+    toast(`"${node.name}" deleted`);
+  }
+
+  /* ── File I/O ──────────────────────────────────────── */
+  async function openFilePicker() {
+    if (!window.showOpenFilePicker) {
+      alert('File System Access API is not supported in this browser.\nUse Chrome or Edge and open via the local server.');
+      return;
+    }
+    try {
+      const [handle] = await window.showOpenFilePicker({
+        types: [{ description: 'JSON files', accept: { 'application/json': ['.json'] } }],
+        multiple: false
+      });
+      fileHandle = handle;
+      const file = await handle.getFile();
+      const text = await file.text();
+      familyData = JSON.parse(text);
+      document.getElementById('load-overlay').style.display = 'none';
+      renderTree();
+      dirty = false;
+      updateSaveBtn();
+      toast('Loaded: ' + handle.name, 'success');
+    } catch (e) {
+      if (e.name !== 'AbortError') toast('Could not open file: ' + e.message, 'error');
+    }
+  }
+
+  async function saveFile() {
+    if (!familyData) return;
+    const json = JSON.stringify(familyData, null, 2);
+
+    if (fileHandle) {
+      try {
+        // Verify write permission
+        const perm = await fileHandle.queryPermission({ mode: 'readwrite' });
+        if (perm !== 'granted') {
+          await fileHandle.requestPermission({ mode: 'readwrite' });
+        }
+        const writable = await fileHandle.createWritable();
+        await writable.write(json);
+        await writable.close();
+        dirty = false;
+        updateSaveBtn();
+        toast('Saved to file', 'success');
+        return;
+      } catch (e) {
+        toast('Save failed: ' + e.message + ' — downloading instead.', 'error');
+      }
+    }
+
+    // Fallback: use Save File Picker
+    if (window.showSaveFilePicker) {
+      try {
+        const handle = await window.showSaveFilePicker({
+          suggestedName: 'family.json',
+          types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }]
+        });
+        const writable = await handle.createWritable();
+        await writable.write(json);
+        await writable.close();
+        fileHandle = handle;
+        dirty = false;
+        updateSaveBtn();
+        toast('Saved', 'success');
+        return;
+      } catch (e) {
+        if (e.name !== 'AbortError') downloadJSON();
+      }
+    } else {
+      downloadJSON();
+    }
+  }
+
+  function downloadJSON() {
+    if (!familyData) return;
+    const blob = new Blob([JSON.stringify(familyData, null, 2)], { type: 'application/json' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url; a.download = 'family.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast('Downloaded family.json');
+  }
+
+  /* ── UI helpers ────────────────────────────────────── */
+  function updateSaveBtn() {
+    const btn = document.getElementById('btn-save');
+    btn.textContent = dirty ? '💾 Save *' : '💾 Save';
+    btn.classList.toggle('primary', dirty);
+  }
+
+  let toastTimer;
+  function toast(msg, type) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.className   = 'show' + (type ? ' ' + type : '');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { el.className = ''; }, 3000);
+  }
+
+  // Status message in nav
+  document.getElementById('status-msg').textContent = '';
+</script>
+</body>
+</html>
