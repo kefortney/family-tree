@@ -960,7 +960,14 @@
                                                           "branch": "fortney",
                                                           "notes": "Artist & filmmaker. Born 5 July 1981. Named for his uncle Kendall Thomas Fortney, KIA Vietnam 1968. Studied Okinawan karate; Vermont Statehouse Page (8th grade). Early interest in public television film production."
                                                         }
-                                                      ]
+                                                      ],
+                                                      "marriages": [
+                                                        {
+                                                          "spouseId": "jill_andersen",
+                                                          "married": 1980
+                                                        }
+                                                      ],
+                                                      "spouseId": "jill_andersen"
                                                     },
                                                     {
                                                       "id": "steven_dale",
@@ -969,7 +976,7 @@
                                                       "birthplace": "Minneapolis, Minnesota",
                                                       "gender": "M",
                                                       "branch": "fortney",
-                                                      "spouseId": "person_1774271361781",
+                                                      "spouse": "Ruth Ann Geyer",
                                                       "notes": "Author & professor.",
                                                       "children": [
                                                         {
@@ -1073,7 +1080,11 @@
                                                           ]
                                                         }
                                                       ],
-                                                      "spouseId": "jill_andersen"
+                                                      "marriages": [
+                                                        {
+                                                          "spouseName": "Ruth Ann Geyer"
+                                                        }
+                                                      ]
                                                     },
                                                     {
                                                       "id": "kendall_thomas",
@@ -1475,14 +1486,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": "person_1774271361781",
-          "name": "Ruth Ann Geyer",
-          "branch": "fortney",
-          "children": [],
-          "birth": 1938,
-          "spouseId": "steven_dale"
         }
       ]
     },

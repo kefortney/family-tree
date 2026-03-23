@@ -1,7 +1,7 @@
 /* ============================================================
-   Fortney Family Tree — D3 v7 Radial Tree Visualization
-   Oldest ancestor at center, descendants expanding outward.
-   ============================================================ */
+  Fortney Family Tree — D3 v7 Vertical Tree Visualization
+  Oldest ancestor at top, descendants progressing downward.
+  ============================================================ */
 
 (function () {
   const BRANCH_COLORS = {
@@ -21,9 +21,10 @@
   };
 
   // Layout constants
-  const RING_SPACING = 140;   // pixels between each generation ring
-  const MIN_RADIUS   = 100;   // minimum inner radius
-  const NODE_RADIUS  = 6;
+  const LEVEL_GAP     = 90;   // pixels between generation rows
+  const SIBLING_GAP   = 76;   // horizontal spacing hint between siblings
+  const TOP_PADDING   = 28;
+  const NODE_RADIUS   = 6;
   const BRANCH_RADIUS = 9;
 
   let treeData = null;
@@ -90,12 +91,53 @@
     return result;
   }
 
-  // Convert D3 radial coords (angle, radius) → Cartesian (x, y)
-  function radialXY(node) {
-    return [
-      node.y * Math.cos(node.x - Math.PI / 2),
-      node.y * Math.sin(node.x - Math.PI / 2),
-    ];
+  function nodeXY(node) {
+    return [node.x, node.y];
+  }
+
+  function applySpouseCompaction(visibleNodes) {
+    const byId = new Map(visibleNodes.map(n => [n.data?.id, n]));
+    const seen = new Set();
+
+    visibleNodes.forEach(n => {
+      if (!n?.data?.id || n.data.type === 'root' || n.data.type === 'branch') return;
+
+      getMarriages(n.data).forEach(m => {
+        if (!m.spouseId) return;
+        const partner = byId.get(m.spouseId);
+        if (!partner) return;
+        if (partner.depth !== n.depth) return;
+
+        const key = [n.data.id, m.spouseId].sort().join('|');
+        if (seen.has(key)) return;
+        seen.add(key);
+
+        const left = n.x <= partner.x ? n : partner;
+        const right = n.x <= partner.x ? partner : n;
+        const mid = (left.x + right.x) / 2;
+        const targetGap = 30;
+        left.x = mid - (targetGap / 2);
+        right.x = mid + (targetGap / 2);
+      });
+    });
+  }
+
+  function parseYear(value) {
+    if (value === undefined || value === null) return Number.POSITIVE_INFINITY;
+    const match = String(value).match(/\d{3,4}/);
+    return match ? Number(match[0]) : Number.POSITIVE_INFINITY;
+  }
+
+  function compareChronological(a, b) {
+    const ay = parseYear(a.data?.birth);
+    const by = parseYear(b.data?.birth);
+    if (ay !== by) return ay - by;
+
+    const an = (a.data?.name || '').toLowerCase();
+    const bn = (b.data?.name || '').toLowerCase();
+    if (an < bn) return -1;
+    if (an > bn) return 1;
+    return 0;
   }
 
   // ── Init ───────────────────────────────────────────────────
@@ -116,7 +158,14 @@
     g = svg.append('g');
 
     zoomBehavior = d3.zoom()
-      .scaleExtent([0.08, 4])
+      .scaleExtent([0.35, 4])
+      .extent([[0, 0], [svgW, svgH]])
+      .translateExtent([[-5000, -5000], [5000, 12000]])
+      .filter((event) => {
+        // Let normal page scrolling work; only zoom with Ctrl/Cmd + wheel.
+        if (event.type === 'wheel') return !!(event.ctrlKey || event.metaKey);
+        return !event.button;
+      })
       .on('zoom', (event) => g.attr('transform', event.transform));
 
     svg.call(zoomBehavior);
@@ -135,6 +184,12 @@
         rebuildPersonLookup();
         buildTree(currentBranch);
         setupControls();
+
+        window.addEventListener('resize', () => {
+          const r = container.getBoundingClientRect();
+          svgW = r.width || svgW;
+          centerView();
+        });
       })
       .catch(err => {
         container.innerHTML = [
@@ -168,6 +223,9 @@
       }
     }
 
+    root.x0 = 0;
+    root.y0 = 0;
+
     // Center the view
     centerView();
     update(root);
@@ -183,7 +241,7 @@
   function centerView() {
     svg.call(
       zoomBehavior.transform,
-      d3.zoomIdentity.translate(svgW / 2, svgH / 2)
+      d3.zoomIdentity.translate(svgW / 2, TOP_PADDING)
     );
   }
 
@@ -192,26 +250,74 @@
   function update(source) {
     const isAllMode = currentBranch === 'all';
 
-    // Determine the max visible depth to set the radius
-    const allNodes = root.descendants();
-    const maxDepth = d3.max(allNodes.filter(d => !(isAllMode && d.depth === 0)), d => d.depth) || 1;
-    const radius   = Math.max(maxDepth * RING_SPACING, MIN_RADIUS);
+    root.sort(compareChronological);
 
-    // Run the radial tree layout
-    const treeLayout = d3.tree()
-      .size([2 * Math.PI, radius])
-      .separation((a, b) => (a.parent === b.parent ? 1 : 2) / Math.max(a.depth, 1));
+    const treeLayout = d3.tree().nodeSize([SIBLING_GAP, LEVEL_GAP]);
     treeLayout(root);
 
-    const nodes = allNodes;
+    const nodes = root.descendants();
     const links = root.links();
 
     // In all-branches mode, hide the virtual root
     const visibleNodes = (isAllMode ? nodes.filter(d => d.depth > 0) : nodes);
     const visibleLinks = (isAllMode ? links.filter(d => d.source.depth > 0) : links);
 
+    applySpouseCompaction(visibleNodes);
+
     // Build a map so spouseUnits can look up node positions
-    const nodeById = new Map(nodes.map(n => [n.data?.id, n]));
+    const nodeById = new Map(visibleNodes.map(n => [n.data?.id, n]));
+    const sourceX = source.x0 ?? source.x ?? 0;
+    const sourceY = source.y0 ?? source.y ?? 0;
+
+    // ── In-tree spouse links (short marriage connectors) ─────
+    const marriageLinks = [];
+    const marriageSeen = new Set();
+
+    visibleNodes.forEach(n => {
+      if (!n?.data?.id || n.data.type === 'root' || n.data.type === 'branch') return;
+
+      getMarriages(n.data).forEach(m => {
+        if (!m.spouseId) return;
+        const spouseNode = nodeById.get(m.spouseId);
+        if (!spouseNode) return;
+        if (spouseNode.depth !== n.depth) return;
+
+        const pairKey = [n.data.id, m.spouseId].sort().join('|');
+        if (marriageSeen.has(pairKey)) return;
+        marriageSeen.add(pairKey);
+
+        marriageLinks.push({
+          id: pairKey,
+          x1: n.x,
+          y1: n.y,
+          x2: spouseNode.x,
+          y2: spouseNode.y,
+          color: colorFor(n).stroke,
+        });
+      });
+    });
+
+    const marriageSel = g.selectAll('line.marriage-link').data(marriageLinks, d => d.id);
+
+    marriageSel.enter()
+      .append('line')
+      .attr('class', 'marriage-link')
+      .attr('stroke-width', 2)
+      .attr('stroke-dasharray', '2,2')
+      .attr('opacity', 0.82)
+      .attr('x1', sourceX)
+      .attr('y1', sourceY)
+      .attr('x2', sourceX)
+      .attr('y2', sourceY)
+      .merge(marriageSel)
+      .attr('stroke', d => d.color)
+      .transition().duration(350)
+      .attr('x1', d => d.x1)
+      .attr('y1', d => d.y1)
+      .attr('x2', d => d.x2)
+      .attr('y2', d => d.y2);
+
+    marriageSel.exit().remove();
 
     // ── Spouse / marriage display ───────────────────────
     const spouseUnits = [];
@@ -236,14 +342,12 @@
         // If spouse is also in the tree, skip rendering here — they have their own node
         if (m.spouseId && nodeById.has(m.spouseId)) return;
 
-        const [nx, ny] = radialXY(n);
+        const [nx, ny] = nodeXY(n);
 
-        // Place external spouse slightly outward and offset angularly
-        const angleOff = mi % 2 === 0 ? 0.18 : -0.18;
-        const sa = n.x + angleOff;
-        const sr = n.y + 50;
-        const sx = sr * Math.cos(sa - Math.PI / 2);
-        const sy = sr * Math.sin(sa - Math.PI / 2);
+        // External spouses are rendered directly beside the person with a short link.
+        const direction = (mi % 2 === 0) ? 1 : -1;
+        const sx = nx + (direction * 32);
+        const sy = ny;
 
         spouseUnits.push({
           id: pairKey,
@@ -281,37 +385,34 @@
       .attr('dy', '0.35em')
       .text(d => d.label.length > 28 ? d.label.slice(0, 26) + '…' : d.label)
       .transition().duration(350)
-      .attr('x', d => d.sx + (d.sx >= 0 ? 8 : -8))
-      .attr('y', d => d.sy)
-      .attr('text-anchor', d => d.sx >= 0 ? 'start' : 'end');
+      .attr('x', d => d.sx)
+      .attr('y', d => d.sy - 10)
+      .attr('text-anchor', 'middle');
 
     unionSel.exit().remove();
 
     // ── Links ───────────────────────────────────────────
-    const radialLink = d3.linkRadial()
-      .angle(d => d.x)
-      .radius(d => d.y);
+    const verticalLink = d3.linkVertical()
+      .x(d => d.x)
+      .y(d => d.y);
 
     const link      = g.selectAll('path.link').data(visibleLinks, d => (d.source.data?.id || '') + '>' + (d.target.data?.id || ''));
     const linkEnter = link.enter().append('path').attr('class', 'link')
       .attr('d', () => {
-        const o = { x: source.x || 0, y: source.y || 0 };
-        return radialLink({ source: o, target: o });
+        const o = { x: sourceX, y: sourceY };
+        return verticalLink({ source: o, target: o });
       });
 
     link.merge(linkEnter)
       .transition().duration(350)
-      .attr('d', radialLink)
-      .attr('stroke', d => {
-        const c = BRANCH_COLORS[d.target.data.branch] || BRANCH_COLORS.root;
-        return c.stroke + '55';
-      });
+      .attr('d', verticalLink)
+      .attr('stroke', '#5a5a5a');
 
     link.exit()
       .transition().duration(350)
       .attr('d', () => {
-        const o = { x: source.x || 0, y: source.y || 0 };
-        return radialLink({ source: o, target: o });
+        const o = { x: sourceX, y: sourceY };
+        return verticalLink({ source: o, target: o });
       })
       .remove();
 
@@ -322,8 +423,7 @@
       .attr('class', d => `node branch-${d.data.branch || 'root'} type-${d.data.type || 'person'}`)
       .attr('transform', () => {
         // Enter from parent's position
-        const [px, py] = radialXY(source);
-        return `translate(${px},${py})`;
+        return `translate(${sourceX},${sourceY})`;
       })
       .style('opacity', 0)
       .style('cursor', 'pointer')
@@ -343,10 +443,7 @@
 
     nodeUpdate.transition().duration(350)
       .style('opacity', d => (isAllMode && d.depth === 0) ? 0 : 1)
-      .attr('transform', d => {
-        const [px, py] = radialXY(d);
-        return `translate(${px},${py})`;
-      });
+      .attr('transform', d => `translate(${d.x},${d.y})`);
 
     nodeUpdate.style('pointer-events', d => (isAllMode && d.depth === 0) ? 'none' : null);
 
@@ -367,8 +464,7 @@
         const el = d3.select(this);
         el.selectAll('tspan').remove();
 
-        // Root node: centered label above the dot
-        if (d.y === 0) {
+        if (d.data.type === 'root' || d.data.type === 'branch') {
           el.attr('text-anchor', 'middle');
           el.append('tspan')
             .attr('x', 0).attr('dy', `${-(BRANCH_RADIUS + 5)}px`)
@@ -376,17 +472,11 @@
           return;
         }
 
-        // Determine which side of the circle this node falls on
-        const cosA  = Math.cos(d.x - Math.PI / 2);
-        const isRight = cosA >= 0;
-        const xOff  = isRight ? (NODE_RADIUS + 5) : -(NODE_RADIUS + 5);
-        const anchor = isRight ? 'start' : 'end';
-
-        el.attr('text-anchor', anchor);
+        el.attr('text-anchor', 'middle');
 
         const name = d.data.name || '';
         el.append('tspan')
-          .attr('x', xOff).attr('dy', '0.35em')
+          .attr('x', 0).attr('dy', `${NODE_RADIUS + 12}px`)
           .text(name.length > 28 ? name.slice(0, 26) + '…' : name);
 
         if (d.data.birth || d.data.death) {
@@ -394,7 +484,7 @@
           const de = d.data.death  || '';
           const txt = (b && de) ? `${b}–${de}` : b ? `b.${b}` : `d.${de}`;
           el.append('tspan')
-            .attr('x', xOff).attr('dy', '1.1em')
+            .attr('x', 0).attr('dy', '1.15em')
             .style('font-size', '8.5px').style('fill', '#8b6b52').style('font-weight', '400')
             .text(txt);
         }
@@ -403,10 +493,7 @@
     node.exit()
       .transition().duration(350)
       .style('opacity', 0)
-      .attr('transform', () => {
-        const [px, py] = radialXY(source);
-        return `translate(${px},${py})`;
-      })
+      .attr('transform', () => `translate(${sourceX},${sourceY})`)
       .remove();
 
     nodes.forEach(d => { d.x0 = d.x; d.y0 = d.y; });

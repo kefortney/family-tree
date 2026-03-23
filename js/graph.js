@@ -1,554 +1,435 @@
 (function () {
-  const BRANCH_COLORS = {
-    fortney: '#1d3a6c',
-    sodergren: '#2d6e5e',
-    mulhearn: '#3a5c2d',
-    andersen: '#7a2b3a',
-    unknown: '#8b6b52',
+  // Branch palette: dark = saturated color used for recent nodes,
+  // light = washed-out tint used for oldest ancestors.
+  const BRANCH = {
+    fortney:   { dark: '#1d3a6c', light: '#d8e4f5' },
+    sodergren: { dark: '#2d6e5e', light: '#c5e0da' },
+    mulhearn:  { dark: '#3a5c2d', light: '#c5d9be' },
+    andersen:  { dark: '#7a2b3a', light: '#f0d0d6' },
+    unknown:   { dark: '#8b6b52', light: '#e4d8ce' },
   };
 
-  const cyEl = document.getElementById('cy');
-  const statsEl = document.getElementById('graph-stats');
-  const selectionEl = document.getElementById('selection-json');
+  const BRANCH_URLS = {
+    fortney:   'fortney.html',
+    sodergren: 'sodergren.html',
+    mulhearn:  'mulhearn.html',
+    andersen:  'andersen.html',
+  };
 
-  const branchFilterEl = document.getElementById('branch-filter');
-  const searchEl = document.getElementById('node-search');
-  const layoutEl = document.getElementById('layout-select');
-  const layoutBtn = document.getElementById('btn-layout');
-  const resetBtn = document.getElementById('btn-reset');
+  // Year range across the full dataset (Aamund b.1570 → youngest b.~2007)
+  const MIN_YEAR = 1570;
+  const MAX_YEAR = 2010;
 
-  let cy;
-  const YEAR_SPACING = 14;
-  const ROW_SPACING = 88;
-  const PARTNER_OFFSET = 36;
-  const UNKNOWN_YEAR_SPACING = 160;
+  // Node circle radius in pixels
+  const NODE_R = 24;
 
-  function branchClass(branch) {
-    return branch && BRANCH_COLORS[branch] ? branch : 'unknown';
+  // Honorifics to skip when picking a display first name
+  const SKIP_WORDS = new Set(['rev.', 'dr.', 'mr.', 'mrs.', 'ms.', 'col.', 'prof.', 'lt.', 'maj.', 'capt.']);
+
+  // ── Helpers ─────────────────────────────────────────────────────────────────
+
+  function shortName(name) {
+    if (!name) return '?';
+    const clean = name.replace(/\s*\([^)]*\)/g, '').trim();
+    const parts = clean.split(/\s+/);
+    const first = parts.find(p => !SKIP_WORDS.has(p.toLowerCase())) || parts[0] || '?';
+    return first.length <= 9 ? first : first.slice(0, 8) + '…';
   }
 
-  function compactName(name) {
-    if (!name) return '';
-    const normalized = name.replace(/\s*\([^)]*\)/g, '').trim();
-    const parts = normalized.split(/\s+/).filter(Boolean);
-    return parts.slice(0, 2).join(' ') || normalized;
+  function nodeColor(d) {
+    const palette = BRANCH[d.branch] || BRANCH.unknown;
+    const year = d.birth || d.death;
+    if (!year) return d3.interpolateRgb(palette.light, palette.dark)(0.45);
+    const t = Math.max(0, Math.min(1, (year - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)));
+    return d3.interpolateRgb(palette.light, palette.dark)(t);
   }
 
-  function yearLabel(person) {
-    if (!person.birth && !person.death) return '';
-    const birth = person.birth || '?';
-    const death = person.death || '';
-    return `\n${birth}${death ? `-${death}` : ''}`;
+  // Pick white or dark-brown text for legibility on the given background hex.
+  function contrastText(hexColor) {
+    const r = parseInt(hexColor.slice(1, 3), 16);
+    const g = parseInt(hexColor.slice(3, 5), 16);
+    const b = parseInt(hexColor.slice(5, 7), 16);
+    return (0.299 * r + 0.587 * g + 0.114 * b) / 255 > 0.52 ? '#3a2a1a' : '#ffffff';
   }
 
-  function unionBranch(union, personById) {
-    for (const partnerId of union.partners || []) {
-      const person = personById.get(partnerId);
-      if (person?.branch) return person.branch;
-    }
-    return 'unknown';
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
   }
 
-  function makeElements(graph) {
-    const elements = [];
-    const personById = new Map(graph.persons.map((p) => [p.id, p]));
-    const childrenWithUnion = new Set((graph.childrenOfUnion || []).map((edge) => edge.childId));
+  // ── Flatten family.json ──────────────────────────────────────────────────────
+  // Walks the hierarchical tree and produces a flat list of person nodes plus
+  // two arrays of links: parent→child (from tree structure) and spouse (from
+  // spouseId / marriages[]).  Links use string IDs so they are never mutated
+  // by D3's forceLink resolver; fresh copies are made before each simulation.
 
-    graph.persons.forEach((p) => {
-      const b = branchClass(p.branch);
-      elements.push({
-        data: {
-          id: p.id,
-          label: `${compactName(p.name || p.id)}${yearLabel(p)}`,
-          fullLabel: p.name || p.id,
-          branch: p.branch || 'unknown',
-          kind: 'person',
-          raw: p,
-        },
-        classes: `person branch-${b}`,
-      });
-    });
+  function flattenFamily(root) {
+    const nodes = [];
+    const byId = new Map();
+    const parentChildLinks = [];
+    const spousePairs = new Set();
+    const spouseLinks = [];
 
-    graph.unions.forEach((u) => {
-      const b = branchClass(unionBranch(u, personById));
-      elements.push({
-        data: {
-          id: u.id,
-          branch: b,
-          kind: 'union',
-          label: u.displaySpouseName || u.relationshipType || 'union',
-          raw: u,
-        },
-        classes: `union branch-${b}`,
-      });
-
-      (u.partners || []).forEach((partnerId) => {
-        if (!personById.has(partnerId)) return;
-        elements.push({
-          data: {
-            id: `pu_${u.id}_${partnerId}`,
-            source: partnerId,
-            target: u.id,
-            rel: 'partner',
-            raw: { unionId: u.id, partnerId },
-          },
-          classes: 'edge-partner',
-        });
-      });
-    });
-
-    (graph.childrenOfUnion || []).forEach((e) => {
-      elements.push({
-        data: {
-          id: `uc_${e.unionId}_${e.childId}`,
-          source: e.unionId,
-          target: e.childId,
-          rel: 'child',
-          raw: e,
-        },
-        classes: 'edge-child',
-      });
-    });
-
-    graph.parentChild.forEach((e) => {
-      if (childrenWithUnion.has(e.childId)) return;
-      elements.push({
-        data: {
-          id: `pc_${e.parentId}_${e.childId}`,
-          source: e.parentId,
-          target: e.childId,
-          rel: 'parent',
-          raw: e,
-        },
-        classes: 'edge-parent',
-      });
-    });
-
-    return elements;
-  }
-
-  function findRoots() {
-    if (!cy) return [];
-    return cy.nodes('.person').filter((node) => {
-      const incoming = node.incomers('edge.edge-child, edge.edge-parent');
-      return incoming.length === 0;
-    });
-  }
-
-  function personYear(node) {
-    const raw = node.data('raw') || {};
-    const birth = Number(raw.birth);
-    if (Number.isFinite(birth)) return birth;
-    const death = Number(raw.death);
-    if (Number.isFinite(death)) return death - 70;
-    return null;
-  }
-
-  function median(values) {
-    if (!values.length) return null;
-    const sorted = values.slice().sort((a, b) => a - b);
-    const mid = Math.floor(sorted.length / 2);
-    return sorted.length % 2 === 0
-      ? (sorted[mid - 1] + sorted[mid]) / 2
-      : sorted[mid];
-  }
-
-  function familyTargets(node) {
-    return node.outgoers('edge.edge-partner, edge.edge-child, edge.edge-parent').targets();
-  }
-
-  function computeFamilyPositions() {
-    if (!cy) {
-      return {
-        name: 'breadthfirst',
-        fit: true,
-        directed: true,
-        circle: false,
-        animate: false,
-        padding: 40,
-        spacingFactor: 1.2,
-        nodeDimensionsIncludeLabels: true,
-      };
-    }
-
-    const visibleNodes = cy.nodes(':visible');
-    const visiblePeople = cy.nodes('.person:visible');
-    const peopleWithYears = visiblePeople
-      .map((node) => ({ id: node.id(), year: personYear(node) }))
-      .filter((entry) => entry.year !== null);
-
-    const years = peopleWithYears.map((entry) => entry.year);
-    const minYear = years.length ? Math.min(...years) : 1800;
-    const maxYear = years.length ? Math.max(...years) : minYear + 1;
-    const defaultYear = median(years) || minYear;
-
-    const inferredYearById = new Map();
-
-    visiblePeople.forEach((node) => {
-      const explicitYear = personYear(node);
-      if (explicitYear !== null) {
-        inferredYearById.set(node.id(), explicitYear);
+    function walk(node, parentId) {
+      if (!node) return;
+      if (node.type === 'root' || node.type === 'branch') {
+        (node.children || []).forEach(c => walk(c, null));
         return;
       }
+      if (!node.id || byId.has(node.id)) return;
 
-      const neighborYears = node
-        .connectedEdges(':visible')
-        .connectedNodes('.person:visible')
-        .map((neighbor) => personYear(neighbor))
-        .filter((year) => year !== null);
+      const n = {
+        id:         node.id,
+        name:       node.name  || node.id,
+        branch:     node.branch || 'unknown',
+        birth:      node.birth  ? +node.birth  : null,
+        death:      node.death  ? +node.death  : null,
+        birthplace: node.birthplace  || null,
+        deathplace: node.deathplace  || null,
+        gender:     node.gender      || null,
+        notes:      node.notes       || null,
+        marriages:  node.marriages   || null,
+        spouseId:   node.spouseId    || null,
+        spouse:     node.spouse      || null,
+        url:        BRANCH_URLS[node.branch] || null,
+      };
 
-      inferredYearById.set(node.id(), median(neighborYears) || defaultYear);
-    });
+      nodes.push(n);
+      byId.set(node.id, n);
 
-    const roots = findRoots()
-      .filter(':visible')
-      .sort((a, b) => {
-        const yearDiff = (inferredYearById.get(a.id()) || defaultYear) - (inferredYearById.get(b.id()) || defaultYear);
-        if (yearDiff !== 0) return yearDiff;
-        return (a.data('fullLabel') || a.id()).localeCompare(b.data('fullLabel') || b.id());
-      });
-
-    const positioned = new Set();
-    const yById = new Map();
-    let rowCursor = 0;
-
-    function sortTargets(collection) {
-      return collection.sort((a, b) => {
-        const yearDiff = (inferredYearById.get(a.id()) || defaultYear) - (inferredYearById.get(b.id()) || defaultYear);
-        if (yearDiff !== 0) return yearDiff;
-        return (a.data('fullLabel') || a.id()).localeCompare(b.data('fullLabel') || b.id());
-      });
-    }
-
-    function assignY(node) {
-      if (positioned.has(node.id())) return yById.get(node.id());
-      positioned.add(node.id());
-
-      const children = sortTargets(familyTargets(node).filter(':visible'));
-      if (children.length === 0) {
-        const y = rowCursor * ROW_SPACING;
-        rowCursor += 1;
-        yById.set(node.id(), y);
-        return y;
+      if (parentId) {
+        parentChildLinks.push({ source: parentId, target: node.id, type: 'parent-child' });
       }
 
-      const childYs = children.map((child) => assignY(child));
-      const y = (Math.min(...childYs) + Math.max(...childYs)) / 2;
-      yById.set(node.id(), y);
-      return y;
+      (node.children || []).forEach(c => walk(c, node.id));
     }
 
-    roots.forEach((root) => assignY(root));
+    walk(root, null);
 
-    sortTargets(visibleNodes.filter((node) => !positioned.has(node.id()))).forEach((node) => assignY(node));
+    // Build spouse links only between nodes that exist in the tree
+    nodes.forEach(n => {
+      const marriages = (n.marriages && n.marriages.length)
+        ? n.marriages
+        : (n.spouseId ? [{ spouseId: n.spouseId }] : []);
 
-    const xById = new Map();
-
-    visiblePeople.forEach((node) => {
-      const year = inferredYearById.get(node.id()) || defaultYear;
-      xById.set(node.id(), (year - minYear) * YEAR_SPACING);
-    });
-
-    cy.nodes('.union:visible').forEach((node) => {
-      const raw = node.data('raw') || {};
-      const partnerXs = (raw.partners || [])
-        .map((partnerId) => xById.get(partnerId))
-        .filter((value) => Number.isFinite(value));
-      const partnerYs = (raw.partners || [])
-        .map((partnerId) => yById.get(partnerId))
-        .filter((value) => Number.isFinite(value));
-
-      const childYs = node
-        .outgoers('edge.edge-child')
-        .targets()
-        .map((child) => yById.get(child.id()))
-        .filter((value) => Number.isFinite(value));
-
-      const unionX = partnerXs.length
-        ? (Math.min(...partnerXs) + Math.max(...partnerXs)) / 2 + PARTNER_OFFSET
-        : (defaultYear - minYear) * YEAR_SPACING;
-      const unionYValues = partnerYs.concat(childYs);
-      const unionY = unionYValues.length
-        ? (Math.min(...unionYValues) + Math.max(...unionYValues)) / 2
-        : rowCursor * ROW_SPACING;
-
-      xById.set(node.id(), unionX);
-      yById.set(node.id(), unionY);
-    });
-
-    const nodesByX = new Map();
-    visibleNodes.forEach((node) => {
-      const x = xById.get(node.id()) || ((defaultYear - minYear) * YEAR_SPACING);
-      const bucket = Math.round(x / 24);
-      if (!nodesByX.has(bucket)) nodesByX.set(bucket, []);
-      nodesByX.get(bucket).push(node);
-    });
-
-    nodesByX.forEach((nodes) => {
-      nodes.sort((a, b) => (yById.get(a.id()) || 0) - (yById.get(b.id()) || 0));
-      let prevY = -Infinity;
-      nodes.forEach((node) => {
-        const minGap = node.hasClass('union') ? ROW_SPACING * 0.55 : ROW_SPACING * 0.85;
-        const currentY = yById.get(node.id()) || 0;
-        const nextY = currentY <= prevY + minGap ? prevY + minGap : currentY;
-        yById.set(node.id(), nextY);
-        prevY = nextY;
+      marriages.forEach(m => {
+        if (!m.spouseId || !byId.has(m.spouseId)) return;
+        const pair = [n.id, m.spouseId].sort().join('|');
+        if (spousePairs.has(pair)) return;
+        spousePairs.add(pair);
+        spouseLinks.push({ source: n.id, target: m.spouseId, type: 'spouse' });
       });
     });
 
     return {
-      name: 'preset',
-      fit: true,
-      animate: true,
-      padding: 80,
-      positions(node) {
-        const baseX = xById.get(node.id());
-        const baseY = yById.get(node.id());
-        const fallbackIndex = visibleNodes.indexOf(node);
-        return {
-          x: Number.isFinite(baseX) ? baseX : (maxYear - minYear + 1) * UNKNOWN_YEAR_SPACING,
-          y: Number.isFinite(baseY) ? baseY : fallbackIndex * ROW_SPACING,
-        };
-      },
+      nodes,
+      byId,
+      parentChildLinks,
+      spouseLinks,
     };
   }
 
-  function layoutOptions(name) {
-    if (name === 'family') return computeFamilyPositions();
+  // ── State ────────────────────────────────────────────────────────────────────
 
-    const roots = findRoots();
+  const container   = document.getElementById('graph-container');
+  const statsEl     = document.getElementById('graph-stats');
+  const searchEl    = document.getElementById('node-search');
+  const detailPanel = document.getElementById('person-detail');
 
-    const options = {
-      family: {
-        name: 'breadthfirst',
-        fit: true,
-        directed: true,
-        circle: false,
-        animate: true,
-        padding: 40,
-        spacingFactor: 1.35,
-        nodeDimensionsIncludeLabels: true,
-        roots,
-      },
-      cose: {
-        name: 'cose',
-        animate: true,
-        fit: true,
-        padding: 30,
-        randomize: false,
-      },
-      breadthfirst: {
-        name: 'breadthfirst',
-        fit: true,
-        directed: true,
-        circle: false,
-        animate: true,
-        padding: 20,
-        spacingFactor: 1.1,
-        nodeDimensionsIncludeLabels: true,
-        roots,
-      },
-      concentric: {
-        name: 'concentric',
-        fit: true,
-        padding: 20,
-        minNodeSpacing: 40,
-      },
-    };
+  let allNodes = [];
+  let parentChildLinks = [], spouseLinks = [];
+  let activeFilters = new Set(['fortney', 'sodergren', 'mulhearn', 'andersen']);
 
-    return options[name] || options.family;
-  }
+  let simulation = null;
+  let svg = null, gLinks = null, gNodes = null;
 
-  function runLayout(name) {
-    if (!cy) return;
-    cy.layout(layoutOptions(name)).run();
-  }
+  // ── Detail panel ─────────────────────────────────────────────────────────────
 
-  function updateStats() {
-    const personCount = cy.nodes('.person:visible').length;
-    const unionCount = cy.nodes('.union:visible').length;
-    const edgeCount = cy.edges(':visible').length;
-    statsEl.textContent = `Visible: ${personCount} people, ${unionCount} family units, ${edgeCount} links`;
-  }
+  function showDetail(d) {
+    document.getElementById('detail-name').textContent = d.name || d.id;
 
-  function applyBranchFilter() {
-    const branch = branchFilterEl.value;
-
-    cy.nodes('.person').forEach((n) => {
-      const show = branch === 'all' || n.data('branch') === branch;
-      n.style('display', show ? 'element' : 'none');
-    });
-
-    cy.nodes('.union').forEach((n) => {
-      const show = branch === 'all' || n.data('branch') === branch;
-      n.style('display', show ? 'element' : 'none');
-    });
-
-    cy.edges().forEach((e) => {
-      const srcVisible = e.source().style('display') !== 'none';
-      const tgtVisible = e.target().style('display') !== 'none';
-      e.style('display', srcVisible && tgtVisible ? 'element' : 'none');
-    });
-
-    runLayout(layoutEl.value);
-    updateStats();
-  }
-
-  function applySearch() {
-    const q = (searchEl.value || '').trim().toLowerCase();
-    cy.nodes('.person').removeClass('match');
-
-    if (!q) return;
-
-    const matches = cy.nodes('.person').filter((n) => {
-      const id = (n.id() || '').toLowerCase();
-      const label = (n.data('fullLabel') || '').toLowerCase();
-      return id.includes(q) || label.includes(q);
-    });
-
-    matches.addClass('match');
-    if (matches.length > 0) {
-      cy.animate({
-        fit: { eles: matches, padding: 80 },
-        duration: 350,
-      });
+    const badge = document.getElementById('detail-branch');
+    if (d.branch && d.branch !== 'unknown') {
+      badge.textContent = d.branch.charAt(0).toUpperCase() + d.branch.slice(1);
+      badge.className = `branch-badge ${d.branch}`;
+      badge.style.display = 'inline-block';
+    } else {
+      badge.style.display = 'none';
     }
+
+    const lines = [];
+    if (d.birth) lines.push(`b. ${d.birth}${d.birthplace ? ', ' + d.birthplace : ''}`);
+    if (d.death) lines.push(`d. ${d.death}${d.deathplace ? ', ' + d.deathplace : ''}`);
+    document.getElementById('detail-dates').textContent = lines.join('\n');
+
+    document.getElementById('detail-notes').textContent = d.notes || '';
+
+    const marriagesEl = document.getElementById('detail-marriages');
+    const marriages = (d.marriages && d.marriages.length)
+      ? d.marriages
+      : (d.spouse ? [{ spouseName: d.spouse }] : []);
+
+    if (marriages.length) {
+      const parts = marriages.map(m => {
+        let s = escHtml(m.spouseName || '');
+        if (m.married)  s += ` (m.&nbsp;${escHtml(String(m.married))}`;
+        if (m.divorced) s += `, div.&nbsp;${escHtml(String(m.divorced))}`;
+        if (m.married)  s += ')';
+        return s;
+      }).filter(Boolean);
+      marriagesEl.innerHTML = parts.length
+        ? '<strong>Married:</strong> ' + parts.join('; ')
+        : '';
+    } else {
+      marriagesEl.textContent = '';
+    }
+
+    const linkEl = document.getElementById('detail-link');
+    if (d.url) {
+      linkEl.href = d.url;
+      linkEl.style.display = 'inline-block';
+    } else {
+      linkEl.style.display = 'none';
+    }
+
+    detailPanel.classList.add('visible');
   }
 
-  function bindEvents() {
-    branchFilterEl.addEventListener('change', applyBranchFilter);
-    searchEl.addEventListener('input', applySearch);
-    layoutBtn.addEventListener('click', () => runLayout(layoutEl.value));
+  function hideDetail() {
+    detailPanel.classList.remove('visible');
+    if (gNodes) gNodes.selectAll('circle').attr('stroke-width', 1.5);
+  }
 
-    resetBtn.addEventListener('click', () => {
-      branchFilterEl.value = 'all';
-      searchEl.value = '';
-      cy.nodes('.person').removeClass('match');
-      cy.nodes().style('display', 'element');
-      cy.edges().style('display', 'element');
-      updateStats();
-      runLayout(layoutEl.value);
-    });
+  document.getElementById('detail-close').addEventListener('click', hideDetail);
 
-    cy.on('tap', 'node, edge', (evt) => {
-      const data = evt.target.data('raw') || evt.target.data();
-      selectionEl.textContent = JSON.stringify(data, null, 2);
+  // ── Graph construction ───────────────────────────────────────────────────────
+
+  function buildGraph(nodes, links) {
+    if (simulation) simulation.stop();
+
+    const w = container.clientWidth  || 900;
+    const h = container.clientHeight || Math.round(window.innerHeight * 0.76);
+
+    d3.select(container).select('svg').remove();
+
+    svg = d3.select(container)
+      .insert('svg', '#person-detail')
+      .attr('width',  w)
+      .attr('height', h);
+
+    // Arrow marker for parent→child links
+    svg.append('defs').append('marker')
+      .attr('id',          'pc-arrow')
+      .attr('viewBox',     '0 -4 8 8')
+      .attr('refX',        NODE_R + 6)
+      .attr('refY',        0)
+      .attr('markerWidth', 5)
+      .attr('markerHeight', 5)
+      .attr('orient',      'auto')
+      .append('path')
+        .attr('d',    'M0,-4L8,0L0,4')
+        .attr('fill', '#b0a090');
+
+    const zoom = d3.zoom()
+      .scaleExtent([0.08, 5])
+      .on('zoom', e => g.attr('transform', e.transform));
+
+    svg.call(zoom)
+      .on('click', () => hideDetail());
+
+    const g = svg.append('g');
+
+    gLinks = g.append('g').attr('class', 'links');
+    gNodes = g.append('g').attr('class', 'nodes');
+
+    // ── Simulation ─────────────────────────────────────────────────────────────
+
+    simulation = d3.forceSimulation(nodes)
+      .force('link', d3.forceLink(links)
+        .id(d => d.id)
+        .distance(d => d.type === 'spouse' ? 58 : 75)
+        .strength(d => d.type === 'spouse' ? 0.7 : 0.55)
+      )
+      .force('charge', d3.forceManyBody().strength(-250))
+      .force('center',  d3.forceCenter(w / 2, h / 2))
+      .force('collide', d3.forceCollide(NODE_R + 5).iterations(2));
+
+    // ── Links ──────────────────────────────────────────────────────────────────
+
+    const linkSel = gLinks.selectAll('line')
+      .data(links, d => `${d.source}-${d.target}-${d.type}`)
+      .join('line')
+        .attr('stroke',           d => d.type === 'spouse' ? '#c8b0b0' : '#b0a090')
+        .attr('stroke-width',     d => d.type === 'spouse' ? 1.2 : 1.5)
+        .attr('stroke-dasharray', d => d.type === 'spouse' ? '4 3' : null)
+        .attr('marker-end',       d => d.type === 'parent-child' ? 'url(#pc-arrow)' : null)
+        .attr('stroke-opacity',   0.75);
+
+    // ── Nodes ──────────────────────────────────────────────────────────────────
+
+    const nodeSel = gNodes.selectAll('g.node')
+      .data(nodes, d => d.id)
+      .join('g')
+        .attr('class', 'node')
+        .style('cursor', 'pointer')
+        .call(d3.drag()
+          .on('start', (event, d) => {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+          })
+          .on('drag', (event, d) => {
+            d.fx = event.x;
+            d.fy = event.y;
+          })
+          .on('end', (event, d) => {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+          })
+        )
+        .on('click', (event, d) => {
+          event.stopPropagation();
+          gNodes.selectAll('circle').attr('stroke-width', 1.5);
+          d3.select(event.currentTarget).select('circle').attr('stroke-width', 3);
+          showDetail(d);
+        });
+
+    nodeSel.append('circle')
+      .attr('r',            NODE_R)
+      .attr('fill',         d => nodeColor(d))
+      .attr('stroke',       d => (BRANCH[d.branch] || BRANCH.unknown).dark)
+      .attr('stroke-width', 1.5);
+
+    nodeSel.append('text')
+      .attr('text-anchor',      'middle')
+      .attr('dominant-baseline', 'central')
+      .attr('font-size',         '8.5px')
+      .attr('font-family',       'Inter, sans-serif')
+      .attr('font-weight',       '500')
+      .attr('fill',              d => contrastText(nodeColor(d)))
+      .attr('pointer-events',    'none')
+      .text(d => shortName(d.name));
+
+    // ── Tick ───────────────────────────────────────────────────────────────────
+
+    simulation.on('tick', () => {
+      linkSel
+        .attr('x1', d => d.source.x)
+        .attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x)
+        .attr('y2', d => d.target.y);
+
+      nodeSel.attr('transform', d => `translate(${d.x},${d.y})`);
     });
   }
+
+  // ── Filter & refresh ─────────────────────────────────────────────────────────
+
+  function refresh() {
+    const visibleNodes = allNodes.filter(
+      n => activeFilters.has(n.branch) || n.branch === 'unknown'
+    );
+    const visibleIds = new Set(visibleNodes.map(n => n.id));
+
+    const allLinksOriginal = [...parentChildLinks, ...spouseLinks];
+    const visibleLinks = allLinksOriginal.filter(
+      l => visibleIds.has(l.source) && visibleIds.has(l.target)
+    );
+
+    // Fresh copies — D3 forceLink mutates source/target from strings to objects
+    const nodesCopy = visibleNodes.map(n => ({ ...n }));
+    const linksCopy = visibleLinks.map(l => ({ source: l.source, target: l.target, type: l.type }));
+
+    buildGraph(nodesCopy, linksCopy);
+    hideDetail();
+
+    statsEl.textContent = `${visibleNodes.length} people · ${visibleLinks.length} connections`;
+  }
+
+  // ── Search ───────────────────────────────────────────────────────────────────
+
+  searchEl.addEventListener('input', () => {
+    const q = searchEl.value.trim().toLowerCase();
+    if (!gNodes || !gLinks) return;
+
+    if (!q) {
+      gNodes.selectAll('g.node').select('circle').attr('opacity', 1).attr('stroke-width', 1.5);
+      gNodes.selectAll('g.node').select('text').attr('opacity', 1);
+      gLinks.selectAll('line').attr('opacity', 0.75);
+      return;
+    }
+
+    const matched = new Set();
+    allNodes.forEach(n => {
+      if ((n.name || '').toLowerCase().includes(q) || n.id.toLowerCase().includes(q)) {
+        matched.add(n.id);
+      }
+    });
+
+    gNodes.selectAll('g.node').each(function (d) {
+      const hit = matched.has(d.id);
+      d3.select(this).select('circle')
+        .attr('opacity',      hit ? 1 : 0.18)
+        .attr('stroke-width', hit ? 3 : 1.5);
+      d3.select(this).select('text').attr('opacity', hit ? 1 : 0.18);
+    });
+
+    gLinks.selectAll('line').attr('opacity', 0.08);
+  });
+
+  // ── Branch filter pills ───────────────────────────────────────────────────────
+
+  const BRANCHES = ['fortney', 'sodergren', 'mulhearn', 'andersen'];
+
+  document.querySelectorAll('.filter-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const branch = btn.dataset.branch;
+
+      if (branch === 'all') {
+        const allOn = BRANCHES.every(b => activeFilters.has(b));
+        BRANCHES.forEach(b => allOn ? activeFilters.delete(b) : activeFilters.add(b));
+        document.querySelectorAll('.filter-pill').forEach(p => {
+          p.classList.toggle('active', !allOn);
+        });
+      } else {
+        if (activeFilters.has(branch)) {
+          activeFilters.delete(branch);
+          btn.classList.remove('active');
+        } else {
+          activeFilters.add(branch);
+          btn.classList.add('active');
+        }
+        const allBtn = document.querySelector('.filter-pill[data-branch="all"]');
+        allBtn.classList.toggle('active', BRANCHES.every(b => activeFilters.has(b)));
+      }
+
+      refresh();
+    });
+  });
+
+  // ── Init ──────────────────────────────────────────────────────────────────────
 
   async function init() {
-    const response = await fetch('data/family_graph.json');
-    if (!response.ok) throw new Error('Could not load data/family_graph.json');
-    const graph = await response.json();
+    statsEl.textContent = 'Loading…';
 
-    cy = cytoscape({
-      container: cyEl,
-      elements: makeElements(graph),
-      style: [
-        {
-          selector: 'node.person',
-          style: {
-            'shape': 'round-rectangle',
-            'background-color': '#f7f3ea',
-            'border-width': 1.6,
-            'border-color': '#5c3d2e',
-            'label': 'data(label)',
-            'font-size': '9px',
-            'text-wrap': 'wrap',
-            'text-max-width': 76,
-            'text-valign': 'bottom',
-            'text-margin-y': 7,
-            'width': 16,
-            'height': 16,
-          },
-        },
-        {
-          selector: 'node.union',
-          style: {
-            'shape': 'round-rectangle',
-            'background-color': '#a8a29a',
-            'border-width': 0,
-            'width': 26,
-            'height': 6,
-            'label': '',
-          },
-        },
-        {
-          selector: '.branch-fortney',
-          style: { 'border-color': BRANCH_COLORS.fortney, 'background-color': '#e8edf5' },
-        },
-        {
-          selector: '.branch-sodergren',
-          style: { 'border-color': BRANCH_COLORS.sodergren, 'background-color': '#e6f0ee' },
-        },
-        {
-          selector: '.branch-mulhearn',
-          style: { 'border-color': BRANCH_COLORS.mulhearn, 'background-color': '#e8f0e5' },
-        },
-        {
-          selector: '.branch-andersen',
-          style: { 'border-color': BRANCH_COLORS.andersen, 'background-color': '#f0e6e8' },
-        },
-        {
-          selector: '.branch-unknown',
-          style: { 'border-color': BRANCH_COLORS.unknown, 'background-color': '#f7f5f0' },
-        },
-        {
-          selector: 'edge.edge-partner',
-          style: {
-            'curve-style': 'straight',
-            'line-color': '#bdb7ad',
-            'width': 1.6,
-          },
-        },
-        {
-          selector: 'edge.edge-child',
-          style: {
-            'curve-style': 'taxi',
-            'taxi-direction': 'vertical',
-            'taxi-turn': '40%',
-            'line-color': '#8b6b52',
-            'target-arrow-shape': 'triangle',
-            'target-arrow-color': '#8b6b52',
-            'width': 1.35,
-          },
-        },
-        {
-          selector: 'edge.edge-parent',
-          style: {
-            'curve-style': 'taxi',
-            'taxi-direction': 'vertical',
-            'taxi-turn': '35%',
-            'line-color': '#c3b29c',
-            'target-arrow-shape': 'triangle',
-            'target-arrow-color': '#c3b29c',
-            'line-style': 'dotted',
-            'width': 1.1,
-          },
-        },
-        {
-          selector: '.match',
-          style: {
-            'border-width': 3,
-            'border-color': '#b8962e',
-            'width': 20,
-            'height': 20,
-          },
-        },
-      ],
-      layout: layoutOptions(layoutEl.value),
-    });
+    const resp = await fetch('data/family.json');
+    if (!resp.ok) throw new Error('Could not load data/family.json');
+    const root = await resp.json();
 
-    // Apply the family preset layout after cy is created.
-    runLayout(layoutEl.value);
+    const flat = flattenFamily(root);
+    allNodes          = flat.nodes;
+    parentChildLinks  = flat.parentChildLinks;
+    spouseLinks       = flat.spouseLinks;
 
-    updateStats();
-    bindEvents();
-    selectionEl.textContent = JSON.stringify(graph.meta, null, 2);
+    refresh();
   }
 
-  init().catch((err) => {
-    statsEl.textContent = 'Error loading graph data';
-    selectionEl.textContent = err.message;
+  init().catch(err => {
+    statsEl.textContent = 'Error loading graph: ' + err.message;
+    console.error(err);
   });
 })();

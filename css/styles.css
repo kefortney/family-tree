@@ -350,10 +350,13 @@ blockquote {
 .tree-section {
   background: var(--color-parchment-dark);
   padding: 2rem;
-  border-radius: 0 0 8px 8px;
-  border: 1px solid var(--color-parchment-darker);
+  border-radius: 0;
+  border-top: 1px solid var(--color-parchment-darker);
+  border-bottom: 1px solid var(--color-parchment-darker);
   position: relative;
   overflow: hidden;
+  margin-left: -2rem;
+  margin-right: -2rem;
 }
 
 .tree-controls {
@@ -408,7 +411,7 @@ blockquote {
 
 .link {
   fill: none;
-  stroke: var(--color-parchment-darker);
+  stroke: #5a5a5a;
   stroke-width: 1.5;
 }
 
@@ -1082,6 +1085,11 @@ blockquote {
 @media (max-width: 640px) {
   :root {
     --section-padding: 3rem 1.25rem;
+  }
+
+  .tree-section {
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
   }
 
   .nav-links {

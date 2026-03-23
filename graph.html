@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Family Graph View</title>
+  <title>Family Graph View — Fortney Family Heritage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <style>
     .graph-shell {
@@ -12,92 +14,147 @@
       padding: 1rem;
     }
 
-    .graph-toolbar {
+    .graph-filters {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.5rem;
       flex-wrap: wrap;
       align-items: center;
       margin-bottom: 0.75rem;
+      padding: 0.6rem 0.75rem;
       background: var(--color-parchment-dark);
       border: 1px solid var(--color-parchment-darker);
       border-radius: 8px;
-      padding: 0.75rem;
     }
 
-    .graph-toolbar label {
+    .graph-filters > label {
       font-size: 0.8rem;
-      color: var(--color-brown-mid);
       font-weight: 600;
-    }
-
-    .graph-toolbar input,
-    .graph-toolbar select,
-    .graph-toolbar button {
-      padding: 0.45rem 0.55rem;
-      border: 1px solid var(--color-parchment-darker);
-      border-radius: 6px;
-      background: #fff;
-      font-size: 0.85rem;
-      color: var(--color-brown);
-    }
-
-    .graph-layout {
-      display: grid;
-      grid-template-columns: 1fr 330px;
-      gap: 0.75rem;
-    }
-
-    #cy {
-      min-height: 74vh;
-      border: 1px solid var(--color-parchment-darker);
-      border-radius: 10px;
-      background: #fff;
-    }
-
-    .graph-panel {
-      border: 1px solid var(--color-parchment-darker);
-      border-radius: 10px;
-      background: #fff;
-      padding: 0.85rem;
-      overflow: auto;
-      max-height: 74vh;
-    }
-
-    .graph-panel h3 {
-      margin-top: 0;
-      margin-bottom: 0.6rem;
-    }
-
-    .graph-meta {
-      font-size: 0.8rem;
       color: var(--color-brown-mid);
-      margin-bottom: 0.75rem;
+      margin-right: 0.1rem;
     }
 
-    .graph-details pre {
-      white-space: pre-wrap;
-      word-break: break-word;
-      font-size: 0.75rem;
-      line-height: 1.45;
-      background: var(--color-parchment-dark);
+    .filter-pill {
+      padding: 0.3rem 0.85rem;
+      border-radius: 20px;
+      border: 1.5px solid;
+      background: transparent;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      line-height: 1;
+    }
+
+    .filter-pill[data-branch="all"]        { color: var(--color-brown); border-color: var(--color-brown-mid); }
+    .filter-pill[data-branch="fortney"]    { color: var(--color-fortney); border-color: var(--color-fortney); }
+    .filter-pill[data-branch="sodergren"]  { color: var(--color-sodergren); border-color: var(--color-sodergren); }
+    .filter-pill[data-branch="mulhearn"]   { color: var(--color-mulhearn); border-color: var(--color-mulhearn); }
+    .filter-pill[data-branch="andersen"]   { color: var(--color-andersen); border-color: var(--color-andersen); }
+
+    .filter-pill.active[data-branch="all"]       { background: var(--color-brown);      color: #fff; }
+    .filter-pill.active[data-branch="fortney"]   { background: var(--color-fortney);    color: #fff; }
+    .filter-pill.active[data-branch="sodergren"] { background: var(--color-sodergren);  color: #fff; }
+    .filter-pill.active[data-branch="mulhearn"]  { background: var(--color-mulhearn);   color: #fff; }
+    .filter-pill.active[data-branch="andersen"]  { background: var(--color-andersen);   color: #fff; }
+
+    .graph-search {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .graph-search label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-brown-mid);
+    }
+
+    .graph-search input {
+      padding: 0.3rem 0.65rem;
       border: 1px solid var(--color-parchment-darker);
       border-radius: 6px;
-      padding: 0.7rem;
-      margin: 0;
+      font-size: 0.8rem;
+      background: #fff;
+      color: var(--color-brown);
+      width: 170px;
     }
 
-    @media (max-width: 1100px) {
-      .graph-layout {
-        grid-template-columns: 1fr;
-      }
+    #graph-container {
+      position: relative;
+      width: 100%;
+      height: 76vh;
+      border: 1px solid var(--color-parchment-darker);
+      border-radius: 10px;
+      background: #fdfaf5;
+      overflow: hidden;
+      cursor: grab;
+    }
 
-      .graph-panel {
-        max-height: none;
-      }
+    #graph-container:active { cursor: grabbing; }
+
+    #graph-container svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    #graph-stats {
+      font-size: 0.75rem;
+      color: var(--color-brown-mid);
+      margin-top: 0.4rem;
+      text-align: right;
+      padding-right: 0.25rem;
+    }
+
+    /* Person detail panel — overrides absolute positioning for graph context */
+    #graph-container #person-detail {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 270px;
+      max-height: calc(100% - 2rem);
+      overflow-y: auto;
+      z-index: 20;
+    }
+
+    /* Legend */
+    .graph-legend {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--color-brown-mid);
+      padding: 0 0.25rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .legend-line {
+      width: 28px;
+      height: 2px;
+      border-radius: 1px;
+    }
+
+    .legend-line.parent-child { background: #b0a090; }
+    .legend-line.spouse { background: #c0a8a8; background-image: repeating-linear-gradient(90deg, #c0a8a8 0 4px, transparent 4px 7px); }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1.5px solid;
     }
   </style>
 </head>
 <body>
+
   <nav class="site-nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">Fortney Family</a>
@@ -117,48 +174,61 @@
 
   <header class="page-hero">
     <h1>Family Graph</h1>
-    <p>A layered family-tree view with partner unions and descendant links, adapted for cross-branch connections.</p>
+    <p>Force-directed network of all family members · lighter nodes are older ancestors, darker nodes are more recent · drag to reposition, scroll to zoom, click to inspect.</p>
   </header>
 
   <main class="graph-shell">
-    <div class="graph-toolbar">
-      <label for="branch-filter">Branch</label>
-      <select id="branch-filter">
-        <option value="all">All</option>
-        <option value="fortney">Fortney</option>
-        <option value="sodergren">Södergren</option>
-        <option value="mulhearn">Mulhearn</option>
-        <option value="andersen">Andersen</option>
-      </select>
 
-      <label for="node-search">Find Person</label>
-      <input id="node-search" type="text" placeholder="Name or ID">
-
-      <label for="layout-select">Layout</label>
-      <select id="layout-select">
-        <option value="family" selected>Family (layered)</option>
-        <option value="cose">Force</option>
-        <option value="breadthfirst">Generation bands</option>
-        <option value="concentric">Concentric</option>
-      </select>
-
-      <button id="btn-layout">Run Layout</button>
-      <button id="btn-reset">Reset Filters</button>
+    <div class="graph-filters">
+      <label>Branch</label>
+      <button class="filter-pill active" data-branch="all">All</button>
+      <button class="filter-pill active" data-branch="fortney">Fortney</button>
+      <button class="filter-pill active" data-branch="sodergren">Södergren</button>
+      <button class="filter-pill active" data-branch="mulhearn">Mulhearn</button>
+      <button class="filter-pill active" data-branch="andersen">Andersen</button>
+      <div class="graph-search">
+        <label for="node-search">Find</label>
+        <input id="node-search" type="text" placeholder="Name or ID…">
+      </div>
     </div>
 
-    <div class="graph-layout">
-      <div id="cy"></div>
-      <aside class="graph-panel">
-        <h3>Selection</h3>
-        <div class="graph-meta" id="graph-stats">Loading...</div>
-        <div class="graph-details">
-          <pre id="selection-json">Click a person or edge to inspect details.</pre>
-        </div>
-      </aside>
+    <div id="graph-container">
+      <!-- D3 SVG rendered here by graph.js -->
+      <div id="person-detail">
+        <button class="detail-close" id="detail-close" aria-label="Close">×</button>
+        <span id="detail-branch" class="branch-badge" style="display:none;margin-bottom:0.5rem;"></span>
+        <h4 id="detail-name"></h4>
+        <div class="detail-dates" id="detail-dates"></div>
+        <p class="detail-notes" id="detail-notes"></p>
+        <div id="detail-marriages" style="font-size:0.82rem;color:var(--color-brown-mid);margin-top:0.5rem;line-height:1.5;"></div>
+        <a href="#" id="detail-link" class="detail-link" style="display:none;">Read the full story →</a>
+      </div>
     </div>
+
+    <div class="graph-legend">
+      <div class="legend-item">
+        <div class="legend-line parent-child"></div>
+        <span>Parent → child</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-line spouse"></div>
+        <span>Spouse</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#d8e4f5;border-color:#1d3a6c;"></div>
+        <span>Older ancestor</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#1d3a6c;border-color:#1d3a6c;"></div>
+        <span>Recent descendant</span>
+      </div>
+    </div>
+
+    <div id="graph-stats">Loading…</div>
+
   </main>
 
-  <script src="https://unpkg.com/cytoscape@3.30.2/dist/cytoscape.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <script src="js/graph.js"></script>
 </body>
 </html>
