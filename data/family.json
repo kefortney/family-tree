@@ -132,7 +132,7 @@
                                                   "gender": "M",
                                                   "branch": "fortney",
                                                   "spouse": "Viola Vennes",
-                                                  "notes": "Albin's older brother. Photographed with sister Nettie — described as 'Etta and Sundance — or Bonnie and Clyde, depending on your generation.'",
+                                                  "notes": "Albin's older brother. Photographed with sister Nettie — described as 'Etta and Sundance — or Bonnie and Clyde, depending on your generation.' Wife Viola Vennes: born 1892, died 1971, Withee, Wisconsin. Teacher. Remarried Franklin McMiller after Albert's death. Famously said: 'I taught all the Fortney boys and married the eldest.' Taught at Lockheil School, still visible northwest of the farm.",
                                                   "children": [
                                                     {
                                                       "id": "marion_lucile",
@@ -149,7 +149,13 @@
                                                       "birth": 1922,
                                                       "death": 2005,
                                                       "gender": "M",
-                                                      "branch": "fortney"
+                                                      "branch": "fortney",
+                                                      "spouse": "Evelyn",
+                                                      "children": [
+                                                        {"id":"alan_hubert","name":"Alan Fortney","gender":"M","branch":"fortney"},
+                                                        {"id":"christine_hubert","name":"Christine Fortney","gender":"F","branch":"fortney"},
+                                                        {"id":"kerry_hubert","name":"Kerry Fortney","gender":"F","branch":"fortney"}
+                                                      ]
                                                     },
                                                     {
                                                       "id": "virgil_fortney",
@@ -158,7 +164,13 @@
                                                       "death": 1982,
                                                       "gender": "M",
                                                       "branch": "fortney",
-                                                      "notes": "Children: George, Robert, and Phillip Fortney."
+                                                      "spouse": "Betty Baker",
+                                                      "notes": "Married Betty Baker. Children: Philip, Robert, and Marcia Fortney. 1 granddaughter, Leslie.",
+                                                      "children": [
+                                                        {"id":"philip_virgil","name":"Philip Fortney","gender":"M","branch":"fortney"},
+                                                        {"id":"robert_virgil","name":"Robert Fortney","gender":"M","branch":"fortney"},
+                                                        {"id":"marcia_virgil","name":"Marcia Fortney","gender":"F","branch":"fortney"}
+                                                      ]
                                                     }
                                                   ]
                                                 },
@@ -180,7 +192,7 @@
                                                       "death": 2002,
                                                       "gender": "M",
                                                       "branch": "fortney",
-                                                      "notes": "Visited Fortun, Norway and acquired the authoritative Luster: Gards-og aettesoge."
+                                                      "notes": "Nuclear Physicist, Professor. Visited Fortun, Norway and acquired the authoritative Luster: Gards-og aettesoge."
                                                     },
                                                     {
                                                       "id": "monrad_dahl",
@@ -188,7 +200,8 @@
                                                       "birth": 1921,
                                                       "death": 1993,
                                                       "gender": "M",
-                                                      "branch": "fortney"
+                                                      "branch": "fortney",
+                                                      "notes": "Physical Therapist."
                                                     },
                                                     {
                                                       "id": "frederick_dahl",
@@ -204,13 +217,17 @@
                                                       "birth": 1926,
                                                       "gender": "F",
                                                       "branch": "fortney",
-                                                      "notes": "Later Sylvia Deason (b. 1946?). Did thorough genealogical study of the Fortney line."
+                                                      "spouse": "Warren Kromroy",
+                                                      "notes": "Later Sylvia Deason (b. 1946?). Did thorough genealogical study of the Fortney line.",
+                                                      "children": [
+                                                        {"id":"richard_goll","name":"Richard Goll","gender":"M","branch":"fortney"}
+                                                      ]
                                                     },
                                                     {
                                                       "id": "gilroy_dahl",
                                                       "name": "Gilroy Vernon Dahl",
                                                       "birth": 1931,
-                                                      "death": 1982,
+                                                      "death": 1981,
                                                       "gender": "M",
                                                       "branch": "fortney"
                                                     }
@@ -224,20 +241,25 @@
                                                   "gender": "F",
                                                   "branch": "fortney",
                                                   "spouse": "Nelmer Bergum",
+                                                  "notes": "Married Nelmer Bergum, 5 June 1925. Nelmer Bergum: Farmer. Born 21 November 1894, died 3 March 1983, Wheeler, WI.",
                                                   "children": [
                                                     {
                                                       "id": "stanley_bergum",
                                                       "name": "Stanley Nelmer Bergum",
                                                       "birth": 1930,
                                                       "gender": "M",
-                                                      "branch": "fortney"
+                                                      "branch": "fortney",
+                                                      "spouse": "Donna Chrisopherson",
+                                                      "notes": "University teacher (retired). 1 daughter, 2 sons."
                                                     },
                                                     {
                                                       "id": "konval_bergum",
                                                       "name": "Konval Harlan Bergum",
                                                       "birth": 1933,
                                                       "gender": "M",
-                                                      "branch": "fortney"
+                                                      "branch": "fortney",
+                                                      "spouse": "Jean Emma McRoberts",
+                                                      "notes": "District Conservationist (US Soil Conservation Service); Lutheran Brotherhood. 2 daughters."
                                                     }
                                                   ]
                                                 },
@@ -246,30 +268,39 @@
                                                   "name": "Clarence Edward Fortney",
                                                   "birth": 1897,
                                                   "death": 1968,
+                                                  "deathplace": "Pontiac, Michigan",
                                                   "gender": "M",
                                                   "branch": "fortney",
                                                   "spouse": "Anna Skreen",
+                                                  "notes": "Worked at General Motors. Married Anna Skreen, 21 August 1918, Wheeler, WI. Wife Anna Skreen born 22 June 1900, Fargo, ND; died 14 November 1990, Houghton Lake, MI.",
                                                   "children": [
                                                     {
                                                       "id": "hillman_fortney",
                                                       "name": "Hillman Arnold Fortney",
                                                       "birth": 1919,
                                                       "gender": "M",
-                                                      "branch": "fortney"
+                                                      "branch": "fortney",
+                                                      "spouse": "Mildred Irene Wedell Smith",
+                                                      "notes": "Retired. 2 daughters, 2 sons."
                                                     },
                                                     {
                                                       "id": "agnes_fortney",
                                                       "name": "Agnes Marie Fortney",
                                                       "birth": 1922,
                                                       "gender": "F",
-                                                      "branch": "fortney"
+                                                      "branch": "fortney",
+                                                      "spouse": "Richard Platt Deason",
+                                                      "notes": "3 daughters."
                                                     },
                                                     {
                                                       "id": "ralph_fortney",
                                                       "name": "Ralph Clarence Fortney",
                                                       "birth": 1930,
+                                                      "birthplace": "Pontiac, Michigan",
                                                       "gender": "M",
-                                                      "branch": "fortney"
+                                                      "branch": "fortney",
+                                                      "spouse": "Phyllis (Marjorie) Ann Welton",
+                                                      "notes": "Retired. 2 daughters, 1 son."
                                                     }
                                                   ]
                                                 },
@@ -280,7 +311,8 @@
                                                   "death": 1950,
                                                   "gender": "M",
                                                   "branch": "fortney",
-                                                  "spouse": "Lilian Gregerson",
+                                                  "spouse": "Susana (Suzy) Marie Sjolden; Lilian Gregerson",
+                                                  "notes": "First married Susana (Suzy) Marie Sjolden (b. 5 May 1913), 21 November 1933. Second married Lilian Gregerson (b. 14 September 1896, d. 18 May 1977), 16 December 1948.",
                                                   "children": [
                                                     {
                                                       "id": "michael_dee",
@@ -288,7 +320,9 @@
                                                       "birth": 1939,
                                                       "death": 1997,
                                                       "gender": "M",
-                                                      "branch": "fortney"
+                                                      "branch": "fortney",
+                                                      "spouse": "Marilyn",
+                                                      "notes": "2 daughters."
                                                     }
                                                   ]
                                                 },
@@ -300,20 +334,23 @@
                                                   "gender": "M",
                                                   "branch": "fortney",
                                                   "spouse": "Caroline Margaret Smith",
+                                                  "notes": "Wife Caroline Margaret Smith born 18 May 1913, died 1994. Elementary teacher. Married 23 May 1936, Colfax, WI.",
                                                   "children": [
                                                     {
                                                       "id": "christine_fortney",
                                                       "name": "Christine Ellen Fortney",
                                                       "birth": 1942,
                                                       "gender": "F",
-                                                      "branch": "fortney"
+                                                      "branch": "fortney",
+                                                      "notes": "Secretary/Office Worker, then farmer (ret.). Married 1st Ken Faber (4 children), 2nd Rolph Anderson (4 children)."
                                                     },
                                                     {
                                                       "id": "karn_fortney",
                                                       "name": "Karn Louise Fortney",
                                                       "birth": 1944,
                                                       "gender": "F",
-                                                      "branch": "fortney"
+                                                      "branch": "fortney",
+                                                      "notes": "Art Teacher (ret.). Married 1st Rick Rock (4 sons), 2nd Orrin Anderson (no children)."
                                                     },
                                                     {
                                                       "id": "thomas_frederick",
@@ -336,7 +373,7 @@
                                                   "gender": "M",
                                                   "branch": "fortney",
                                                   "spouse": "Elsie Carson",
-                                                  "notes": "UW heavyweight wrestler (1928, 1932, 1935, 1938). Died in Detroit in 1944 before the war ended. He and Elsie had no children. Albin had planned to work with him in Detroit in 1937-38."
+                                                  "notes": "Physical education teacher and politician. UW heavyweight wrestler (1928, 1932, 1935, 1938). Died in Detroit in 1944. He and Elsie had no children. Married Elsie Carson, 5 October 1928, Chicago, IL. Elsie (born 1904, died 1979; nurse) never remarried and kept his photo by her bed the rest of her life."
                                                 },
                                                 {
                                                   "id": "albin_leonard",
@@ -418,14 +455,16 @@
                                                   "gender": "F",
                                                   "branch": "fortney",
                                                   "spouse": "Andrew Ole Larson",
-                                                  "notes": "Youngest child of Hans & Maria. Married Andrew Ole Larson of Menomonie, WI. Her five children were Alan's beloved 'Larson cousins.' Cousin Laurel's husband Ollie encountered Kendall Thomas in Vietnam.",
+                                                  "notes": "Youngest child of Hans & Maria. Married Andrew Ole Larson of Menomonie, WI. Andrew Ole Larson born 31 May 1908 Menomonie WI, died March 1986 Menomonie WI. Carpenter and teacher. Her five children were Alan's beloved 'Larson cousins.' Cousin Laurel's husband Ollie encountered Kendall Thomas in Vietnam.",
                                                   "children": [
                                                     {
                                                       "id": "thomas_larson",
                                                       "name": "Thomas Andrew Larson",
                                                       "birth": 1938,
                                                       "gender": "M",
-                                                      "branch": "fortney"
+                                                      "branch": "fortney",
+                                                      "spouse": "Kathleen Koehler",
+                                                      "notes": "Computer data specialist. 1 son."
                                                     },
                                                     {
                                                       "id": "mary_larson",
@@ -433,7 +472,8 @@
                                                       "birth": 1941,
                                                       "gender": "F",
                                                       "branch": "fortney",
-                                                      "notes": "Married, became Mary Ann Langford."
+                                                      "spouse": "John Langford",
+                                                      "notes": "Nurse. 3 children (divorced)."
                                                     },
                                                     {
                                                       "id": "linda_larson",
@@ -441,22 +481,27 @@
                                                       "birth": 1942,
                                                       "gender": "F",
                                                       "branch": "fortney",
-                                                      "notes": "Married, became Linda Olson. Husband Rich had a summer house on Tainter Lake."
+                                                      "spouse": "Rich Olson",
+                                                      "notes": "4 children."
                                                     },
                                                     {
                                                       "id": "orland_larson",
                                                       "name": "Orland John Larson",
                                                       "birth": 1944,
                                                       "gender": "M",
-                                                      "branch": "fortney"
+                                                      "branch": "fortney",
+                                                      "spouse": "Kathy",
+                                                      "notes": "2 sons."
                                                     },
                                                     {
                                                       "id": "laurel_larson",
                                                       "name": "Laurel Jean Larson",
                                                       "birth": 1947,
+                                                      "birthplace": "Menomonie, Wisconsin",
                                                       "gender": "F",
                                                       "branch": "fortney",
-                                                      "notes": "Married, became Laurel Madsen. Her husband Ollie encountered Kendall Thomas Fortney in Vietnam."
+                                                      "spouse": "Ollie Madsen",
+                                                      "notes": "Reading teacher (ret.). 3 children. Her husband Ollie encountered Kendall Thomas Fortney in Vietnam."
                                                     }
                                                   ]
                                                 }
