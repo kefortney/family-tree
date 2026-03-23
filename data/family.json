@@ -192,7 +192,30 @@
                                                       "death": 2002,
                                                       "gender": "M",
                                                       "branch": "fortney",
-                                                      "notes": "Nuclear Physicist, Professor. Visited Fortun, Norway and acquired the authoritative Luster: Gards-og aettesoge."
+                                                      "notes": "Nuclear Physicist, Professor. Visited Fortun, Norway and acquired the authoritative Luster: Gards-og aettesoge.",
+                                                      "children": [
+                                                        {
+                                                          "id": "david_dahl",
+                                                          "name": "David Adrian Dahl",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "children": [
+                                                            {
+                                                              "id": "steven_dahl",
+                                                              "name": "Steven Dahl",
+                                                              "birth": 1976,
+                                                              "birthplace": "Los Alamos, New Mexico",
+                                                              "gender": "M",
+                                                              "branch": "fortney",
+                                                              "spouse": "Jaimee MacDonald",
+                                                              "notes": "Chemical engineer, BP Anchorage AK. Jaimee MacDonald also a chemical engineer, BP Anchorage.",
+                                                              "children": [
+                                                                {"id":"michael_dahl_v","name":"Michael Dahl","birth":2006,"birthplace":"Anchorage, Alaska","gender":"M","branch":"fortney"}
+                                                              ]
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
                                                     },
                                                     {
                                                       "id": "monrad_dahl",
@@ -300,7 +323,62 @@
                                                       "gender": "M",
                                                       "branch": "fortney",
                                                       "spouse": "Phyllis (Marjorie) Ann Welton",
-                                                      "notes": "Retired. 2 daughters, 1 son."
+                                                      "notes": "Retired. 2 daughters, 1 son.",
+                                                      "children": [
+                                                        {
+                                                          "id": "cynthia_fortney",
+                                                          "name": "Cynthia Diane Fortney",
+                                                          "birth": 1955,
+                                                          "birthplace": "Pontiac, Michigan",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Lauren Arthur Vaughn",
+                                                          "notes": "Married Lauren Arthur Vaughn (b. 19 Oct 1953, Pontiac MI), 27 July 1996, Traverse City MI.",
+                                                          "children": [
+                                                            {
+                                                              "id": "julie_vaughn",
+                                                              "name": "Julie Diane Vaughn",
+                                                              "birth": 1975,
+                                                              "birthplace": "Lansing, Michigan",
+                                                              "gender": "F",
+                                                              "branch": "fortney",
+                                                              "spouse": "Brian Olson"
+                                                            },
+                                                            {
+                                                              "id": "holly_vaughn",
+                                                              "name": "Holly Marie Vaughn",
+                                                              "birth": 1977,
+                                                              "birthplace": "Tawas City, Michigan",
+                                                              "gender": "F",
+                                                              "branch": "fortney"
+                                                            },
+                                                            {
+                                                              "id": "zachary_vaughn",
+                                                              "name": "Zachary Arthur Vaughn",
+                                                              "birth": 1981,
+                                                              "birthplace": "Oxford, Ohio",
+                                                              "gender": "M",
+                                                              "branch": "fortney"
+                                                            }
+                                                          ]
+                                                        },
+                                                        {
+                                                          "id": "douglas_fortney",
+                                                          "name": "Douglas Nelson Fortney",
+                                                          "birth": 1960,
+                                                          "birthplace": "Pontiac, Michigan",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "spouse": "Christina Sue McCorkle",
+                                                          "notes": "Married Christina Sue McCorkle (b. 2 Dec 1965, Lansing MI), 10 June 1989, Lansing MI.",
+                                                          "children": [
+                                                            {"id":"elizabeth_ann_f","name":"Elizabeth Ann Fortney","birth":1991,"birthplace":"Lansing, Michigan","gender":"F","branch":"fortney"},
+                                                            {"id":"john_douglas_f","name":"John Douglas Fortney","birth":1993,"birthplace":"Lansing, Michigan","gender":"M","branch":"fortney"},
+                                                            {"id":"mark_andrew_f","name":"Mark Andrew Fortney","birth":1977,"birthplace":"Holt, Michigan","gender":"M","branch":"fortney"},
+                                                            {"id":"stephen_michael_f","name":"Stephen Michael Fortney","birthplace":"Holt, Michigan","gender":"M","branch":"fortney"}
+                                                          ]
+                                                        }
+                                                      ]
                                                     }
                                                   ]
                                                 },
@@ -322,7 +400,38 @@
                                                       "gender": "M",
                                                       "branch": "fortney",
                                                       "spouse": "Marilyn",
-                                                      "notes": "2 daughters."
+                                                      "notes": "2 daughters.",
+                                                      "children": [
+                                                        {
+                                                          "id": "dawn_marie",
+                                                          "name": "Dawn Marie Fortney Maidl",
+                                                          "birth": 1966,
+                                                          "death": 2004,
+                                                          "birthplace": "St. Paul, Minnesota",
+                                                          "deathplace": "St. Paul, Minnesota",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Brian Maidl",
+                                                          "notes": "Insurance claims examiner. Died 26 June 2004.",
+                                                          "children": [
+                                                            {"id":"anthony_maidl","name":"Anthony Michael Maidl","gender":"M","branch":"fortney"},
+                                                            {"id":"nicholas_maidl","name":"Nicholas William Maidl","gender":"M","branch":"fortney"}
+                                                          ]
+                                                        },
+                                                        {
+                                                          "id": "michelle_ann",
+                                                          "name": "Michelle Ann Fortney Montgomery",
+                                                          "birth": 1969,
+                                                          "birthplace": "St. Paul, Minnesota",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Brian Montgomery",
+                                                          "notes": "Claims examiner.",
+                                                          "children": [
+                                                            {"id":"dustyn_montgomery","name":"Dustyn Michael Gene Montgomery","gender":"M","branch":"fortney"}
+                                                          ]
+                                                        }
+                                                      ]
                                                     }
                                                   ]
                                                 },
@@ -422,7 +531,61 @@
                                                       "birthplace": "Minneapolis, Minnesota",
                                                       "gender": "M",
                                                       "branch": "fortney",
-                                                      "notes": "Author & professor."
+                                                      "notes": "Author & professor.",
+                                                      "children": [
+                                                        {
+                                                          "id": "melissa_fortney",
+                                                          "name": "Melissa Fortney Shanks",
+                                                          "birth": 1961,
+                                                          "birthplace": "Minneapolis, Minnesota",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "James Shanks",
+                                                          "children": [
+                                                            {"id":"emily_shanks","name":"Emily Shanks","gender":"F","branch":"fortney"},
+                                                            {"id":"cassie_shanks","name":"Cassie Shanks","birth":2006,"birthplace":"Madison, Wisconsin","gender":"F","branch":"fortney"}
+                                                          ]
+                                                        },
+                                                        {
+                                                          "id": "minda_fortney",
+                                                          "name": "Minda Fortney Byrne",
+                                                          "birth": 1963,
+                                                          "birthplace": "Stoughton, Wisconsin",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Frank Byrne",
+                                                          "children": [
+                                                            {"id":"connor_byrne","name":"Connor Byrne","gender":"M","branch":"fortney"},
+                                                            {"id":"gussie_byrne","name":"Gussie Byrne","gender":"F","branch":"fortney"},
+                                                            {"id":"anika_byrne","name":"Anika Byrne","birth":2006,"birthplace":"Madison, Wisconsin","gender":"F","branch":"fortney"}
+                                                          ]
+                                                        },
+                                                        {
+                                                          "id": "alexander_kendall",
+                                                          "name": "Alexander Kendall Fortney",
+                                                          "birth": 1968,
+                                                          "birthplace": "Stoughton, Wisconsin",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "spouse": "Christine Marsh",
+                                                          "children": [
+                                                            {"id":"jack_kendall_f","name":"Jack Kendall Fortney","gender":"M","branch":"fortney"},
+                                                            {"id":"henry_richard_f","name":"Henry Richard Fortney","birth":2006,"birthplace":"Madison, Wisconsin","gender":"M","branch":"fortney"}
+                                                          ]
+                                                        },
+                                                        {
+                                                          "id": "sigrid_fortney",
+                                                          "name": "Sigrid Fortney Alekal",
+                                                          "birth": 1970,
+                                                          "birthplace": "Stoughton, Wisconsin",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Christopher Alekal",
+                                                          "children": [
+                                                            {"id":"leila_alekal","name":"Leila Blue Alekal","birth":2007,"birthplace":"California","gender":"F","branch":"fortney"}
+                                                          ]
+                                                        }
+                                                      ]
                                                     },
                                                     {
                                                       "id": "kendall_thomas",
@@ -464,7 +627,23 @@
                                                       "gender": "M",
                                                       "branch": "fortney",
                                                       "spouse": "Kathleen Koehler",
-                                                      "notes": "Computer data specialist. 1 son."
+                                                      "notes": "Computer data specialist. 1 son.",
+                                                      "children": [
+                                                        {
+                                                          "id": "kerry_larson",
+                                                          "name": "Kerry Dean Larson",
+                                                          "birth": 1960,
+                                                          "birthplace": "Fairbanks, Alaska",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "spouse": "Elizabeth 'Betsy' Yvonne Weinhaus",
+                                                          "notes": "Accountant. Married Betsy Weinhaus (b. 7 Jul 1968), 20 February 1996, Ixtapa, Mexico.",
+                                                          "children": [
+                                                            {"id":"andrew_dean_larson","name":"Andrew Dean Larson","birth":1999,"birthplace":"Minneapolis, Minnesota","gender":"M","branch":"fortney"},
+                                                            {"id":"jacob_kieran_larson","name":"Jacob Kieran Larson","birth":2001,"birthplace":"Minneapolis, Minnesota","gender":"M","branch":"fortney"}
+                                                          ]
+                                                        }
+                                                      ]
                                                     },
                                                     {
                                                       "id": "mary_larson",
@@ -473,7 +652,51 @@
                                                       "gender": "F",
                                                       "branch": "fortney",
                                                       "spouse": "John Langford",
-                                                      "notes": "Nurse. 3 children (divorced)."
+                                                      "notes": "Nurse. 3 children (divorced).",
+                                                      "children": [
+                                                        {
+                                                          "id": "lynn_langford",
+                                                          "name": "Lynn Marie Langford Jones",
+                                                          "birth": 1962,
+                                                          "birthplace": "Menomonie, Wisconsin",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Jeffrey Alan Jones",
+                                                          "notes": "Accountant. Married Jeffrey Jones (b. 16 Mar 1960, Minneapolis MN), 19 Aug 1988. Divorced 2001.",
+                                                          "children": [
+                                                            {"id":"andrew_jones","name":"Andrew Alan Jones","birth":1988,"birthplace":"Minneapolis, Minnesota","gender":"M","branch":"fortney"},
+                                                            {"id":"emily_jones","name":"Emily Lucille Jones","birth":1990,"birthplace":"Minneapolis, Minnesota","gender":"F","branch":"fortney"},
+                                                            {"id":"alyssa_jones","name":"Alyssa Jean Jones","birth":1995,"birthplace":"Menomonie, Wisconsin","gender":"F","branch":"fortney"}
+                                                          ]
+                                                        },
+                                                        {
+                                                          "id": "laura_langford",
+                                                          "name": "Laura Beth Langford Walleen",
+                                                          "birth": 1965,
+                                                          "birthplace": "US Army Hospital, Japan",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Richard William Walleen",
+                                                          "notes": "Regional human resource manager. Married Richard Walleen (b. 23 Nov 1964), 4 May 1991.",
+                                                          "children": [
+                                                            {"id":"richard_walleen","name":"Richard Allen Walleen","birth":1993,"birthplace":"Burnsville, Minnesota","gender":"M","branch":"fortney"},
+                                                            {"id":"samuel_walleen","name":"Samuel John Walleen","birth":1997,"birthplace":"St. Paul, Minnesota","gender":"M","branch":"fortney"}
+                                                          ]
+                                                        },
+                                                        {
+                                                          "id": "jonda_langford",
+                                                          "name": "Jonda Kay Langford Martin",
+                                                          "birth": 1969,
+                                                          "birthplace": "Baldwin, Wisconsin",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Daniel Foster Martin",
+                                                          "notes": "Business owner, CEO. Married Daniel Martin (b. 5 Feb 1961), 29 October 1995.",
+                                                          "children": [
+                                                            {"id":"lauren_martin","name":"Lauren Danielle Martin","birth":1998,"gender":"F","branch":"fortney"}
+                                                          ]
+                                                        }
+                                                      ]
                                                     },
                                                     {
                                                       "id": "linda_larson",
@@ -482,7 +705,51 @@
                                                       "gender": "F",
                                                       "branch": "fortney",
                                                       "spouse": "Rich Olson",
-                                                      "notes": "4 children."
+                                                      "notes": "4 children.",
+                                                      "children": [
+                                                        {
+                                                          "id": "ashley_olson",
+                                                          "name": "Ashley Renee Olson Keith",
+                                                          "birth": 1970,
+                                                          "birthplace": "Minneapolis, Minnesota",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Ryan Keith",
+                                                          "notes": "Ryan Keith b. 26 Aug 1972, Rome GA. Teacher.",
+                                                          "children": [
+                                                            {"id":"spencer_keith","name":"Spencer Edward Keith","birth":2000,"birthplace":"Burnsville, Minnesota","gender":"M","branch":"fortney"},
+                                                            {"id":"caroline_keith","name":"Caroline Susannah Keith","birth":2006,"birthplace":"Burnsville, Minnesota","gender":"F","branch":"fortney"}
+                                                          ]
+                                                        },
+                                                        {
+                                                          "id": "andrea_olson",
+                                                          "name": "Andrea Elizabeth Olson Bach",
+                                                          "birth": 1972,
+                                                          "birthplace": "Minneapolis, Minnesota",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Matthew John Bach",
+                                                          "notes": "Event management. Married Matthew Bach (b. 7 Feb 1973), 31 July 1995, Bloomington MN.",
+                                                          "children": [
+                                                            {"id":"hannah_bach","name":"Hannah Rae Bach","birth":1998,"birthplace":"St. Paul, Minnesota","gender":"F","branch":"fortney"},
+                                                            {"id":"benjamin_bach","name":"Benjamin George Bach","birth":2002,"birthplace":"St. Paul, Minnesota","gender":"M","branch":"fortney"}
+                                                          ]
+                                                        },
+                                                        {
+                                                          "id": "alexi_olson",
+                                                          "name": "Alexi LaRae Olson Thompson",
+                                                          "birth": 1975,
+                                                          "birthplace": "Bloomington, Minnesota",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Zachary Nathan Thompson",
+                                                          "notes": "Zachary Thompson is a pastor.",
+                                                          "children": [
+                                                            {"id":"soren_thompson","name":"Soren Jack Thompson","birth":2004,"birthplace":"Burnsville, Minnesota","gender":"M","branch":"fortney"},
+                                                            {"id":"elise_thompson","name":"Elise Rae Thompson","birth":2007,"birthplace":"Woodbury, Minnesota","gender":"F","branch":"fortney","notes":"Newest member of the tribe, born May 2007."}
+                                                          ]
+                                                        }
+                                                      ]
                                                     },
                                                     {
                                                       "id": "orland_larson",
@@ -501,7 +768,51 @@
                                                       "gender": "F",
                                                       "branch": "fortney",
                                                       "spouse": "Ollie Madsen",
-                                                      "notes": "Reading teacher (ret.). 3 children. Her husband Ollie encountered Kendall Thomas Fortney in Vietnam."
+                                                      "notes": "Reading teacher (ret.). 3 children. Her husband Ollie encountered Kendall Thomas Fortney in Vietnam.",
+                                                      "children": [
+                                                        {
+                                                          "id": "luke_madsen",
+                                                          "name": "Luke Everett Madsen",
+                                                          "birth": 1972,
+                                                          "birthplace": "Menomonie, Wisconsin",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "spouse": "Jennifer Krenzelok",
+                                                          "notes": "Spanish teacher, varsity coach. Married Jennifer Krenzelok (b. 10 Feb 1973, special ed teacher), 3 August 1996, Grace Lutheran, Eau Claire WI.",
+                                                          "children": [
+                                                            {"id":"hattie_madsen","name":"Hattie Jean Madsen","birth":1999,"birthplace":"Eau Claire, Wisconsin","gender":"F","branch":"fortney"},
+                                                            {"id":"gabriel_madsen","name":"Gabriel Dean Madsen","birth":2001,"birthplace":"Eau Claire, Wisconsin","gender":"M","branch":"fortney","notes":"Twin."},
+                                                            {"id":"mason_madsen","name":"Mason Daniel Madsen","birth":2001,"birthplace":"Eau Claire, Wisconsin","gender":"M","branch":"fortney","notes":"Twin."}
+                                                          ]
+                                                        },
+                                                        {
+                                                          "id": "jed_madsen",
+                                                          "name": "Jed Thomas Matthew Madsen",
+                                                          "birth": 1976,
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "spouse": "Cindy Anne Maria Diadoo",
+                                                          "notes": "Tru-Green Lawn Care manager. Married Cindy Diadoo (b. 30 Jun 1975, environmental health/safety manager), 7 May 2005, Menomonie WI.",
+                                                          "children": [
+                                                            {"id":"julienne_madsen","name":"Julienne Marie Madsen","birth":2004,"gender":"F","branch":"fortney"},
+                                                            {"id":"collin_madsen","name":"Collin Matthew Madsen","birth":2006,"gender":"M","branch":"fortney"}
+                                                          ]
+                                                        },
+                                                        {
+                                                          "id": "jesse_madsen",
+                                                          "name": "Jesse Jacob Madsen",
+                                                          "birth": 1979,
+                                                          "birthplace": "Menomonie, Wisconsin",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "spouse": "Devan Rebecca Keith",
+                                                          "notes": "Math teacher, coach. Married Devan Keith (b. 22 Jun 1979), 2 September 2003, Fresno CA.",
+                                                          "children": [
+                                                            {"id":"morgan_madsen","name":"Morgan Kathryn Madsen","birth":2002,"gender":"F","branch":"fortney"},
+                                                            {"id":"julia_madsen","name":"Julia Grace Madsen","birth":2005,"gender":"F","branch":"fortney"}
+                                                          ]
+                                                        }
+                                                      ]
                                                     }
                                                   ]
                                                 }
