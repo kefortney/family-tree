@@ -371,17 +371,16 @@ blockquote {
 
 #tree-container {
   width: 100%;
-  min-height: 600px;
+  min-height: 500px;
   background: var(--color-white);
   border-radius: 6px;
   border: 1px solid var(--color-parchment-darker);
-  overflow: hidden;
+  overflow: auto;   /* scroll when tree is taller/wider than the container */
   position: relative;
 }
 
 #tree-container svg {
-  width: 100%;
-  height: 100%;
+  display: block;   /* remove inline-block gap; height is set dynamically by JS */
 }
 
 /* D3 Tree Node Styles */

@@ -305,15 +305,7 @@
           "name": "Agnes McEntee ('Nanny Agnes')",
           "gender": "F",
           "branch": "mulhearn",
-          "notes": "Matriarch. Daughter of Bernard Sylvester McEntee and Sarah O'Brien. McEntee name (Gaelic: Mac an tSaoi, 'Son of the Scholar') traces to County Donegal, Ireland.",
-          "children": [
-            {
-              "id": "robert_mulhearn2",
-              "name": "→ see Robert Mulhearn above",
-              "branch": "mulhearn",
-              "type": "reference"
-            }
-          ]
+          "notes": "Matriarch. Daughter of Bernard Sylvester McEntee and Sarah O'Brien. McEntee name (Gaelic: Mac an tSaoi, 'Son of the Scholar') traces to County Donegal, Ireland. Married Robert Mulhearn; together had ten children."
         }
       ]
     },
@@ -330,17 +322,7 @@
           "name": "Andrew B. Andersen II",
           "gender": "M",
           "branch": "anderson",
-          "notes": "Married Shirley Mulhearn. Father of six children including Jill Andersen Fortney. Further ancestors not yet documented.",
-          "children": [
-            {
-              "id": "jill_andersen2",
-              "name": "Jill Andersen",
-              "gender": "F",
-              "branch": "anderson",
-              "notes": "→ see Mulhearn branch",
-              "type": "reference"
-            }
-          ]
+          "notes": "Married Shirley Mulhearn. Father of six children including Jill Andersen Fortney. Further ancestors not yet documented."
         }
       ]
     }

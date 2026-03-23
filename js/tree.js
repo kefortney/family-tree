@@ -62,6 +62,9 @@
   function init() {
     if (!container) return;
 
+    // Clear the "Loading…" placeholder immediately
+    container.innerHTML = '';
+
     const rect = container.getBoundingClientRect();
     width  = rect.width  || 900;
     height = rect.height || 620;
@@ -140,15 +143,32 @@
 
   // ── D3 update ──────────────────────────────────────────────
 
-  function update(source) {
-    const innerW = width  - MARGIN.left - MARGIN.right;
-    const innerH = height - MARGIN.top  - MARGIN.bottom;
+  // Fixed vertical gap between nodes (px) — large enough to fit label + dates line
+  const NODE_SPACING_Y = 46;
+  // Fixed horizontal distance between depth levels (px)
+  const NODE_SPACING_X = 210;
 
-    const layout = d3.tree().size([innerH, innerW]);
+  function update(source) {
+    // Use nodeSize so each node always has enough vertical room for its label.
+    // The tree width (horizontal) auto-fits the container.
+    const layout = d3.tree().nodeSize([NODE_SPACING_Y, NODE_SPACING_X]);
     layout(root);
 
-    const nodes = root.descendants();
-    const links = root.links();
+    // Compute the vertical extent of all visible nodes and resize SVG accordingly.
+    const nodes   = root.descendants();
+    const links   = root.links();
+    const xExtent = d3.extent(nodes, d => d.x);   // x = vertical axis in this horizontal tree
+    const yExtent = d3.extent(nodes, d => d.y);   // y = horizontal axis
+    const treeH   = Math.max(xExtent[1] - xExtent[0] + MARGIN.top + MARGIN.bottom + 40, 400);
+    const treeW   = yExtent[1] + MARGIN.left + MARGIN.right + 200; // +200 for right-side labels
+
+    svg.attr('height', treeH).attr('width', Math.max(treeW, width));
+
+    // On the initial render, shift g so the topmost node sits within the visible area.
+    // On toggle renders, leave the transform alone to preserve the user's scroll position.
+    if (source === root) {
+      g.attr('transform', `translate(${MARGIN.left},${MARGIN.top - xExtent[0]})`);
+    }
 
     // ── Links ──────────────────────────────────────────────
     const link      = g.selectAll('path.link').data(links, d => d.target.id);

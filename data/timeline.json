@@ -207,6 +207,15 @@
     "type": "military"
   },
   {
+    "id": "t31",
+    "year": 1939,
+    "title": "Kristina Olsdotter Fortun Dies",
+    "description": "Kristina Olsdotter Fortun dies January 12 in Forthun — the last member of the Fortney family to live on the ancestral Bnr #8 farm. She never married.",
+    "branch": "fortney",
+    "location": "Forthun, Norway",
+    "type": "death"
+  },
+  {
     "id": "t24",
     "year": 1941,
     "title": "Kendall Thomas Fortney Born",
@@ -268,15 +277,6 @@
     "branch": "fortney",
     "location": "Vienna, Austria",
     "type": "milestone"
-  },
-  {
-    "id": "t31",
-    "year": 1939,
-    "title": "Kristina Olsdotter Fortun Dies",
-    "description": "Kristina Olsdotter Fortun dies January 12 in Forthun — the last member of the Fortney family to live on the ancestral Bnr #8 farm. She never married.",
-    "branch": "fortney",
-    "location": "Forthun, Norway",
-    "type": "death"
   },
   {
     "id": "t32",
