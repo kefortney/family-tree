@@ -37,24 +37,74 @@
       line-height: 1.5;
     }
 
-    /* ── Top nav ─────────────────────────────────────── */
-    .admin-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: var(--nav-h);
+    /* ── Site nav (consistent with rest of site) ─────── */
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 101;
+      height: 64px;
       background: var(--text);
+      box-shadow: 0 4px 12px rgba(44,26,16,0.12);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .nav-logo {
+      font-size: 1.2rem;
+      color: var(--accent) !important;
+      font-weight: 700;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: #e8e0d5;
+      font-size: 0.875rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 4px;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(184,150,46,0.15);
+      color: var(--accent);
+    }
+    .nav-links .branch-fortney:hover  { background: rgba(29,58,108,0.3); }
+    .nav-links .branch-sodergren:hover{ background: rgba(45,110,94,0.3); }
+    .nav-links .branch-mulhearn:hover { background: rgba(58,92,45,0.3); }
+    .nav-links .branch-andersen:hover { background: rgba(122,43,58,0.3); }
+
+    /* ── Admin toolbar (below site nav) ─────────────── */
+    .admin-toolbar {
+      position: fixed; top: 64px; left: 0; right: 0; z-index: 100;
+      height: 44px;
+      background: #1a1208;
       color: #e8e0d5;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.75rem;
       padding: 0 1.25rem;
       border-bottom: 2px solid var(--accent);
     }
-    .admin-nav h1 { font-size: 0.95rem; font-weight: 600; letter-spacing: 0.02em; }
-    .admin-nav .spacer { flex: 1; }
-    .nav-status { font-size: 0.78rem; color: var(--accent); min-width: 120px; }
+    .admin-toolbar h1 { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.02em; color: #e8e0d5; }
+    .admin-toolbar .spacer { flex: 1; }
+    .nav-status { font-size: 0.78rem; color: var(--accent); min-width: 110px; }
 
     .nav-btn {
-      padding: 0.3rem 0.75rem;
+      padding: 0.28rem 0.7rem;
       border-radius: var(--radius);
       border: 1px solid rgba(255,255,255,0.2);
       background: rgba(255,255,255,0.08);
@@ -77,8 +127,8 @@
     .admin-layout {
       display: grid;
       grid-template-columns: 1fr 380px;
-      height: calc(100vh - var(--nav-h));
-      margin-top: var(--nav-h);
+      height: calc(100vh - 108px);
+      margin-top: 108px;
       overflow: hidden;
     }
 
@@ -336,6 +386,50 @@
     .load-card .btn-group { display: flex; gap: 0.75rem; justify-content: center; }
     .load-card .or { color: var(--text-light); font-size: 0.78rem; margin: 0.75rem 0; }
 
+    /* ── Marriage rows ───────────────────────────────── */
+    .marriage-row {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.55rem 0.6rem;
+      background: #faf8f4;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .marriage-row .m-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem;
+    }
+    .marriage-row .m-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 0.4rem;
+      align-items: end;
+    }
+    .marriage-row label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-mid);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .marriage-row input, .marriage-row select {
+      width: 100%;
+      padding: 0.35rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--text);
+      background: #fff;
+    }
+    .marriage-row input:focus, .marriage-row select:focus {
+      outline: none; border-color: var(--accent);
+    }
+
     /* ── Toast ───────────────────────────────────────── */
     #toast {
       position: fixed;
@@ -359,8 +453,26 @@
 </head>
 <body>
 
-<!-- ── Nav ───────────────────────────────────────────── -->
-<nav class="admin-nav">
+<!-- ── Site nav (matches all other pages) ────────────── -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Fortney Family</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Family Tree</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="graph.html">Graph View</a></li>
+      <li><a href="fortney.html"  class="branch-fortney">Fortney / Forthun</a></li>
+      <li><a href="sodergren.html" class="branch-sodergren">Södergren</a></li>
+      <li><a href="mulhearn.html"  class="branch-mulhearn">Mulhearn</a></li>
+      <li><a href="andersen.html"  class="branch-andersen">Andersen</a></li>
+      <li><a href="admin.html" class="active">✏ Edit</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── Admin action toolbar ──────────────────────────── -->
+<div class="admin-toolbar">
   <h1>Family Tree Editor</h1>
   <div class="spacer"></div>
   <span class="nav-status" id="status-msg"></span>
@@ -368,8 +480,7 @@
   <button class="nav-btn" onclick="openFilePicker()" title="Open family.json directly (Chrome/Edge)">📂 Open File</button>
   <button class="nav-btn primary" id="btn-save" onclick="saveFile()">💾 Save</button>
   <button class="nav-btn" onclick="downloadJSON()">⬇ Download JSON</button>
-  <a class="nav-btn" href="index.html">← Back to Site</a>
-</nav>
+</div>
 
 <!-- ── Main layout ────────────────────────────────────── -->
 <div class="admin-layout">
@@ -458,18 +569,11 @@
         <textarea id="f-notes" rows="7" placeholder="Biographical notes…"></textarea>
       </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label>Spouse (by ID)</label>
-          <select id="f-spouse-id"></select>
-        </div>
-        <div class="form-group" style="justify-content:flex-end;">
-          <label>&nbsp;</label>
-          <div style="display:flex;gap:0.4rem;">
-            <button class="btn" onclick="setSpouseFromForm()">Set Spouse</button>
-            <button class="btn" onclick="clearSpouse()">Clear</button>
-          </div>
-        </div>
+      <!-- Marriages section: supports multiple, internal & external spouses -->
+      <div class="form-group">
+        <label>Marriages</label>
+        <div id="marriages-list" style="display:flex;flex-direction:column;gap:0.5rem;"></div>
+        <button class="btn" style="margin-top:0.5rem;width:100%;" onclick="addMarriageRow()">+ Add Marriage</button>
       </div>
 
       <div class="form-row">
@@ -875,10 +979,9 @@
     document.getElementById('f-deathplace').value = node.deathplace || '';
     document.getElementById('f-notes').value = node.notes || '';
 
-    const spouseVal = node.spouseId || '';
     const inferredParentId = path.length > 0 ? (parentOf(path)?.id || '') : '';
     const inferredChildIds = (node.children || []).map(c => c.id).filter(Boolean);
-    fillSelect('f-spouse-id', node.id, true, spouseVal);
+    populateMarriages(node);
     fillChildSelect(node.id, inferredChildIds);
     fillSelect('f-parent-id', node.id, true, inferredParentId);
 
@@ -925,12 +1028,27 @@
         if (otherId === oldId) continue;
         const otherNode = nodeAt(otherPath);
         if (otherNode.spouseId === oldId) otherNode.spouseId = idVal;
+        if (Array.isArray(otherNode.marriages)) {
+          otherNode.marriages.forEach(m => {
+            if (m.spouseId === oldId) m.spouseId = idVal;
+          });
+        }
       }
     }
 
-    // Apply spouse selection as part of normal save flow.
-    const spouseId = (document.getElementById('f-spouse-id')?.value || '').trim();
-    const spouseResult = upsertSpouseRelationship(node, spouseId);
+    // Save marriages array and sync spouseId for the first in-tree linked spouse
+    const marriages = readMarriages();
+    if (marriages.length > 0) {
+      node.marriages = marriages;
+      delete node.spouse; // migrate away from legacy field
+    } else {
+      delete node.marriages;
+    }
+
+    // Sync bidirectional spouseId from first marriage that has an in-tree link
+    const linkedMarriage = marriages.find(m => m.spouseId && idIndex.has(m.spouseId));
+    const newSpouseId = linkedMarriage ? linkedMarriage.spouseId : '';
+    const spouseResult = upsertSpouseRelationship(node, newSpouseId);
     if (!spouseResult.ok) {
       toast(spouseResult.msg, 'error');
       return;
@@ -1264,6 +1382,116 @@
     toast('Downloaded family.json');
   }
 
+  /* ── Marriage management ───────────────────────────── */
+
+  /**
+   * Build a marriage row element.
+   * m = { spouseName, spouseId, married, divorced } (all optional)
+   */
+  function buildMarriageRow(m) {
+    m = m || {};
+    const div = document.createElement('div');
+    div.className = 'marriage-row';
+
+    const currentId = selectedPath ? nodeAt(selectedPath)?.id : '';
+
+    // Row 1: Spouse Name + Spouse ID (in-tree link, optional)
+    div.innerHTML = `
+      <div class="m-grid">
+        <div>
+          <label>Spouse Name</label>
+          <input type="text" class="m-name" placeholder="Full name…" value="${escHtml(m.spouseName || '')}">
+        </div>
+        <div>
+          <label>Linked (in tree)</label>
+          <select class="m-id">
+            <option value="">— external spouse —</option>
+          </select>
+        </div>
+      </div>
+      <div class="m-grid-3">
+        <div>
+          <label>Married (year)</label>
+          <input type="number" class="m-married" min="1400" max="2030" placeholder="e.g. 1920" value="${m.married || ''}">
+        </div>
+        <div>
+          <label>Divorced (year)</label>
+          <input type="number" class="m-divorced" min="1400" max="2030" placeholder="leave blank if not" value="${m.divorced || ''}">
+        </div>
+        <div>
+          <button class="btn danger" onclick="removeMarriageRow(this)" style="padding:0.35rem 0.6rem;">✕</button>
+        </div>
+      </div>`;
+
+    // Populate the in-tree spouse select
+    const sel = div.querySelector('select.m-id');
+    personOptions
+      .filter(p => p.id && p.type === 'person' && p.id !== currentId)
+      .sort((a, b) => a.id.localeCompare(b.id))
+      .forEach(p => {
+        const o = document.createElement('option');
+        o.value = p.id;
+        o.textContent = optionText(p);
+        if (p.id === (m.spouseId || '')) o.selected = true;
+        sel.appendChild(o);
+      });
+
+    return div;
+  }
+
+  function escHtml(str) {
+    return (str || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function addMarriageRow(m) {
+    document.getElementById('marriages-list').appendChild(buildMarriageRow(m));
+  }
+
+  function removeMarriageRow(btn) {
+    btn.closest('.marriage-row').remove();
+  }
+
+  function populateMarriages(node) {
+    const list = document.getElementById('marriages-list');
+    list.innerHTML = '';
+
+    let marriages = [];
+    if (node.marriages && node.marriages.length > 0) {
+      marriages = node.marriages;
+    } else if (node.spouse || node.spouseId) {
+      // Convert legacy fields to marriages format for display
+      const spouseRecord = node.spouseId ? personOptions.find(p => p.id === node.spouseId) : null;
+      marriages = [{
+        spouseName: (spouseRecord && spouseRecord.name) || node.spouse || '',
+        spouseId: node.spouseId || null,
+      }];
+    }
+
+    marriages.forEach(m => addMarriageRow(m));
+  }
+
+  function readMarriages() {
+    const rows = document.querySelectorAll('#marriages-list .marriage-row');
+    const result = [];
+    rows.forEach(row => {
+      const spouseName = (row.querySelector('.m-name')?.value || '').trim();
+      const spouseId   = (row.querySelector('.m-id')?.value   || '').trim();
+      const married    = parseInt(row.querySelector('.m-married')?.value  || '', 10);
+      const divorced   = parseInt(row.querySelector('.m-divorced')?.value || '', 10);
+
+      // Skip completely empty rows
+      if (!spouseName && !spouseId) return;
+
+      const m = {};
+      if (spouseName) m.spouseName = spouseName;
+      if (spouseId)   m.spouseId   = spouseId;
+      if (!isNaN(married))  m.married  = married;
+      if (!isNaN(divorced)) m.divorced = divorced;
+      result.push(m);
+    });
+    return result;
+  }
+
   /* ── UI helpers ────────────────────────────────────── */
   function updateSaveBtn() {
     const btn = document.getElementById('btn-save');
@@ -1286,12 +1514,12 @@
   window.setAdminBranchFilter = setAdminBranchFilter;
   window.expandAllTree = expandAllTree;
   window.collapseAllTree = collapseAllTree;
-  window.setSpouseFromForm = setSpouseFromForm;
-  window.clearSpouse = clearSpouse;
   window.addExistingChildFromForm = addExistingChildFromForm;
   window.removeSelectedChildrenFromForm = removeSelectedChildrenFromForm;
   window.setParentFromForm = setParentFromForm;
   window.addBlankPerson = addBlankPerson;
+  window.addMarriageRow = addMarriageRow;
+  window.removeMarriageRow = removeMarriageRow;
 
 </script>
 </body>

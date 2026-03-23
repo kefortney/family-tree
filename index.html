@@ -80,7 +80,7 @@
     <div class="container">
       <div class="section-title">
         <h2>Interactive Family Tree</h2>
-        <p>Click any node to expand that branch. Click a person's name to see their details.</p>
+        <p>Oldest ancestor at center · each ring outward is the next generation · click any node to expand or see details · scroll/pinch to zoom</p>
         <div class="section-divider"></div>
       </div>
 
@@ -108,13 +108,13 @@
           <button class="btn btn-outline" id="btn-expand-all">Expand All</button>
           <button class="btn btn-outline" id="btn-collapse-all">Collapse All</button>
           <span style="font-size:0.8rem;color:var(--color-brown-light);margin-left:0.5rem;">
-            Click a node to expand · Click a name to see details
+            Click a node to expand or collapse · click a name to see details · drag to pan
           </span>
         </div>
 
-        <div id="tree-container" style="min-height:620px;">
-          <!-- D3 tree renders here -->
-          <div style="display:flex;align-items:center;justify-content:center;height:620px;color:var(--color-gray);">
+        <div id="tree-container" style="min-height:680px;">
+          <!-- D3 radial tree renders here -->
+          <div style="display:flex;align-items:center;justify-content:center;height:680px;color:var(--color-gray);">
             Loading family tree…
           </div>
         </div>

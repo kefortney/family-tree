@@ -156,7 +156,6 @@
                                                           "id": "alan_hubert",
                                                           "name": "Alan Dale Fortney",
                                                           "birth": 1946,
-                                                          "birthplace": "31 May 1946",
                                                           "gender": "M",
                                                           "branch": "fortney",
                                                           "spouse": "Pamela Gerring",
@@ -249,7 +248,7 @@
                                                           "id": "david_dahl",
                                                           "name": "David Adrian Dahl",
                                                           "birth": 1944,
-                                                          "birthplace": "5 June 1944, Oak Ridge, TN",
+                                                          "birthplace": "Oak Ridge, Tennessee",
                                                           "gender": "M",
                                                           "branch": "fortney",
                                                           "spouse": "Elizabeth 'Beth' Hunter",
@@ -279,7 +278,6 @@
                                                               "id": "lanette_dahl",
                                                               "name": "Lanette Dahl",
                                                               "birth": 1975,
-                                                              "birthplace": "18 June 1975",
                                                               "gender": "F",
                                                               "branch": "fortney",
                                                               "notes": "Adopted. College student (as of 2007). 1 son, James."
@@ -288,7 +286,7 @@
                                                               "id": "jessica_dahl",
                                                               "name": "Jessica Dahl",
                                                               "birth": 1976,
-                                                              "birthplace": "17 August 1976, Colorado Springs CO",
+                                                              "birthplace": "Colorado Springs, Colorado",
                                                               "gender": "F",
                                                               "branch": "fortney",
                                                               "notes": "Adopted. Sprint Systems Technologist. 1 son Evyn, 1 daughter Gweneth."
@@ -297,7 +295,6 @@
                                                               "id": "benjamin_dahl",
                                                               "name": "Benjamin Dahl",
                                                               "birth": 1985,
-                                                              "birthplace": "15 May 1985",
                                                               "gender": "M",
                                                               "branch": "fortney",
                                                               "notes": "Adopted. Growing up (as of 2007). 1 son (Aicee, adopted)."
@@ -308,7 +305,6 @@
                                                           "id": "sonje_dahl_jessen",
                                                           "name": "Sonje Ann Dahl Jessen",
                                                           "birth": 1946,
-                                                          "birthplace": "1 July 1946",
                                                           "gender": "F",
                                                           "branch": "fortney",
                                                           "spouse": "Kenneth Jessen",
@@ -335,7 +331,6 @@
                                                               "id": "benjamin_jessen",
                                                               "name": "Benjamin Scott Jessen",
                                                               "birth": 1974,
-                                                              "birthplace": "31 December 1974",
                                                               "gender": "M",
                                                               "branch": "fortney",
                                                               "spouse": "Dusty Arnold",
@@ -375,7 +370,7 @@
                                                           "id": "jon_arthur_dahl",
                                                           "name": "Jon Arthur Dahl",
                                                           "birth": 1950,
-                                                          "birthplace": "29 January 1950, Amery, WI",
+                                                          "birthplace": "Amery, Wisconsin",
                                                           "gender": "M",
                                                           "branch": "fortney",
                                                           "spouse": "Kathleen Joan 'Kate' Hiemenz Dahl",
@@ -385,7 +380,7 @@
                                                               "id": "jesse_jade_dahl",
                                                               "name": "Jesse Jade Dahl",
                                                               "birth": 1973,
-                                                              "birthplace": "17 March 1973, St. Cloud, MN",
+                                                              "birthplace": "St. Cloud, Minnesota",
                                                               "gender": "M",
                                                               "branch": "fortney",
                                                               "spouse": "Erin Peterson",
@@ -396,7 +391,7 @@
                                                               "name": "Jeanette 'Nettie' Leah Dahl",
                                                               "birth": 1975,
                                                               "death": 2006,
-                                                              "birthplace": "21 June 1975, St. Cloud, MN",
+                                                              "birthplace": "St. Cloud, Minnesota",
                                                               "gender": "F",
                                                               "branch": "fortney",
                                                               "spouse": "Scott Tollefson",
@@ -923,8 +918,8 @@
                                                   "deathplace": "Detroit, Michigan",
                                                   "gender": "M",
                                                   "branch": "fortney",
-                                                  "spouse": "Elsie Carson",
-                                                  "notes": "Physical education teacher and politician. UW heavyweight wrestler (1928, 1932, 1935, 1938). Died in Detroit in 1944. He and Elsie had no children. Married Elsie Carson, 5 October 1928, Chicago, IL. Elsie (born 1904, died 1979; nurse) never remarried and kept his photo by her bed the rest of her life."
+                                                  "spouse": "Elsie Carlson",
+                                                  "notes": "Physical education teacher and politician. UW heavyweight wrestler (1928, 1932, 1935, 1938). Died in Detroit in 1944. He and Elsie had no children. Married Elsie Carlson, 5 October 1928, Chicago, IL. Elsie (born 1904, died 1979; nurse) never remarried and kept his photo by her bed the rest of her life."
                                                 },
                                                 {
                                                   "id": "albin_leonard",
@@ -935,6 +930,7 @@
                                                   "deathplace": "Stoughton, Wisconsin",
                                                   "gender": "M",
                                                   "branch": "fortney",
+                                                  "spouseId": "anita_sodergren",
                                                   "notes": "Chaplain Major, US Army. Served in WWII (Hawaii at Pearl Harbor, later European theater) and Korea. Married Anita Linnea Södergren, 28 May 1935. Died of colonic cancer, 10 days before his 33rd wedding anniversary.",
                                                   "children": [
                                                     {
@@ -973,6 +969,7 @@
                                                       "birthplace": "Minneapolis, Minnesota",
                                                       "gender": "M",
                                                       "branch": "fortney",
+                                                      "spouseId": "person_1774271361781",
                                                       "notes": "Author & professor.",
                                                       "children": [
                                                         {
@@ -1076,7 +1073,7 @@
                                                           ]
                                                         }
                                                       ],
-                                                      "spouseId": "person_1774271361781"
+                                                      "spouseId": "jill_andersen"
                                                     },
                                                     {
                                                       "id": "kendall_thomas",
@@ -1101,8 +1098,7 @@
                                                         {
                                                           "id": "person_1774271278133",
                                                           "name": "Robin Harms",
-                                                          "branch": "fortney",
-                                                          "children": []
+                                                          "branch": "fortney"
                                                         }
                                                       ]
                                                     }
@@ -1514,6 +1510,7 @@
               "deathplace": "Stoughton, Wisconsin",
               "gender": "F",
               "branch": "sodergren",
+              "spouseId": "albin_leonard",
               "notes": "Born in Moline, IL; family moved to Burlington, IA. Married Albin Leonard Fortney, 28 May 1935, Minneapolis. Died 4 July 1990, before breakfast, in Skaalen Home after 22 years as a widow. Mother of four."
             },
             {
@@ -1577,6 +1574,7 @@
                       "birth": 1951,
                       "gender": "F",
                       "branch": "mulhearn",
+                      "spouseId": "alan_jon",
                       "notes": "Born 15 June 1951. Art teacher and sixth-grade teacher in Bennington, VT schools. BS Summa Cum Laude, North Adams State College (1978). Married Alan Jon Fortney. Photographer — Forthun village photos were taken by Jill during the 2005 Norway trip."
                     }
                   ]
@@ -1607,7 +1605,7 @@
           "name": "Andrew B. Andersen II",
           "gender": "M",
           "branch": "andersen",
-          "notes": "Married Shirley Mulhearn. Father of six children including Jill Andersen Fortney. Served in World War 2 as post-Normandy forces in Paris. He met Shirely in England just before his unit was moved to France, she was a Woman's Auxilary Corp."
+          "notes": "Married Shirley Mulhearn. Father of six children including Jill Andersen Fortney. Served in World War 2 as post-Normandy forces in Paris. He met Shirley in England just before his unit was moved to France, she was in the Women's Auxiliary Corps."
         }
       ]
     }
