@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/kefor/Desktop/GIT/alan-jon-fortney//**)",
+      "Read(//c/Users/kefor/Desktop/GIT/alan-jon-fortney/**)",
+      "Bash(find /c/Users/kefor/Desktop/GIT/alan-jon-fortney -type f ! -path */.git/* ! -name *.jpg ! -name *.jpeg ! -name *.png ! -name *.gif ! -name *.webp)",
+      "Bash(ls -lh /c/Users/kefor/Desktop/GIT/alan-jon-fortney/Genealogy/*.jpg)",
+      "Bash(pip install:*)",
+      "Bash(python3 -c \"import docx; doc=docx.Document\\(''c:/Users/kefor/Desktop/GIT/alan-jon-fortney/Genealogy/0. Genealogical Overview.docx''\\); print\\(''\\\\n''.join\\([p.text for p in doc.paragraphs]\\)\\)\")",
+      "Bash(pip3 install:*)",
+      "Bash(python3 -c \"import docx; doc=docx.Document\\(''c:/Users/kefor/Desktop/GIT/alan-jon-fortney/Genealogy/0. Lynn\\\\''s Genealogical Overview.docx''\\); print\\(''\\\\n''.join\\([p.text for p in doc.paragraphs]\\)\\)\")",
+      "Bash(python3 -c \"import docx; doc=docx.Document\\(''c:/Users/kefor/Desktop/GIT/alan-jon-fortney/Genealogy/Family Time Line.docx''\\); print\\(''\\\\n''.join\\([p.text for p in doc.paragraphs]\\)\\)\")"
+    ]
+  }
+}

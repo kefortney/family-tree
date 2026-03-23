@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fortney Family Heritage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Fortney Family</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Family Tree</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="fortney.html" class="branch-fortney">Fortney / Forthun</a></li>
+        <li><a href="sodergren.html" class="branch-sodergren">Södergren</a></li>
+        <li><a href="mulhearn.html" class="branch-mulhearn">Mulhearn</a></li>
+        <li><a href="anderson.html" class="branch-anderson">Anderson</a></li>
+        <li><a href="admin.html" style="opacity:0.6;font-size:0.8rem;">✏ Edit</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="site-hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Family Heritage · 1570 – Present</p>
+      <h1>The Fortney Family</h1>
+      <p class="hero-subtitle">
+        From a Norwegian mountain farm to the American Midwest — four family lines,
+        seven centuries of history, one story.
+      </p>
+      <div class="hero-branches">
+        <a href="fortney.html" class="hero-branch-pill fortney">⚓ Fortney / Forthun — Norway</a>
+        <a href="sodergren.html" class="hero-branch-pill sodergren">✦ Södergren — Sweden / Illinois</a>
+        <a href="mulhearn.html" class="hero-branch-pill mulhearn">☘ Mulhearn / O'Brien — Ireland</a>
+        <a href="anderson.html" class="hero-branch-pill anderson">★ Anderson — Wisconsin</a>
+      </div>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="#tree" class="btn btn-primary">Explore the Family Tree ↓</a>
+        <a href="timeline.html" class="btn" style="background:rgba(255,255,255,0.1);color:var(--color-parchment);border-color:rgba(255,255,255,0.2)">View Timeline</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Key Dates Bar -->
+  <div class="key-dates-bar">
+    <div class="key-date-item">
+      <span class="date-year">1570</span>
+      <span class="date-label">Earliest known ancestor</span>
+    </div>
+    <div class="key-date-item">
+      <span class="date-year">1653</span>
+      <span class="date-label">Bnr #8 enters family</span>
+    </div>
+    <div class="key-date-item">
+      <span class="date-year">1853</span>
+      <span class="date-label">Emigration to America</span>
+    </div>
+    <div class="key-date-item">
+      <span class="date-year">1907</span>
+      <span class="date-label">Wheeler, Wisconsin</span>
+    </div>
+    <div class="key-date-item">
+      <span class="date-year">2007</span>
+      <span class="date-label">Centennial reunion</span>
+    </div>
+  </div>
+
+  <!-- Family Tree Section -->
+  <section class="section" id="tree">
+    <div class="container">
+      <div class="section-title">
+        <h2>Interactive Family Tree</h2>
+        <p>Click any node to expand that branch. Click a person's name to see their details.</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- Branch filter — acts as radio buttons to switch families -->
+      <div class="branch-filter-bar">
+        <button class="branch-filter-btn active" data-branch="fortney"   onclick="filterBranchTree('fortney')">
+          <span class="filter-dot" style="background:var(--color-fortney);"></span>Fortney / Forthun
+        </button>
+        <button class="branch-filter-btn" data-branch="sodergren" onclick="filterBranchTree('sodergren')">
+          <span class="filter-dot" style="background:var(--color-sodergren);"></span>Södergren
+        </button>
+        <button class="branch-filter-btn" data-branch="mulhearn"  onclick="filterBranchTree('mulhearn')">
+          <span class="filter-dot" style="background:var(--color-mulhearn);"></span>Mulhearn / O'Brien
+        </button>
+        <button class="branch-filter-btn" data-branch="anderson"  onclick="filterBranchTree('anderson')">
+          <span class="filter-dot" style="background:var(--color-anderson);"></span>Anderson
+        </button>
+        <button class="branch-filter-btn" data-branch="all"       onclick="filterBranchTree('all')">
+          All Branches
+        </button>
+      </div>
+
+      <div class="tree-section">
+        <div class="tree-controls">
+          <button class="btn btn-outline" id="btn-expand-all">Expand All</button>
+          <button class="btn btn-outline" id="btn-collapse-all">Collapse All</button>
+          <span style="font-size:0.8rem;color:var(--color-brown-light);margin-left:0.5rem;">
+            Click a node to expand · Click a name to see details
+          </span>
+        </div>
+
+        <div id="tree-container" style="min-height:620px;">
+          <!-- D3 tree renders here -->
+          <div style="display:flex;align-items:center;justify-content:center;height:620px;color:var(--color-gray);">
+            Loading family tree…
+          </div>
+        </div>
+
+        <!-- Person Detail Panel -->
+        <div id="person-detail">
+          <button class="detail-close" id="detail-close" aria-label="Close">×</button>
+          <span id="detail-branch" class="branch-badge" style="display:none;margin-bottom:0.5rem;"></span>
+          <h4 id="detail-name"></h4>
+          <div class="detail-dates" id="detail-dates"></div>
+          <p class="detail-notes" id="detail-notes"></p>
+          <a href="#" id="detail-link" class="detail-link" style="display:none;">Read the full story →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Four Branch Overview -->
+  <section class="section" style="background:var(--color-parchment-dark);">
+    <div class="container">
+      <div class="section-title">
+        <h2>The Four Branches</h2>
+        <p>Each family line carries a distinct heritage across centuries and continents.</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="card-grid">
+
+        <a href="fortney.html" class="card branch-card fortney">
+          <div class="branch-icon">⚓</div>
+          <h3>Fortney / Forthun</h3>
+          <p class="subtitle">Norwegian Origins · 1570 – Present</p>
+          <p>From the Forthun farm in Luster, Norway — a mountain parcel worked for over 450 years — to the Wisconsin frontier. The main line descends from Aamund Jonson Forthun (b. 1570) through seven generations to Hans Thomassen Fortney, who moved the family to Wheeler, Wisconsin in 1907.</p>
+          <p style="margin-top:0.75rem;font-size:0.825rem;color:var(--color-fortney);font-weight:500;">Read the Fortney story →</p>
+        </a>
+
+        <a href="sodergren.html" class="card branch-card sodergren">
+          <div class="branch-icon">✦</div>
+          <h3>Södergren</h3>
+          <p class="subtitle">Swedish-American Lutheran · Moline, Illinois</p>
+          <p>Rev. Carl Johannes Södergren and Agatha Elizabeth Chester raised a family steeped in Lutheran ministry. Their daughter Anita Linnea Södergren (1907–1990) married Chaplain Major Albin Leonard Fortney in 1935 and spent her life in 25 homes across the country and Europe.</p>
+          <p style="margin-top:0.75rem;font-size:0.825rem;color:var(--color-sodergren);font-weight:500;">Read the Södergren story →</p>
+        </a>
+
+        <a href="mulhearn.html" class="card branch-card mulhearn">
+          <div class="branch-icon">☘</div>
+          <h3>Mulhearn / O'Brien</h3>
+          <p class="subtitle">Irish Origins · County Clare &amp; Donegal</p>
+          <p>William Mulhearn emigrated from Ballyshannon, County Clare; the McEntee line comes from County Donegal (Mac an tSaoi, "Son of the Scholar"); and the O'Briens trace descent from Brian Boru himself. These three lines converge in Newark, New Jersey and eventually in Wisconsin.</p>
+          <p style="margin-top:0.75rem;font-size:0.825rem;color:var(--color-mulhearn);font-weight:500;">Read the Mulhearn story →</p>
+        </a>
+
+        <a href="anderson.html" class="card branch-card anderson">
+          <div class="branch-icon">★</div>
+          <h3>Anderson / Andersen</h3>
+          <p class="subtitle">American · Wisconsin</p>
+          <p>Andrew B. Andersen II married Shirley Mulhearn, connecting the Mulhearn and Anderson lines. Their daughter Jill Andersen married Alan Jon Fortney, bringing all four branches together in the next generation.</p>
+          <p style="margin-top:0.75rem;font-size:0.825rem;color:var(--color-anderson);font-weight:500;">Read the Anderson story →</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Links -->
+  <section class="section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;">
+        <a href="timeline.html" class="card" style="text-align:center;text-decoration:none;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">📅</div>
+          <h4 style="margin-bottom:0.3rem;">Family Timeline</h4>
+          <p style="font-size:0.85rem;margin:0;">1570 – 2007 · All four branches</p>
+        </a>
+        <a href="gallery.html" class="card" style="text-align:center;text-decoration:none;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">📷</div>
+          <h4 style="margin-bottom:0.3rem;">Photo Gallery</h4>
+          <p style="font-size:0.85rem;margin:0;">Centennial Reunion 2007 · Norway photos</p>
+        </a>
+        <a href="fortney.html#norway" class="card" style="text-align:center;text-decoration:none;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🏔️</div>
+          <h4 style="margin-bottom:0.3rem;">The Farm at Forthun</h4>
+          <p style="font-size:0.85rem;margin:0;">Bnr #8 · Luster, Norway · 1653–1908</p>
+        </a>
+        <a href="fortney.html#albin" class="card" style="text-align:center;text-decoration:none;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🎖️</div>
+          <h4 style="margin-bottom:0.3rem;">Chaplain Major Fortney</h4>
+          <p style="font-size:0.85rem;margin:0;">WWII · Pearl Harbor to Norway</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Fortney Family Heritage</h4>
+        <p>A record of four family lines — Norwegian, Swedish-American, Irish, and American — compiled from genealogical research, reunion records, and family memories spanning 1570 to the present.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Family Branches</h4>
+        <ul>
+          <li><a href="fortney.html">Fortney / Forthun</a></li>
+          <li><a href="sodergren.html">Södergren</a></li>
+          <li><a href="mulhearn.html">Mulhearn / O'Brien</a></li>
+          <li><a href="anderson.html">Anderson</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Family Tree Map</a></li>
+          <li><a href="timeline.html">Family Timeline</a></li>
+          <li><a href="gallery.html">Photo Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Sources</h4>
+        <ul>
+          <li><a href="#">Forthun Family Reunion Research</a></li>
+          <li><a href="#">Centennial Reunion 2007</a></li>
+          <li><a href="#">Södergren Cousins Records (2017)</a></li>
+          <li><a href="#">Alan Jon Fortney's Timeline</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Compiled by Alan Jon Fortney and family</span>
+      <span>Luster: Gards-og Ættesoge Fortun Sokns · Mulhearn Family History by Donna Hefner Martin</span>
+    </div>
+  </footer>
+
+  <!-- D3.js v7 -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="js/tree.js"></script>
+
+</body>
+</html>

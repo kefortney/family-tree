@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery — Fortney Family Heritage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .gallery-section { margin-bottom: 3rem; }
+    .gallery-note {
+      background: var(--color-parchment-dark);
+      border: 1px solid var(--color-parchment-darker);
+      border-left: 4px solid var(--color-gold);
+      border-radius: 0 6px 6px 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      color: var(--color-brown-mid);
+    }
+    .gallery-note strong { color: var(--color-brown); }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Fortney Family</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Family Tree</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="fortney.html" class="branch-fortney">Fortney / Forthun</a></li>
+        <li><a href="sodergren.html" class="branch-sodergren">Södergren</a></li>
+        <li><a href="mulhearn.html" class="branch-mulhearn">Mulhearn</a></li>
+        <li><a href="anderson.html" class="branch-anderson">Anderson</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-hero hero-fortney">
+    <h1>Photo Gallery</h1>
+    <p>The Fortney Centennial Reunion 2007 · Norway, the ancestral farm, the church, and the family.</p>
+  </header>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="gallery-note">
+        <strong>About these photos:</strong> Images extracted from the <em>Fortney Family: Centennial Reunion 2007</em> Keynote presentation (199 slides), compiled by Alan Jon Fortney. Place images in the <code>images/reunion/</code> folder named <code>slide_001.jpg</code>, <code>slide_002_1.jpg</code>, etc., matching the slide numbers below. Photos of Fortun, Norway were taken by <strong>Jill Andersen Fortney</strong> during the 2005 visit. Photos of the current farm residents are courtesy of <strong>Torill Susanne Magnusdotter Yttri Otterhjell</strong>.
+      </div>
+
+      <!-- Filter bar -->
+      <div class="gallery-filter-bar">
+        <button class="filter-btn all active" data-section="all">All Sections</button>
+        <button class="filter-btn fortney" data-section="norway">Norway &amp; the Farm</button>
+        <button class="filter-btn fortney" data-section="church">The Church</button>
+        <button class="filter-btn fortney" data-section="genealogy">Genealogy Charts</button>
+        <button class="filter-btn fortney" data-section="family">Family Portraits</button>
+      </div>
+
+      <!-- ══════════════════════════════════════════
+           SECTION 1 — NORWAY & THE ANCESTRAL FARM
+      ══════════════════════════════════════════ -->
+      <div class="gallery-section" data-section="norway">
+        <div class="gallery-section-header">
+          <span class="branch-badge fortney">Fortney / Forthun</span>
+          <h3>Norway &amp; The Ancestral Farm</h3>
+        </div>
+
+        <div class="gallery-grid">
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_001.jpg', 'Slide 1 — The Hans Thomassen &amp; Maria Swangstu Fortney Family Farm, 1907–2007. Centennial Reunion, August 4, 2007. Photo: Jill Andersen Fortney.')">
+            <img src="images/reunion/slide_001.jpg" alt="Fortney Family Farm 1907"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>🏠</span><span>slide_001.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 1</div>
+              The Hans Thomassen &amp; Maria Swangstu Fortney Family Farm, 1907–2007. <em>Photo: Jill Andersen Fortney.</em>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_002_1.jpg', 'Slide 2 — The Little Village of Fortun, Lægene, Sogn, Norway. The valley was emptied of nearly 40% of its male population by the great emigrations of the 1850s.')">
+            <img src="images/reunion/slide_002_1.jpg" alt="Village of Fortun, Norway"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>🏔️</span><span>slide_002_1.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 2</div>
+              The little village of Fortun, Lægene, Sogn, Norway. Current residents of the farm (Bnr #8): Torill and Andreas Otterhjell.
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_002_2.jpg', 'Slide 2 — Fortun Family Farm, Bruks Nummer Otte (8). The valley that emptied of almost 40% of its male population during the great emigrations of the 1850s.')">
+            <img src="images/reunion/slide_002_2.jpg" alt="Fortun farm Bnr 8"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>🌄</span><span>slide_002_2.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 2</div>
+              Fortun Family Farm — Bruks Nummer Otte (Farm #8). Current residents: Torill and Andreas Otterhjell.
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_003_1.jpg', 'Slide 3 — The Otterhjells. Torill Susanne Magnusdotter Yttri Otterhjell and her father Magnus Asbjørn Tollefson Yttri greet yet another Norwegian-American roots seeker.')">
+            <img src="images/reunion/slide_003_1.jpg" alt="Torill Otterhjell and father Magnus"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>👨‍👧</span><span>slide_003_1.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 3</div>
+              Always Hospitable — Torill Susanne Magnusdotter Yttri Otterhjell and her father Magnus Asbjørn Tollefson Yttri.
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_003_2.jpg', 'Slide 3 — Daughter Linda, nephew Andrew and some of those goats at the Forthun farm.')">
+            <img src="images/reunion/slide_003_2.jpg" alt="Daughter Linda, nephew Andrew and goats"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>🐐</span><span>slide_003_2.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 3</div>
+              Daughter Linda, nephew Andrew and some of those goats at the farm — keeping the grass on the roof trimmed, just as in the old stories.
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_003_3.jpg', 'Slide 3 — Torill Otterhjell, her father Magnus Yttri, and youngest daughter Bodill at the Forthun farm.')">
+            <img src="images/reunion/slide_003_3.jpg" alt="Torill, Magnus Yttri and Bodill"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>👨‍👧‍👧</span><span>slide_003_3.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 3</div>
+              Torill Otterhjell with her father Magnus Yttri and youngest daughter Bodill at the ancestral farm.
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_007_1.jpg', 'Slide 7 — Finding Kristina\'s grave in the local kirkegård required some sleuthing and more than a little luck. The final piece in the genealogical puzzle was calculating that she had been Hans Fortney\'s first cousin once removed.')">
+            <img src="images/reunion/slide_007_1.jpg" alt="Kristina Fortun grave in kirkegård"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>⛪</span><span>slide_007_1.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 7</div>
+              Kristina's Grave — Finding Kristina Olsdotter Fortun's grave in the local kirkegård required sleuthing. She was Hans Fortney's first cousin once removed and the last Fortney to live on the farm (managed it until ~1925).
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_007_2.jpg', 'Slide 7 — The kirkegård across the road from the Fortun village church, where Kristina Olsdotter Fortun (1877–1939) is buried.')">
+            <img src="images/reunion/slide_007_2.jpg" alt="Fortun kirkegård"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>🪦</span><span>slide_007_2.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 7</div>
+              The kirkegård across the road from the Fortun village church. Kristina Olsdotter Fortun (b. 26 May 1877, d. 12 Jan 1939) is buried here.
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_014_1.jpg', 'Slide 14 — The Forthun River. Photos by Jill Andersen Fortney, taken during the 2005 visit to the ancestral homeland.')">
+            <img src="images/reunion/slide_014_1.jpg" alt="The Forthun River"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>🌊</span><span>slide_014_1.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 14</div>
+              The Forthun River. <em>Photo: Jill Andersen Fortney.</em>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_014_2.jpg', 'Slide 14 — The Old Farm House at Forthun. Bruks Nummer Otte — the ancestral Fortney farm parcel.')">
+            <img src="images/reunion/slide_014_2.jpg" alt="The Old Farm House at Forthun"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>🏡</span><span>slide_014_2.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 14</div>
+              The Old Farm House at Forthun — Bruks Nummer Otte. <em>Photo: Jill Andersen Fortney.</em>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_014_3.jpg', 'Slide 14 — The Forthun Valley, Sogn, Norway.')">
+            <img src="images/reunion/slide_014_3.jpg" alt="The Forthun Valley"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>🏔️</span><span>slide_014_3.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 14</div>
+              The Forthun Valley, Sogn, Norway. <em>Photo: Jill Andersen Fortney.</em>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_024_1.jpg', 'Slide 24 — Sogne Fjord, Norway. Photos by Jill Andersen Fortney.')">
+            <img src="images/reunion/slide_024_1.jpg" alt="Sogne Fjord, Norway"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>🌊</span><span>slide_024_1.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 24</div>
+              Sogne Fjord — cascading glacial waterfalls and beautiful mountains. <em>Photo: Jill Andersen Fortney.</em>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_024_2.jpg', 'Slide 24 — The City of Bergen, Norway, at the head of Sogne Fjord. Bergen is where the original Fortun Stave Church was relocated in 1883 to become the Fantofte Stavkirke.')">
+            <img src="images/reunion/slide_024_2.jpg" alt="City of Bergen, Norway"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>🏙️</span><span>slide_024_2.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 24</div>
+              The City of Bergen, at the head of the Sogne Fjord. The Fantofte Stavkirke — originally the Fortun church — stands in Bergen. <em>Photo: Jill Andersen Fortney.</em>
+            </div>
+          </div>
+
+        </div><!-- .gallery-grid -->
+      </div><!-- norway section -->
+
+      <!-- ══════════════════════════════════════════
+           SECTION 2 — THE CHURCH
+      ══════════════════════════════════════════ -->
+      <div class="gallery-section" data-section="church">
+        <div class="gallery-section-header">
+          <span class="branch-badge fortney">Fortney / Forthun</span>
+          <h3>The Fortun Church &amp; Fantofte Stavkirke</h3>
+        </div>
+        <p style="font-size:0.9rem;color:var(--color-brown-mid);margin-bottom:1.5rem;">
+          The original Fortun Stave Church stood in the village until 1883, when the congregation sold it to Bergen merchants. It became the famous <strong>Fantofte Stavkirke</strong> — and was burned by arsonists in 1992. It was rebuilt and stands today in Bergen as a major cultural landmark.
+        </p>
+
+        <div class="gallery-grid">
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_008_1.jpg', 'Slide 8 — New Church at Fortun. Kristina Fortun\'s grave was in the kirkegård, across the road from the Fortun village church. A lovely little church, inside and out, in one of the loveliest settings a Norwegian-American could imagine. Photos: Jill Andersen Fortney.')">
+            <img src="images/reunion/slide_008_1.jpg" alt="New Church at Fortun"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>⛪</span><span>slide_008_1.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 8</div>
+              New Church at Fortun — a lovely little church across the road from the kirkegård. <em>Photo: Jill Andersen Fortney.</em>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_009.jpg', 'Slide 9 — The original Fortun Church (Old Fortun Stave Church). This church had grown too small for the congregation; by 1883 it was sold to wealthy Bergen merchants. The lovely new church was built in the village &quot;just a stone\'s throw away.&quot; The old Fortun church, pictured here, became the famous Fantofte Stavkirke, a popular tourist site, after it was moved to Bergen — where it was further embellished.')">
+            <img src="images/reunion/slide_009.jpg" alt="Old Fortun Stave Church"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>⛪</span><span>slide_009.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 9</div>
+              The original Fortun Stave Church — sold to Bergen merchants in 1883. It became the Fantofte Stavkirke in Bergen, "where it was embellished."
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_010_1.jpg', 'Slide 10 — The embellished Fantofte Stavkirke in Bergen, Norway. The much-embellished Fortun church, reborn as a Bergen tourist attraction in 1883. Photos: Jill Andersen Fortney.')">
+            <img src="images/reunion/slide_010_1.jpg" alt="Fantofte Stavkirke Bergen"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>⛪</span><span>slide_010_1.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 10</div>
+              The much-embellished Fantofte Stavkirke in Bergen — the Fortun church reborn as a tourist attraction in 1883. <em>Photo: Jill Andersen Fortney.</em>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_011.jpg', 'Slide 11 — The Fantofte Stavkirke in Bergen was burned by &quot;satanist&quot; vandals in 1992, who destroyed a number of Christian churches in Norway that year.')">
+            <img src="images/reunion/slide_011.jpg" alt="Fantofte Stavkirke burned 1992"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>🔥</span><span>slide_011.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 11</div>
+              The Fantofte Stavkirke was burned by arsonist vandals in 1992 as part of a wave of church arsons in Norway.
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_012.jpg', 'Slide 12 — The rebuilt Fantofte Stavkirke. The rebuilding was funded by the family that had originally refurbished it, continuing as a beautiful edifice that harkens back to the latest Viking traditions in Norway.')">
+            <img src="images/reunion/slide_012.jpg" alt="Fantofte Stavkirke rebuilt"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>⛪</span><span>slide_012.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 12</div>
+              The rebuilt Fantofte Stavkirke — funded by the same family that had originally refurbished it. A beautiful edifice harkening back to Viking traditions.
+            </div>
+          </div>
+
+          <!-- Additional church photos from slide 10 -->
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_010_2.jpg', 'Slide 10 — Additional view of the Fantofte Stavkirke in Bergen. Photo: Jill Andersen Fortney.')">
+            <img src="images/reunion/slide_010_2.jpg" alt="Fantofte Stavkirke detail"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>⛪</span><span>slide_010_2.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 10</div>
+              Fantofte Stavkirke — additional view. <em>Photo: Jill Andersen Fortney.</em>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_008_2.jpg', 'Slide 8 — The Fortun village church interior. Photos: Jill Andersen Fortney.')">
+            <img src="images/reunion/slide_008_2.jpg" alt="Fortun church"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>⛪</span><span>slide_008_2.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 8</div>
+              The Fortun village church — lovely inside and out. <em>Photo: Jill Andersen Fortney.</em>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- church section -->
+
+      <!-- ══════════════════════════════════════════
+           SECTION 3 — GENEALOGY CHARTS
+      ══════════════════════════════════════════ -->
+      <div class="gallery-section" data-section="genealogy">
+        <div class="gallery-section-header">
+          <span class="branch-badge fortney">Fortney / Forthun</span>
+          <h3>Genealogy Documentation</h3>
+        </div>
+
+        <div class="gallery-grid">
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_013.png', 'Slide 13 — Norse Foraeldere (Norwegian Parents). The Fortney family genealogy was traced back to 1616 by multiple generations: Albin Leonard Fortney (1906–1968) had access to the parish Bible during Operation Midnight Sun in 1945. His cousin Adrian H. Dahl (1919–2005) visited Fortun and acquired the authoritative Luster: Gards-og aettesoge. Cousin Agnes Fortney Deason (1922–) and her daughter Sylvia Deason (1946–) did additional thorough study.')">
+            <img src="images/reunion/slide_013.png" alt="Genealogy compilation slide"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>📜</span><span>slide_013.png</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 13</div>
+              Norwegian Genealogy — how the family history was compiled. Albin Fortney accessed the parish Bible during Operation Midnight Sun (1945). The genealogy traces back to 1616.
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_023_1.jpg', 'Slide 23 — The Norwegian Flag. Created in 1821 (official from 1898), designed after Fredrik Meltzer saw his son draw a blue cross on the Danish flag in 1821. The colors were inspired by the French tricolor.')">
+            <img src="images/reunion/slide_023_1.jpg" alt="Norwegian flag"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>🇳🇴</span><span>slide_023_1.jpg</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 23</div>
+              The Norwegian Flag — created 1821, official from 1898. Norway gained independence from Denmark on 17 May 1814 (Syttende Mai), and from Sweden on 7 June 1905.
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="openLightbox('images/reunion/slide_023_2.png', 'Slide 23 — Norwegian genealogy chart from the Luster: Gards-og Ættesoge Fortun Sokns.')">
+            <img src="images/reunion/slide_023_2.png" alt="Norwegian genealogy chart"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>📋</span><span>slide_023_2.png</span></div>');this.remove();">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 23</div>
+              Genealogy chart from <em>Luster: Gards-og Ættesoge Fortun Sokns</em> — the authoritative Norwegian farm record.
+            </div>
+          </div>
+
+        </div>
+      </div><!-- genealogy section -->
+
+      <!-- ══════════════════════════════════════════
+           SECTION 4 — FAMILY PORTRAITS
+      ══════════════════════════════════════════ -->
+      <div class="gallery-section" data-section="family">
+        <div class="gallery-section-header">
+          <span class="branch-badge fortney">Fortney / Forthun</span>
+          <h3>Family Portraits &amp; Reunion</h3>
+        </div>
+
+        <div class="gallery-grid">
+
+          <div class="gallery-item">
+            <img src="images/reunion/slide_004.jpg" alt="Otterhjell family genealogy"
+              onerror="this.parentElement.querySelector('.gallery-caption').insertAdjacentHTML('beforebegin','<div class=\'img-placeholder\'><span class=\'placeholder-icon\'>👨‍👩‍👧</span><span>slide_004.jpg</span></div>');this.remove();"
+              onclick="openLightbox('images/reunion/slide_004.jpg', 'Slide 4 — The Otterhjell family. Magnus Asbjørn Tollefson Yttri, his daughter Torill Susanne Magnusdotter Yttri Otterhjell, her husband Andreas Olafson Otterhjell, and Geir Arne Magnusson.')">
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 4</div>
+              The Otterhjell family — Magnus Yttri (grandfather), Torill Otterhjell (current farm owner), and Andreas Otterhjell.
+            </div>
+          </div>
+
+          <!-- Slides 26, 29 — Thomas Olson & Susanna, Hans & Maria family photos -->
+          <div class="gallery-item">
+            <div class="img-placeholder">
+              <span class="placeholder-icon">📷</span>
+              <span>slide_026.jpg</span>
+            </div>
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 26</div>
+              Thomas Olson &amp; Susanna Ottum Fortney Family. Back row: Hans T., Thomas, Anna Kristina (Kate), Johannes (John), Arne. Middle row: Ole, Thomas Olson Fortney and Susanna Ottum Fortney, Anna Kjistine. Front: Christian.
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <div class="img-placeholder">
+              <span class="placeholder-icon">📷</span>
+              <span>slide_029.jpg</span>
+            </div>
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 29</div>
+              Hans T. &amp; Maria Swangstu Fortney Family. Back row: Oliver, Tonetta (Nettie), Albert, Clarence, Selma, Henry. Front row: Hans T. Fortney, Thomas, Myrtle, Albin, Maria Swangstu Fortney.
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <div class="img-placeholder">
+              <span class="placeholder-icon">📷</span>
+              <span>slide_047.jpg</span>
+            </div>
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 47</div>
+              Albin Leonard &amp; Anita Södergren Fortney Family, 1947. Left to right: Steven, Alan, Kendall, Anita Linnea Södergren Fortney, Anita (Vesla), Albin Leonard Fortney.
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <div class="img-placeholder">
+              <span class="placeholder-icon">📷</span>
+              <span>slide_032.jpg</span>
+            </div>
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 32</div>
+              Nettie Fortney with her brother Albert (as "Etta and Sundance — or Bonnie and Clyde, depending on your generation"). Albert's family included Marion, Hubert and Virgil.
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <div class="img-placeholder">
+              <span class="placeholder-icon">📷</span>
+              <span>slide_034.jpg</span>
+            </div>
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 34</div>
+              Frederick and Nettie Fortney Dahl Family: Monrad, Adrian, Sylvia, Frederick, Gilroy.
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <div class="img-placeholder">
+              <span class="placeholder-icon">📷</span>
+              <span>slide_045.jpg</span>
+            </div>
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slide 45</div>
+              Thomas Kendahl Fortney — UW heavyweight wrestler, 1928, 1932, 1935, 1938. Thomas Kendall and Elsie Carlson Fortney. He died in Detroit in 1944; Elsie never remarried.
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <div class="img-placeholder">
+              <span class="placeholder-icon">📷</span>
+              <span>slide_049.jpg</span>
+            </div>
+            <div class="gallery-caption">
+              <div class="gallery-slide-num">Slides 49–50</div>
+              Myrtle Fortney Larson Family, 1962. Left to right top row: Orland, Mary, Tom and Laurel. Front row: Myrtle, Linda, and Andrew. The "Larson cousins" of Alan Jon Fortney.
+            </div>
+          </div>
+
+        </div>
+      </div><!-- family section -->
+
+      <div style="background:var(--color-parchment-dark);border:1px solid var(--color-parchment-darker);border-radius:8px;padding:1.5rem;margin-top:2rem;">
+        <h4 style="margin-bottom:0.5rem;">Adding Images</h4>
+        <p style="font-size:0.875rem;color:var(--color-brown-mid);margin:0;">
+          Place image files in the <code>images/reunion/</code> folder, named to match the slide numbers (e.g., <code>slide_001.jpg</code>, <code>slide_002_1.jpg</code>, <code>slide_010_3.jpg</code>, etc.). Images named in the PDF as pages 1–199 correspond to "Slide 1" through "Slide 199" in this gallery. Images that are not yet available show a placeholder automatically.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <img id="lightbox-img" src="" alt="">
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">×</button>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Fortney Family Heritage</h4>
+        <p>Photos from the Centennial Reunion 2007 presentation, compiled by Alan Jon Fortney.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Family Branches</h4>
+        <ul>
+          <li><a href="fortney.html">Fortney / Forthun</a></li>
+          <li><a href="sodergren.html">Södergren</a></li>
+          <li><a href="mulhearn.html">Mulhearn / O'Brien</a></li>
+          <li><a href="anderson.html">Anderson</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Family Tree Map</a></li>
+          <li><a href="timeline.html">Timeline</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col"></div>
+    </div>
+    <div class="footer-bottom">
+      <span>Fortney Family Heritage</span>
+      <span>Photo credits: Jill Andersen Fortney · Torill Susanne Magnusdotter Yttri Otterhjell</span>
+    </div>
+  </footer>
+
+  <script>
+    function openLightbox(src, caption) {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').innerHTML = caption;
+      lb.classList.add('visible');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      if (event && event.target !== document.getElementById('lightbox') && !event.currentTarget.classList.contains('lightbox-close')) return;
+      document.getElementById('lightbox').classList.remove('visible');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.getElementById('lightbox').classList.remove('visible');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Gallery section filter
+    document.querySelectorAll('.gallery-filter-bar .filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const section = btn.getAttribute('data-section');
+        document.querySelectorAll('.gallery-filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        document.querySelectorAll('.gallery-section').forEach(s => {
+          if (section === 'all' || s.getAttribute('data-section') === section) {
+            s.style.display = '';
+          } else {
+            s.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

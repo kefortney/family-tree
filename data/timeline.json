@@ -1,0 +1,335 @@
+[
+  {
+    "id": "t1",
+    "year": 1570,
+    "title": "Aamund Jonson Forthun Born",
+    "description": "The earliest known Fortney ancestor is born at the Forthun farm in Luster parish, Sogn, Norway. He will serve as farm manager of Bnr #1.",
+    "branch": "fortney",
+    "location": "Forthun, Norway",
+    "type": "birth"
+  },
+  {
+    "id": "t2",
+    "year": 1622,
+    "title": "Synneva Clausdotter Born",
+    "description": "Synneva Clausdotter is born at Forthun. Her marriage to Knut Aamundson in 1653 will bring the crucial farm parcel Bnr #8 into the family.",
+    "branch": "fortney",
+    "location": "Forthun, Norway",
+    "type": "birth"
+  },
+  {
+    "id": "t3",
+    "year": 1653,
+    "title": "Bnr #8 Enters the Family",
+    "description": "Synneva Clausdotter marries Knut Aamundson Forthun, bringing the farm parcel Bruks Nummer Otte (Bnr #8) into the family. This parcel will remain in the family for 255 years.",
+    "branch": "fortney",
+    "location": "Forthun, Norway",
+    "type": "milestone"
+  },
+  {
+    "id": "t4",
+    "year": 1735,
+    "title": "Knut Torgerson Born",
+    "description": "Knut Torgerson Forthun is born. He will become farm manager of Bnr #8 and marry four wives. His son Ole Knutson will carry the line to America.",
+    "branch": "fortney",
+    "location": "Forthun, Norway",
+    "type": "birth"
+  },
+  {
+    "id": "t5",
+    "year": 1812,
+    "title": "Patrick O'Brien Born",
+    "description": "Patrick O'Brien is born in County Clare, Ireland. He will emigrate to Newark, New Jersey, living 'Down Neck' at 43 Broad Street, farming salt marshes.",
+    "branch": "mulhearn",
+    "location": "County Clare, Ireland",
+    "type": "birth"
+  },
+  {
+    "id": "t6",
+    "year": 1817,
+    "title": "Thomas Olson Forthun Born",
+    "description": "Thomas Olson Forthun is born at the Forthun farm. He will become the family's great emigrant, leaving Norway for America in 1853.",
+    "branch": "fortney",
+    "location": "Forthun, Norway",
+    "type": "birth"
+  },
+  {
+    "id": "t7",
+    "year": 1847,
+    "title": "Sarah O'Brien Born",
+    "description": "Sarah O'Brien is born December 26 in Newark, New Jersey. Her mother may have been a Noonan or Scanlon. She will marry Bernard Sylvester McEntee.",
+    "branch": "mulhearn",
+    "location": "Newark, New Jersey",
+    "type": "birth"
+  },
+  {
+    "id": "t8",
+    "year": 1850,
+    "title": "Susanna Ottum Emigrates",
+    "description": "Susanna Johannesdotter Ottum emigrates from Luster, Norway to America. She will marry Thomas Olson Forthun four years later.",
+    "branch": "fortney",
+    "location": "Luster, Norway → Wisconsin",
+    "type": "migration"
+  },
+  {
+    "id": "t9",
+    "year": 1853,
+    "title": "Thomas Olson Forthun Emigrates",
+    "description": "Thomas Olson Forthun leaves the Forthun farm and emigrates to America, settling in Franklin County, Wisconsin. Five of his siblings will follow between 1848 and 1856.",
+    "branch": "fortney",
+    "location": "Forthun, Norway → Wisconsin",
+    "type": "migration"
+  },
+  {
+    "id": "t10",
+    "year": 1854,
+    "title": "Thomas & Susanna Marry in Wisconsin",
+    "description": "Thomas Olson Forthun marries Susanna Johannesdotter Ottum on October 13 in Dane County, Wisconsin. They will have eight children.",
+    "branch": "fortney",
+    "location": "Dane County, Wisconsin",
+    "type": "marriage"
+  },
+  {
+    "id": "t11",
+    "year": 1861,
+    "title": "Hans Thomassen Fortney Born",
+    "description": "Hans Thomassen Fortney is born February 18 in Vernon County, Wisconsin. The son of Norwegian emigrants, he will become the patriarch of the American Fortney family.",
+    "branch": "fortney",
+    "location": "Vernon County, Wisconsin",
+    "type": "birth"
+  },
+  {
+    "id": "t12",
+    "year": 1877,
+    "title": "Kristina Olsdotter Fortun Born",
+    "description": "Kristina Olsdotter Fortun is born May 26 at the Forthun farm. She will be the last member of the family to live on Bnr #8, managing it until around 1925.",
+    "branch": "fortney",
+    "location": "Forthun, Norway",
+    "type": "birth"
+  },
+  {
+    "id": "t13",
+    "year": 1883,
+    "title": "Fortun Stave Church Moved to Bergen",
+    "description": "The original Fortun Stave Church, which had grown too small for the congregation, is sold to Bergen merchants. It is relocated to Bergen and becomes the famous Fantofte Stavkirke.",
+    "branch": "fortney",
+    "location": "Fortun → Bergen, Norway",
+    "type": "milestone"
+  },
+  {
+    "id": "t14",
+    "year": 1887,
+    "title": "Hans & Maria Fortney Marry",
+    "description": "Hans Thomassen Fortney marries Maria Johanna Swangstu on April 6, in Viroqua, Wisconsin. Together they will have ten children and move the family to Wheeler, WI in 1907.",
+    "branch": "fortney",
+    "location": "Viroqua, Wisconsin",
+    "type": "marriage"
+  },
+  {
+    "id": "t15",
+    "year": 1906,
+    "title": "Albin Leonard Fortney Born",
+    "description": "Albin Leonard Fortney is born July 10 in Viroqua, Wisconsin. He will become a Lutheran minister and U.S. Army Chaplain Major, serving in WWII from Pearl Harbor to the liberation of Norway.",
+    "branch": "fortney",
+    "location": "Viroqua, Wisconsin",
+    "type": "birth"
+  },
+  {
+    "id": "t16",
+    "year": 1907,
+    "title": "Anita Linnea Södergren Born",
+    "description": "Anita Linnea Södergren is born February 17 in Moline, Illinois. The daughter of Rev. Carl Johannes Södergren, she will marry Albin Leonard Fortney in 1935.",
+    "branch": "sodergren",
+    "location": "Moline, Illinois",
+    "type": "birth"
+  },
+  {
+    "id": "t17",
+    "year": 1907,
+    "title": "Fortney Family Moves to Wheeler",
+    "description": "Hans and Maria Fortney move their family from Viroqua to Wheeler, Wisconsin. Wheeler becomes the family's home base for generations.",
+    "branch": "fortney",
+    "location": "Wheeler, Wisconsin",
+    "type": "milestone"
+  },
+  {
+    "id": "t18",
+    "year": 1908,
+    "title": "Kristina Receives Farm Deed",
+    "description": "On January 29, Kristina Olsdotter Fortun receives the deed to Bnr #8 from her emigrating brother Christen. She will manage the farm until around 1925 — the last Fortney on the ancestral land.",
+    "branch": "fortney",
+    "location": "Forthun, Norway",
+    "type": "milestone"
+  },
+  {
+    "id": "t19",
+    "year": 1922,
+    "title": "Dublin Fire Destroys Irish Records",
+    "description": "The Four Courts fire in Dublin destroys centuries of Irish genealogical records, making it difficult to trace the pre-emigration history of the Mulhearn, McEntee, and O'Brien families.",
+    "branch": "mulhearn",
+    "location": "Dublin, Ireland",
+    "type": "milestone"
+  },
+  {
+    "id": "t20",
+    "year": 1935,
+    "title": "Albin & Anita Marry",
+    "description": "Albin Leonard Fortney and Anita Linnea Södergren marry on May 28 in Minneapolis, Minnesota. Together they will have four children and live in 25 homes across nine states and two European countries.",
+    "branch": "fortney",
+    "location": "Minneapolis, Minnesota",
+    "type": "marriage"
+  },
+  {
+    "id": "t21",
+    "year": 1937,
+    "title": "Steven Dale Fortney Born",
+    "description": "Steven Dale Fortney is born January 2 in Minneapolis. Anita traveled from Cook, MN in the dead of winter rather than trust local doctors.",
+    "branch": "fortney",
+    "location": "Minneapolis, Minnesota",
+    "type": "birth"
+  },
+  {
+    "id": "t22",
+    "year": 1939,
+    "title": "Alan Jon Fortney Born",
+    "description": "Alan Jon Fortney is born November 18 in Rocky River, Ohio — on the very day his father received his commission as a Second Lieutenant in the U.S. Army. His first crib was an opened bureau drawer.",
+    "branch": "fortney",
+    "location": "Rocky River, Ohio",
+    "type": "birth"
+  },
+  {
+    "id": "t23",
+    "year": 1939,
+    "title": "Albin Receives Army Commission",
+    "description": "Albin Leonard Fortney receives his commission as Second Lieutenant in the U.S. Army, beginning a military career that will take his family around the world.",
+    "branch": "fortney",
+    "location": "Rocky River, Ohio",
+    "type": "military"
+  },
+  {
+    "id": "t24",
+    "year": 1941,
+    "title": "Kendall Thomas Fortney Born",
+    "description": "Kendall Thomas Fortney is born June 2 in Niagara Falls, New York. Named for his great-uncle Thomas Kendahl, he will grow up to serve as an Army medic in Vietnam.",
+    "branch": "fortney",
+    "location": "Niagara Falls, New York",
+    "type": "birth"
+  },
+  {
+    "id": "t25",
+    "year": 1941,
+    "title": "Pearl Harbor — Albin in Hawaii",
+    "description": "Albin Leonard Fortney is in Hawaii on December 7, 1941, when the Japanese attack Pearl Harbor. He is put in charge of burials. His family, scheduled to arrive December 24, must stay in Portland, Oregon instead.",
+    "branch": "fortney",
+    "location": "Honolulu, Hawaii",
+    "type": "military"
+  },
+  {
+    "id": "t26",
+    "year": 1944,
+    "title": "Albin Deployed to European Theater",
+    "description": "Albin Leonard Fortney, now a Major Chaplain, is deployed to the European theater of World War II. The family moves to Menomonie, Wisconsin.",
+    "branch": "fortney",
+    "location": "Europe",
+    "type": "military"
+  },
+  {
+    "id": "t27",
+    "year": 1945,
+    "title": "Albin in Norway — Operation Midnight Sun",
+    "description": "Albin Leonard Fortney serves in Norway as part of Operation Midnight Sun, the U.S. Army's liberation of Norway from the Nazis. He visits the parish Bible in Forthun — an official record of the Forthun families.",
+    "branch": "fortney",
+    "location": "Norway",
+    "type": "military"
+  },
+  {
+    "id": "t28",
+    "year": 1947,
+    "title": "Anita Linnea Fortney Born",
+    "description": "Anita Linnea Fortney (later Harms) is born July 3 in Tacoma, Washington. Her mother remarked she had four children in four different cities and four different states.",
+    "branch": "fortney",
+    "location": "Tacoma, Washington",
+    "type": "birth"
+  },
+  {
+    "id": "t29",
+    "year": 1947,
+    "title": "Family Posted to Schweinfurt, Germany",
+    "description": "Albin re-enlists on the condition the whole family can go to Europe. The family crosses the Atlantic in February storms aboard the USS Callan, living at 7 Killiansberg, just below the mental hospital.",
+    "branch": "fortney",
+    "location": "Schweinfurt, Germany",
+    "type": "milestone"
+  },
+  {
+    "id": "t30",
+    "year": 1948,
+    "title": "Family Posted to Vienna, Austria",
+    "description": "Albin's second European posting. Living at 23 Kassgraben Gasse. He develops heart problems and is sent home for discharge at Carlisle Barracks. The children catch fireflies with their Piepkorn cousins.",
+    "branch": "fortney",
+    "location": "Vienna, Austria",
+    "type": "milestone"
+  },
+  {
+    "id": "t31",
+    "year": 1939,
+    "title": "Kristina Olsdotter Fortun Dies",
+    "description": "Kristina Olsdotter Fortun dies January 12 in Forthun — the last member of the Fortney family to live on the ancestral Bnr #8 farm. She never married.",
+    "branch": "fortney",
+    "location": "Forthun, Norway",
+    "type": "death"
+  },
+  {
+    "id": "t32",
+    "year": 1968,
+    "title": "Kendall Thomas Fortney Killed in Vietnam",
+    "description": "Army Medic Kendall Thomas Fortney is killed in action at La Cua, Vietnam on February 6. Due to bureaucratic error, he is initially listed as MIA. Senator William Proxmire and journalist Larry K. Knutsen help identify his body; he is buried in Stoughton in March.",
+    "branch": "fortney",
+    "location": "La Cua, Vietnam",
+    "type": "death"
+  },
+  {
+    "id": "t33",
+    "year": 1968,
+    "title": "Albin Leonard Fortney Dies",
+    "description": "Albin Leonard Fortney dies May 18 of colonic cancer — just 10 days before his 33rd wedding anniversary. He had lived to see his youngest son Kendall buried only weeks before. He was 61 years old.",
+    "branch": "fortney",
+    "location": "Stoughton, Wisconsin",
+    "type": "death"
+  },
+  {
+    "id": "t34",
+    "year": 1990,
+    "title": "Anita Södergren Fortney Dies",
+    "description": "Anita Linnea Södergren Fortney dies July 4, before breakfast, in Skaalen Home, Stoughton — after 22 years, 2 months, and 6 days as a widow. She had lived in 25 homes across her life. She was 83 years old.",
+    "branch": "sodergren",
+    "location": "Stoughton, Wisconsin",
+    "type": "death"
+  },
+  {
+    "id": "t35",
+    "year": 1992,
+    "title": "Fantofte Stavkirke Burned",
+    "description": "The Fantofte Stavkirke in Bergen — originally the Fortun Stave Church from the ancestral village — is burned by arsonist vandals as part of a wave of church arsons in Norway. It is rebuilt by the family that had originally refurbished it.",
+    "branch": "fortney",
+    "location": "Bergen, Norway",
+    "type": "milestone"
+  },
+  {
+    "id": "t36",
+    "year": 2005,
+    "title": "Alan & Jill Visit Forthun Farm",
+    "description": "Alan Jon Fortney and Jill Andersen Fortney visit the ancestral Forthun farm in Norway. With the help of current owner Torill Magnusdotter Yttri Otterhjell, they verify the genealogy and add new information. Jill photographs the farm, the village, and the kirkegård.",
+    "branch": "fortney",
+    "location": "Fortun, Norway",
+    "type": "milestone"
+  },
+  {
+    "id": "t37",
+    "year": 2007,
+    "title": "Fortney Centennial Reunion",
+    "description": "The Fortney family holds its centennial reunion on August 4, 2007, commemorating 100 years since Hans & Maria Fortney moved to Wheeler, Wisconsin. A major Keynote presentation documents the Norwegian origins and American family history.",
+    "branch": "fortney",
+    "location": "Wisconsin",
+    "type": "reunion"
+  }
+]

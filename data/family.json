@@ -1,0 +1,348 @@
+{
+  "id": "root",
+  "name": "Fortney Family Heritage",
+  "type": "root",
+  "children": [
+    {
+      "id": "fortney_branch",
+      "name": "Fortney / Forthun Branch",
+      "subtitle": "Norwegian Origins · Forthun Farm, Luster, Norway",
+      "branch": "fortney",
+      "type": "branch",
+      "url": "fortney.html",
+      "children": [
+        {
+          "id": "aamund_jonson",
+          "name": "Aamund Jonson Forthun",
+          "birth": 1570,
+          "death": 1650,
+          "birthplace": "Forthun, Norway",
+          "gender": "M",
+          "branch": "fortney",
+          "notes": "Earliest known ancestor. Farm manager, Bnr #1. Father of Claus Aamundson.",
+          "children": [
+            {
+              "id": "claus_aamundson",
+              "name": "Claus Aamundson Forthun",
+              "birth": 1585,
+              "death": 1690,
+              "birthplace": "Forthun, Norway",
+              "gender": "M",
+              "branch": "fortney",
+              "children": [
+                {
+                  "id": "synneva_clausdotter",
+                  "name": "Synneva Clausdotter",
+                  "birth": 1622,
+                  "death": 1690,
+                  "birthplace": "Forthun, Norway",
+                  "gender": "F",
+                  "branch": "fortney",
+                  "notes": "Married Knut Aamundson Forthun in 1653, bringing Bnr #8 to the family. Key figure in establishing the Forthun farm line.",
+                  "children": [
+                    {
+                      "id": "knut_aamundson",
+                      "name": "Knut Aamundson Forthun",
+                      "birth": 1633,
+                      "death": 1690,
+                      "birthplace": "Forthun, Norway",
+                      "gender": "M",
+                      "branch": "fortney",
+                      "notes": "Married Synneva Clausdotter 1653. Brought Bnr #8 into the family.",
+                      "children": [
+                        {
+                          "id": "ole_knutson_5",
+                          "name": "Ole Knutson Forthun",
+                          "birth": 1656,
+                          "death": 1713,
+                          "birthplace": "Forthun, Norway",
+                          "gender": "M",
+                          "branch": "fortney",
+                          "notes": "Farm manager Bnr #8 from 1682. Married Gjørond Sjursdotter (from Yttri) in 1679.",
+                          "children": [
+                            {
+                              "id": "torger_olson_4",
+                              "name": "Torger Olson Forthun",
+                              "birth": 1692,
+                              "death": 1762,
+                              "birthplace": "Forthun, Norway",
+                              "gender": "M",
+                              "branch": "fortney",
+                              "notes": "Farm manager Bnr #8. Married Britha Halvorsdatter in 1714.",
+                              "children": [
+                                {
+                                  "id": "knut_torgerson",
+                                  "name": "Knut Torgerson Forthun",
+                                  "birth": 1735,
+                                  "death": 1818,
+                                  "birthplace": "Forthun, Norway",
+                                  "gender": "M",
+                                  "branch": "fortney",
+                                  "notes": "Farm manager Bnr #8. Had four wives; main line continues through wife Marta Olsdotter Svalheim.",
+                                  "children": [
+                                    {
+                                      "id": "ole_knutson_2",
+                                      "name": "Ole Knutson Forthun",
+                                      "birth": 1778,
+                                      "death": 1846,
+                                      "birthplace": "Forthun, Norway",
+                                      "gender": "M",
+                                      "branch": "fortney",
+                                      "notes": "Farm manager Bnr #8. Married Kirsti Kristensdotter Fuglesteg, 10 June 1807.",
+                                      "children": [
+                                        {
+                                          "id": "thomas_olson",
+                                          "name": "Thomas Olson Forthun",
+                                          "birth": 1817,
+                                          "death": 1887,
+                                          "birthplace": "Forthun, Norway",
+                                          "deathplace": "Vernon County, Wisconsin",
+                                          "gender": "M",
+                                          "branch": "fortney",
+                                          "notes": "Emigrated to America 1853. Settled in Franklin County, then Vernon County, Wisconsin. Married Susanna Johannesdotter Ottum, 13 October 1854.",
+                                          "children": [
+                                            {
+                                              "id": "hans_thomassen",
+                                              "name": "Hans Thomassen Fortney",
+                                              "birth": 1861,
+                                              "death": 1941,
+                                              "birthplace": "Vernon County, Wisconsin",
+                                              "deathplace": "Wheeler, Wisconsin",
+                                              "gender": "M",
+                                              "branch": "fortney",
+                                              "notes": "Patriarch of the American Fortney family. Married Maria Johanna Swangstu, 6 April 1887. Moved family to Wheeler, WI in 1907. Had 10 children.",
+                                              "children": [
+                                                {
+                                                  "id": "albin_leonard",
+                                                  "name": "Albin Leonard Fortney",
+                                                  "birth": 1906,
+                                                  "death": 1968,
+                                                  "birthplace": "Viroqua, Wisconsin",
+                                                  "deathplace": "Stoughton, Wisconsin",
+                                                  "gender": "M",
+                                                  "branch": "fortney",
+                                                  "notes": "Chaplain Major, US Army. Served in WWII (Hawaii at Pearl Harbor, later European theater) and Korea. Married Anita Linnea Södergren, 28 May 1935. Died of colonic cancer, 10 days before his 33rd wedding anniversary.",
+                                                  "children": [
+                                                    {
+                                                      "id": "alan_jon",
+                                                      "name": "Alan Jon Fortney",
+                                                      "birth": 1939,
+                                                      "death": 2019,
+                                                      "birthplace": "Rocky River, Ohio",
+                                                      "deathplace": "Bennington, Vermont",
+                                                      "gender": "M",
+                                                      "branch": "fortney",
+                                                      "notes": "Born on the day his father received his army commission. BA University of Wisconsin–Madison (English, 1963); studied at University of Copenhagen (1961–62). Teacher at Southern Vermont College, Bennington College, and Mount Anthony Union High School (retired 2008). Founded Woodlands Pathways (~1992). Published Go Light (Shires Press, 2009). Married Jill Andersen Fortney. Primary compiler of the family history; visited the Forthun farm in 2005.",
+                                                      "children": [
+                                                        {
+                                                          "id": "rachael_fortney",
+                                                          "name": "Rachael Fortney",
+                                                          "birth": 1971,
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "notes": "Adopted daughter of Alan & Jill. Biological father: Joe. Lives in Dana Point, CA (as of 2010). Career in real estate and escrow; holds California Real Estate License."
+                                                        },
+                                                        {
+                                                          "id": "kendall_fortney",
+                                                          "name": "Kendall Anders Fortney",
+                                                          "birth": 1981,
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "notes": "Artist & filmmaker. Born 5 July 1981. Named for his uncle Kendall Thomas Fortney, KIA Vietnam 1968. Studied Okinawan karate; Vermont Statehouse Page (8th grade). Early interest in public television film production."
+                                                        }
+                                                      ]
+                                                    },
+                                                    {
+                                                      "id": "steven_dale",
+                                                      "name": "Steven Dale Fortney",
+                                                      "birth": 1937,
+                                                      "birthplace": "Minneapolis, Minnesota",
+                                                      "gender": "M",
+                                                      "branch": "fortney",
+                                                      "notes": "Author & professor."
+                                                    },
+                                                    {
+                                                      "id": "kendall_thomas",
+                                                      "name": "Kendall Thomas Fortney",
+                                                      "birth": 1941,
+                                                      "death": 1968,
+                                                      "birthplace": "Niagara Falls, New York",
+                                                      "deathplace": "La Cua, Vietnam",
+                                                      "gender": "M",
+                                                      "branch": "fortney",
+                                                      "notes": "Army medic. KIA Vietnam, 6 February 1968. Initially listed as MIA due to bureaucratic error; identified with help of Senator William Proxmire. Named for his great-uncle Thomas Kendahl Fortney."
+                                                    },
+                                                    {
+                                                      "id": "anita_linnea_f",
+                                                      "name": "Anita Linnea Fortney",
+                                                      "birth": 1947,
+                                                      "birthplace": "Tacoma, Washington",
+                                                      "gender": "F",
+                                                      "branch": "fortney",
+                                                      "notes": "Married William Harms. Moved to Muskegon, Michigan."
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sodergren_branch",
+      "name": "Södergren Branch",
+      "subtitle": "Swedish-American Lutheran Ministry · Moline, Illinois",
+      "branch": "sodergren",
+      "type": "branch",
+      "url": "sodergren.html",
+      "children": [
+        {
+          "id": "carl_sodergren",
+          "name": "Rev. Carl Johannes Södergren",
+          "gender": "M",
+          "branch": "sodergren",
+          "notes": "Lutheran minister. Father of six children, including Anita Linnea. Family deeply rooted in Lutheran ministry.",
+          "children": [
+            {
+              "id": "anita_sodergren",
+              "name": "Anita Linnea Södergren",
+              "birth": 1907,
+              "death": 1990,
+              "birthplace": "Moline, Illinois",
+              "deathplace": "Stoughton, Wisconsin",
+              "gender": "F",
+              "branch": "sodergren",
+              "notes": "Born in Moline, IL; family moved to Burlington, IA. Married Albin Leonard Fortney, 28 May 1935, Minneapolis. Died 4 July 1990, before breakfast, in Skaalen Home after 22 years as a widow. Mother of four."
+            },
+            {
+              "id": "una_sodergren",
+              "name": "Una Elizabeth Södergren",
+              "gender": "F",
+              "branch": "sodergren",
+              "notes": "Married John Milton MD."
+            },
+            {
+              "id": "carlw_sodergren",
+              "name": "Rev. Carl Wendell Södergren",
+              "gender": "M",
+              "branch": "sodergren",
+              "notes": "Lutheran minister. Married Eunice. Anita's family stayed near him in Portland, OR during WWII."
+            },
+            {
+              "id": "phoebe_sodergren",
+              "name": "Phoebe Echo Södergren",
+              "gender": "F",
+              "branch": "sodergren",
+              "notes": "Married Clifford (Johnson) Kent. Her comment about a non-laying chicken — \"Now that's what I call a dumb cluck\" — became a family legend."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mulhearn_branch",
+      "name": "Mulhearn / O'Brien Branch",
+      "subtitle": "Irish Origins · County Clare & County Donegal",
+      "branch": "mulhearn",
+      "type": "branch",
+      "url": "mulhearn.html",
+      "children": [
+        {
+          "id": "william_mulhearn",
+          "name": "William Mulhearn",
+          "birthplace": "Ballyshannon, County Clare, Ireland",
+          "gender": "M",
+          "branch": "mulhearn",
+          "notes": "Emigrated from Ballyshannon, County Clare. Father of Robert Mulhearn.",
+          "children": [
+            {
+              "id": "robert_mulhearn",
+              "name": "Robert Mulhearn",
+              "gender": "M",
+              "branch": "mulhearn",
+              "notes": "Married Agnes McEntee. Together had ten children. The American Mulhearn family descends from this couple.",
+              "children": [
+                {
+                  "id": "shirley_mulhearn",
+                  "name": "Shirley Mulhearn",
+                  "gender": "F",
+                  "branch": "mulhearn",
+                  "notes": "Married Andrew B. Andersen II. Together had six children including Jill Andersen (Fortney).",
+                  "children": [
+                    {
+                      "id": "jill_andersen",
+                      "name": "Jill Andersen Fortney",
+                      "birth": 1951,
+                      "gender": "F",
+                      "branch": "mulhearn",
+                      "notes": "Born 15 June 1951. Art teacher and sixth-grade teacher in Bennington, VT schools. BS Summa Cum Laude, North Adams State College (1978). Married Alan Jon Fortney. Photographer — Forthun village photos were taken by Jill during the 2005 Norway trip."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "agnes_mcentee",
+          "name": "Agnes McEntee ('Nanny Agnes')",
+          "gender": "F",
+          "branch": "mulhearn",
+          "notes": "Matriarch. Daughter of Bernard Sylvester McEntee and Sarah O'Brien. McEntee name (Gaelic: Mac an tSaoi, 'Son of the Scholar') traces to County Donegal, Ireland.",
+          "children": [
+            {
+              "id": "robert_mulhearn2",
+              "name": "→ see Robert Mulhearn above",
+              "branch": "mulhearn",
+              "type": "reference"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "anderson_branch",
+      "name": "Anderson / Andersen Branch",
+      "subtitle": "American · Wisconsin",
+      "branch": "anderson",
+      "type": "branch",
+      "url": "anderson.html",
+      "children": [
+        {
+          "id": "andrew_andersen_ii",
+          "name": "Andrew B. Andersen II",
+          "gender": "M",
+          "branch": "anderson",
+          "notes": "Married Shirley Mulhearn. Father of six children including Jill Andersen Fortney. Further ancestors not yet documented.",
+          "children": [
+            {
+              "id": "jill_andersen2",
+              "name": "Jill Andersen",
+              "gender": "F",
+              "branch": "anderson",
+              "notes": "→ see Mulhearn branch",
+              "type": "reference"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

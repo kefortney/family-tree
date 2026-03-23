@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Timeline — Fortney Family Heritage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Timeline page specifics */
+    .timeline-list {
+      position: relative;
+      padding-left: 2.5rem;
+      margin: 2rem 0;
+    }
+
+    .timeline-list::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--color-gold), var(--color-parchment-darker));
+      border-radius: 2px;
+    }
+
+    .tl-event {
+      position: relative;
+      margin-bottom: 2.25rem;
+      padding-left: 1rem;
+    }
+
+    .tl-event::before {
+      content: '';
+      position: absolute;
+      left: -2.05rem;
+      top: 0.4rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px currentColor;
+    }
+
+    .tl-event.fortney::before  { color: var(--color-fortney); background: var(--color-fortney-pale); }
+    .tl-event.sodergren::before { color: var(--color-sodergren); background: var(--color-sodergren-pale); }
+    .tl-event.mulhearn::before { color: var(--color-mulhearn); background: var(--color-mulhearn-pale); }
+    .tl-event.anderson::before { color: var(--color-anderson); background: var(--color-anderson-pale); }
+    .tl-event.milestone::before { background: var(--color-gold); color: var(--color-gold); box-shadow: 0 0 0 2px var(--color-gold); }
+
+    .tl-year {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      margin-bottom: 0.1rem;
+    }
+
+    .tl-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--color-brown);
+      margin-bottom: 0.4rem;
+    }
+
+    .tl-desc {
+      color: var(--color-brown-mid);
+      font-size: 0.925rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .tl-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .tl-location {
+      font-size: 0.775rem;
+      color: var(--color-gray);
+    }
+
+    .tl-location::before {
+      content: '📍 ';
+    }
+
+    .tl-event.hidden {
+      display: none;
+    }
+
+    /* Era headers */
+    .era-header {
+      margin: 3rem 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .era-header h3 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-brown-light);
+      font-family: var(--font-sans);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .era-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-parchment-darker);
+    }
+
+    /* Compact visual timeline at top */
+    .visual-timeline {
+      background: var(--color-white);
+      border: 1px solid var(--color-parchment-darker);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      overflow-x: auto;
+    }
+
+    .visual-timeline svg {
+      overflow: visible;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Fortney Family</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Family Tree</a></li>
+        <li><a href="timeline.html" class="active">Timeline</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="fortney.html" class="branch-fortney">Fortney / Forthun</a></li>
+        <li><a href="sodergren.html" class="branch-sodergren">Södergren</a></li>
+        <li><a href="mulhearn.html" class="branch-mulhearn">Mulhearn</a></li>
+        <li><a href="anderson.html" class="branch-anderson">Anderson</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <h1>Family Timeline</h1>
+    <p>From the mountain farms of Norway in 1570 to the Centennial Reunion in 2007 — all four family lines, in chronological order.</p>
+  </header>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- Visual overview SVG timeline -->
+      <div class="visual-timeline">
+        <h4 style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-brown-light);margin-bottom:1rem;">Overview · 1570–2007</h4>
+        <div id="timeline-svg-container" style="min-height:120px;"></div>
+        <div style="display:flex;gap:1.5rem;margin-top:1rem;flex-wrap:wrap;">
+          <span style="font-size:0.78rem;color:var(--color-fortney);font-weight:600;">■ Fortney / Forthun</span>
+          <span style="font-size:0.78rem;color:var(--color-sodergren);font-weight:600;">■ Södergren</span>
+          <span style="font-size:0.78rem;color:var(--color-mulhearn);font-weight:600;">■ Mulhearn / O'Brien</span>
+          <span style="font-size:0.78rem;color:var(--color-anderson);font-weight:600;">■ Anderson</span>
+          <span style="font-size:0.78rem;color:var(--color-gold);font-weight:600;">◆ Milestone</span>
+        </div>
+      </div>
+
+      <!-- Filter bar -->
+      <div class="timeline-filter-bar">
+        <span style="font-size:0.85rem;color:var(--color-brown-light);font-weight:500;margin-right:0.25rem;">Filter:</span>
+        <button class="filter-btn all active" data-branch="all">All Events</button>
+        <button class="filter-btn fortney" data-branch="fortney">Fortney / Forthun</button>
+        <button class="filter-btn sodergren" data-branch="sodergren">Södergren</button>
+        <button class="filter-btn mulhearn" data-branch="mulhearn">Mulhearn / O'Brien</button>
+        <button class="filter-btn anderson" data-branch="anderson">Anderson</button>
+      </div>
+
+      <!-- Timeline list -->
+      <div style="max-width:750px;">
+
+        <div class="era-header" id="era-norway"><h3>Norway &amp; Ireland · 1570–1853</h3></div>
+        <div class="timeline-list" id="timeline-list">
+          <!-- Events injected by JS -->
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Tooltip -->
+  <div class="timeline-tooltip" id="tl-tooltip">
+    <div class="tt-title" id="tt-title"></div>
+    <div class="tt-year" id="tt-year"></div>
+    <div class="tt-desc" id="tt-desc"></div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Fortney Family Heritage</h4>
+        <p>Four family lines documented across 1570–2007.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Family Branches</h4>
+        <ul>
+          <li><a href="fortney.html">Fortney / Forthun</a></li>
+          <li><a href="sodergren.html">Södergren</a></li>
+          <li><a href="mulhearn.html">Mulhearn / O'Brien</a></li>
+          <li><a href="anderson.html">Anderson</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Family Tree Map</a></li>
+          <li><a href="timeline.html">Timeline</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col"></div>
+    </div>
+    <div class="footer-bottom">
+      <span>Fortney Family Heritage</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script>
+  (function() {
+    const BRANCH_COLORS = {
+      fortney:   '#1d3a6c',
+      sodergren: '#2d6e5e',
+      mulhearn:  '#3a5c2d',
+      anderson:  '#7a2b3a',
+    };
+
+    // Type icons
+    const TYPE_ICONS = {
+      birth:    '🌱',
+      death:    '✦',
+      marriage: '💍',
+      migration:'⛵',
+      military: '🎖️',
+      milestone:'⭐',
+      reunion:  '🎉',
+    };
+
+    let allEvents = [];
+    let activeFilter = 'all';
+
+    // ------ Build visual SVG timeline ------
+    function buildSVGTimeline(events) {
+      const container = document.getElementById('timeline-svg-container');
+      const W = container.clientWidth || 800;
+      const H = 100;
+      const margin = { left: 40, right: 20 };
+
+      const svg = d3.select('#timeline-svg-container')
+        .append('svg')
+        .attr('width', '100%')
+        .attr('height', H)
+        .attr('viewBox', `0 0 ${W} ${H}`);
+
+      const x = d3.scaleLinear()
+        .domain([1560, 2015])
+        .range([margin.left, W - margin.right]);
+
+      // Axis
+      const axis = d3.axisBottom(x)
+        .tickFormat(d3.format('d'))
+        .ticks(10);
+
+      svg.append('g')
+        .attr('transform', `translate(0, ${H - 20})`)
+        .call(axis)
+        .select('.domain').remove();
+
+      svg.selectAll('.tick text')
+        .style('font-size', '10px')
+        .style('fill', '#8b6b52');
+
+      // Branch tracks
+      const branches = ['fortney', 'sodergren', 'mulhearn', 'anderson'];
+      const trackY = (branch) => {
+        const idx = branches.indexOf(branch);
+        return 15 + idx * 14;
+      };
+
+      // Horizontal lines per branch
+      branches.forEach(b => {
+        svg.append('line')
+          .attr('x1', margin.left)
+          .attr('x2', W - margin.right)
+          .attr('y1', trackY(b))
+          .attr('y2', trackY(b))
+          .attr('stroke', BRANCH_COLORS[b] + '33')
+          .attr('stroke-width', 1);
+      });
+
+      // Event dots
+      const tooltip = document.getElementById('tl-tooltip');
+
+      events.forEach(ev => {
+        const cx = x(ev.year);
+        const cy = trackY(ev.branch);
+        if (!cy) return;
+
+        svg.append('circle')
+          .attr('cx', cx)
+          .attr('cy', cy)
+          .attr('r', ev.type === 'milestone' ? 5 : 3.5)
+          .attr('fill', ev.type === 'milestone' ? '#b8962e' : BRANCH_COLORS[ev.branch])
+          .attr('stroke', 'white')
+          .attr('stroke-width', 1.5)
+          .style('cursor', 'pointer')
+          .on('mousemove', (event) => {
+            tooltip.querySelector('#tt-title').textContent = ev.title;
+            tooltip.querySelector('#tt-year').textContent = ev.year + (ev.location ? ' · ' + ev.location : '');
+            tooltip.querySelector('#tt-desc').textContent = ev.description;
+            tooltip.classList.add('visible');
+            tooltip.style.left = (event.clientX + 12) + 'px';
+            tooltip.style.top  = (event.clientY - 10) + 'px';
+          })
+          .on('mouseleave', () => tooltip.classList.remove('visible'));
+      });
+    }
+
+    // ------ Build event list ------
+    function renderList(events) {
+      const list = document.getElementById('timeline-list');
+      list.innerHTML = '';
+
+      const sorted = [...events].sort((a, b) => a.year - b.year);
+
+      sorted.forEach(ev => {
+        const div = document.createElement('div');
+        div.className = `tl-event ${ev.branch} ${ev.type || ''}`;
+        div.setAttribute('data-branch', ev.branch);
+
+        div.innerHTML = `
+          <div class="tl-year">${ev.year}</div>
+          <div class="tl-title">${TYPE_ICONS[ev.type] || '•'} ${ev.title}</div>
+          <p class="tl-desc">${ev.description}</p>
+          <div class="tl-meta">
+            <span class="branch-badge ${ev.branch}">${ev.branch === 'fortney' ? 'Fortney / Forthun' : ev.branch === 'sodergren' ? 'Södergren' : ev.branch === 'mulhearn' ? 'Mulhearn / O\'Brien' : 'Anderson'}</span>
+            ${ev.location ? `<span class="tl-location">${ev.location}</span>` : ''}
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    function applyFilter(branch) {
+      activeFilter = branch;
+      const items = document.querySelectorAll('.tl-event');
+      items.forEach(item => {
+        if (branch === 'all' || item.getAttribute('data-branch') === branch) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-branch') === branch);
+      });
+    }
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => applyFilter(btn.getAttribute('data-branch')));
+    });
+
+    // Load events
+    fetch('data/timeline.json')
+      .then(r => r.json())
+      .then(events => {
+        allEvents = events;
+        buildSVGTimeline(events);
+        renderList(events);
+      })
+      .catch(() => {
+        document.getElementById('timeline-list').innerHTML =
+          '<p style="color:var(--color-gray)">Run this page from a local server to load timeline data.</p>';
+      });
+  })();
+  </script>
+</body>
+</html>
