@@ -150,7 +150,7 @@
                                                       "death": 2005,
                                                       "gender": "M",
                                                       "branch": "fortney",
-                                                      "spouse": "Evelyn",
+                                                      "spouse": "Evelyn Matilda Yaun",
                                                       "children": [
                                                         {
                                                           "id": "alan_hubert",
@@ -191,7 +191,12 @@
                                                           "gender": "F",
                                                           "branch": "fortney"
                                                         }
-                                                      ]
+                                                      ],
+                                                      "birthplace": "Wheeler, WI",
+                                                      "deathplace": "Woodale, IL",
+                                                      "occupation": "Electrical engineer",
+                                                      "marriageplace": "Minneapolis, MN",
+                                                      "notes": "Son of Albert Christian Fortney. Married Evelyn Matilda Yaun (b. 23 December 1920, Knapp WI; worked for Sears, retired). 1 son, 2 granddaughters, 4 great-granddaughters."
                                                     },
                                                     {
                                                       "id": "virgil_fortney",
@@ -201,27 +206,44 @@
                                                       "gender": "M",
                                                       "branch": "fortney",
                                                       "spouse": "Betty Baker",
-                                                      "notes": "Married Betty Baker. Children: Philip, Robert, and Marcia Fortney. 1 granddaughter, Leslie.",
+                                                      "notes": "Son of Albert Christian Fortney. Married Betty Baker (b. 18 December 1927; wife, mom, sales, hairdresser), 15 June 1946, Seminole OK (div. 1962). 2 sons, 1 daughter, 1 granddaughter.",
                                                       "children": [
                                                         {
                                                           "id": "philip_virgil",
-                                                          "name": "Philip Fortney",
+                                                          "name": "Phillip Fortney",
                                                           "gender": "M",
-                                                          "branch": "fortney"
+                                                          "branch": "fortney",
+                                                          "birth": 1948,
+                                                          "birthplace": "16 August 1948",
+                                                          "occupation": "Guidance Counselor (retired)",
+                                                          "spouse": "Ngoc Kim Duan",
+                                                          "notes": "Married Ngoc Kim Duan (Saigon, Vietnam, b. 18 Aug 1966). No children."
                                                         },
                                                         {
                                                           "id": "robert_virgil",
                                                           "name": "Robert Fortney",
                                                           "gender": "M",
-                                                          "branch": "fortney"
+                                                          "branch": "fortney",
+                                                          "birth": 1953,
+                                                          "birthplace": "23 November 1953",
+                                                          "occupation": "Director, Ortho & Neurological ICU at Northwestern Hospital in Chicago",
+                                                          "notes": "Partner: Mark Schmantz (Tenor, Chicago Opera)."
                                                         },
                                                         {
                                                           "id": "marcia_virgil",
-                                                          "name": "Marcia Fortney",
+                                                          "name": "Marcia Attmore Fortney",
                                                           "gender": "F",
-                                                          "branch": "fortney"
+                                                          "branch": "fortney",
+                                                          "birth": 1951,
+                                                          "birthplace": "8 February 1951",
+                                                          "occupation": "Executive recruiter",
+                                                          "notes": "Married Dick Weber 1973 (div.). Married Wynn Blair 1985; 1 daughter Leslie Blair (b. 8 April 1986, Oakfield CT). Married George Attmore (computer consultant) 1999; no children."
                                                         }
-                                                      ]
+                                                      ],
+                                                      "birthplace": "Wheeler, WI",
+                                                      "occupation": "Sales",
+                                                      "marriageplace": "Seminole, Oklahoma",
+                                                      "marriagedate": "15 June 1946"
                                                     }
                                                   ]
                                                 },
@@ -243,7 +265,7 @@
                                                       "death": 2002,
                                                       "gender": "M",
                                                       "branch": "fortney",
-                                                      "notes": "Nuclear Physicist, Professor. Visited Fortun, Norway and acquired the authoritative Luster: Gards-og aettesoge.",
+                                                      "notes": "Nuclear Physicist, Professor. 1st of 4 wives: Virginia Dahl (b. 28 January 1921, Robinson KS; d. 1983, Ft. Collins). 1 son, 1 daughter. 3 grandsons + 4 adopted grandchildren. Visited Fortun, Norway.",
                                                       "children": [
                                                         {
                                                           "id": "david_dahl",
@@ -360,7 +382,12 @@
                                                             }
                                                           ]
                                                         }
-                                                      ]
+                                                      ],
+                                                      "occupation": "Nuclear Physicist; Professor",
+                                                      "birthplace": "Wheeler, WI",
+                                                      "deathplace": "Loveland, CO",
+                                                      "marriagedate": "February 1942",
+                                                      "marriageplace": "Rochester, NY"
                                                     },
                                                     {
                                                       "id": "monrad_dahl",
@@ -369,7 +396,7 @@
                                                       "death": 1993,
                                                       "gender": "M",
                                                       "branch": "fortney",
-                                                      "notes": "Physical Therapist.",
+                                                      "notes": "Teacher; Recreation Therapist. Married Jeanette (Jan) Higgins (b. 7 January 1922; teacher, musician, occupational therapist), June 1946/47. 6 children, 14 grandchildren, 5 great-grandchildren.",
                                                       "children": [
                                                         {
                                                           "id": "jon_arthur_dahl",
@@ -402,17 +429,129 @@
                                                               "spouse": "Scott Tollefson",
                                                               "notes": "Commercial Pilot, flight instructor, account manager. Died 2006. 1 son (Tyler), 1 daughter (Morgan)."
                                                             }
-                                                          ]
+                                                          ],
+                                                          "occupation": "Scientist; ecologist"
+                                                        },
+                                                        {
+                                                          "id": "david_frederick_dahl",
+                                                          "name": "David Frederick Dahl",
+                                                          "birth": 1948,
+                                                          "birthplace": "24 October 1948, Glenwood City WI",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Minister, psychologist",
+                                                          "spouse": "Maritza Gerbrandy",
+                                                          "notes": "1 son, 2 daughters."
+                                                        },
+                                                        {
+                                                          "id": "mark_thomas_dahl",
+                                                          "name": "Mark Thomas Dahl",
+                                                          "birth": 1951,
+                                                          "birthplace": "14 August 1951, Harmony, MN",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Orthopedic surgeon",
+                                                          "spouse": "Katherine Killeen",
+                                                          "notes": "3 daughters: Dana Marie, Lindsay, Jenny."
+                                                        },
+                                                        {
+                                                          "id": "deborah_susan_dahl",
+                                                          "name": "Deborah Susan Dahl",
+                                                          "birth": 1953,
+                                                          "birthplace": "30 March 1953, St. Paul, MN",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "occupation": "Occupational Therapist",
+                                                          "spouse": "Peter Van Wolvelaerd (div.)",
+                                                          "notes": "2 daughters: Megan, Arielle."
+                                                        },
+                                                        {
+                                                          "id": "daniel_stephen_dahl",
+                                                          "name": "Daniel Stephen Dahl",
+                                                          "birth": 1957,
+                                                          "birthplace": "21 January 1957, St. Cloud, MN",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Computer Programmer",
+                                                          "spouse": "Joni Hall",
+                                                          "notes": "1 son (Andrew), 1 daughter (Sarah)."
+                                                        },
+                                                        {
+                                                          "id": "peder_monrad_dahl",
+                                                          "name": "Peder Monrad Dahl",
+                                                          "birth": 1963,
+                                                          "birthplace": "30 April 1963, St. Cloud, MN",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Physical Therapist",
+                                                          "spouse": "Cristy Harris",
+                                                          "notes": "1 son (Alex), 1 daughter (Katerine)."
                                                         }
-                                                      ]
+                                                      ],
+                                                      "spouse": "Jeanette (Jan) Higgins",
+                                                      "occupation": "Teacher; Recreation Therapist",
+                                                      "birthplace": "28 August 1921"
                                                     },
                                                     {
                                                       "id": "frederick_dahl",
                                                       "name": "Frederick Thomas Dahl",
                                                       "birth": 1923,
-                                                      "death": 1983,
                                                       "gender": "M",
-                                                      "branch": "fortney"
+                                                      "branch": "fortney",
+                                                      "spouse": "Rosemary",
+                                                      "birthplace": "10 September 1923",
+                                                      "notes": "Son of Nettie Fortney & Frederick Dahl. Married Rosemary.",
+                                                      "children": [
+                                                        {
+                                                          "id": "tolana_marie_dahl",
+                                                          "name": "Tolana Marie Dahl",
+                                                          "birth": 1950,
+                                                          "birthplace": "28 January 1950",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Charles Brown",
+                                                          "notes": "1 daughter: Deanna."
+                                                        },
+                                                        {
+                                                          "id": "frederick_thomas_dahl_jr",
+                                                          "name": "Frederick Thomas Dahl Jr.",
+                                                          "birth": 1951,
+                                                          "birthplace": "25 May 1951",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Military",
+                                                          "notes": "Died in military service."
+                                                        },
+                                                        {
+                                                          "id": "edward_luke_dahl",
+                                                          "name": "Edward Luke Dahl",
+                                                          "birth": 1951,
+                                                          "death": 1969,
+                                                          "birthplace": "19 August 1951",
+                                                          "deathplace": "31 July 1969",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "notes": "Died in tractor accident on a farm."
+                                                        },
+                                                        {
+                                                          "id": "randi_elizabeth_dahl",
+                                                          "name": "Randi Elizabeth Dahl",
+                                                          "birth": 1953,
+                                                          "birthplace": "25 November 1953",
+                                                          "gender": "F",
+                                                          "branch": "fortney"
+                                                        },
+                                                        {
+                                                          "id": "steven_kendal_dahl",
+                                                          "name": "Steven Kendal Dahl",
+                                                          "birth": 1955,
+                                                          "birthplace": "25 March 1955",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "spouse": "Sylvia",
+                                                          "notes": "1 son: Tommie."
+                                                        }
+                                                      ]
                                                     },
                                                     {
                                                       "id": "sylvia_dahl",
@@ -421,7 +560,7 @@
                                                       "gender": "F",
                                                       "branch": "fortney",
                                                       "spouse": "Warren Kromroy",
-                                                      "notes": "Later Sylvia Deason (b. 1946?). Did thorough genealogical study of the Fortney line.",
+                                                      "notes": "Born 25 February 1926, Baldwin WI. Daughter of Nettie Fortney & Frederick Dahl. First married Warren Kromroy; son Tom William Kromroy (b. 26 September 1951). Second married Richard Goll (d. 11 May 2005, Huntington PA).",
                                                       "children": [
                                                         {
                                                           "id": "richard_goll",
@@ -431,11 +570,18 @@
                                                         },
                                                         {
                                                           "id": "tom_kromroy",
-                                                          "name": "Tom Kromroy",
+                                                          "name": "Tom William Kromroy",
                                                           "gender": "M",
                                                           "branch": "fortney",
                                                           "notes": "Son of Sylvia Dahl Kromroy.",
                                                           "children": [
+                                                            {
+                                                              "id": "warren_kromroy",
+                                                              "name": "Warren Kromroy",
+                                                              "birth": 1980,
+                                                              "gender": "M",
+                                                              "branch": "fortney"
+                                                            },
                                                             {
                                                               "id": "andrew_kromroy",
                                                               "name": "Andrew Kromroy",
@@ -463,7 +609,17 @@
                                                               "gender": "F",
                                                               "branch": "fortney"
                                                             }
-                                                          ]
+                                                          ],
+                                                          "birth": 1951,
+                                                          "birthplace": "26 September 1951",
+                                                          "spouse": "Kathy"
+                                                        },
+                                                        {
+                                                          "id": "marie_jean_kromroy",
+                                                          "name": "Marie Jean Kromroy",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "notes": "Daughter of Sylvia Dahl Kromroy."
                                                         }
                                                       ]
                                                     },
@@ -704,7 +860,51 @@
                                                       "gender": "M",
                                                       "branch": "fortney",
                                                       "spouse": "Mildred Irene Wedell Smith",
-                                                      "notes": "Retired. 2 daughters, 2 sons."
+                                                      "notes": "Son of Clarence Edward Fortney. Married Mildred Irene Wedell Smith (b. 29 July 1922 Sandstone MN; d. 12 June 2007 Columbia TN; Credit Manager J.C. Penney ret.). 4 children, 5 grandchildren, 6 great-grandchildren.",
+                                                      "birthplace": "Wheeler, WI",
+                                                      "marriagedate": "13 July 1944",
+                                                      "marriageplace": "Pontiac, MI",
+                                                      "children": [
+                                                        {
+                                                          "id": "wayne_wedell_fortney",
+                                                          "name": "Wayne Alan Wedell Fortney",
+                                                          "birth": 1950,
+                                                          "birthplace": "19 December 1950, Pontiac, MI",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "spouse": "Henrietta Pruitt",
+                                                          "notes": "4 daughters."
+                                                        },
+                                                        {
+                                                          "id": "lynn_ann_fortney",
+                                                          "name": "Lynn Ann Fortney",
+                                                          "birth": 1954,
+                                                          "birthplace": "24 May 1954, Pontiac, MI",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Richard Eugene Robb Jr.",
+                                                          "notes": "No children."
+                                                        },
+                                                        {
+                                                          "id": "lee_james_fortney",
+                                                          "name": "Lee James Fortney",
+                                                          "birth": 1954,
+                                                          "birthplace": "24 May 1954, Pontiac, MI",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "notes": "Twin of Lynn Ann. No children."
+                                                        },
+                                                        {
+                                                          "id": "deborah_sue_fortney",
+                                                          "name": "Deborah Sue Fortney",
+                                                          "birth": 1960,
+                                                          "birthplace": "14 January 1960, Pontiac, MI",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Peter Betanio",
+                                                          "notes": "1 son Jeremy; 1 grandson."
+                                                        }
+                                                      ]
                                                     },
                                                     {
                                                       "id": "agnes_fortney",
@@ -713,7 +913,44 @@
                                                       "gender": "F",
                                                       "branch": "fortney",
                                                       "spouse": "Richard Platt Deason",
-                                                      "notes": "3 daughters."
+                                                      "notes": "Daughter of Clarence Edward Fortney. Married Richard Platt Deason (b. 8 March 1922 Murphysboro IL; d. 13 May 1995 Grayling MI), 13 September 1941, Pontiac MI. 3 daughters.",
+                                                      "birthplace": "Wheeler, WI",
+                                                      "marriagedate": "13 September 1941",
+                                                      "marriageplace": "Pontiac, MI",
+                                                      "children": [
+                                                        {
+                                                          "id": "karol_marie_deason",
+                                                          "name": "Karol Marie Deason",
+                                                          "birth": 1943,
+                                                          "birthplace": "10 May 1943, Chicago, IL",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Howard Orlie Lutman",
+                                                          "notes": "1 son, 2 daughters."
+                                                        },
+                                                        {
+                                                          "id": "sylvia_jean_deason",
+                                                          "name": "Sylvia Jean Deason Munshaw",
+                                                          "birth": 1946,
+                                                          "birthplace": "16 May 1946, Pontiac, MI",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "John Wesley Munshaw",
+                                                          "notes": "1 son: Wesley."
+                                                        },
+                                                        {
+                                                          "id": "adele_janiece_deason",
+                                                          "name": "Adele Janiece Deason",
+                                                          "birth": 1949,
+                                                          "death": 1973,
+                                                          "birthplace": "8 May 1949, Pontiac, MI",
+                                                          "deathplace": "18 July 1973, Warren, MI",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Kim Leroy Howard",
+                                                          "notes": "Died age 24. No descendants."
+                                                        }
+                                                      ]
                                                     },
                                                     {
                                                       "id": "ralph_fortney",
@@ -723,7 +960,7 @@
                                                       "gender": "M",
                                                       "branch": "fortney",
                                                       "spouse": "Phyllis (Marjorie) Ann Welton",
-                                                      "notes": "Retired. 2 daughters, 1 son.",
+                                                      "notes": "Son of Clarence Edward Fortney. Married Phyllis (Marjorie) Ann Welton (b. 29 March 1932, Oakland County MI), 26 July 1952, Pontiac MI. 2 daughters, 2 sons.",
                                                       "children": [
                                                         {
                                                           "id": "cynthia_fortney",
@@ -804,8 +1041,27 @@
                                                               "branch": "fortney"
                                                             }
                                                           ]
+                                                        },
+                                                        {
+                                                          "id": "anita_marie_fortney",
+                                                          "name": "Anita Marie Fortney",
+                                                          "birth": 1957,
+                                                          "birthplace": "9 December 1957, Pontiac, MI",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "notes": "Married Joseph Austin Tackett (no descendants). Also married Thomas Martin Frame; 2 sons."
+                                                        },
+                                                        {
+                                                          "id": "thomas_kendall_fortney_r",
+                                                          "name": "Thomas Kendall Fortney",
+                                                          "birth": 1963,
+                                                          "birthplace": "10 June 1963, Pontiac, MI",
+                                                          "gender": "M",
+                                                          "branch": "fortney"
                                                         }
-                                                      ]
+                                                      ],
+                                                      "marriagedate": "26 July 1952",
+                                                      "marriageplace": "Pontiac, MI"
                                                     }
                                                   ]
                                                 },
@@ -893,7 +1149,96 @@
                                                       "birth": 1942,
                                                       "gender": "F",
                                                       "branch": "fortney",
-                                                      "notes": "Secretary/Office Worker, then farmer (ret.). Married 1st Ken Faber (4 children), 2nd Rolph Anderson (4 children)."
+                                                      "notes": "Daughter of Henry Martin Fortney. Nurse Assistant (retired), then farmer. 1st married Ken Faber (25 Aug 1962, div. 1977). 2nd married Rolph Anderson (b. 14 Dec 1929 Chippewa Falls; d. 18 Apr 1997 Cadott WI). 4 children, 4 step-children; 9 grandchildren + 2 step & 2 adopted; 3 great-grandchildren.",
+                                                      "occupation": "Nurse Assistant (retired); Farming",
+                                                      "children": [
+                                                        {
+                                                          "id": "kevin_lee_faber",
+                                                          "name": "Kevin Lee Faber",
+                                                          "birth": 1963,
+                                                          "birthplace": "3 February 1963, Menomonie WI",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Machinist",
+                                                          "spouse": "Wanda Ann Nye",
+                                                          "notes": "1 daughter: Jessica Ann; 3 sons: Jacob David, Jarrod William, Joshua Lee."
+                                                        },
+                                                        {
+                                                          "id": "laura_faber_konwinski",
+                                                          "name": "Laura Faber Konwinski",
+                                                          "birth": 1964,
+                                                          "birthplace": "1 October 1964, Menomonie WI",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "occupation": "Sales",
+                                                          "spouse": "Dale R. Konwinski",
+                                                          "notes": "1 son, 1 step-son."
+                                                        },
+                                                        {
+                                                          "id": "jennifer_faber_kysilko",
+                                                          "name": "Jennifer Faber Kysilko",
+                                                          "birth": 1967,
+                                                          "birthplace": "16 October 1967, Eau Claire WI",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "occupation": "Real estate",
+                                                          "spouse": "Robert Frank Kysilko",
+                                                          "notes": "2 daughters + 1 step."
+                                                        },
+                                                        {
+                                                          "id": "erick_thomas_faber",
+                                                          "name": "Erick Thomas Faber",
+                                                          "birth": 1970,
+                                                          "birthplace": "3 December 1970, Eau Claire WI",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Career US Army",
+                                                          "spouse": "Racheal Ann Melton",
+                                                          "notes": "1 son, 1 daughter, 2 adopted."
+                                                        },
+                                                        {
+                                                          "id": "jonathon_richard_anderson",
+                                                          "name": "Jonathon Richard Anderson",
+                                                          "birth": 1953,
+                                                          "birthplace": "20 September 1953, Chippewa Falls, WI",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Mechanical Engineer",
+                                                          "spouse": "Debbie Melville",
+                                                          "notes": "Step-son of Christine via Rolph Anderson. 2 sons: Jason, Ryan."
+                                                        },
+                                                        {
+                                                          "id": "tammy_ann_anderson",
+                                                          "name": "Tammy Ann Anderson",
+                                                          "birth": 1967,
+                                                          "birthplace": "18 November 1967",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "occupation": "Kitchen Designer",
+                                                          "spouse": "Terry Steinmetz",
+                                                          "notes": "Step-daughter of Christine via Rolph Anderson. 2 step-sons: Brandon, Jerrod."
+                                                        },
+                                                        {
+                                                          "id": "james_valentine_anderson",
+                                                          "name": "James Valentine Anderson",
+                                                          "birth": 1957,
+                                                          "birthplace": "1 January 1957, Chippewa Falls",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "UND PhD Bio-Chemistry",
+                                                          "spouse": "Jan Kistler",
+                                                          "notes": "Step-son of Christine via Rolph Anderson. 2 sons, 1 adopted daughter."
+                                                        },
+                                                        {
+                                                          "id": "richard_rolf_anderson",
+                                                          "name": "Richard Rolf Anderson",
+                                                          "birth": 1971,
+                                                          "birthplace": "4 May 1971",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "notes": "Step-son of Christine via Rolph Anderson. First partner: Jessica Fletty; 1 son Zachary. Second partner: Lisa Johnson; 1 son (Kaleb), 1 adopted son (Brendon)."
+                                                        }
+                                                      ]
                                                     },
                                                     {
                                                       "id": "karn_fortney",
@@ -901,7 +1246,47 @@
                                                       "birth": 1944,
                                                       "gender": "F",
                                                       "branch": "fortney",
-                                                      "notes": "Art Teacher (ret.). Married 1st Rick Rock (4 sons), 2nd Orrin Anderson (no children)."
+                                                      "notes": "Daughter of Henry Martin Fortney. Art Teacher (retired). 1st married Richard Rock (San Diego 1974, divorced); 4 sons. 2nd married Orrin Anderson (Las Vegas; b. 8 June 1937, Eau Claire WI; salesman retired).",
+                                                      "birthplace": "Wheeler, WI",
+                                                      "occupation": "Art Teacher (retired)",
+                                                      "children": [
+                                                        {
+                                                          "id": "anthony_thomas_rock",
+                                                          "name": "Anthony Thomas Rock",
+                                                          "birth": 1975,
+                                                          "birthplace": "6 February 1975, San Diego, California",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Food service"
+                                                        },
+                                                        {
+                                                          "id": "daniel_james_rock",
+                                                          "name": "Daniel James Rock",
+                                                          "birth": 1976,
+                                                          "birthplace": "22 August 1976, Menomonee, Wisconsin",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Insurance, accountant"
+                                                        },
+                                                        {
+                                                          "id": "steven_richard_rock",
+                                                          "name": "Steven Richard Rock",
+                                                          "birth": 1978,
+                                                          "birthplace": "20 June 1978, Menomonee, Wisconsin",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Physics career"
+                                                        },
+                                                        {
+                                                          "id": "thomas_michael_rock",
+                                                          "name": "Thomas Michael Rock",
+                                                          "birth": 1981,
+                                                          "birthplace": "10 September 1981, Menomonee, Wisconsin",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Chef"
+                                                        }
+                                                      ]
                                                     },
                                                     {
                                                       "id": "thomas_frederick",
@@ -1090,12 +1475,30 @@
                                                     },
                                                     {
                                                       "id": "anita_linnea_f",
-                                                      "name": "Anita Linnea Fortney",
+                                                      "name": "Anita Linnea Fortney Harms",
                                                       "birth": 1947,
                                                       "birthplace": "Tacoma, Washington",
                                                       "gender": "F",
                                                       "branch": "fortney",
-                                                      "notes": "Married William Harms. Moved to Muskegon, Michigan."
+                                                      "notes": "Daughter of Albin Leonard Fortney. Teacher (retired), creative dramatics. Married Burl (Bill) Harms (b. 26 March 1947; broadcaster retired, sales), 29 July 1972, Muskegon MI.",
+                                                      "occupation": "Teacher (retired), creative dramatics",
+                                                      "spouse": "Burl (Bill) Harms",
+                                                      "marriagedate": "29 July 1972",
+                                                      "marriageplace": "Muskegon, Michigan",
+                                                      "children": [
+                                                        {
+                                                          "id": "robin_harms",
+                                                          "name": "Robin Harms",
+                                                          "birth": 1980,
+                                                          "birthplace": "29 January 1980, Muskegon, MI",
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "spouse": "Nathan Kingsley",
+                                                          "marriagedate": "27 December 2006",
+                                                          "marriageplace": "Muskegon, MI",
+                                                          "notes": "Married Nathan Kingsley (b. 10 July 1978, Columbus OH), 27 December 2006, Muskegon MI. No children as of 2007."
+                                                        }
+                                                      ]
                                                     }
                                                   ]
                                                 },
@@ -1117,7 +1520,7 @@
                                                       "gender": "M",
                                                       "branch": "fortney",
                                                       "spouse": "Kathleen Koehler",
-                                                      "notes": "Computer data specialist. 1 son.",
+                                                      "notes": "Computer Data Specialist. 1st marriage 28 December 1958 (div. 1963). 2nd wife Kathleen D. Koehler (b. 30 December 1937, bookkeeper). 1 living son Kerry.",
                                                       "children": [
                                                         {
                                                           "id": "kerry_larson",
@@ -1146,8 +1549,29 @@
                                                               "branch": "fortney"
                                                             }
                                                           ]
+                                                        },
+                                                        {
+                                                          "id": "thomas_jefferson_larson",
+                                                          "name": "Thomas Jefferson Larson",
+                                                          "birth": 1961,
+                                                          "death": 1961,
+                                                          "birthplace": "4 July 1961",
+                                                          "deathplace": "5 July 1961",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "notes": "Died one day after birth."
+                                                        },
+                                                        {
+                                                          "id": "maureen_larson",
+                                                          "name": "Maureen Larson",
+                                                          "birth": 1962,
+                                                          "death": 1962,
+                                                          "gender": "F",
+                                                          "branch": "fortney",
+                                                          "notes": "Died in infancy 1962."
                                                         }
-                                                      ]
+                                                      ],
+                                                      "marriagedate": "28 December 1958"
                                                     },
                                                     {
                                                       "id": "mary_larson",
@@ -1253,6 +1677,17 @@
                                                       "notes": "4 children.",
                                                       "children": [
                                                         {
+                                                          "id": "aaron_richard_olson",
+                                                          "name": "Aaron Richard Olson",
+                                                          "birth": 1968,
+                                                          "birthplace": "13 February 1968, Minneapolis MN",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Teacher",
+                                                          "spouse": "Elizabeth",
+                                                          "notes": "1 son, 1 daughter."
+                                                        },
+                                                        {
                                                           "id": "ashley_olson",
                                                           "name": "Ashley Renee Olson Keith",
                                                           "birth": 1970,
@@ -1345,8 +1780,32 @@
                                                       "birth": 1944,
                                                       "gender": "M",
                                                       "branch": "fortney",
-                                                      "spouse": "Kathy",
-                                                      "notes": "2 sons."
+                                                      "spouse": "Kathleen Lucille Shanahan Larson",
+                                                      "notes": "Son of Myrtle Susanna Fortney & Andrew Larson. Married Kathleen Lucille Shanahan Larson (b. 1 July 1947; Real Estate Agent/Property Manager ret.). 2 sons, 1 granddaughter.",
+                                                      "birthplace": "14 February 1944",
+                                                      "occupation": "Marketing, Hewlett-Packard (ret.); Business Owner",
+                                                      "children": [
+                                                        {
+                                                          "id": "daniel_patrick_larson",
+                                                          "name": "Daniel Patrick Larson",
+                                                          "birth": 1965,
+                                                          "birthplace": "1 October 1965, Washington DC",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Computer Consultant, Business owner",
+                                                          "spouse": "Julia Szabo",
+                                                          "notes": "Married Julia Szabo, 3 July 1999, Budapest Hungary. 1 daughter: Izabelle (b. 2 Aug 2005)."
+                                                        },
+                                                        {
+                                                          "id": "eric_orland_larson",
+                                                          "name": "Eric Orland Larson",
+                                                          "birth": 1972,
+                                                          "birthplace": "16 October 1972, Mountain View, CA",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Real estate broker/business owner"
+                                                        }
+                                                      ]
                                                     },
                                                     {
                                                       "id": "laurel_larson",
@@ -1358,6 +1817,16 @@
                                                       "spouse": "Ollie Madsen",
                                                       "notes": "Reading teacher (ret.). 3 children. Her husband Ollie encountered Kendall Thomas Fortney in Vietnam.",
                                                       "children": [
+                                                        {
+                                                          "id": "josh_andrew_madsen",
+                                                          "name": "Josh Andrew Madsen",
+                                                          "birth": 1974,
+                                                          "birthplace": "12 July 1974",
+                                                          "gender": "M",
+                                                          "branch": "fortney",
+                                                          "occupation": "Custodian",
+                                                          "notes": "No children."
+                                                        },
                                                         {
                                                           "id": "luke_madsen",
                                                           "name": "Luke Everett Madsen",
