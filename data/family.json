@@ -1500,7 +1500,8 @@
                                                         }
                                                       ]
                                                     }
-                                                  ]
+                                                  ],
+                                                  "spouse": "Anita Linnea Södergren"
                                                 },
                                                 {
                                                   "id": "myrtie_susanna",
@@ -1966,7 +1967,8 @@
               "deathplace": "Stoughton, Wisconsin",
               "gender": "F",
               "branch": "sodergren",
-              "notes": "Born in Moline, IL; family moved to Burlington, IA. Married Albin Leonard Fortney, 28 May 1935, Minneapolis. Died 4 July 1990, before breakfast, in Skaalen Home after 22 years as a widow. Mother of four."
+              "notes": "Born in Moline, IL; family moved to Burlington, IA. Married Albin Leonard Fortney, 28 May 1935, Minneapolis. Died 4 July 1990, before breakfast, in Skaalen Home after 22 years as a widow. Mother of four.",
+              "spouse": "Albin Leonard Fortney"
             },
             {
               "id": "una_sodergren",
