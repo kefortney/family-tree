@@ -30,9 +30,9 @@
   --color-mulhearn: #3a5c2d;
   --color-mulhearn-light: #4e7a3d;
   --color-mulhearn-pale: #e8f0e5;
-  --color-anderson: #7a2b3a;
-  --color-anderson-light: #9e3a4c;
-  --color-anderson-pale: #f0e6e8;
+  --color-andersen: #7a2b3a;
+  --color-andersen-light: #9e3a4c;
+  --color-andersen-pale: #f0e6e8;
 
   /* Typography */
   --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -159,7 +159,7 @@ blockquote {
 .nav-links .branch-fortney:hover { background: rgba(29, 58, 108, 0.3); }
 .nav-links .branch-sodergren:hover { background: rgba(45, 110, 94, 0.3); }
 .nav-links .branch-mulhearn:hover { background: rgba(58, 92, 45, 0.3); }
-.nav-links .branch-anderson:hover { background: rgba(122, 43, 58, 0.3); }
+.nav-links .branch-andersen:hover { background: rgba(122, 43, 58, 0.3); }
 
 /* --- Page Hero --- */
 .page-hero {
@@ -185,7 +185,7 @@ blockquote {
 .page-hero.hero-fortney { background: linear-gradient(135deg, #0f1f3d 0%, var(--color-fortney) 100%); }
 .page-hero.hero-sodergren { background: linear-gradient(135deg, #162f28 0%, var(--color-sodergren) 100%); }
 .page-hero.hero-mulhearn { background: linear-gradient(135deg, #1a2d14 0%, var(--color-mulhearn) 100%); }
-.page-hero.hero-anderson { background: linear-gradient(135deg, #3a1219 0%, var(--color-anderson) 100%); }
+.page-hero.hero-andersen { background: linear-gradient(135deg, #3a1219 0%, var(--color-andersen) 100%); }
 
 /* --- Main Content Container --- */
 .container {
@@ -253,7 +253,7 @@ blockquote {
 .branch-card.fortney { border-top-color: var(--color-fortney); }
 .branch-card.sodergren { border-top-color: var(--color-sodergren); }
 .branch-card.mulhearn { border-top-color: var(--color-mulhearn); }
-.branch-card.anderson { border-top-color: var(--color-anderson); }
+.branch-card.andersen { border-top-color: var(--color-andersen); }
 
 .branch-card .branch-icon {
   font-size: 2rem;
@@ -268,7 +268,7 @@ blockquote {
 .branch-card.fortney h3 { color: var(--color-fortney); }
 .branch-card.sodergren h3 { color: var(--color-sodergren); }
 .branch-card.mulhearn h3 { color: var(--color-mulhearn); }
-.branch-card.anderson h3 { color: var(--color-anderson); }
+.branch-card.andersen h3 { color: var(--color-andersen); }
 
 .branch-card .subtitle {
   font-size: 0.85rem;
@@ -295,7 +295,7 @@ blockquote {
 .branch-badge.fortney { background: var(--color-fortney-pale); color: var(--color-fortney); }
 .branch-badge.sodergren { background: var(--color-sodergren-pale); color: var(--color-sodergren); }
 .branch-badge.mulhearn { background: var(--color-mulhearn-pale); color: var(--color-mulhearn); }
-.branch-badge.anderson { background: var(--color-anderson-pale); color: var(--color-anderson); }
+.branch-badge.andersen { background: var(--color-andersen-pale); color: var(--color-andersen); }
 
 /* --- Tree Visualization Container --- */
 /* ── Branch filter bar (radio-style switcher above tree) ── */
@@ -412,7 +412,7 @@ blockquote {
 .branch-fortney circle { fill: var(--color-fortney-pale); stroke: var(--color-fortney); }
 .branch-sodergren circle { fill: var(--color-sodergren-pale); stroke: var(--color-sodergren); }
 .branch-mulhearn circle { fill: var(--color-mulhearn-pale); stroke: var(--color-mulhearn); }
-.branch-anderson circle { fill: var(--color-anderson-pale); stroke: var(--color-anderson); }
+.branch-andersen circle { fill: var(--color-andersen-pale); stroke: var(--color-andersen); }
 .branch-root circle { fill: var(--color-gold-light); stroke: var(--color-gold); }
 
 /* Person Detail Panel */
@@ -526,8 +526,8 @@ blockquote {
 .filter-btn.sodergren.active, .filter-btn.sodergren:hover { background: var(--color-sodergren); }
 .filter-btn.mulhearn { border-color: var(--color-mulhearn); color: var(--color-mulhearn); }
 .filter-btn.mulhearn.active, .filter-btn.mulhearn:hover { background: var(--color-mulhearn); }
-.filter-btn.anderson { border-color: var(--color-anderson); color: var(--color-anderson); }
-.filter-btn.anderson.active, .filter-btn.anderson:hover { background: var(--color-anderson); }
+.filter-btn.andersen { border-color: var(--color-andersen); color: var(--color-andersen); }
+.filter-btn.andersen.active, .filter-btn.andersen:hover { background: var(--color-andersen); }
 
 /* Timeline Event Tooltip */
 .timeline-tooltip {
@@ -923,7 +923,7 @@ blockquote {
 .hero-branch-pill.fortney { background: rgba(29, 58, 108, 0.5); border: 1px solid rgba(45, 82, 153, 0.4); }
 .hero-branch-pill.sodergren { background: rgba(45, 110, 94, 0.5); border: 1px solid rgba(61, 143, 122, 0.4); }
 .hero-branch-pill.mulhearn { background: rgba(58, 92, 45, 0.5); border: 1px solid rgba(78, 122, 61, 0.4); }
-.hero-branch-pill.anderson { background: rgba(122, 43, 58, 0.5); border: 1px solid rgba(158, 58, 76, 0.4); }
+.hero-branch-pill.andersen { background: rgba(122, 43, 58, 0.5); border: 1px solid rgba(158, 58, 76, 0.4); }
 
 .hero-branch-pill:hover {
   color: white;
@@ -1100,3 +1100,4 @@ blockquote {
     width: calc(100% - 2rem);
   }
 }
+

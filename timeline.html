@@ -47,7 +47,7 @@
     .tl-event.fortney::before  { color: var(--color-fortney); background: var(--color-fortney-pale); }
     .tl-event.sodergren::before { color: var(--color-sodergren); background: var(--color-sodergren-pale); }
     .tl-event.mulhearn::before { color: var(--color-mulhearn); background: var(--color-mulhearn-pale); }
-    .tl-event.anderson::before { color: var(--color-anderson); background: var(--color-anderson-pale); }
+    .tl-event.andersen::before { color: var(--color-andersen); background: var(--color-andersen-pale); }
     .tl-event.milestone::before { background: var(--color-gold); color: var(--color-gold); box-shadow: 0 0 0 2px var(--color-gold); }
 
     .tl-year {
@@ -148,7 +148,7 @@
         <li><a href="fortney.html" class="branch-fortney">Fortney / Forthun</a></li>
         <li><a href="sodergren.html" class="branch-sodergren">Södergren</a></li>
         <li><a href="mulhearn.html" class="branch-mulhearn">Mulhearn</a></li>
-        <li><a href="anderson.html" class="branch-anderson">Anderson</a></li>
+        <li><a href="andersen.html" class="branch-andersen">Andersen</a></li>
       </ul>
     </div>
   </nav>
@@ -169,7 +169,7 @@
           <span style="font-size:0.78rem;color:var(--color-fortney);font-weight:600;">■ Fortney / Forthun</span>
           <span style="font-size:0.78rem;color:var(--color-sodergren);font-weight:600;">■ Södergren</span>
           <span style="font-size:0.78rem;color:var(--color-mulhearn);font-weight:600;">■ Mulhearn / O'Brien</span>
-          <span style="font-size:0.78rem;color:var(--color-anderson);font-weight:600;">■ Anderson</span>
+          <span style="font-size:0.78rem;color:var(--color-andersen);font-weight:600;">■ Andersen</span>
           <span style="font-size:0.78rem;color:var(--color-gold);font-weight:600;">◆ Milestone</span>
         </div>
       </div>
@@ -181,7 +181,7 @@
         <button class="filter-btn fortney" data-branch="fortney">Fortney / Forthun</button>
         <button class="filter-btn sodergren" data-branch="sodergren">Södergren</button>
         <button class="filter-btn mulhearn" data-branch="mulhearn">Mulhearn / O'Brien</button>
-        <button class="filter-btn anderson" data-branch="anderson">Anderson</button>
+        <button class="filter-btn andersen" data-branch="andersen">Andersen</button>
       </div>
 
       <!-- Timeline list -->
@@ -215,7 +215,7 @@
           <li><a href="fortney.html">Fortney / Forthun</a></li>
           <li><a href="sodergren.html">Södergren</a></li>
           <li><a href="mulhearn.html">Mulhearn / O'Brien</a></li>
-          <li><a href="anderson.html">Anderson</a></li>
+          <li><a href="andersen.html">Andersen</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -240,7 +240,7 @@
       fortney:   '#1d3a6c',
       sodergren: '#2d6e5e',
       mulhearn:  '#3a5c2d',
-      anderson:  '#7a2b3a',
+      andersen:  '#7a2b3a',
     };
 
     // Type icons
@@ -289,7 +289,7 @@
         .style('fill', '#8b6b52');
 
       // Branch tracks
-      const branches = ['fortney', 'sodergren', 'mulhearn', 'anderson'];
+      const branches = ['fortney', 'sodergren', 'mulhearn', 'andersen'];
       const trackY = (branch) => {
         const idx = branches.indexOf(branch);
         return 15 + idx * 14;
@@ -351,7 +351,7 @@
           <div class="tl-title">${TYPE_ICONS[ev.type] || '•'} ${ev.title}</div>
           <p class="tl-desc">${ev.description}</p>
           <div class="tl-meta">
-            <span class="branch-badge ${ev.branch}">${ev.branch === 'fortney' ? 'Fortney / Forthun' : ev.branch === 'sodergren' ? 'Södergren' : ev.branch === 'mulhearn' ? 'Mulhearn / O\'Brien' : 'Anderson'}</span>
+            <span class="branch-badge ${ev.branch}">${ev.branch === 'fortney' ? 'Fortney / Forthun' : ev.branch === 'sodergren' ? 'Södergren' : ev.branch === 'mulhearn' ? 'Mulhearn / O\'Brien' : 'Andersen'}</span>
             ${ev.location ? `<span class="tl-location">${ev.location}</span>` : ''}
           </div>
         `;
@@ -396,3 +396,4 @@
   </script>
 </body>
 </html>
+

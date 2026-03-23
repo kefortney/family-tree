@@ -13,7 +13,7 @@
       --fortney:   #1d3a6c;
       --sodergren: #2d6e5e;
       --mulhearn:  #3a5c2d;
-      --anderson:  #7a2b3a;
+      --andersen:  #7a2b3a;
       --bg:        #f7f5f0;
       --panel-bg:  #ffffff;
       --border:    #ddd8ce;
@@ -97,9 +97,44 @@
       padding: 0.5rem 0.75rem 0.75rem;
       border-bottom: 1px solid var(--border);
       margin-bottom: 0.5rem;
+      flex-wrap: wrap;
     }
     .tree-panel-header h2 { font-size: 0.8rem; font-weight: 600; color: var(--text-mid); flex: 1; }
     .tree-panel-header .hint { font-size: 0.72rem; color: var(--text-light); }
+
+    .mini-btn {
+      padding: 0.24rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fff;
+      color: var(--text-mid);
+      font-size: 0.72rem;
+      cursor: pointer;
+    }
+    .mini-btn:hover { background: #f7f3ea; }
+
+    .admin-branch-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      width: 100%;
+      margin-top: 0.35rem;
+    }
+    .branch-filter-mini {
+      padding: 0.22rem 0.45rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text-mid);
+      font-size: 0.7rem;
+      cursor: pointer;
+    }
+    .branch-filter-mini.active {
+      border-color: var(--accent);
+      background: #f7edd0;
+      color: var(--text);
+      font-weight: 600;
+    }
 
     /* ── Tree list items ─────────────────────────────── */
     ul.tree-list, ul.tree-children {
@@ -172,7 +207,7 @@
     .branch-dot.fortney   { background: var(--fortney); }
     .branch-dot.sodergren { background: var(--sodergren); }
     .branch-dot.mulhearn  { background: var(--mulhearn); }
-    .branch-dot.anderson  { background: var(--anderson); }
+    .branch-dot.andersen  { background: var(--andersen); }
     .branch-dot.root      { background: var(--accent); }
     .branch-dot.branch    { background: var(--text-mid); }
 
@@ -329,6 +364,7 @@
   <h1>Family Tree Editor</h1>
   <div class="spacer"></div>
   <span class="nav-status" id="status-msg"></span>
+  <button class="nav-btn" onclick="addBlankPerson()" title="Add a new blank person record">+ New Person</button>
   <button class="nav-btn" onclick="openFilePicker()" title="Open family.json directly (Chrome/Edge)">📂 Open File</button>
   <button class="nav-btn primary" id="btn-save" onclick="saveFile()">💾 Save</button>
   <button class="nav-btn" onclick="downloadJSON()">⬇ Download JSON</button>
@@ -343,6 +379,15 @@
     <div class="tree-panel-header">
       <h2>Family Tree</h2>
       <span class="hint">Click to select · ▶ to expand</span>
+      <button class="mini-btn" onclick="expandAllTree()">Expand All</button>
+      <button class="mini-btn" onclick="collapseAllTree()">Collapse All</button>
+      <div class="admin-branch-filter" id="admin-branch-filter">
+        <button class="branch-filter-mini active" data-branch="fortney" onclick="setAdminBranchFilter('fortney')">Fortney</button>
+        <button class="branch-filter-mini" data-branch="sodergren" onclick="setAdminBranchFilter('sodergren')">Sodergren</button>
+        <button class="branch-filter-mini" data-branch="mulhearn" onclick="setAdminBranchFilter('mulhearn')">Mulhearn</button>
+        <button class="branch-filter-mini" data-branch="andersen" onclick="setAdminBranchFilter('andersen')">Andersen</button>
+        <button class="branch-filter-mini" data-branch="all" onclick="setAdminBranchFilter('all')">All</button>
+      </div>
     </div>
     <ul class="tree-list" id="tree-list"></ul>
   </div>
@@ -378,7 +423,7 @@
             <option value="fortney">Fortney / Forthun</option>
             <option value="sodergren">Södergren</option>
             <option value="mulhearn">Mulhearn / O'Brien</option>
-            <option value="anderson">Anderson</option>
+            <option value="andersen">Andersen</option>
           </select>
         </div>
         <div class="form-group">
@@ -413,6 +458,45 @@
         <textarea id="f-notes" rows="7" placeholder="Biographical notes…"></textarea>
       </div>
 
+      <div class="form-row">
+        <div class="form-group">
+          <label>Spouse (by ID)</label>
+          <select id="f-spouse-id"></select>
+        </div>
+        <div class="form-group" style="justify-content:flex-end;">
+          <label>&nbsp;</label>
+          <div style="display:flex;gap:0.4rem;">
+            <button class="btn" onclick="setSpouseFromForm()">Set Spouse</button>
+            <button class="btn" onclick="clearSpouse()">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Add Child (existing ID)</label>
+          <select id="f-child-id" multiple size="6"></select>
+        </div>
+        <div class="form-group" style="justify-content:flex-end;">
+          <label>&nbsp;</label>
+          <div style="display:flex;gap:0.4rem;">
+            <button class="btn" onclick="addExistingChildFromForm()">Add Child Link</button>
+            <button class="btn" onclick="removeSelectedChildrenFromForm()">Remove Child Link</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Set Parent (existing ID)</label>
+          <select id="f-parent-id"></select>
+        </div>
+        <div class="form-group" style="justify-content:flex-end;">
+          <label>&nbsp;</label>
+          <button class="btn" onclick="setParentFromForm()">Set Parent</button>
+        </div>
+      </div>
+
       <div class="form-actions">
         <button class="btn primary" onclick="applyEdit()">✓ Apply Changes</button>
         <button class="btn" onclick="addChild()">+ Add Child</button>
@@ -442,24 +526,43 @@
 
 <script>
   /* ── State ──────────────────────────────────────────── */
-  let familyData   = null;   // root JSON object
-  let selectedPath = null;   // array of child-indices to reach selected node
-  let fileHandle   = null;   // FileSystemFileHandle (File Access API)
-  let dirty        = false;  // unsaved changes
+  let familyData = null;
+  let selectedPath = null;
+  let fileHandle = null;
+  let dirty = false;
+  let currentBranch = 'fortney';
+  let openAll = true;
+  let openPathKeys = new Set();
+  let idIndex = new Map();
+  let personOptions = [];
 
   /* ── Boot ──────────────────────────────────────────── */
   window.addEventListener('load', () => {
     fetch('data/family.json')
       .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-      .then(data => { familyData = data; renderTree(); toast('Loaded from server', 'success'); })
-      .catch(() => { document.getElementById('load-overlay').style.display = 'flex'; });
+      .then(data => {
+        familyData = data;
+        rebuildIndexes();
+        renderTree();
+        toast('Loaded from server', 'success');
+      })
+      .catch(() => {
+        document.getElementById('load-overlay').style.display = 'flex';
+      });
   });
 
   window.addEventListener('beforeunload', e => {
-    if (dirty) { e.preventDefault(); e.returnValue = ''; }
+    if (dirty) {
+      e.preventDefault();
+      e.returnValue = '';
+    }
   });
 
-  /* ── Tree path helpers ─────────────────────────────── */
+  /* ── Helpers ───────────────────────────────────────── */
+  function pathKey(path) {
+    return path.join('-');
+  }
+
   function nodeAt(path) {
     let n = familyData;
     for (const i of path) n = n.children[i];
@@ -467,23 +570,131 @@
   }
 
   function parentOf(path) {
-    if (path.length === 0) return null;
+    if (!path || path.length === 0) return null;
     let n = familyData;
     for (let i = 0; i < path.length - 1; i++) n = n.children[path[i]];
     return n;
   }
 
-  function pathKey(path) { return path.join('-'); }
+  function setOrDelete(obj, key, val) {
+    if (val !== undefined && val !== null && val !== '') obj[key] = val;
+    else delete obj[key];
+  }
+
+  function isAncestorPath(ancestor, candidate) {
+    if (ancestor.length > candidate.length) return false;
+    for (let i = 0; i < ancestor.length; i++) {
+      if (ancestor[i] !== candidate[i]) return false;
+    }
+    return true;
+  }
+
+  function branchPath(branch) {
+    if (branch === 'all') return [];
+    const children = familyData?.children || [];
+    const idx = children.findIndex(c => c.id === branch + '_branch');
+    return idx >= 0 ? [idx] : [];
+  }
+
+  function branchNameFromCode(code) {
+    if (code === 'fortney') return 'Fortney / Forthun';
+    if (code === 'sodergren') return 'Södergren';
+    if (code === 'mulhearn') return "Mulhearn / O'Brien";
+    if (code === 'andersen') return 'Andersen';
+    return code || '';
+  }
+
+  function rebuildIndexes() {
+    idIndex = new Map();
+    personOptions = [];
+
+    function walk(node, path) {
+      if (node.id) idIndex.set(node.id, path.slice());
+      if (node.type !== 'root') {
+        personOptions.push({
+          id: node.id || '',
+          name: node.name || '(unnamed)',
+          branch: node.branch || '',
+          type: node.type || 'person'
+        });
+      }
+      (node.children || []).forEach((child, i) => walk(child, [...path, i]));
+    }
+
+    walk(familyData, []);
+  }
+
+  function selectById(id) {
+    const path = idIndex.get(id);
+    if (!path) return;
+    selectNode(path);
+  }
+
+  function refreshAfterMutation(selectId) {
+    rebuildIndexes();
+    renderTree();
+    if (selectId && idIndex.has(selectId)) {
+      selectById(selectId);
+    } else {
+      selectedPath = null;
+      document.getElementById('edit-form').style.display = 'none';
+      document.getElementById('no-selection').style.display = 'flex';
+    }
+    dirty = true;
+    updateSaveBtn();
+  }
+
+  /* ── Branch filter + expand controls ───────────────── */
+  function setAdminBranchFilter(branch) {
+    currentBranch = branch;
+    document.querySelectorAll('.branch-filter-mini').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.branch === branch);
+    });
+    renderTree();
+    if (selectedPath) {
+      const bPath = branchPath(branch);
+      if (!(branch === 'all' || isAncestorPath(bPath, selectedPath))) {
+        selectedPath = null;
+        document.getElementById('edit-form').style.display = 'none';
+        document.getElementById('no-selection').style.display = 'flex';
+      }
+    }
+  }
+
+  function expandAllTree() {
+    openAll = true;
+    renderTree();
+  }
+
+  function collapseAllTree() {
+    openAll = false;
+    openPathKeys.clear();
+    renderTree();
+    if (selectedPath) expandAncestors(selectedPath);
+  }
 
   /* ── Render tree ───────────────────────────────────── */
   function renderTree() {
     const ul = document.getElementById('tree-list');
     ul.innerHTML = '';
-    buildList(familyData, [], ul, true);
+    if (!familyData) return;
+
+    const startPath = branchPath(currentBranch);
+    const startNode = nodeAt(startPath);
+    buildList(startNode, startPath, ul, true);
+
+    if (selectedPath) {
+      const selectedRow = document.querySelector(`.tree-item-row[data-path="${pathKey(selectedPath)}"]`);
+      if (!selectedRow) {
+        selectedPath = null;
+        document.getElementById('edit-form').style.display = 'none';
+        document.getElementById('no-selection').style.display = 'flex';
+      }
+    }
   }
 
   function buildList(node, path, parentUl, forceOpen) {
-    const li  = document.createElement('li');
+    const li = document.createElement('li');
     const row = document.createElement('div');
     row.className = 'tree-item-row';
     row.dataset.path = pathKey(path);
@@ -492,13 +703,15 @@
       row.classList.add('selected');
     }
 
-    // Toggle indicator
     const hasKids = node.children && node.children.length > 0;
     if (hasKids) {
       const tog = document.createElement('span');
       tog.className = 'tree-toggle';
       tog.textContent = '▶';
-      tog.addEventListener('click', e => { e.stopPropagation(); toggleExpand(li, tog); });
+      tog.addEventListener('click', e => {
+        e.stopPropagation();
+        toggleExpand(li, tog, path);
+      });
       row.appendChild(tog);
     } else {
       const sp = document.createElement('span');
@@ -506,15 +719,14 @@
       row.appendChild(sp);
     }
 
-    // Branch dot
     const dotCls = node.type === 'root' ? 'root' : (node.type === 'branch' ? 'branch' : (node.branch || ''));
     const dot = document.createElement('span');
     dot.className = `branch-dot ${dotCls}`;
     row.appendChild(dot);
 
-    // Name + dates — depth class makes top levels bolder
     const nameEl = document.createElement('span');
-    const depthClass = path.length <= 1 ? ` depth-${path.length}` : '';
+    const localDepth = Math.max(0, path.length - branchPath(currentBranch).length);
+    const depthClass = localDepth <= 1 ? ` depth-${localDepth}` : '';
     nameEl.className = 'item-name' + depthClass;
     const name = node.name || '(unnamed)';
     nameEl.textContent = name.length > 38 ? name.slice(0, 36) + '…' : name;
@@ -523,7 +735,8 @@
     if (node.birth || node.death) {
       const meta = document.createElement('span');
       meta.className = 'item-meta';
-      const b = node.birth || ''; const d = node.death || '';
+      const b = node.birth || '';
+      const d = node.death || '';
       meta.textContent = (b && d) ? `${b}–${d}` : b ? `b.${b}` : `d.${d}`;
       row.appendChild(meta);
     }
@@ -531,11 +744,12 @@
     row.addEventListener('click', () => selectNode(path));
     li.appendChild(row);
 
-    // Children
     if (hasKids) {
       const ul = document.createElement('ul');
-      ul.className = 'tree-children' + (forceOpen || path.length === 0 ? ' open' : '');
-      if (ul.classList.contains('open')) {
+      const key = pathKey(path);
+      const shouldOpen = forceOpen || openAll || openPathKeys.has(key);
+      ul.className = 'tree-children' + (shouldOpen ? ' open' : '');
+      if (shouldOpen) {
         const tog = row.querySelector('.tree-toggle');
         if (tog) tog.textContent = '▼';
       }
@@ -546,26 +760,24 @@
     parentUl.appendChild(li);
   }
 
-  function toggleExpand(li, tog) {
+  function toggleExpand(li, tog, path) {
     const ul = li.querySelector(':scope > ul.tree-children');
     if (!ul) return;
     const open = ul.classList.toggle('open');
     tog.textContent = open ? '▼' : '▶';
+    const key = pathKey(path);
+    if (open) openPathKeys.add(key);
+    else openPathKeys.delete(key);
   }
 
   /* ── Select node ───────────────────────────────────── */
   function selectNode(path) {
-    // Deselect old
-    document.querySelectorAll('.tree-item-row.selected')
-      .forEach(el => el.classList.remove('selected'));
-
+    document.querySelectorAll('.tree-item-row.selected').forEach(el => el.classList.remove('selected'));
     selectedPath = path;
 
-    // Select new
     const row = document.querySelector(`.tree-item-row[data-path="${pathKey(path)}"]`);
     if (row) {
       row.classList.add('selected');
-      // Expand ancestors
       expandAncestors(path);
     }
 
@@ -574,8 +786,10 @@
 
   function expandAncestors(path) {
     for (let len = 1; len < path.length; len++) {
-      const ancestorKey = pathKey(path.slice(0, len));
-      const ancestorRow = document.querySelector(`.tree-item-row[data-path="${ancestorKey}"]`);
+      const ancestor = path.slice(0, len);
+      const key = pathKey(ancestor);
+      openPathKeys.add(key);
+      const ancestorRow = document.querySelector(`.tree-item-row[data-path="${key}"]`);
       if (ancestorRow) {
         const li = ancestorRow.closest('li');
         const ul = li?.querySelector(':scope > ul.tree-children');
@@ -588,30 +802,89 @@
     }
   }
 
-  /* ── Populate edit form ────────────────────────────── */
+  /* ── Relationship selects ──────────────────────────── */
+  function optionText(entry) {
+    const label = entry.name || entry.id;
+    const branch = entry.branch ? ` (${branchNameFromCode(entry.branch)})` : '';
+    return `${entry.id} - ${label}${branch}`;
+  }
+
+  function fillSelect(selectId, currentId, includeBlank, selectedVal) {
+    const sel = document.getElementById(selectId);
+    sel.innerHTML = '';
+    if (includeBlank) {
+      const blank = document.createElement('option');
+      blank.value = '';
+      blank.textContent = '— none —';
+      sel.appendChild(blank);
+    }
+
+    personOptions
+      .filter(p => p.id && p.type === 'person' && p.id !== currentId)
+      .sort((a, b) => a.id.localeCompare(b.id))
+      .forEach(p => {
+        const o = document.createElement('option');
+        o.value = p.id;
+        o.textContent = optionText(p);
+        sel.appendChild(o);
+      });
+
+    sel.value = selectedVal || '';
+  }
+
+  function fillChildSelect(currentId, selectedChildIds) {
+    const sel = document.getElementById('f-child-id');
+    sel.innerHTML = '';
+
+    const chosen = new Set(selectedChildIds || []);
+    personOptions
+      .filter(p => p.id && p.type === 'person' && p.id !== currentId)
+      .sort((a, b) => {
+        const aSel = chosen.has(a.id) ? 0 : 1;
+        const bSel = chosen.has(b.id) ? 0 : 1;
+        if (aSel !== bSel) return aSel - bSel;
+        return a.id.localeCompare(b.id);
+      })
+      .forEach(p => {
+        const o = document.createElement('option');
+        o.value = p.id;
+        const linkedMark = chosen.has(p.id) ? ' [linked]' : '';
+        o.textContent = optionText(p) + linkedMark;
+        if (chosen.has(p.id)) o.selected = true;
+        sel.appendChild(o);
+      });
+  }
+
+  /* ── Populate form ─────────────────────────────────── */
   function populateForm(node, path) {
     document.getElementById('no-selection').style.display = 'none';
     document.getElementById('edit-form').style.display = 'flex';
 
-    const isRoot   = node.type === 'root';
+    const isRoot = node.type === 'root';
     const isBranch = node.type === 'branch';
-    document.getElementById('panel-title').textContent = isRoot ? 'Root Node' : isBranch ? 'Branch Node' : 'Edit Person';
-    document.getElementById('panel-path').textContent  = path.length === 0 ? 'Root' : 'Depth ' + path.length;
+    document.getElementById('panel-title').textContent = isRoot ? 'Root Node' : (isBranch ? 'Branch Node' : 'Edit Person');
+    document.getElementById('panel-path').textContent = path.length === 0 ? 'Root' : 'Depth ' + path.length;
 
-    document.getElementById('f-id').value         = node.id          || '';
-    document.getElementById('f-name').value       = node.name        || '';
-    document.getElementById('f-branch').value     = node.branch      || '';
-    document.getElementById('f-gender').value     = node.gender      || '';
-    document.getElementById('f-birth').value      = node.birth       || '';
-    document.getElementById('f-death').value      = node.death       || '';
-    document.getElementById('f-birthplace').value = node.birthplace  || '';
-    document.getElementById('f-deathplace').value = node.deathplace  || '';
-    document.getElementById('f-notes').value      = node.notes       || '';
+    document.getElementById('f-id').value = node.id || '';
+    document.getElementById('f-name').value = node.name || '';
+    document.getElementById('f-branch').value = node.branch || '';
+    document.getElementById('f-gender').value = node.gender || '';
+    document.getElementById('f-birth').value = node.birth || '';
+    document.getElementById('f-death').value = node.death || '';
+    document.getElementById('f-birthplace').value = node.birthplace || '';
+    document.getElementById('f-deathplace').value = node.deathplace || '';
+    document.getElementById('f-notes').value = node.notes || '';
 
-    // Up/down button state
+    const spouseVal = node.spouseId || '';
+    const inferredParentId = path.length > 0 ? (parentOf(path)?.id || '') : '';
+    const inferredChildIds = (node.children || []).map(c => c.id).filter(Boolean);
+    fillSelect('f-spouse-id', node.id, true, spouseVal);
+    fillChildSelect(node.id, inferredChildIds);
+    fillSelect('f-parent-id', node.id, true, inferredParentId);
+
     const siblingCount = path.length === 0 ? 0 : (parentOf(path).children || []).length;
     const idx = path.length === 0 ? 0 : path[path.length - 1];
-    document.getElementById('btn-move-up').disabled   = path.length === 0 || idx === 0;
+    document.getElementById('btn-move-up').disabled = path.length === 0 || idx === 0;
     document.getElementById('btn-move-down').disabled = path.length === 0 || idx >= siblingCount - 1;
   }
 
@@ -620,93 +893,272 @@
     if (!selectedPath) return;
     const node = nodeAt(selectedPath);
 
-    node.name = document.getElementById('f-name').value.trim();
+    const idVal = (document.getElementById('f-id').value || '').trim();
+    const newName = document.getElementById('f-name').value.trim();
+    if (!newName) {
+      toast('Name is required', 'error');
+      return;
+    }
+    node.name = newName;
 
-    setOrDelete(node, 'branch',      document.getElementById('f-branch').value);
-    setOrDelete(node, 'gender',      document.getElementById('f-gender').value);
-    setOrDelete(node, 'birthplace',  document.getElementById('f-birthplace').value.trim());
-    setOrDelete(node, 'deathplace',  document.getElementById('f-deathplace').value.trim());
-    setOrDelete(node, 'notes',       document.getElementById('f-notes').value.trim());
+    setOrDelete(node, 'branch', document.getElementById('f-branch').value);
+    setOrDelete(node, 'gender', document.getElementById('f-gender').value);
+    setOrDelete(node, 'birthplace', document.getElementById('f-birthplace').value.trim());
+    setOrDelete(node, 'deathplace', document.getElementById('f-deathplace').value.trim());
+    setOrDelete(node, 'notes', document.getElementById('f-notes').value.trim());
 
     const birth = parseInt(document.getElementById('f-birth').value, 10);
     const death = parseInt(document.getElementById('f-death').value, 10);
-    if (isNaN(birth)) delete node.birth; else node.birth = birth;
-    if (isNaN(death)) delete node.death; else node.death = death;
+    if (isNaN(birth)) delete node.birth;
+    else node.birth = birth;
+    if (isNaN(death)) delete node.death;
+    else node.death = death;
 
-    // Update name in tree list without full re-render
-    const row = document.querySelector(`.tree-item-row[data-path="${pathKey(selectedPath)}"]`);
-    if (row) {
-      const nameEl = row.querySelector('.item-name');
-      if (nameEl) nameEl.textContent = node.name.length > 38 ? node.name.slice(0,36)+'…' : node.name;
+    if (idVal && idVal !== node.id) {
+      if (idIndex.has(idVal)) {
+        toast('That ID already exists', 'error');
+        return;
+      }
+      const oldId = node.id;
+      node.id = idVal;
+      for (const [otherId, otherPath] of idIndex.entries()) {
+        if (otherId === oldId) continue;
+        const otherNode = nodeAt(otherPath);
+        if (otherNode.spouseId === oldId) otherNode.spouseId = idVal;
+      }
     }
 
-    dirty = true;
-    updateSaveBtn();
+    // Apply spouse selection as part of normal save flow.
+    const spouseId = (document.getElementById('f-spouse-id')?.value || '').trim();
+    const spouseResult = upsertSpouseRelationship(node, spouseId);
+    if (!spouseResult.ok) {
+      toast(spouseResult.msg, 'error');
+      return;
+    }
+
+    refreshAfterMutation(node.id);
     toast('Changes applied', 'success');
   }
 
-  function setOrDelete(obj, key, val) {
-    if (val) obj[key] = val; else delete obj[key];
-  }
-
-  /* ── Add child ─────────────────────────────────────── */
-  function addChild() {
-    if (selectedPath === null) return;
-    const node = nodeAt(selectedPath);
-    if (!node.children) node.children = [];
-
-    const newPerson = {
-      id:       'person_' + Date.now(),
-      name:     'New Person',
-      branch:   node.branch || '',
+  /* ── Add child / blank person ─────────────────────── */
+  function makeBlankPerson(branch) {
+    return {
+      id: 'person_' + Date.now(),
+      name: 'New Person',
+      branch: branch || currentBranch || 'fortney',
       children: []
     };
-    node.children.push(newPerson);
-    dirty = true;
-    updateSaveBtn();
+  }
 
-    // Re-render the subtree from the parent down
-    renderTree();
-
-    // Select the new child
-    const childPath = [...selectedPath, node.children.length - 1];
-    selectNode(childPath);
+  function addChild() {
+    if (selectedPath === null) return;
+    const parent = nodeAt(selectedPath);
+    if (!parent.children) parent.children = [];
+    const child = makeBlankPerson(parent.branch || currentBranch || 'fortney');
+    parent.children.push(child);
+    refreshAfterMutation(child.id);
     toast('Child added');
+  }
+
+  function addBlankPerson() {
+    if (!familyData) return;
+    const bPath = branchPath(currentBranch === 'all' ? 'fortney' : currentBranch);
+    const parent = nodeAt(bPath);
+    if (!parent.children) parent.children = [];
+    const person = makeBlankPerson(currentBranch === 'all' ? 'fortney' : currentBranch);
+    parent.children.push(person);
+    openAll = true;
+    refreshAfterMutation(person.id);
+    toast('New blank record created');
+  }
+
+  /* ── Spouse relationship ───────────────────────────── */
+  function clearSpouse() {
+    if (!selectedPath) return;
+    const node = nodeAt(selectedPath);
+    const result = upsertSpouseRelationship(node, '');
+    if (!result.ok) {
+      toast(result.msg, 'error');
+      return;
+    }
+    refreshAfterMutation(node.id);
+    toast('Spouse cleared');
+  }
+
+  function upsertSpouseRelationship(node, spouseId) {
+    const currentSpouseId = node.spouseId || '';
+
+    if (!spouseId) {
+      if (currentSpouseId && idIndex.has(currentSpouseId)) {
+        const oldPartner = nodeAt(idIndex.get(currentSpouseId));
+        if (oldPartner.spouseId === node.id) delete oldPartner.spouseId;
+      }
+      delete node.spouseId;
+      return { ok: true };
+    }
+
+    if (spouseId === node.id) return { ok: false, msg: 'Cannot set spouse to self' };
+    if (!idIndex.has(spouseId)) return { ok: false, msg: 'Spouse ID not found' };
+
+    // No-op if already linked both ways.
+    if (currentSpouseId === spouseId) {
+      const existingPartner = nodeAt(idIndex.get(spouseId));
+      if (existingPartner.spouseId !== node.id) existingPartner.spouseId = node.id;
+      return { ok: true };
+    }
+
+    // Unlink existing spouse from this node.
+    if (currentSpouseId && idIndex.has(currentSpouseId)) {
+      const oldPartner = nodeAt(idIndex.get(currentSpouseId));
+      if (oldPartner.spouseId === node.id) delete oldPartner.spouseId;
+    }
+
+    // If selected spouse already points elsewhere, clear their prior reciprocal link.
+    const spouseNode = nodeAt(idIndex.get(spouseId));
+    if (spouseNode.spouseId && spouseNode.spouseId !== node.id && idIndex.has(spouseNode.spouseId)) {
+      const spouseOldPartner = nodeAt(idIndex.get(spouseNode.spouseId));
+      if (spouseOldPartner.spouseId === spouseNode.id) delete spouseOldPartner.spouseId;
+    }
+
+    node.spouseId = spouseId;
+    spouseNode.spouseId = node.id;
+    return { ok: true };
+  }
+
+  function setSpouseFromForm() {
+    if (!selectedPath) return;
+    const node = nodeAt(selectedPath);
+    const spouseId = (document.getElementById('f-spouse-id').value || '').trim();
+    const result = upsertSpouseRelationship(node, spouseId);
+    if (!result.ok) {
+      toast(result.msg, 'error');
+      return;
+    }
+    refreshAfterMutation(node.id);
+    toast('Spouse relationship set', 'success');
+  }
+
+  /* ── Parent/child relationship by ID ───────────────── */
+  function moveNodeToParent(childId, parentId) {
+    if (!idIndex.has(childId) || !idIndex.has(parentId)) return { ok: false, msg: 'ID not found' };
+
+    const childPath = idIndex.get(childId);
+    const parentPath = idIndex.get(parentId);
+    if (childPath.length === 0) return { ok: false, msg: 'Cannot move root' };
+    if (childId === parentId) return { ok: false, msg: 'Cannot parent to self' };
+    if (isAncestorPath(childPath, parentPath)) return { ok: false, msg: 'Cannot set parent to descendant' };
+
+    const oldParent = parentOf(childPath);
+    const oldIdx = childPath[childPath.length - 1];
+    const childNode = oldParent.children[oldIdx];
+
+    oldParent.children.splice(oldIdx, 1);
+
+    // Rebuild index to get fresh parent path after removal shifts.
+    rebuildIndexes();
+    if (!idIndex.has(parentId)) return { ok: false, msg: 'Parent disappeared after move' };
+
+    const freshParent = nodeAt(idIndex.get(parentId));
+    if (!freshParent.children) freshParent.children = [];
+    if (freshParent.children.some(c => c.id === childId)) return { ok: false, msg: 'Child already under this parent' };
+    freshParent.children.push(childNode);
+
+    return { ok: true };
+  }
+
+  function addExistingChildFromForm() {
+    if (!selectedPath) return;
+    const parentNode = nodeAt(selectedPath);
+    const childIds = Array.from(document.getElementById('f-child-id').selectedOptions).map(o => o.value).filter(Boolean);
+    if (childIds.length === 0) {
+      toast('Select at least one child ID', 'error');
+      return;
+    }
+
+    let added = 0;
+    for (const childId of childIds) {
+      const result = moveNodeToParent(childId, parentNode.id);
+      if (result.ok) added += 1;
+    }
+    if (added === 0) {
+      toast('No child links were added', 'error');
+      return;
+    }
+    refreshAfterMutation(parentNode.id);
+    toast('Child relationship added', 'success');
+  }
+
+  function removeSelectedChildrenFromForm() {
+    if (!selectedPath) return;
+    const parentNode = nodeAt(selectedPath);
+    const selectedIds = Array.from(document.getElementById('f-child-id').selectedOptions).map(o => o.value).filter(Boolean);
+    if (selectedIds.length === 0) {
+      toast('Select child IDs to remove', 'error');
+      return;
+    }
+    if (!parentNode.children || parentNode.children.length === 0) {
+      toast('This node has no children', 'error');
+      return;
+    }
+
+    const selectedSet = new Set(selectedIds);
+    const before = parentNode.children.length;
+    parentNode.children = parentNode.children.filter(c => !selectedSet.has(c.id));
+    const removed = before - parentNode.children.length;
+
+    if (removed === 0) {
+      toast('No matching child links found', 'error');
+      return;
+    }
+
+    refreshAfterMutation(parentNode.id);
+    toast('Child link(s) removed', 'success');
+  }
+
+  function setParentFromForm() {
+    if (!selectedPath) return;
+    const node = nodeAt(selectedPath);
+    const parentId = document.getElementById('f-parent-id').value;
+    if (!parentId) {
+      toast('Select a parent ID', 'error');
+      return;
+    }
+    const result = moveNodeToParent(node.id, parentId);
+    if (!result.ok) {
+      toast(result.msg, 'error');
+      return;
+    }
+    refreshAfterMutation(node.id);
+    toast('Parent relationship set', 'success');
   }
 
   /* ── Move up / down ────────────────────────────────── */
   function moveUp() {
     if (!selectedPath || selectedPath.length === 0) return;
-    const idx    = selectedPath[selectedPath.length - 1];
-    if (idx === 0) return;
     const parent = parentOf(selectedPath);
+    const idx = selectedPath[selectedPath.length - 1];
+    if (idx === 0) return;
     [parent.children[idx - 1], parent.children[idx]] = [parent.children[idx], parent.children[idx - 1]];
-    dirty = true;
-    updateSaveBtn();
-    const newPath = [...selectedPath.slice(0, -1), idx - 1];
-    renderTree();
-    selectNode(newPath);
+    refreshAfterMutation(nodeAt([...selectedPath.slice(0, -1), idx - 1]).id);
   }
 
   function moveDown() {
     if (!selectedPath || selectedPath.length === 0) return;
     const parent = parentOf(selectedPath);
-    const idx    = selectedPath[selectedPath.length - 1];
+    const idx = selectedPath[selectedPath.length - 1];
     if (idx >= parent.children.length - 1) return;
     [parent.children[idx], parent.children[idx + 1]] = [parent.children[idx + 1], parent.children[idx]];
-    dirty = true;
-    updateSaveBtn();
-    const newPath = [...selectedPath.slice(0, -1), idx + 1];
-    renderTree();
-    selectNode(newPath);
+    refreshAfterMutation(nodeAt([...selectedPath.slice(0, -1), idx + 1]).id);
   }
 
   /* ── Delete ────────────────────────────────────────── */
   function deletePerson() {
     if (!selectedPath || selectedPath.length === 0) {
-      toast('Cannot delete the root node', 'error'); return;
+      toast('Cannot delete the root node', 'error');
+      return;
     }
-    const node     = nodeAt(selectedPath);
+
+    const node = nodeAt(selectedPath);
     const kidsCount = (node.children || []).length;
     const msg = kidsCount > 0
       ? `Delete "${node.name}" and all ${kidsCount} descendant(s)? This cannot be undone.`
@@ -714,15 +1166,16 @@
     if (!confirm(msg)) return;
 
     const parent = parentOf(selectedPath);
-    const idx    = selectedPath[selectedPath.length - 1];
+    const idx = selectedPath[selectedPath.length - 1];
     parent.children.splice(idx, 1);
-    dirty = true;
-    updateSaveBtn();
 
-    selectedPath = null;
-    document.getElementById('edit-form').style.display    = 'none';
-    document.getElementById('no-selection').style.display = 'flex';
-    renderTree();
+    // Clear spouse back-reference if present.
+    if (node.spouseId && idIndex.has(node.spouseId)) {
+      const spouseNode = nodeAt(idIndex.get(node.spouseId));
+      if (spouseNode.spouseId === node.id) delete spouseNode.spouseId;
+    }
+
+    refreshAfterMutation(null);
     toast(`"${node.name}" deleted`);
   }
 
@@ -741,6 +1194,7 @@
       const file = await handle.getFile();
       const text = await file.text();
       familyData = JSON.parse(text);
+      rebuildIndexes();
       document.getElementById('load-overlay').style.display = 'none';
       renderTree();
       dirty = false;
@@ -815,6 +1269,8 @@
     const btn = document.getElementById('btn-save');
     btn.textContent = dirty ? '💾 Save *' : '💾 Save';
     btn.classList.toggle('primary', dirty);
+    const status = document.getElementById('status-msg');
+    status.textContent = dirty ? 'Unsaved changes' : 'Saved';
   }
 
   let toastTimer;
@@ -826,6 +1282,18 @@
     toastTimer = setTimeout(() => { el.className = ''; }, 3000);
   }
 
+  // Expose button handlers
+  window.setAdminBranchFilter = setAdminBranchFilter;
+  window.expandAllTree = expandAllTree;
+  window.collapseAllTree = collapseAllTree;
+  window.setSpouseFromForm = setSpouseFromForm;
+  window.clearSpouse = clearSpouse;
+  window.addExistingChildFromForm = addExistingChildFromForm;
+  window.removeSelectedChildrenFromForm = removeSelectedChildrenFromForm;
+  window.setParentFromForm = setParentFromForm;
+  window.addBlankPerson = addBlankPerson;
+
 </script>
 </body>
 </html>
+

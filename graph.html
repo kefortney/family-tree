@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Graph View</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .graph-shell {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    .graph-toolbar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      background: var(--color-parchment-dark);
+      border: 1px solid var(--color-parchment-darker);
+      border-radius: 8px;
+      padding: 0.75rem;
+    }
+
+    .graph-toolbar label {
+      font-size: 0.8rem;
+      color: var(--color-brown-mid);
+      font-weight: 600;
+    }
+
+    .graph-toolbar input,
+    .graph-toolbar select,
+    .graph-toolbar button {
+      padding: 0.45rem 0.55rem;
+      border: 1px solid var(--color-parchment-darker);
+      border-radius: 6px;
+      background: #fff;
+      font-size: 0.85rem;
+      color: var(--color-brown);
+    }
+
+    .graph-layout {
+      display: grid;
+      grid-template-columns: 1fr 330px;
+      gap: 0.75rem;
+    }
+
+    #cy {
+      min-height: 74vh;
+      border: 1px solid var(--color-parchment-darker);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .graph-panel {
+      border: 1px solid var(--color-parchment-darker);
+      border-radius: 10px;
+      background: #fff;
+      padding: 0.85rem;
+      overflow: auto;
+      max-height: 74vh;
+    }
+
+    .graph-panel h3 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+    }
+
+    .graph-meta {
+      font-size: 0.8rem;
+      color: var(--color-brown-mid);
+      margin-bottom: 0.75rem;
+    }
+
+    .graph-details pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.75rem;
+      line-height: 1.45;
+      background: var(--color-parchment-dark);
+      border: 1px solid var(--color-parchment-darker);
+      border-radius: 6px;
+      padding: 0.7rem;
+      margin: 0;
+    }
+
+    @media (max-width: 1100px) {
+      .graph-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .graph-panel {
+        max-height: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Fortney Family</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Family Tree</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="graph.html" class="active">Graph View</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <h1>Family Graph</h1>
+    <p>A layered family-tree view with partner unions and descendant links, adapted for cross-branch connections.</p>
+  </header>
+
+  <main class="graph-shell">
+    <div class="graph-toolbar">
+      <label for="branch-filter">Branch</label>
+      <select id="branch-filter">
+        <option value="all">All</option>
+        <option value="fortney">Fortney</option>
+        <option value="sodergren">Södergren</option>
+        <option value="mulhearn">Mulhearn</option>
+        <option value="andersen">Andersen</option>
+      </select>
+
+      <label for="node-search">Find Person</label>
+      <input id="node-search" type="text" placeholder="Name or ID">
+
+      <label for="layout-select">Layout</label>
+      <select id="layout-select">
+        <option value="family" selected>Family (layered)</option>
+        <option value="cose">Force</option>
+        <option value="breadthfirst">Generation bands</option>
+        <option value="concentric">Concentric</option>
+      </select>
+
+      <button id="btn-layout">Run Layout</button>
+      <button id="btn-reset">Reset Filters</button>
+    </div>
+
+    <div class="graph-layout">
+      <div id="cy"></div>
+      <aside class="graph-panel">
+        <h3>Selection</h3>
+        <div class="graph-meta" id="graph-stats">Loading...</div>
+        <div class="graph-details">
+          <pre id="selection-json">Click a person or edge to inspect details.</pre>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/cytoscape@3.30.2/dist/cytoscape.min.js"></script>
+  <script src="js/graph.js"></script>
+</body>
+</html>

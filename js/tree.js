@@ -7,7 +7,7 @@
     fortney:  { stroke: '#1d3a6c', fill: '#e8edf5', text: '#1d3a6c' },
     sodergren:{ stroke: '#2d6e5e', fill: '#e6f0ee', text: '#2d6e5e' },
     mulhearn: { stroke: '#3a5c2d', fill: '#e8f0e5', text: '#3a5c2d' },
-    anderson: { stroke: '#7a2b3a', fill: '#f0e6e8', text: '#7a2b3a' },
+    andersen: { stroke: '#7a2b3a', fill: '#f0e6e8', text: '#7a2b3a' },
     root:     { stroke: '#b8962e', fill: '#faf6ef', text: '#2c1a10' },
     branch:   { stroke: '#5c3d2e', fill: '#f0e9da', text: '#2c1a10' },
   };
@@ -16,7 +16,7 @@
     fortney:   'Fortney / Forthun',
     sodergren: 'Södergren',
     mulhearn:  'Mulhearn / O\'Brien',
-    anderson:  'Anderson',
+    andersen:  'Andersen',
   };
 
   let treeData   = null;
@@ -29,6 +29,7 @@
   const BRANCH_RADIUS = 9;
   let nodeId = 0;
   let currentBranch = 'fortney';
+  let personById = new Map();
 
   const detailPanel = document.getElementById('person-detail');
   const container   = document.getElementById('tree-container');
@@ -55,6 +56,15 @@
       d._children = null;
     }
     if (d.children) d.children.forEach(expandAll);
+  }
+
+  function rebuildPersonLookup() {
+    personById = new Map();
+    if (!treeData) return;
+    (function walk(node) {
+      if (node && node.id) personById.set(node.id, node);
+      (node.children || []).forEach(walk);
+    })(treeData);
   }
 
   // ── Init ───────────────────────────────────────────────────
@@ -91,6 +101,7 @@
       })
       .then(data => {
         treeData = data;
+        rebuildPersonLookup();
         buildTree(currentBranch);
         setupControls();
       })
@@ -149,6 +160,8 @@
 
   const NODE_SPACING_Y = 46;
   const NODE_SPACING_X = 210;
+  const UNION_OFFSET_Y = 64;
+  const SPOUSE_STACK_X = 22;
 
   function update(source) {
     const isAllMode = currentBranch === 'all';
@@ -158,10 +171,78 @@
 
     const nodes = root.descendants();
     const links = root.links();
+    const nodeById = new Map(nodes.map(n => [n.data?.id, n]));
+
+    // Re-anchor spouse-only records that were added at branch root level
+    // but actually belong to a deeper partner node.
+    const reanchoredSpouseIds = new Set();
+    nodes.forEach(n => {
+      if (!n?.data?.id) return;
+      if (n.data.type === 'root' || n.data.type === 'branch') return;
+
+      const spouseId = (n.data.spouseId || '').trim();
+      if (!spouseId) return;
+
+      const spouseNode = nodeById.get(spouseId);
+      if (!spouseNode) return;
+
+      const hasChildren = ((n.children && n.children.length) || (n._children && n._children.length));
+      if (hasChildren) return;
+
+      const isBranchLevel = n.parent?.data?.type === 'branch';
+      const spouseIsDeeper = spouseNode.depth > n.depth;
+      if (isBranchLevel && spouseIsDeeper) {
+        reanchoredSpouseIds.add(n.data.id);
+      }
+    });
 
     // In all-branches mode, omit the virtual root (depth 0) from extents and links
-    const visibleNodes = isAllMode ? nodes.filter(d => d.depth > 0) : nodes;
-    const visibleLinks = isAllMode ? links.filter(d => d.source.depth > 0) : links;
+    const visibleNodes = (isAllMode ? nodes.filter(d => d.depth > 0) : nodes)
+      .filter(d => !reanchoredSpouseIds.has(d.data?.id));
+    const visibleLinks = (isAllMode ? links.filter(d => d.source.depth > 0) : links)
+      .filter(d => !reanchoredSpouseIds.has(d.source.data?.id) && !reanchoredSpouseIds.has(d.target.data?.id));
+    const visibleById  = new Map(visibleNodes.map(n => [n.data.id, n]));
+
+    const spouseUnits = [];
+    const spouseSeen = new Set();
+    visibleNodes.forEach((n, idx) => {
+      if (!n?.data?.id) return;
+      if (n.data.type === 'root' || n.data.type === 'branch') return;
+
+      const spouseId = (n.data.spouseId || '').trim();
+      const spouseText = (n.data.spouse || '').trim();
+      if (!spouseId && !spouseText) return;
+
+      const pairKey = spouseId
+        ? [n.data.id, spouseId].sort().join('|')
+        : `${n.data.id}|ext:${spouseText.toLowerCase()}`;
+      if (spouseSeen.has(pairKey)) return;
+      spouseSeen.add(pairKey);
+
+      const spouseRecord = spouseId ? personById.get(spouseId) : null;
+      const spouseLabel = spouseRecord?.name || spouseText || spouseId;
+      const sign = idx % 2 === 0 ? -1 : 1;
+
+      spouseUnits.push({
+        id: pairKey,
+        person: n,
+        spouseId,
+        spouseLabel,
+        unionX: n.x,
+        unionY: n.y + UNION_OFFSET_Y,
+        spouseX: n.x + sign * SPOUSE_STACK_X,
+        spouseY: n.y,
+        color: colorFor(n).stroke,
+      });
+    });
+
+    const unionByPersonId = new Map(spouseUnits.map(u => [u.person.data.id, u]));
+
+    function linkWithUnion(d) {
+      const unit = unionByPersonId.get(d.source?.data?.id);
+      const sourceNode = unit ? { x: unit.unionX, y: unit.unionY } : d.source;
+      return diagonal({ source: sourceNode, target: d.target });
+    }
 
     const xExtent = d3.extent(visibleNodes, d => d.x);
     const yExtent = d3.extent(visibleNodes, d => d.y);
@@ -186,7 +267,7 @@
 
     link.merge(linkEnter)
       .transition().duration(350)
-      .attr('d', diagonal)
+      .attr('d', linkWithUnion)
       .attr('stroke', d => {
         const c = BRANCH_COLORS[d.target.data.branch] || BRANCH_COLORS.root;
         return c.stroke + '55';
@@ -200,8 +281,64 @@
       })
       .remove();
 
+    // ── Union + spouse display ─────────────────────────
+    const unionSel = g.selectAll('g.union-unit').data(spouseUnits, d => d.id);
+    const unionEnter = unionSel.enter()
+      .append('g')
+      .attr('class', 'union-unit');
+
+    unionEnter.append('line').attr('class', 'union-person-link').attr('stroke-width', 1.2).attr('opacity', 0.85);
+    unionEnter.append('line').attr('class', 'union-spouse-link').attr('stroke-width', 1.2).attr('stroke-dasharray', '3,2').attr('opacity', 0.8);
+    unionEnter.append('circle').attr('class', 'union-node').attr('r', 3.3).attr('stroke-width', 1.2);
+    unionEnter.append('circle').attr('class', 'spouse-proxy').attr('r', NODE_RADIUS - 1).attr('stroke-width', 1.2);
+    unionEnter.append('text').attr('class', 'spouse-label').attr('dy', '0.35em');
+
+    const unionUpdate = unionSel.merge(unionEnter);
+
+    unionUpdate.select('line.union-person-link')
+      .attr('stroke', d => d.color)
+      .transition().duration(350)
+      .attr('x1', d => d.person.y)
+      .attr('y1', d => d.person.x)
+      .attr('x2', d => d.unionY)
+      .attr('y2', d => d.unionX);
+
+    unionUpdate.select('line.union-spouse-link')
+      .attr('stroke', d => d.color)
+      .transition().duration(350)
+      .attr('x1', d => d.spouseY)
+      .attr('y1', d => d.spouseX)
+      .attr('x2', d => d.unionY)
+      .attr('y2', d => d.unionX);
+
+    unionUpdate.select('circle.union-node')
+      .attr('fill', '#ffffff')
+      .attr('stroke', d => d.color)
+      .transition().duration(350)
+      .attr('cx', d => d.unionY)
+      .attr('cy', d => d.unionX);
+
+    unionUpdate.select('circle.spouse-proxy')
+      .attr('fill', '#ffffff')
+      .attr('stroke', d => d.color)
+      .transition().duration(350)
+      .attr('cx', d => d.spouseY)
+      .attr('cy', d => d.spouseX);
+
+    unionUpdate.select('text.spouse-label')
+      .style('font-size', '10px')
+      .style('fill', '#5c3d2e')
+      .style('font-weight', '500')
+      .attr('text-anchor', 'end')
+      .text(d => (d.spouseLabel || '').length > 30 ? `${d.spouseLabel.slice(0, 28)}…` : d.spouseLabel)
+      .transition().duration(350)
+      .attr('x', d => d.spouseY - 10)
+      .attr('y', d => d.spouseX);
+
+    unionSel.exit().remove();
+
     // ── Nodes ──────────────────────────────────────────────
-    const node      = g.selectAll('g.node').data(nodes, d => d.id || (d.id = ++nodeId));
+    const node      = g.selectAll('g.node').data(visibleNodes, d => d.id || (d.id = ++nodeId));
     const nodeEnter = node.enter().append('g')
       .attr('class', d => `node branch-${d.data.branch || 'root'} type-${d.data.type || 'person'}`)
       .attr('transform', `translate(${source.y0},${source.x0})`)
@@ -311,7 +448,15 @@
       if (data.death) dates += `\nd. ${data.death}`;
       if (data.deathplace) dates += ` · ${data.deathplace}`;
     }
-    if (data.spouse) dates += (dates ? '\n' : '') + `m. ${data.spouse}`;
+    let spouseText = '';
+    if (data.spouseId && personById.has(data.spouseId)) {
+      spouseText = personById.get(data.spouseId).name || data.spouseId;
+    } else if (data.spouseId) {
+      spouseText = data.spouseId;
+    } else if (data.spouse) {
+      spouseText = data.spouse;
+    }
+    if (spouseText) dates += (dates ? '\n' : '') + `m. ${spouseText}`;
 
     detailPanel.querySelector('#detail-name').textContent  = data.name  || '';
     detailPanel.querySelector('#detail-dates').textContent = dates;
@@ -372,3 +517,4 @@
     init();
   }
 })();
+

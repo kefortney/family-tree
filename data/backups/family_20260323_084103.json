@@ -1075,8 +1075,7 @@
                                                             }
                                                           ]
                                                         }
-                                                      ],
-                                                      "spouseId": "person_1774271361781"
+                                                      ]
                                                     },
                                                     {
                                                       "id": "kendall_thomas",
@@ -1096,15 +1095,7 @@
                                                       "birthplace": "Tacoma, Washington",
                                                       "gender": "F",
                                                       "branch": "fortney",
-                                                      "notes": "Married William Harms. Moved to Muskegon, Michigan.",
-                                                      "children": [
-                                                        {
-                                                          "id": "person_1774271278133",
-                                                          "name": "Robin Harms",
-                                                          "branch": "fortney",
-                                                          "children": []
-                                                        }
-                                                      ]
+                                                      "notes": "Married William Harms. Moved to Muskegon, Michigan."
                                                     }
                                                   ]
                                                 },
@@ -1479,14 +1470,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": "person_1774271361781",
-          "name": "Ruth Ann Geyer",
-          "branch": "fortney",
-          "children": [],
-          "birth": 1938,
-          "spouseId": "steven_dale"
         }
       ]
     },
