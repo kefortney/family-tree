@@ -62,7 +62,6 @@
   function init() {
     if (!container) return;
 
-    // Clear the "Loading…" placeholder immediately
     container.innerHTML = '';
 
     const rect = container.getBoundingClientRect();
@@ -79,13 +78,13 @@
           .on('zoom', (event) => g.attr('transform', event.transform))
       );
 
-    // Prevent detail panel from being closed when clicking SVG background
     svg.on('click', () => detailPanel?.classList.remove('visible'));
 
     g = svg.append('g')
       .attr('transform', `translate(${MARGIN.left},${MARGIN.top})`);
 
-    fetch('data/family.json')
+    // Cache-bust so browsers always load the latest family.json
+    fetch('data/family.json?v=' + Date.now())
       .then(r => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();
@@ -113,26 +112,31 @@
     g.selectAll('*').remove();
     nodeId = 0;
 
-    root     = d3.hierarchy(treeData);
-    root.x0  = (height - MARGIN.top - MARGIN.bottom) / 2;
-    root.y0  = 0;
-
     if (branchFilter === 'all') {
-      // Collapse everything to branch level
+      // Use full data but the virtual root node will be hidden in rendering
+      root = d3.hierarchy(treeData);
+      root.x0 = (height - MARGIN.top - MARGIN.bottom) / 2;
+      root.y0 = 0;
       root.children.forEach(collapse);
     } else {
-      root.children.forEach(child => {
-        if (child.data.id === branchFilter + '_branch') {
-          expandAll(child);
-        } else {
-          collapse(child);
-        }
-      });
+      // Find just this branch and use it as the root — no parent "Fortney Family Heritage" node
+      const branchData = treeData.children
+        ? treeData.children.find(c => c.id === branchFilter + '_branch')
+        : null;
+      if (!branchData) return;
+
+      root = d3.hierarchy(branchData);
+      root.x0 = (height - MARGIN.top - MARGIN.bottom) / 2;
+      root.y0 = 0;
+
+      // Show the branch node's direct children; collapse their subtrees
+      if (root.children) {
+        root.children.forEach(child => collapse(child));
+      }
     }
 
     update(root);
 
-    // Sync radio buttons
     document.querySelectorAll('.branch-filter-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.branch === branchFilter);
     });
@@ -143,35 +147,37 @@
 
   // ── D3 update ──────────────────────────────────────────────
 
-  // Fixed vertical gap between nodes (px) — large enough to fit label + dates line
   const NODE_SPACING_Y = 46;
-  // Fixed horizontal distance between depth levels (px)
   const NODE_SPACING_X = 210;
 
   function update(source) {
-    // Use nodeSize so each node always has enough vertical room for its label.
-    // The tree width (horizontal) auto-fits the container.
+    const isAllMode = currentBranch === 'all';
+
     const layout = d3.tree().nodeSize([NODE_SPACING_Y, NODE_SPACING_X]);
     layout(root);
 
-    // Compute the vertical extent of all visible nodes and resize SVG accordingly.
-    const nodes   = root.descendants();
-    const links   = root.links();
-    const xExtent = d3.extent(nodes, d => d.x);   // x = vertical axis in this horizontal tree
-    const yExtent = d3.extent(nodes, d => d.y);   // y = horizontal axis
+    const nodes = root.descendants();
+    const links = root.links();
+
+    // In all-branches mode, omit the virtual root (depth 0) from extents and links
+    const visibleNodes = isAllMode ? nodes.filter(d => d.depth > 0) : nodes;
+    const visibleLinks = isAllMode ? links.filter(d => d.source.depth > 0) : links;
+
+    const xExtent = d3.extent(visibleNodes, d => d.x);
+    const yExtent = d3.extent(visibleNodes, d => d.y);
     const treeH   = Math.max(xExtent[1] - xExtent[0] + MARGIN.top + MARGIN.bottom + 40, 400);
-    const treeW   = yExtent[1] + MARGIN.left + MARGIN.right + 200; // +200 for right-side labels
+    const treeW   = yExtent[1] + MARGIN.left + MARGIN.right + 200;
 
     svg.attr('height', treeH).attr('width', Math.max(treeW, width));
 
-    // On the initial render, shift g so the topmost node sits within the visible area.
-    // On toggle renders, leave the transform alone to preserve the user's scroll position.
     if (source === root) {
-      g.attr('transform', `translate(${MARGIN.left},${MARGIN.top - xExtent[0]})`);
+      // In all-branches mode, shift left so the hidden root is off-screen
+      const leftShift = isAllMode ? MARGIN.left - NODE_SPACING_X : MARGIN.left;
+      g.attr('transform', `translate(${leftShift},${MARGIN.top - xExtent[0]})`);
     }
 
     // ── Links ──────────────────────────────────────────────
-    const link      = g.selectAll('path.link').data(links, d => d.target.id);
+    const link      = g.selectAll('path.link').data(visibleLinks, d => d.target.id);
     const linkEnter = link.enter().append('path').attr('class', 'link')
       .attr('d', () => {
         const o = { x: source.x0, y: source.y0 };
@@ -200,6 +206,8 @@
       .attr('class', d => `node branch-${d.data.branch || 'root'} type-${d.data.type || 'person'}`)
       .attr('transform', `translate(${source.y0},${source.x0})`)
       .style('cursor', 'pointer')
+      .style('opacity', d => (isAllMode && d.depth === 0) ? 0 : 1)
+      .style('pointer-events', d => (isAllMode && d.depth === 0) ? 'none' : null)
       .on('click', (event, d) => {
         event.stopPropagation();
         toggleNode(d);
@@ -215,7 +223,10 @@
     const nodeUpdate = node.merge(nodeEnter);
 
     nodeUpdate.transition().duration(350)
-      .attr('transform', d => `translate(${d.y},${d.x})`);
+      .attr('transform', d => `translate(${d.y},${d.x})`)
+      .style('opacity', d => (isAllMode && d.depth === 0) ? 0 : 1);
+
+    nodeUpdate.style('pointer-events', d => (isAllMode && d.depth === 0) ? 'none' : null);
 
     nodeUpdate.select('circle')
       .attr('r',      d => (d.data.type === 'branch' || d.data.type === 'root') ? BRANCH_RADIUS : NODE_RADIUS)
@@ -226,7 +237,6 @@
       .style('fill', d => colorFor(d).stroke)
       .text(d => d._children ? '▶' : d.children ? '▼' : '');
 
-    // Label — rebuild tspans inside .each() to avoid accumulation on re-render
     nodeUpdate.select('text.node-label')
       .style('font-size',   d => (d.data.type === 'branch' || d.data.type === 'root') ? '12px' : '10.5px')
       .style('font-weight', d => (d.data.type === 'branch' || d.data.type === 'root') ? '600'  : '400')
@@ -239,7 +249,6 @@
 
         el.attr('x', xVal).attr('text-anchor', anchor);
 
-        // Clear previous tspans to prevent duplication
         el.selectAll('tspan').remove();
 
         const name = d.data.name || '';
@@ -292,6 +301,9 @@
     if (!detailPanel) return;
     const data = d.data;
 
+    // Don't show detail for branch/root grouping nodes
+    if (data.type === 'root' || data.type === 'branch') return;
+
     let dates = '';
     if (data.birth || data.death) {
       if (data.birth) dates += `b. ${data.birth}`;
@@ -299,6 +311,7 @@
       if (data.death) dates += `\nd. ${data.death}`;
       if (data.deathplace) dates += ` · ${data.deathplace}`;
     }
+    if (data.spouse) dates += (dates ? '\n' : '') + `m. ${data.spouse}`;
 
     detailPanel.querySelector('#detail-name').textContent  = data.name  || '';
     detailPanel.querySelector('#detail-dates').textContent = dates;
@@ -340,7 +353,11 @@
     });
 
     document.getElementById('btn-collapse-all')?.addEventListener('click', () => {
-      root.children?.forEach(collapse);
+      if (currentBranch === 'all') {
+        root.children?.forEach(collapse);
+      } else {
+        root.children?.forEach(collapse);
+      }
       update(root);
     });
 

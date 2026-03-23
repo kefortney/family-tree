@@ -453,6 +453,7 @@ blockquote {
   font-size: 0.8rem;
   color: var(--color-gray);
   margin-bottom: 0.5rem;
+  white-space: pre-line;
 }
 
 #person-detail .detail-notes {
