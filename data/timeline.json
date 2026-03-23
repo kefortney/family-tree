@@ -279,6 +279,42 @@
     "type": "milestone"
   },
   {
+    "id": "t30b",
+    "year": 1949,
+    "title": "Albin Returns to Ministry — Muskegon, Michigan",
+    "description": "After his Army discharge, Albin receives a call to First Lutheran Church in Muskegon, Michigan. He drives there in a snowstorm and nearly hits a telephone pole — arriving on Alan's 10th birthday. The family lives at 233 Giddings Avenue. He redirects plans to build the new church in North Muskegon.",
+    "branch": "fortney",
+    "location": "Muskegon, Michigan",
+    "type": "milestone"
+  },
+  {
+    "id": "t30c",
+    "year": 1955,
+    "title": "Called to Stoughton, Wisconsin",
+    "description": "Albin is called to Our Savior's Lutheran Church in Stoughton, Wisconsin. The family lives in a ten-room house with a silo on Prospect Street. Alan graduates from high school here. The family moves two days after the ceremony.",
+    "branch": "fortney",
+    "location": "Stoughton, Wisconsin",
+    "type": "milestone"
+  },
+  {
+    "id": "t30d",
+    "year": 1957,
+    "title": "Final Parish — Tomahawk, Wisconsin",
+    "description": "Albin's last parish, in Tomahawk, Wisconsin. Disputes again end his tenure. Albin always believed he was right, while his congregants did not always agree.",
+    "branch": "fortney",
+    "location": "Tomahawk, Wisconsin",
+    "type": "milestone"
+  },
+  {
+    "id": "t30e",
+    "year": 1959,
+    "title": "Albin Leaves Ministry — Returns to Stoughton",
+    "description": "After his final parish in Tomahawk, Albin returns to Stoughton, Wisconsin. He sells Lutheran Brotherhood Insurance (buying a used Cadillac), then takes a Social Security job in Madison. Stoughton — their 25th home — becomes the family's permanent base.",
+    "branch": "fortney",
+    "location": "Stoughton, Wisconsin",
+    "type": "milestone"
+  },
+  {
     "id": "t32",
     "year": 1968,
     "title": "Kendall Thomas Fortney Killed in Vietnam",

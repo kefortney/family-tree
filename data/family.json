@@ -113,6 +113,232 @@
                                               "notes": "Patriarch of the American Fortney family. Married Maria Johanna Swangstu, 6 April 1887. Moved family to Wheeler, WI in 1907. Had 10 children.",
                                               "children": [
                                                 {
+                                                  "id": "susana_mathilda",
+                                                  "name": "Susana Mathilda Fortney",
+                                                  "birth": 1889,
+                                                  "death": 1909,
+                                                  "birthplace": "Viroqua, Wisconsin",
+                                                  "gender": "F",
+                                                  "branch": "fortney",
+                                                  "notes": "First child of Hans & Maria. Died January 1909 of smallpox, aged 19."
+                                                },
+                                                {
+                                                  "id": "albert_christian",
+                                                  "name": "Albert Christian Fortney",
+                                                  "birth": 1891,
+                                                  "death": 1937,
+                                                  "birthplace": "Viroqua, Wisconsin",
+                                                  "deathplace": "Wisconsin",
+                                                  "gender": "M",
+                                                  "branch": "fortney",
+                                                  "spouse": "Viola Vennes",
+                                                  "notes": "Albin's older brother. Photographed with sister Nettie — described as 'Etta and Sundance — or Bonnie and Clyde, depending on your generation.'",
+                                                  "children": [
+                                                    {
+                                                      "id": "marion_lucile",
+                                                      "name": "Marion Lucile Fortney",
+                                                      "birth": 1919,
+                                                      "death": 1929,
+                                                      "gender": "F",
+                                                      "branch": "fortney",
+                                                      "notes": "Died of meningitis, aged 10."
+                                                    },
+                                                    {
+                                                      "id": "hubert_vennes",
+                                                      "name": "Hubert Vennes Fortney",
+                                                      "birth": 1922,
+                                                      "death": 2005,
+                                                      "gender": "M",
+                                                      "branch": "fortney"
+                                                    },
+                                                    {
+                                                      "id": "virgil_fortney",
+                                                      "name": "Virgil A. Fortney",
+                                                      "birth": 1925,
+                                                      "death": 1982,
+                                                      "gender": "M",
+                                                      "branch": "fortney",
+                                                      "notes": "Children: George, Robert, and Phillip Fortney."
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "nettie_fortney",
+                                                  "name": "Tonetta Marthia \"Nettie\" Fortney",
+                                                  "birth": 1893,
+                                                  "death": 1988,
+                                                  "birthplace": "Viroqua, Wisconsin",
+                                                  "gender": "F",
+                                                  "branch": "fortney",
+                                                  "spouse": "Rev. Frederick Dahl",
+                                                  "notes": "Married Rev. Frederick Dahl. Their daughter Sylvia Deason did extensive genealogical research on the Fortney line.",
+                                                  "children": [
+                                                    {
+                                                      "id": "adrian_dahl",
+                                                      "name": "Adrian Hilman Dahl",
+                                                      "birth": 1919,
+                                                      "death": 2002,
+                                                      "gender": "M",
+                                                      "branch": "fortney",
+                                                      "notes": "Visited Fortun, Norway and acquired the authoritative Luster: Gards-og aettesoge."
+                                                    },
+                                                    {
+                                                      "id": "monrad_dahl",
+                                                      "name": "Monrad 'Doc' Kenneth Dahl",
+                                                      "birth": 1921,
+                                                      "death": 1993,
+                                                      "gender": "M",
+                                                      "branch": "fortney"
+                                                    },
+                                                    {
+                                                      "id": "frederick_dahl",
+                                                      "name": "Frederick Thomas Dahl",
+                                                      "birth": 1923,
+                                                      "death": 1983,
+                                                      "gender": "M",
+                                                      "branch": "fortney"
+                                                    },
+                                                    {
+                                                      "id": "sylvia_dahl",
+                                                      "name": "Sylvia Dahl",
+                                                      "birth": 1926,
+                                                      "gender": "F",
+                                                      "branch": "fortney",
+                                                      "notes": "Later Sylvia Deason (b. 1946?). Did thorough genealogical study of the Fortney line."
+                                                    },
+                                                    {
+                                                      "id": "gilroy_dahl",
+                                                      "name": "Gilroy Vernon Dahl",
+                                                      "birth": 1931,
+                                                      "death": 1982,
+                                                      "gender": "M",
+                                                      "branch": "fortney"
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "selma_kathrina",
+                                                  "name": "Selma Kathrina Fortney",
+                                                  "birth": 1895,
+                                                  "death": 1960,
+                                                  "gender": "F",
+                                                  "branch": "fortney",
+                                                  "spouse": "Nelmer Bergum",
+                                                  "children": [
+                                                    {
+                                                      "id": "stanley_bergum",
+                                                      "name": "Stanley Nelmer Bergum",
+                                                      "birth": 1930,
+                                                      "gender": "M",
+                                                      "branch": "fortney"
+                                                    },
+                                                    {
+                                                      "id": "konval_bergum",
+                                                      "name": "Konval Harlan Bergum",
+                                                      "birth": 1933,
+                                                      "gender": "M",
+                                                      "branch": "fortney"
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "clarence_edward",
+                                                  "name": "Clarence Edward Fortney",
+                                                  "birth": 1897,
+                                                  "death": 1968,
+                                                  "gender": "M",
+                                                  "branch": "fortney",
+                                                  "spouse": "Anna Skreen",
+                                                  "children": [
+                                                    {
+                                                      "id": "hillman_fortney",
+                                                      "name": "Hillman Arnold Fortney",
+                                                      "birth": 1919,
+                                                      "gender": "M",
+                                                      "branch": "fortney"
+                                                    },
+                                                    {
+                                                      "id": "agnes_fortney",
+                                                      "name": "Agnes Marie Fortney",
+                                                      "birth": 1922,
+                                                      "gender": "F",
+                                                      "branch": "fortney"
+                                                    },
+                                                    {
+                                                      "id": "ralph_fortney",
+                                                      "name": "Ralph Clarence Fortney",
+                                                      "birth": 1930,
+                                                      "gender": "M",
+                                                      "branch": "fortney"
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "oliver_john",
+                                                  "name": "Oliver John Fortney",
+                                                  "birth": 1899,
+                                                  "death": 1950,
+                                                  "gender": "M",
+                                                  "branch": "fortney",
+                                                  "spouse": "Lilian Gregerson",
+                                                  "children": [
+                                                    {
+                                                      "id": "michael_dee",
+                                                      "name": "Michael Dee Fortney",
+                                                      "birth": 1939,
+                                                      "death": 1997,
+                                                      "gender": "M",
+                                                      "branch": "fortney"
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "henry_martin",
+                                                  "name": "Henry Martin Fortney",
+                                                  "birth": 1901,
+                                                  "death": 1975,
+                                                  "gender": "M",
+                                                  "branch": "fortney",
+                                                  "spouse": "Caroline Margaret Smith",
+                                                  "children": [
+                                                    {
+                                                      "id": "christine_fortney",
+                                                      "name": "Christine Ellen Fortney",
+                                                      "birth": 1942,
+                                                      "gender": "F",
+                                                      "branch": "fortney"
+                                                    },
+                                                    {
+                                                      "id": "karn_fortney",
+                                                      "name": "Karn Louise Fortney",
+                                                      "birth": 1944,
+                                                      "gender": "F",
+                                                      "branch": "fortney"
+                                                    },
+                                                    {
+                                                      "id": "thomas_frederick",
+                                                      "name": "Thomas Frederick Fortney",
+                                                      "birth": 1945,
+                                                      "death": 1966,
+                                                      "gender": "M",
+                                                      "branch": "fortney",
+                                                      "notes": "Died young, 1966."
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "thomas_kendahl",
+                                                  "name": "Thomas Kendahl Fortney",
+                                                  "birth": 1904,
+                                                  "death": 1944,
+                                                  "birthplace": "Viroqua, Wisconsin",
+                                                  "deathplace": "Detroit, Michigan",
+                                                  "gender": "M",
+                                                  "branch": "fortney",
+                                                  "spouse": "Elsie Carson",
+                                                  "notes": "UW heavyweight wrestler (1928, 1932, 1935, 1938). Died in Detroit in 1944 before the war ended. He and Elsie had no children. Albin had planned to work with him in Detroit in 1937-38."
+                                                },
+                                                {
                                                   "id": "albin_leonard",
                                                   "name": "Albin Leonard Fortney",
                                                   "birth": 1906,
@@ -180,6 +406,57 @@
                                                       "gender": "F",
                                                       "branch": "fortney",
                                                       "notes": "Married William Harms. Moved to Muskegon, Michigan."
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "myrtie_susanna",
+                                                  "name": "Myrtie Susanna Fortney",
+                                                  "birth": 1919,
+                                                  "death": 1986,
+                                                  "birthplace": "Wheeler, Wisconsin",
+                                                  "gender": "F",
+                                                  "branch": "fortney",
+                                                  "spouse": "Andrew Ole Larson",
+                                                  "notes": "Youngest child of Hans & Maria. Married Andrew Ole Larson of Menomonie, WI. Her five children were Alan's beloved 'Larson cousins.' Cousin Laurel's husband Ollie encountered Kendall Thomas in Vietnam.",
+                                                  "children": [
+                                                    {
+                                                      "id": "thomas_larson",
+                                                      "name": "Thomas Andrew Larson",
+                                                      "birth": 1938,
+                                                      "gender": "M",
+                                                      "branch": "fortney"
+                                                    },
+                                                    {
+                                                      "id": "mary_larson",
+                                                      "name": "Mary Ann Larson",
+                                                      "birth": 1941,
+                                                      "gender": "F",
+                                                      "branch": "fortney",
+                                                      "notes": "Married, became Mary Ann Langford."
+                                                    },
+                                                    {
+                                                      "id": "linda_larson",
+                                                      "name": "Linda Rae Larson",
+                                                      "birth": 1942,
+                                                      "gender": "F",
+                                                      "branch": "fortney",
+                                                      "notes": "Married, became Linda Olson. Husband Rich had a summer house on Tainter Lake."
+                                                    },
+                                                    {
+                                                      "id": "orland_larson",
+                                                      "name": "Orland John Larson",
+                                                      "birth": 1944,
+                                                      "gender": "M",
+                                                      "branch": "fortney"
+                                                    },
+                                                    {
+                                                      "id": "laurel_larson",
+                                                      "name": "Laurel Jean Larson",
+                                                      "birth": 1947,
+                                                      "gender": "F",
+                                                      "branch": "fortney",
+                                                      "notes": "Married, became Laurel Madsen. Her husband Ollie encountered Kendall Thomas Fortney in Vietnam."
                                                     }
                                                   ]
                                                 }
