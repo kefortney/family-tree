@@ -346,9 +346,7 @@
 
   function setupControls() {
     document.getElementById('btn-expand-all')?.addEventListener('click', () => {
-      root.descendants().forEach(d => {
-        if (d._children) { d.children = d._children; d._children = null; }
-      });
+      expandAll(root);
       update(root);
     });
 
