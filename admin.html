@@ -107,14 +107,43 @@
       padding: 0;
       margin: 0;
     }
-    ul.tree-children { display: none; }
+
+    /* Each nested level indents by 20px and shows a vertical connector line */
+    ul.tree-children {
+      display: none;
+      padding-left: 20px;
+      position: relative;
+    }
+    ul.tree-children::before {
+      content: '';
+      position: absolute;
+      left: 10px;          /* lines up with the center of the toggle button above */
+      top: 0;
+      bottom: 8px;
+      width: 1px;
+      background: var(--border);
+    }
     ul.tree-children.open { display: block; }
+
+    /* Horizontal tick from the vertical line to each row */
+    ul.tree-children > li {
+      position: relative;
+    }
+    ul.tree-children > li::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 14px;           /* vertically centered on the row */
+      width: 8px;
+      height: 1px;
+      background: var(--border);
+    }
 
     .tree-item-row {
       display: flex;
       align-items: center;
       gap: 0.3rem;
-      padding: 0.25rem 0.5rem;
+      padding: 0.22rem 0.5rem 0.22rem 0.25rem;
       border-radius: var(--radius);
       cursor: pointer;
       user-select: none;
@@ -148,6 +177,8 @@
     .branch-dot.branch    { background: var(--text-mid); }
 
     .item-name { font-weight: 500; flex: 1; }
+    .item-name.depth-0 { font-weight: 700; font-size: 0.85rem; color: var(--text); }
+    .item-name.depth-1 { font-weight: 600; color: var(--text); }
     .item-meta { font-size: 0.72rem; color: var(--text-light); }
 
     /* ── Right: edit form ────────────────────────────── */
@@ -481,9 +512,10 @@
     dot.className = `branch-dot ${dotCls}`;
     row.appendChild(dot);
 
-    // Name + dates
+    // Name + dates — depth class makes top levels bolder
     const nameEl = document.createElement('span');
-    nameEl.className = 'item-name';
+    const depthClass = path.length <= 1 ? ` depth-${path.length}` : '';
+    nameEl.className = 'item-name' + depthClass;
     const name = node.name || '(unnamed)';
     nameEl.textContent = name.length > 38 ? name.slice(0, 36) + '…' : name;
     row.appendChild(nameEl);
