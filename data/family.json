@@ -958,11 +958,28 @@
                                                           "birth": 1981,
                                                           "gender": "M",
                                                           "branch": "fortney",
-                                                          "notes": "Artist & filmmaker. Born 5 July 1981. Named for his uncle Kendall Thomas Fortney, KIA Vietnam 1968. Studied Okinawan karate; Vermont Statehouse Page (8th grade). Early interest in public television film production."
+                                                          "notes": "Artist & filmmaker. Born 5 July 1981. Named for his uncle Kendall Thomas Fortney, KIA Vietnam 1968. Studied Okinawan karate; Vermont Statehouse Page (8th grade). Early interest in public television film production.",
+                                                          "children": [
+                                                            {
+                                                              "id": "person_1774305185961",
+                                                              "name": "Alinea Mae Fortney",
+                                                              "branch": "fortney",
+                                                              "children": [],
+                                                              "gender": "F",
+                                                              "birthplace": "Burlington, VT",
+                                                              "birth": 2021
+                                                            }
+                                                          ],
+                                                          "marriages": [
+                                                            {
+                                                              "spouseName": "Wendy Rice"
+                                                            }
+                                                          ]
                                                         }
                                                       ],
                                                       "marriages": [
                                                         {
+                                                          "spouseName": "Jill Andersen Fortney",
                                                           "spouseId": "jill_andersen",
                                                           "married": 1980
                                                         }

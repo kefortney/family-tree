@@ -21,11 +21,13 @@
   };
 
   // Layout constants
-  const LEVEL_GAP     = 90;   // pixels between generation rows
+  const LEVEL_GAP     = 50;   // pixels between generation rows
   const SIBLING_GAP   = 76;   // horizontal spacing hint between siblings
   const TOP_PADDING   = 28;
   const NODE_RADIUS   = 6;
   const BRANCH_RADIUS = 9;
+  const SPOUSE_PAIR_GAP = 24;
+  const EXTERNAL_SPOUSE_OFFSET = 26;
 
   let treeData = null;
   let svg, g, zoomBehavior;
@@ -115,7 +117,7 @@
         const left = n.x <= partner.x ? n : partner;
         const right = n.x <= partner.x ? partner : n;
         const mid = (left.x + right.x) / 2;
-        const targetGap = 30;
+        const targetGap = SPOUSE_PAIR_GAP;
         left.x = mid - (targetGap / 2);
         right.x = mid + (targetGap / 2);
       });
@@ -210,17 +212,12 @@
 
     if (branchFilter === 'all') {
       root = d3.hierarchy(treeData);
-      root.children?.forEach(collapse);
     } else {
       const branchData = treeData.children
         ? treeData.children.find(c => c.id === branchFilter + '_branch')
         : null;
       if (!branchData) return;
       root = d3.hierarchy(branchData);
-      // Show the branch's direct children collapsed
-      if (root.children) {
-        root.children.forEach(child => collapse(child));
-      }
     }
 
     root.x0 = 0;
@@ -302,9 +299,9 @@
     marriageSel.enter()
       .append('line')
       .attr('class', 'marriage-link')
-      .attr('stroke-width', 2)
-      .attr('stroke-dasharray', '2,2')
-      .attr('opacity', 0.82)
+      .attr('stroke-width', 1.5)
+      .attr('stroke-dasharray', '1.5,2.5')
+      .attr('opacity', 0.68)
       .attr('x1', sourceX)
       .attr('y1', sourceY)
       .attr('x2', sourceX)
@@ -346,7 +343,7 @@
 
         // External spouses are rendered directly beside the person with a short link.
         const direction = (mi % 2 === 0) ? 1 : -1;
-        const sx = nx + (direction * 32);
+        const sx = nx + (direction * EXTERNAL_SPOUSE_OFFSET);
         const sy = ny;
 
         spouseUnits.push({
@@ -362,9 +359,9 @@
     const unionEnter  = unionSel.enter().append('g').attr('class', 'union-unit');
 
     unionEnter.append('line').attr('class', 'union-line')
-      .attr('stroke-dasharray', '3,2').attr('opacity', 0.75);
+      .attr('stroke-dasharray', '2,2').attr('opacity', 0.65);
     unionEnter.append('circle').attr('class', 'spouse-proxy')
-      .attr('r', 4.5).attr('fill', '#fff').attr('stroke-width', 1.5);
+      .attr('r', 4).attr('fill', '#fff').attr('stroke-width', 1.25);
     unionEnter.append('text').attr('class', 'spouse-label')
       .style('font-size', '9px').style('fill', '#5c3d2e').style('font-weight', '500');
 
