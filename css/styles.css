@@ -1069,7 +1069,27 @@ blockquote {
   clear: both;
 }
 
-/* --- Responsive --- */
+/* ================================================================
+   Responsive — hamburger nav toggle
+   ================================================================ */
+
+/* Hidden on desktop; nav.js creates and shows this on mobile */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0.3rem 0.55rem;
+  cursor: pointer;
+  color: var(--color-white);
+  flex-shrink: 0;
+}
+
+/* ================================================================
+   ≤ 900px — tablet
+   ================================================================ */
 @media (max-width: 900px) {
   .footer-inner {
     grid-template-columns: 1fr 1fr;
@@ -1082,34 +1102,142 @@ blockquote {
   }
 }
 
+/* ================================================================
+   ≤ 768px — large mobile / small tablet
+   ================================================================ */
+@media (max-width: 768px) {
+  /* Hamburger visible; links collapse into dropdown */
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--color-brown);
+    padding: 0.25rem 0 0.75rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    z-index: 150;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    gap: 0;
+  }
+
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.7rem 2rem;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+}
+
+/* ================================================================
+   ≤ 640px — mobile
+   ================================================================ */
 @media (max-width: 640px) {
   :root {
     --section-padding: 3rem 1.25rem;
   }
 
+  /* Tree section full-bleed */
   .tree-section {
     margin-left: -1.25rem;
     margin-right: -1.25rem;
   }
 
-  .nav-links {
-    display: none;
+  /* Reduce fixed tree height set by inline style */
+  #tree-container {
+    min-height: 520px !important;
   }
 
+  /* Footer */
   .footer-inner {
     grid-template-columns: 1fr;
   }
 
+  /* Gallery */
   .gallery-grid {
     columns: 1;
   }
 
+  /* Key dates — wrap rows instead of overflowing */
   .key-dates-bar {
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem 2rem;
   }
 
+  /* Person detail popup — full width on mobile */
   #person-detail {
     width: calc(100% - 2rem);
+    right: 1rem;
+    left: 1rem;
+  }
+
+  /* Site hero */
+  .site-hero {
+    padding: 3.5rem 1.25rem 3rem;
+  }
+
+  .site-hero h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  /* Page heroes (branch pages, graph, timeline, etc.) */
+  .page-hero {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+
+  /* Admin toolbar — wrap buttons instead of overflowing */
+  .admin-toolbar {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 44px;
+    padding: 0.5rem 1rem;
+    gap: 0.4rem;
+  }
+
+  /* Admin form — single column */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Marriage rows — single column */
+  .m-grid,
+  .m-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Tree children indentation — reduce on narrow screens */
+  ul.tree-children {
+    padding-left: 12px;
+  }
+
+  /* Timeline list */
+  .tl-list {
+    padding-left: 1.5rem;
+  }
+
+  /* Branch filter bar — let pills wrap */
+  .branch-filter-bar {
+    justify-content: flex-start;
   }
 }
 

@@ -118,6 +118,30 @@
       z-index: 20;
     }
 
+    @media (max-width: 640px) {
+      #graph-container {
+        height: 60vh;
+      }
+
+      .graph-search input {
+        width: 120px;
+      }
+
+      #graph-container #person-detail {
+        width: calc(100% - 2rem);
+        left: 1rem;
+        right: 1rem;
+        top: auto;
+        bottom: 1rem;
+        max-height: 50%;
+      }
+
+      .graph-legend {
+        gap: 1rem;
+        font-size: 0.7rem;
+      }
+    }
+
     /* Legend */
     .graph-legend {
       display: flex;
@@ -230,5 +254,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <script src="js/graph.js"></script>
+  <script src="js/nav.js"></script>
 </body>
 </html>
