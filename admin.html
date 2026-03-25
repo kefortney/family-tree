@@ -962,7 +962,15 @@
   function optionText(entry) {
     const label = entry.name || entry.id;
     const branch = entry.branch ? ` (${branchNameFromCode(entry.branch)})` : '';
-    return `${entry.id} - ${label}${branch}`;
+    return `${label} [${entry.id}]${branch}`;
+  }
+
+  function sortByName(a, b) {
+    const an = (a.name || a.id || '').toLowerCase();
+    const bn = (b.name || b.id || '').toLowerCase();
+    if (an < bn) return -1;
+    if (an > bn) return 1;
+    return 0;
   }
 
   function fillSelect(selectId, currentId, includeBlank, selectedVal) {
@@ -977,7 +985,7 @@
 
     personOptions
       .filter(p => p.id && p.type === 'person' && p.id !== currentId)
-      .sort((a, b) => a.id.localeCompare(b.id))
+      .sort(sortByName)
       .forEach(p => {
         const o = document.createElement('option');
         o.value = p.id;
@@ -999,7 +1007,7 @@
         const aSel = chosen.has(a.id) ? 0 : 1;
         const bSel = chosen.has(b.id) ? 0 : 1;
         if (aSel !== bSel) return aSel - bSel;
-        return a.id.localeCompare(b.id);
+        return sortByName(a, b);
       })
       .forEach(p => {
         const o = document.createElement('option');
@@ -1106,14 +1114,26 @@
       return;
     }
 
+    // Sync reciprocal marriages[] entries on linked spouses
+    syncReciprocalMarriage(node, marriages);
+
     refreshAfterMutation(node.id);
     toast('Changes applied', 'success');
   }
 
   /* ── Add child / blank person ─────────────────────── */
+  function nextNumericId() {
+    let max = 0;
+    idIndex.forEach((_, id) => {
+      const n = parseInt(id, 10);
+      if (!isNaN(n) && n > max) max = n;
+    });
+    return String(max + 1).padStart(4, '0');
+  }
+
   function makeBlankPerson(branch) {
     return {
-      id: 'person_' + Date.now(),
+      id: nextNumericId(),
       name: 'New Person',
       branch: branch || currentBranch || 'fortney',
       children: []
@@ -1193,6 +1213,29 @@
     node.spouseId = spouseId;
     spouseNode.spouseId = node.id;
     return { ok: true };
+  }
+
+  /**
+   * If the spouse node uses a `marriages` array (which takes priority over the
+   * top-level `spouseId` in rendering), ensure it contains a reciprocal entry
+   * pointing back to `node`. This prevents the marriage from going invisible
+   * on the spouse's side when they already have a marriages array.
+   */
+  function syncReciprocalMarriage(node, marriages) {
+    marriages.forEach(m => {
+      if (!m.spouseId || !idIndex.has(m.spouseId)) return;
+      const partner = nodeAt(idIndex.get(m.spouseId));
+      if (!partner) return;
+
+      if (!Array.isArray(partner.marriages) || partner.marriages.length === 0) return;
+
+      // Check if partner already has a reciprocal entry
+      const hasReciprocal = partner.marriages.some(pm => pm.spouseId === node.id);
+      if (hasReciprocal) return;
+
+      // Add a minimal reciprocal entry
+      partner.marriages.push({ spouseName: node.name, spouseId: node.id });
+    });
   }
 
   function setSpouseFromForm() {
@@ -1477,9 +1520,10 @@
 
     // Populate the in-tree spouse select
     const sel = div.querySelector('select.m-id');
+    const nameInput = div.querySelector('input.m-name');
     personOptions
       .filter(p => p.id && p.type === 'person' && p.id !== currentId)
-      .sort((a, b) => a.id.localeCompare(b.id))
+      .sort(sortByName)
       .forEach(p => {
         const o = document.createElement('option');
         o.value = p.id;
@@ -1487,6 +1531,14 @@
         if (p.id === (m.spouseId || '')) o.selected = true;
         sel.appendChild(o);
       });
+
+    // Auto-populate spouse name when an in-tree person is chosen
+    sel.addEventListener('change', function () {
+      if (this.value) {
+        const person = personOptions.find(p => p.id === this.value);
+        if (person) nameInput.value = person.name || '';
+      }
+    });
 
     return div;
   }

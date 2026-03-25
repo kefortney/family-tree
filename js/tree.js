@@ -32,7 +32,7 @@
   let treeData = null;
   let svg, g, zoomBehavior;
   let root;
-  let currentBranch = 'fortney';
+  let currentBranch = 'fortney+sodergren';
   let personById = new Map();
   let svgW = 900;
   let svgH = 700;
@@ -184,7 +184,7 @@
       .then(data => {
         treeData = data;
         rebuildPersonLookup();
-        buildTree(currentBranch);
+        buildTree('fortney+sodergren');
         setupControls();
 
         window.addEventListener('resize', () => {
@@ -212,9 +212,18 @@
 
     if (branchFilter === 'all') {
       root = d3.hierarchy(treeData);
+    } else if (branchFilter.includes('+')) {
+      // Combined multi-branch view: create a virtual root containing the requested branches
+      const filters = branchFilter.split('+');
+      const branches = (treeData.children || []).filter(
+        c => c.type === 'branch' && filters.includes(c.branch)
+      );
+      if (branches.length === 0) return;
+      const virtualRoot = { id: 'virtual-root', type: 'root', name: '', children: branches };
+      root = d3.hierarchy(virtualRoot);
     } else {
       const branchData = treeData.children
-        ? treeData.children.find(c => c.id === branchFilter + '_branch')
+        ? treeData.children.find(c => c.type === 'branch' && c.branch === branchFilter)
         : null;
       if (!branchData) return;
       root = d3.hierarchy(branchData);
@@ -245,7 +254,7 @@
   // ── D3 radial update ───────────────────────────────────────
 
   function update(source) {
-    const isAllMode = currentBranch === 'all';
+    const isAllMode = currentBranch === 'all' || currentBranch.includes('+');
 
     root.sort(compareChronological);
 
@@ -277,7 +286,6 @@
         if (!m.spouseId) return;
         const spouseNode = nodeById.get(m.spouseId);
         if (!spouseNode) return;
-        if (spouseNode.depth !== n.depth) return;
 
         const pairKey = [n.data.id, m.spouseId].sort().join('|');
         if (marriageSeen.has(pairKey)) return;

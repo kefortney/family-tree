@@ -1,10 +1,10 @@
 {
-  "id": "root",
+  "id": "0001",
   "name": "Fortney Family Heritage",
   "type": "root",
   "children": [
     {
-      "id": "fortney_branch",
+      "id": "0002",
       "name": "Fortney / Forthun Branch",
       "subtitle": "Norwegian Origins · Forthun Farm, Luster, Norway",
       "branch": "fortney",
@@ -12,7 +12,7 @@
       "url": "fortney.html",
       "children": [
         {
-          "id": "aamund_jonson",
+          "id": "0003",
           "name": "Aamund Jonson Forthun",
           "birth": 1570,
           "death": 1650,
@@ -22,7 +22,7 @@
           "notes": "Earliest known ancestor. Farm manager, Bnr #1. Father of Claus Aamundson.",
           "children": [
             {
-              "id": "claus_aamundson",
+              "id": "0004",
               "name": "Claus Aamundson Forthun",
               "birth": 1585,
               "death": 1690,
@@ -31,7 +31,7 @@
               "branch": "fortney",
               "children": [
                 {
-                  "id": "synneva_clausdotter",
+                  "id": "0005",
                   "name": "Synneva Clausdotter",
                   "birth": 1622,
                   "death": 1690,
@@ -41,7 +41,7 @@
                   "notes": "Married Knut Aamundson Forthun in 1653, bringing Bnr #8 to the family. Key figure in establishing the Forthun farm line.",
                   "children": [
                     {
-                      "id": "knut_aamundson",
+                      "id": "0006",
                       "name": "Knut Aamundson Forthun",
                       "birth": 1633,
                       "death": 1690,
@@ -51,7 +51,7 @@
                       "notes": "Married Synneva Clausdotter 1653. Brought Bnr #8 into the family.",
                       "children": [
                         {
-                          "id": "ole_knutson_5",
+                          "id": "0007",
                           "name": "Ole Knutson Forthun",
                           "birth": 1656,
                           "death": 1713,
@@ -61,7 +61,7 @@
                           "notes": "Farm manager Bnr #8 from 1682. Married Gjørond Sjursdotter (from Yttri) in 1679.",
                           "children": [
                             {
-                              "id": "torger_olson_4",
+                              "id": "0008",
                               "name": "Torger Olson Forthun",
                               "birth": 1692,
                               "death": 1762,
@@ -71,7 +71,7 @@
                               "notes": "Farm manager Bnr #8. Married Britha Halvorsdatter in 1714.",
                               "children": [
                                 {
-                                  "id": "knut_torgerson",
+                                  "id": "0009",
                                   "name": "Knut Torgerson Forthun",
                                   "birth": 1735,
                                   "death": 1818,
@@ -81,7 +81,7 @@
                                   "notes": "Farm manager Bnr #8. Had four wives; main line continues through wife Marta Olsdotter Svalheim.",
                                   "children": [
                                     {
-                                      "id": "ole_knutson_2",
+                                      "id": "0010",
                                       "name": "Ole Knutson Forthun",
                                       "birth": 1778,
                                       "death": 1846,
@@ -91,7 +91,7 @@
                                       "notes": "Farm manager Bnr #8. Married Kirsti Kristensdotter Fuglesteg, 10 June 1807.",
                                       "children": [
                                         {
-                                          "id": "thomas_olson",
+                                          "id": "0011",
                                           "name": "Thomas Olson Forthun",
                                           "birth": 1817,
                                           "death": 1887,
@@ -102,7 +102,7 @@
                                           "notes": "Emigrated to America 1853. Settled in Franklin County, then Vernon County, Wisconsin. Married Susanna Johannesdotter Ottum, 13 October 1854.",
                                           "children": [
                                             {
-                                              "id": "hans_thomassen",
+                                              "id": "0012",
                                               "name": "Hans Thomassen Fortney",
                                               "birth": 1861,
                                               "death": 1941,
@@ -113,7 +113,7 @@
                                               "notes": "Patriarch of the American Fortney family. Married Maria Johanna Swangstu, 6 April 1887. Moved family to Wheeler, WI in 1907. Had 10 children.",
                                               "children": [
                                                 {
-                                                  "id": "susana_mathilda",
+                                                  "id": "0013",
                                                   "name": "Susana Mathilda Fortney",
                                                   "birth": 1889,
                                                   "death": 1909,
@@ -123,7 +123,7 @@
                                                   "notes": "First child of Hans & Maria. Died January 1909 of smallpox, aged 19."
                                                 },
                                                 {
-                                                  "id": "albert_christian",
+                                                  "id": "0014",
                                                   "name": "Albert Christian Fortney",
                                                   "birth": 1891,
                                                   "death": 1937,
@@ -135,7 +135,7 @@
                                                   "notes": "Albin's older brother. Photographed with sister Nettie — described as 'Etta and Sundance — or Bonnie and Clyde, depending on your generation.' Wife Viola Vennes: born 1892, died 1971, Withee, Wisconsin. Teacher. Remarried Franklin McMiller after Albert's death. Famously said: 'I taught all the Fortney boys and married the eldest.' Taught at Lockheil School, still visible northwest of the farm.",
                                                   "children": [
                                                     {
-                                                      "id": "marion_lucile",
+                                                      "id": "0015",
                                                       "name": "Marion Lucile Fortney",
                                                       "birth": 1919,
                                                       "death": 1929,
@@ -144,7 +144,7 @@
                                                       "notes": "Died of meningitis, aged 10."
                                                     },
                                                     {
-                                                      "id": "hubert_vennes",
+                                                      "id": "0016",
                                                       "name": "Hubert Vennes Fortney",
                                                       "birth": 1922,
                                                       "death": 2005,
@@ -153,7 +153,7 @@
                                                       "spouse": "Evelyn",
                                                       "children": [
                                                         {
-                                                          "id": "alan_hubert",
+                                                          "id": "0017",
                                                           "name": "Alan Dale Fortney",
                                                           "birth": 1946,
                                                           "gender": "M",
@@ -162,14 +162,14 @@
                                                           "notes": "Senior Quality Control Manager, CamCraft. Married Pamela Gerring (b. 1946, d. 2005 age 59). 2 daughters. 3 granddaughters, 1 grandson.",
                                                           "children": [
                                                             {
-                                                              "id": "christina_alan_f",
+                                                              "id": "0018",
                                                               "name": "Christina Fortney",
                                                               "birth": 1974,
                                                               "gender": "F",
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "kerri_alan_f",
+                                                              "id": "0019",
                                                               "name": "Kerri Fortney",
                                                               "birth": 1978,
                                                               "gender": "F",
@@ -179,13 +179,13 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "christine_hubert",
+                                                          "id": "0020",
                                                           "name": "Christine Fortney",
                                                           "gender": "F",
                                                           "branch": "fortney"
                                                         },
                                                         {
-                                                          "id": "kerry_hubert",
+                                                          "id": "0021",
                                                           "name": "Kerry Fortney",
                                                           "gender": "F",
                                                           "branch": "fortney"
@@ -193,7 +193,7 @@
                                                       ]
                                                     },
                                                     {
-                                                      "id": "virgil_fortney",
+                                                      "id": "0022",
                                                       "name": "Virgil A. Fortney",
                                                       "birth": 1925,
                                                       "death": 1982,
@@ -203,19 +203,19 @@
                                                       "notes": "Married Betty Baker. Children: Philip, Robert, and Marcia Fortney. 1 granddaughter, Leslie.",
                                                       "children": [
                                                         {
-                                                          "id": "philip_virgil",
+                                                          "id": "0023",
                                                           "name": "Philip Fortney",
                                                           "gender": "M",
                                                           "branch": "fortney"
                                                         },
                                                         {
-                                                          "id": "robert_virgil",
+                                                          "id": "0024",
                                                           "name": "Robert Fortney",
                                                           "gender": "M",
                                                           "branch": "fortney"
                                                         },
                                                         {
-                                                          "id": "marcia_virgil",
+                                                          "id": "0025",
                                                           "name": "Marcia Fortney",
                                                           "gender": "F",
                                                           "branch": "fortney"
@@ -225,7 +225,7 @@
                                                   ]
                                                 },
                                                 {
-                                                  "id": "nettie_fortney",
+                                                  "id": "0026",
                                                   "name": "Tonetta Marthia \"Nettie\" Fortney",
                                                   "birth": 1893,
                                                   "death": 1988,
@@ -236,7 +236,7 @@
                                                   "notes": "Married Rev. Frederick Dahl. Their daughter Sylvia Deason did extensive genealogical research on the Fortney line.",
                                                   "children": [
                                                     {
-                                                      "id": "adrian_dahl",
+                                                      "id": "0027",
                                                       "name": "Adrian Hilman Dahl",
                                                       "birth": 1919,
                                                       "death": 2002,
@@ -245,7 +245,7 @@
                                                       "notes": "Nuclear Physicist, Professor. Visited Fortun, Norway and acquired the authoritative Luster: Gards-og aettesoge.",
                                                       "children": [
                                                         {
-                                                          "id": "david_dahl",
+                                                          "id": "0028",
                                                           "name": "David Adrian Dahl",
                                                           "birth": 1944,
                                                           "birthplace": "Oak Ridge, Tennessee",
@@ -255,7 +255,7 @@
                                                           "notes": "Electrical engineer (retired), consultant for Ion Optics. Married Elizabeth 'Beth' Hunter (b. 19 June 1946, Los Angeles CA; Federal Contracts), 5 June 1966, Fort Collins, CO. 1 son, 2 adopted daughters, 1 adopted son. 1 grandson, 4 adopted grandchildren.",
                                                           "children": [
                                                             {
-                                                              "id": "steven_dahl",
+                                                              "id": "0029",
                                                               "name": "Steven Dahl",
                                                               "birth": 1976,
                                                               "birthplace": "Los Alamos, New Mexico",
@@ -265,7 +265,7 @@
                                                               "notes": "Chemical engineer, BP Anchorage AK. Jaimee MacDonald also a chemical engineer, BP Anchorage.",
                                                               "children": [
                                                                 {
-                                                                  "id": "michael_dahl_v",
+                                                                  "id": "0030",
                                                                   "name": "Michael Dahl",
                                                                   "birth": 2006,
                                                                   "birthplace": "Anchorage, Alaska",
@@ -275,7 +275,7 @@
                                                               ]
                                                             },
                                                             {
-                                                              "id": "lanette_dahl",
+                                                              "id": "0031",
                                                               "name": "Lanette Dahl",
                                                               "birth": 1975,
                                                               "gender": "F",
@@ -283,7 +283,7 @@
                                                               "notes": "Adopted. College student (as of 2007). 1 son, James."
                                                             },
                                                             {
-                                                              "id": "jessica_dahl",
+                                                              "id": "0032",
                                                               "name": "Jessica Dahl",
                                                               "birth": 1976,
                                                               "birthplace": "Colorado Springs, Colorado",
@@ -292,7 +292,7 @@
                                                               "notes": "Adopted. Sprint Systems Technologist. 1 son Evyn, 1 daughter Gweneth."
                                                             },
                                                             {
-                                                              "id": "benjamin_dahl",
+                                                              "id": "0033",
                                                               "name": "Benjamin Dahl",
                                                               "birth": 1985,
                                                               "gender": "M",
@@ -302,7 +302,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "sonje_dahl_jessen",
+                                                          "id": "0034",
                                                           "name": "Sonje Ann Dahl Jessen",
                                                           "birth": 1946,
                                                           "gender": "F",
@@ -311,7 +311,7 @@
                                                           "notes": "Daughter of Adrian & Virginia Dahl. 3 sons. 2 grandsons, 2 granddaughters, 1 adopted grandchild.",
                                                           "children": [
                                                             {
-                                                              "id": "todd_jessen",
+                                                              "id": "0035",
                                                               "name": "Todd Arling Jessen",
                                                               "birth": 1970,
                                                               "gender": "M",
@@ -320,7 +320,7 @@
                                                               "notes": "1 son André (age 7 in 2007), 1 daughter Ashley (age 5 in 2007)."
                                                             },
                                                             {
-                                                              "id": "christopher_jessen",
+                                                              "id": "0036",
                                                               "name": "Christopher Allan Jessen",
                                                               "birth": 1972,
                                                               "gender": "M",
@@ -328,7 +328,7 @@
                                                               "notes": "Single. Adopted daughter Mariah (age ~16 in 2007)."
                                                             },
                                                             {
-                                                              "id": "benjamin_jessen",
+                                                              "id": "0037",
                                                               "name": "Benjamin Scott Jessen",
                                                               "birth": 1974,
                                                               "gender": "M",
@@ -336,7 +336,7 @@
                                                               "spouse": "Dusty Arnold",
                                                               "children": [
                                                                 {
-                                                                  "id": "caleb_jessen",
+                                                                  "id": "0038",
                                                                   "name": "Caleb Michael Jessen",
                                                                   "birth": 2004,
                                                                   "birthplace": "20 June 2004",
@@ -344,7 +344,7 @@
                                                                   "branch": "fortney"
                                                                 },
                                                                 {
-                                                                  "id": "brody_jessen",
+                                                                  "id": "0039",
                                                                   "name": "Brody Scott Jessen",
                                                                   "birth": 2006,
                                                                   "gender": "M",
@@ -358,7 +358,7 @@
                                                       ]
                                                     },
                                                     {
-                                                      "id": "monrad_dahl",
+                                                      "id": "0040",
                                                       "name": "Monrad 'Doc' Kenneth Dahl",
                                                       "birth": 1921,
                                                       "death": 1993,
@@ -367,7 +367,7 @@
                                                       "notes": "Physical Therapist.",
                                                       "children": [
                                                         {
-                                                          "id": "jon_arthur_dahl",
+                                                          "id": "0041",
                                                           "name": "Jon Arthur Dahl",
                                                           "birth": 1950,
                                                           "birthplace": "Amery, Wisconsin",
@@ -377,7 +377,7 @@
                                                           "notes": "Environmental scientist. Married Kathleen Joan 'Kate' Hiemenz Dahl (b. 20 June 1949; Registered Nurse, Environmental Program Manager), 14 August 1969, St. Cloud, MN.",
                                                           "children": [
                                                             {
-                                                              "id": "jesse_jade_dahl",
+                                                              "id": "0042",
                                                               "name": "Jesse Jade Dahl",
                                                               "birth": 1973,
                                                               "birthplace": "St. Cloud, Minnesota",
@@ -387,7 +387,7 @@
                                                               "notes": "Educator — linguistics; information technologist. 1 son (Zane), 1 daughter (Lily Jade)."
                                                             },
                                                             {
-                                                              "id": "jeanette_nettie_dahl",
+                                                              "id": "0043",
                                                               "name": "Jeanette 'Nettie' Leah Dahl",
                                                               "birth": 1975,
                                                               "death": 2006,
@@ -402,7 +402,7 @@
                                                       ]
                                                     },
                                                     {
-                                                      "id": "frederick_dahl",
+                                                      "id": "0044",
                                                       "name": "Frederick Thomas Dahl",
                                                       "birth": 1923,
                                                       "death": 1983,
@@ -410,7 +410,7 @@
                                                       "branch": "fortney"
                                                     },
                                                     {
-                                                      "id": "sylvia_dahl",
+                                                      "id": "0045",
                                                       "name": "Sylvia Dahl",
                                                       "birth": 1926,
                                                       "gender": "F",
@@ -419,40 +419,40 @@
                                                       "notes": "Later Sylvia Deason (b. 1946?). Did thorough genealogical study of the Fortney line.",
                                                       "children": [
                                                         {
-                                                          "id": "richard_goll",
+                                                          "id": "0046",
                                                           "name": "Richard Goll",
                                                           "gender": "M",
                                                           "branch": "fortney"
                                                         },
                                                         {
-                                                          "id": "tom_kromroy",
+                                                          "id": "0047",
                                                           "name": "Tom Kromroy",
                                                           "gender": "M",
                                                           "branch": "fortney",
                                                           "notes": "Son of Sylvia Dahl Kromroy.",
                                                           "children": [
                                                             {
-                                                              "id": "andrew_kromroy",
+                                                              "id": "0048",
                                                               "name": "Andrew Kromroy",
                                                               "birth": 1981,
                                                               "gender": "M",
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "kathi_kromroy",
+                                                              "id": "0049",
                                                               "name": "Kathi Kromroy",
                                                               "gender": "F",
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "sarah_kromroy",
+                                                              "id": "0050",
                                                               "name": "Sarah Kromroy",
                                                               "birth": 1983,
                                                               "gender": "F",
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "anna_kromroy",
+                                                              "id": "0051",
                                                               "name": "Anna Kromroy",
                                                               "birth": 1985,
                                                               "gender": "F",
@@ -463,7 +463,7 @@
                                                       ]
                                                     },
                                                     {
-                                                      "id": "gilroy_dahl",
+                                                      "id": "0052",
                                                       "name": "Gilroy Vernon Dahl",
                                                       "birth": 1931,
                                                       "death": 1981,
@@ -473,7 +473,7 @@
                                                   ]
                                                 },
                                                 {
-                                                  "id": "selma_kathrina",
+                                                  "id": "0053",
                                                   "name": "Selma Kathrina Fortney",
                                                   "birth": 1895,
                                                   "death": 1960,
@@ -483,7 +483,7 @@
                                                   "notes": "Married Nelmer Bergum, 5 June 1925. Nelmer Bergum: Farmer. Born 21 November 1894, died 3 March 1983, Wheeler, WI.",
                                                   "children": [
                                                     {
-                                                      "id": "stanley_bergum",
+                                                      "id": "0054",
                                                       "name": "Stanley Nelmer Bergum",
                                                       "birth": 1930,
                                                       "gender": "M",
@@ -492,7 +492,7 @@
                                                       "notes": "University teacher (retired). 1 daughter, 2 sons.",
                                                       "children": [
                                                         {
-                                                          "id": "lynn_bergum",
+                                                          "id": "0055",
                                                           "name": "Lynn Renee Bergum Kolpack",
                                                           "birth": 1955,
                                                           "birthplace": "3 October 1955",
@@ -502,7 +502,7 @@
                                                           "notes": "Elementary teacher. Married Keith Kolpack (b. 20 June 1949; HS Vocational Ag teacher), 28 August 1976.",
                                                           "children": [
                                                             {
-                                                              "id": "matthew_kolpack",
+                                                              "id": "0056",
                                                               "name": "Matthew James Kolpack",
                                                               "birth": 1981,
                                                               "gender": "M",
@@ -510,7 +510,7 @@
                                                               "notes": "HS Technical Education teacher."
                                                             },
                                                             {
-                                                              "id": "peter_kolpack",
+                                                              "id": "0057",
                                                               "name": "Peter Andrew Kolpack",
                                                               "birth": 1985,
                                                               "gender": "M",
@@ -518,7 +518,7 @@
                                                               "notes": "College student (as of 2007)."
                                                             },
                                                             {
-                                                              "id": "sara_kolpack",
+                                                              "id": "0058",
                                                               "name": "Sara Ann Kolpack",
                                                               "birth": 1989,
                                                               "gender": "F",
@@ -527,7 +527,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "scott_bergum",
+                                                          "id": "0059",
                                                           "name": "Scott Nathan Bergum",
                                                           "birth": 1959,
                                                           "birthplace": "5 May 1959",
@@ -537,7 +537,7 @@
                                                           "notes": "Career US Army. Married Shari Maus Richardson (b. 16 November 1958; Secretary), 14 May 1993.",
                                                           "children": [
                                                             {
-                                                              "id": "ehren_richardson",
+                                                              "id": "0060",
                                                               "name": "Ehren Richardson",
                                                               "birth": 1983,
                                                               "birthplace": "12 November 1983",
@@ -546,7 +546,7 @@
                                                               "notes": "Iraq veteran, college student (as of 2007)."
                                                             },
                                                             {
-                                                              "id": "daniel_richardson",
+                                                              "id": "0061",
                                                               "name": "Daniel Richardson",
                                                               "birth": 1985,
                                                               "birthplace": "19 May 1985",
@@ -557,7 +557,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "kent_bergum",
+                                                          "id": "0062",
                                                           "name": "Kent Bergum",
                                                           "birth": 1962,
                                                           "birthplace": "9 January 1962",
@@ -566,7 +566,7 @@
                                                           "notes": "High School Principal.",
                                                           "children": [
                                                             {
-                                                              "id": "jack_bergum",
+                                                              "id": "0063",
                                                               "name": "Jack Kent Bergum",
                                                               "birth": 1963,
                                                               "birthplace": "22 October 1963",
@@ -574,7 +574,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "kate_bergum",
+                                                              "id": "0064",
                                                               "name": "Kate Clair Bergum",
                                                               "birth": 1995,
                                                               "birthplace": "10 May 1995",
@@ -582,7 +582,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "noa_bergum",
+                                                              "id": "0065",
                                                               "name": "Noa Kay Bergum",
                                                               "birth": 1997,
                                                               "death": 1997,
@@ -592,7 +592,7 @@
                                                               "notes": "Died 29 February 1997."
                                                             },
                                                             {
-                                                              "id": "molly_bergum",
+                                                              "id": "0066",
                                                               "name": "Molly Mae Bergum",
                                                               "birth": 1998,
                                                               "birthplace": "28 May 1998",
@@ -602,7 +602,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "kelly_bergum",
+                                                          "id": "0067",
                                                           "name": "Kelly Gaynor Bergum",
                                                           "birth": 1964,
                                                           "birthplace": "20 November 1964",
@@ -613,7 +613,7 @@
                                                       ]
                                                     },
                                                     {
-                                                      "id": "konval_bergum",
+                                                      "id": "0068",
                                                       "name": "Konval Harlan Bergum",
                                                       "birth": 1933,
                                                       "gender": "M",
@@ -622,7 +622,7 @@
                                                       "notes": "District Conservationist (US Soil Conservation Service); Lutheran Brotherhood. 2 daughters.",
                                                       "children": [
                                                         {
-                                                          "id": "kari_bergum_irber",
+                                                          "id": "0069",
                                                           "name": "Kari Bergum Irber",
                                                           "birth": 1962,
                                                           "birthplace": "12 May 1962, Mora MN",
@@ -632,7 +632,7 @@
                                                           "notes": "CPA. Married John Irber (b. 10 April 1961, St. Paul MN), 10 June 1989, Hinckley.",
                                                           "children": [
                                                             {
-                                                              "id": "sean_irber",
+                                                              "id": "0070",
                                                               "name": "Sean Irber",
                                                               "birth": 1990,
                                                               "birthplace": "28 February 1990, St. Paul MN",
@@ -640,7 +640,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "aaron_irber",
+                                                              "id": "0071",
                                                               "name": "Aaron Irber",
                                                               "birth": 1992,
                                                               "birthplace": "15 June 1992, St. Paul MN",
@@ -650,7 +650,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "kathe_bergum_matthews",
+                                                          "id": "0072",
                                                           "name": "Kathe Bergum Matthews",
                                                           "birth": 1966,
                                                           "birthplace": "26 April 1966, Mora MN",
@@ -660,7 +660,7 @@
                                                           "notes": "CPA. Married John Matthews (b. 30 May 1961, Minneapolis MN; CPA), 9 November 1991, Hinckley MN.",
                                                           "children": [
                                                             {
-                                                              "id": "kristen_matthews",
+                                                              "id": "0073",
                                                               "name": "Kristen Matthews",
                                                               "birth": 1996,
                                                               "birthplace": "16 May 1996, Minneapolis MN",
@@ -668,7 +668,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "justin_matthews",
+                                                              "id": "0074",
                                                               "name": "Justin Matthews",
                                                               "birth": 1999,
                                                               "birthplace": "22 September 1999",
@@ -682,7 +682,7 @@
                                                   ]
                                                 },
                                                 {
-                                                  "id": "clarence_edward",
+                                                  "id": "0075",
                                                   "name": "Clarence Edward Fortney",
                                                   "birth": 1897,
                                                   "death": 1968,
@@ -693,7 +693,7 @@
                                                   "notes": "Worked at General Motors. Married Anna Skreen, 21 August 1918, Wheeler, WI. Wife Anna Skreen born 22 June 1900, Fargo, ND; died 14 November 1990, Houghton Lake, MI.",
                                                   "children": [
                                                     {
-                                                      "id": "hillman_fortney",
+                                                      "id": "0076",
                                                       "name": "Hillman Arnold Fortney",
                                                       "birth": 1919,
                                                       "gender": "M",
@@ -702,7 +702,7 @@
                                                       "notes": "Retired. 2 daughters, 2 sons."
                                                     },
                                                     {
-                                                      "id": "agnes_fortney",
+                                                      "id": "0077",
                                                       "name": "Agnes Marie Fortney",
                                                       "birth": 1922,
                                                       "gender": "F",
@@ -711,7 +711,7 @@
                                                       "notes": "3 daughters."
                                                     },
                                                     {
-                                                      "id": "ralph_fortney",
+                                                      "id": "0078",
                                                       "name": "Ralph Clarence Fortney",
                                                       "birth": 1930,
                                                       "birthplace": "Pontiac, Michigan",
@@ -721,7 +721,7 @@
                                                       "notes": "Retired. 2 daughters, 1 son.",
                                                       "children": [
                                                         {
-                                                          "id": "cynthia_fortney",
+                                                          "id": "0079",
                                                           "name": "Cynthia Diane Fortney",
                                                           "birth": 1955,
                                                           "birthplace": "Pontiac, Michigan",
@@ -731,7 +731,7 @@
                                                           "notes": "Married Lauren Arthur Vaughn (b. 19 Oct 1953, Pontiac MI), 27 July 1996, Traverse City MI.",
                                                           "children": [
                                                             {
-                                                              "id": "julie_vaughn",
+                                                              "id": "0080",
                                                               "name": "Julie Diane Vaughn",
                                                               "birth": 1975,
                                                               "birthplace": "Lansing, Michigan",
@@ -740,7 +740,7 @@
                                                               "spouse": "Brian Olson"
                                                             },
                                                             {
-                                                              "id": "holly_vaughn",
+                                                              "id": "0081",
                                                               "name": "Holly Marie Vaughn",
                                                               "birth": 1977,
                                                               "birthplace": "Tawas City, Michigan",
@@ -748,7 +748,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "zachary_vaughn",
+                                                              "id": "0082",
                                                               "name": "Zachary Arthur Vaughn",
                                                               "birth": 1981,
                                                               "birthplace": "Oxford, Ohio",
@@ -758,7 +758,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "douglas_fortney",
+                                                          "id": "0083",
                                                           "name": "Douglas Nelson Fortney",
                                                           "birth": 1960,
                                                           "birthplace": "Pontiac, Michigan",
@@ -768,7 +768,7 @@
                                                           "notes": "Married Christina Sue McCorkle (b. 2 Dec 1965, Lansing MI), 10 June 1989, Lansing MI.",
                                                           "children": [
                                                             {
-                                                              "id": "elizabeth_ann_f",
+                                                              "id": "0084",
                                                               "name": "Elizabeth Ann Fortney",
                                                               "birth": 1991,
                                                               "birthplace": "Lansing, Michigan",
@@ -776,7 +776,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "john_douglas_f",
+                                                              "id": "0085",
                                                               "name": "John Douglas Fortney",
                                                               "birth": 1993,
                                                               "birthplace": "Lansing, Michigan",
@@ -784,7 +784,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "mark_andrew_f",
+                                                              "id": "0086",
                                                               "name": "Mark Andrew Fortney",
                                                               "birth": 1977,
                                                               "birthplace": "Holt, Michigan",
@@ -792,7 +792,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "stephen_michael_f",
+                                                              "id": "0087",
                                                               "name": "Stephen Michael Fortney",
                                                               "birthplace": "Holt, Michigan",
                                                               "gender": "M",
@@ -805,7 +805,7 @@
                                                   ]
                                                 },
                                                 {
-                                                  "id": "oliver_john",
+                                                  "id": "0088",
                                                   "name": "Oliver John Fortney",
                                                   "birth": 1899,
                                                   "death": 1950,
@@ -815,7 +815,7 @@
                                                   "notes": "First married Susana (Suzy) Marie Sjolden (b. 5 May 1913), 21 November 1933. Second married Lilian Gregerson (b. 14 September 1896, d. 18 May 1977), 16 December 1948.",
                                                   "children": [
                                                     {
-                                                      "id": "michael_dee",
+                                                      "id": "0089",
                                                       "name": "Michael Dee Fortney",
                                                       "birth": 1939,
                                                       "death": 1997,
@@ -825,7 +825,7 @@
                                                       "notes": "2 daughters.",
                                                       "children": [
                                                         {
-                                                          "id": "dawn_marie",
+                                                          "id": "0090",
                                                           "name": "Dawn Marie Fortney Maidl",
                                                           "birth": 1966,
                                                           "death": 2004,
@@ -837,13 +837,13 @@
                                                           "notes": "Insurance claims examiner. Died 26 June 2004.",
                                                           "children": [
                                                             {
-                                                              "id": "anthony_maidl",
+                                                              "id": "0091",
                                                               "name": "Anthony Michael Maidl",
                                                               "gender": "M",
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "nicholas_maidl",
+                                                              "id": "0092",
                                                               "name": "Nicholas William Maidl",
                                                               "gender": "M",
                                                               "branch": "fortney"
@@ -851,7 +851,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "michelle_ann",
+                                                          "id": "0093",
                                                           "name": "Michelle Ann Fortney Montgomery",
                                                           "birth": 1969,
                                                           "birthplace": "St. Paul, Minnesota",
@@ -861,7 +861,7 @@
                                                           "notes": "Claims examiner.",
                                                           "children": [
                                                             {
-                                                              "id": "dustyn_montgomery",
+                                                              "id": "0094",
                                                               "name": "Dustyn Michael Gene Montgomery",
                                                               "gender": "M",
                                                               "branch": "fortney"
@@ -873,7 +873,7 @@
                                                   ]
                                                 },
                                                 {
-                                                  "id": "henry_martin",
+                                                  "id": "0095",
                                                   "name": "Henry Martin Fortney",
                                                   "birth": 1901,
                                                   "death": 1975,
@@ -883,7 +883,7 @@
                                                   "notes": "Wife Caroline Margaret Smith born 18 May 1913, died 1994. Elementary teacher. Married 23 May 1936, Colfax, WI.",
                                                   "children": [
                                                     {
-                                                      "id": "christine_fortney",
+                                                      "id": "0096",
                                                       "name": "Christine Ellen Fortney",
                                                       "birth": 1942,
                                                       "gender": "F",
@@ -891,7 +891,7 @@
                                                       "notes": "Secretary/Office Worker, then farmer (ret.). Married 1st Ken Faber (4 children), 2nd Rolph Anderson (4 children)."
                                                     },
                                                     {
-                                                      "id": "karn_fortney",
+                                                      "id": "0097",
                                                       "name": "Karn Louise Fortney",
                                                       "birth": 1944,
                                                       "gender": "F",
@@ -899,7 +899,7 @@
                                                       "notes": "Art Teacher (ret.). Married 1st Rick Rock (4 sons), 2nd Orrin Anderson (no children)."
                                                     },
                                                     {
-                                                      "id": "thomas_frederick",
+                                                      "id": "0098",
                                                       "name": "Thomas Frederick Fortney",
                                                       "birth": 1945,
                                                       "death": 1966,
@@ -910,7 +910,7 @@
                                                   ]
                                                 },
                                                 {
-                                                  "id": "thomas_kendahl",
+                                                  "id": "0099",
                                                   "name": "Thomas Kendahl Fortney",
                                                   "birth": 1904,
                                                   "death": 1944,
@@ -922,7 +922,7 @@
                                                   "notes": "Physical education teacher and politician. UW heavyweight wrestler (1928, 1932, 1935, 1938). Died in Detroit in 1944. He and Elsie had no children. Married Elsie Carlson, 5 October 1928, Chicago, IL. Elsie (born 1904, died 1979; nurse) never remarried and kept his photo by her bed the rest of her life."
                                                 },
                                                 {
-                                                  "id": "albin_leonard",
+                                                  "id": "0100",
                                                   "name": "Albin Leonard Fortney",
                                                   "birth": 1906,
                                                   "death": 1968,
@@ -930,11 +930,11 @@
                                                   "deathplace": "Stoughton, Wisconsin",
                                                   "gender": "M",
                                                   "branch": "fortney",
-                                                  "spouseId": "anita_sodergren",
+                                                  "spouseId": "0160",
                                                   "notes": "Chaplain Major, US Army. Served in WWII (Hawaii at Pearl Harbor, later European theater) and Korea. Married Anita Linnea Södergren, 28 May 1935. Died of colonic cancer, 10 days before his 33rd wedding anniversary.",
                                                   "children": [
                                                     {
-                                                      "id": "alan_jon",
+                                                      "id": "0101",
                                                       "name": "Alan Jon Fortney",
                                                       "birth": 1939,
                                                       "death": 2019,
@@ -945,7 +945,7 @@
                                                       "notes": "Born on the day his father received his army commission. BA University of Wisconsin–Madison (English, 1963); studied at University of Copenhagen (1961–62). Teacher at Southern Vermont College, Bennington College, and Mount Anthony Union High School (retired 2008). Founded Woodlands Pathways (~1992). Published Go Light (Shires Press, 2009). Married Jill Andersen Fortney. Primary compiler of the family history; visited the Forthun farm in 2005.",
                                                       "children": [
                                                         {
-                                                          "id": "rachael_fortney",
+                                                          "id": "0102",
                                                           "name": "Rachael Fortney",
                                                           "birth": 1971,
                                                           "gender": "F",
@@ -953,7 +953,7 @@
                                                           "notes": "Adopted daughter of Alan & Jill. Biological father: Joe. Lives in Dana Point, CA (as of 2010). Career in real estate and escrow; holds California Real Estate License."
                                                         },
                                                         {
-                                                          "id": "kendall_fortney",
+                                                          "id": "0103",
                                                           "name": "Kendall Anders Fortney",
                                                           "birth": 1981,
                                                           "gender": "M",
@@ -961,7 +961,7 @@
                                                           "notes": "Artist & filmmaker. Born 5 July 1981. Lives in Burlington, VT. Named for his uncle Kendall Thomas Fortney, KIA Vietnam 1968. Studied Okinawan karate; Vermont Statehouse Page (8th grade). Early interest in public television film production.",
                                                           "children": [
                                                             {
-                                                              "id": "person_1774305185961",
+                                                              "id": "0104",
                                                               "name": "Alinea Mae Fortney",
                                                               "branch": "fortney",
                                                               "children": [],
@@ -980,14 +980,14 @@
                                                       "marriages": [
                                                         {
                                                           "spouseName": "Jill Andersen Fortney",
-                                                          "spouseId": "jill_andersen",
+                                                          "spouseId": "0183",
                                                           "married": 1980
                                                         }
                                                       ],
-                                                      "spouseId": "jill_andersen"
+                                                      "spouseId": "0183"
                                                     },
                                                     {
-                                                      "id": "steven_dale",
+                                                      "id": "0105",
                                                       "name": "Steven Dale Fortney",
                                                       "birth": 1937,
                                                       "birthplace": "Minneapolis, Minnesota",
@@ -997,7 +997,7 @@
                                                       "notes": "Author & professor.",
                                                       "children": [
                                                         {
-                                                          "id": "melissa_fortney",
+                                                          "id": "0106",
                                                           "name": "Melissa Fortney Shanks",
                                                           "birth": 1961,
                                                           "birthplace": "Minneapolis, Minnesota",
@@ -1006,13 +1006,13 @@
                                                           "spouse": "James Shanks",
                                                           "children": [
                                                             {
-                                                              "id": "emily_shanks",
+                                                              "id": "0107",
                                                               "name": "Emily Shanks",
                                                               "gender": "F",
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "cassie_shanks",
+                                                              "id": "0108",
                                                               "name": "Cassie Shanks",
                                                               "birth": 2006,
                                                               "birthplace": "Madison, Wisconsin",
@@ -1022,7 +1022,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "minda_fortney",
+                                                          "id": "0109",
                                                           "name": "Minda Fortney Byrne",
                                                           "birth": 1963,
                                                           "birthplace": "Stoughton, Wisconsin",
@@ -1031,19 +1031,19 @@
                                                           "spouse": "Frank Byrne",
                                                           "children": [
                                                             {
-                                                              "id": "connor_byrne",
+                                                              "id": "0110",
                                                               "name": "Connor Byrne",
                                                               "gender": "M",
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "gussie_byrne",
+                                                              "id": "0111",
                                                               "name": "Gussie Byrne",
                                                               "gender": "F",
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "anika_byrne",
+                                                              "id": "0112",
                                                               "name": "Anika Byrne",
                                                               "birth": 2006,
                                                               "birthplace": "Madison, Wisconsin",
@@ -1053,7 +1053,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "alexander_kendall",
+                                                          "id": "0113",
                                                           "name": "Alexander Kendall Fortney",
                                                           "birth": 1968,
                                                           "birthplace": "Stoughton, Wisconsin",
@@ -1062,13 +1062,13 @@
                                                           "spouse": "Christine Marsh",
                                                           "children": [
                                                             {
-                                                              "id": "jack_kendall_f",
+                                                              "id": "0114",
                                                               "name": "Jack Kendall Fortney",
                                                               "gender": "M",
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "henry_richard_f",
+                                                              "id": "0115",
                                                               "name": "Henry Richard Fortney",
                                                               "birth": 2006,
                                                               "birthplace": "Madison, Wisconsin",
@@ -1078,7 +1078,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "sigrid_fortney",
+                                                          "id": "0116",
                                                           "name": "Sigrid Fortney Alekal",
                                                           "birth": 1970,
                                                           "birthplace": "Stoughton, Wisconsin",
@@ -1087,7 +1087,7 @@
                                                           "spouse": "Christopher Alekal",
                                                           "children": [
                                                             {
-                                                              "id": "leila_alekal",
+                                                              "id": "0117",
                                                               "name": "Leila Blue Alekal",
                                                               "birth": 2007,
                                                               "birthplace": "California",
@@ -1104,7 +1104,7 @@
                                                       ]
                                                     },
                                                     {
-                                                      "id": "kendall_thomas",
+                                                      "id": "0118",
                                                       "name": "Kendall Thomas Fortney",
                                                       "birth": 1941,
                                                       "death": 1968,
@@ -1115,7 +1115,7 @@
                                                       "notes": "Army medic. KIA Vietnam, 6 February 1968. Initially listed as MIA due to bureaucratic error; identified with help of Senator William Proxmire. Named for his great-uncle Thomas Kendahl Fortney."
                                                     },
                                                     {
-                                                      "id": "anita_linnea_f",
+                                                      "id": "0119",
                                                       "name": "Anita Linnea Fortney",
                                                       "birth": 1947,
                                                       "birthplace": "Tacoma, Washington",
@@ -1124,7 +1124,7 @@
                                                       "notes": "Married William Harms. Moved to Muskegon, Michigan.",
                                                       "children": [
                                                         {
-                                                          "id": "person_1774271278133",
+                                                          "id": "0120",
                                                           "name": "Robin Harms",
                                                           "branch": "fortney"
                                                         }
@@ -1133,7 +1133,7 @@
                                                   ]
                                                 },
                                                 {
-                                                  "id": "myrtie_susanna",
+                                                  "id": "0121",
                                                   "name": "Myrtie Susanna Fortney",
                                                   "birth": 1919,
                                                   "death": 1986,
@@ -1144,7 +1144,7 @@
                                                   "notes": "Youngest child of Hans & Maria. Married Andrew Ole Larson of Menomonie, WI. Andrew Ole Larson born 31 May 1908 Menomonie WI, died March 1986 Menomonie WI. Carpenter and teacher. Her five children were Alan's beloved 'Larson cousins.' Cousin Laurel's husband Ollie encountered Kendall Thomas in Vietnam.",
                                                   "children": [
                                                     {
-                                                      "id": "thomas_larson",
+                                                      "id": "0122",
                                                       "name": "Thomas Andrew Larson",
                                                       "birth": 1938,
                                                       "gender": "M",
@@ -1153,7 +1153,7 @@
                                                       "notes": "Computer data specialist. 1 son.",
                                                       "children": [
                                                         {
-                                                          "id": "kerry_larson",
+                                                          "id": "0123",
                                                           "name": "Kerry Dean Larson",
                                                           "birth": 1960,
                                                           "birthplace": "Fairbanks, Alaska",
@@ -1163,7 +1163,7 @@
                                                           "notes": "Accountant. Married Betsy Weinhaus (b. 7 Jul 1968), 20 February 1996, Ixtapa, Mexico.",
                                                           "children": [
                                                             {
-                                                              "id": "andrew_dean_larson",
+                                                              "id": "0124",
                                                               "name": "Andrew Dean Larson",
                                                               "birth": 1999,
                                                               "birthplace": "Minneapolis, Minnesota",
@@ -1171,7 +1171,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "jacob_kieran_larson",
+                                                              "id": "0125",
                                                               "name": "Jacob Kieran Larson",
                                                               "birth": 2001,
                                                               "birthplace": "Minneapolis, Minnesota",
@@ -1183,7 +1183,7 @@
                                                       ]
                                                     },
                                                     {
-                                                      "id": "mary_larson",
+                                                      "id": "0126",
                                                       "name": "Mary Ann Larson",
                                                       "birth": 1941,
                                                       "gender": "F",
@@ -1192,7 +1192,7 @@
                                                       "notes": "Nurse. 3 children (divorced).",
                                                       "children": [
                                                         {
-                                                          "id": "lynn_langford",
+                                                          "id": "0127",
                                                           "name": "Lynn Marie Langford Jones",
                                                           "birth": 1962,
                                                           "birthplace": "Menomonie, Wisconsin",
@@ -1202,7 +1202,7 @@
                                                           "notes": "Accountant. Married Jeffrey Jones (b. 16 Mar 1960, Minneapolis MN), 19 Aug 1988. Divorced 2001.",
                                                           "children": [
                                                             {
-                                                              "id": "andrew_jones",
+                                                              "id": "0128",
                                                               "name": "Andrew Alan Jones",
                                                               "birth": 1988,
                                                               "birthplace": "Minneapolis, Minnesota",
@@ -1210,7 +1210,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "emily_jones",
+                                                              "id": "0129",
                                                               "name": "Emily Lucille Jones",
                                                               "birth": 1990,
                                                               "birthplace": "Minneapolis, Minnesota",
@@ -1218,7 +1218,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "alyssa_jones",
+                                                              "id": "0130",
                                                               "name": "Alyssa Jean Jones",
                                                               "birth": 1995,
                                                               "birthplace": "Menomonie, Wisconsin",
@@ -1228,7 +1228,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "laura_langford",
+                                                          "id": "0131",
                                                           "name": "Laura Beth Langford Walleen",
                                                           "birth": 1965,
                                                           "birthplace": "US Army Hospital, Japan",
@@ -1238,7 +1238,7 @@
                                                           "notes": "Regional human resource manager. Married Richard Walleen (b. 23 Nov 1964), 4 May 1991.",
                                                           "children": [
                                                             {
-                                                              "id": "richard_walleen",
+                                                              "id": "0132",
                                                               "name": "Richard Allen Walleen",
                                                               "birth": 1993,
                                                               "birthplace": "Burnsville, Minnesota",
@@ -1246,7 +1246,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "samuel_walleen",
+                                                              "id": "0133",
                                                               "name": "Samuel John Walleen",
                                                               "birth": 1997,
                                                               "birthplace": "St. Paul, Minnesota",
@@ -1256,7 +1256,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "jonda_langford",
+                                                          "id": "0134",
                                                           "name": "Jonda Kay Langford Martin",
                                                           "birth": 1969,
                                                           "birthplace": "Baldwin, Wisconsin",
@@ -1266,7 +1266,7 @@
                                                           "notes": "Business owner, CEO. Married Daniel Martin (b. 5 Feb 1961), 29 October 1995.",
                                                           "children": [
                                                             {
-                                                              "id": "lauren_martin",
+                                                              "id": "0135",
                                                               "name": "Lauren Danielle Martin",
                                                               "birth": 1998,
                                                               "gender": "F",
@@ -1277,7 +1277,7 @@
                                                       ]
                                                     },
                                                     {
-                                                      "id": "linda_larson",
+                                                      "id": "0136",
                                                       "name": "Linda Rae Larson",
                                                       "birth": 1942,
                                                       "gender": "F",
@@ -1286,7 +1286,7 @@
                                                       "notes": "4 children.",
                                                       "children": [
                                                         {
-                                                          "id": "ashley_olson",
+                                                          "id": "0137",
                                                           "name": "Ashley Renee Olson Keith",
                                                           "birth": 1970,
                                                           "birthplace": "Minneapolis, Minnesota",
@@ -1296,7 +1296,7 @@
                                                           "notes": "Ryan Keith b. 26 Aug 1972, Rome GA. Teacher.",
                                                           "children": [
                                                             {
-                                                              "id": "spencer_keith",
+                                                              "id": "0138",
                                                               "name": "Spencer Edward Keith",
                                                               "birth": 2000,
                                                               "birthplace": "Burnsville, Minnesota",
@@ -1304,7 +1304,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "caroline_keith",
+                                                              "id": "0139",
                                                               "name": "Caroline Susannah Keith",
                                                               "birth": 2006,
                                                               "birthplace": "Burnsville, Minnesota",
@@ -1314,7 +1314,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "andrea_olson",
+                                                          "id": "0140",
                                                           "name": "Andrea Elizabeth Olson Bach",
                                                           "birth": 1972,
                                                           "birthplace": "Minneapolis, Minnesota",
@@ -1324,7 +1324,7 @@
                                                           "notes": "Event management. Married Matthew Bach (b. 7 Feb 1973), 31 July 1995, Bloomington MN.",
                                                           "children": [
                                                             {
-                                                              "id": "hannah_bach",
+                                                              "id": "0141",
                                                               "name": "Hannah Rae Bach",
                                                               "birth": 1998,
                                                               "birthplace": "St. Paul, Minnesota",
@@ -1332,7 +1332,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "benjamin_bach",
+                                                              "id": "0142",
                                                               "name": "Benjamin George Bach",
                                                               "birth": 2002,
                                                               "birthplace": "St. Paul, Minnesota",
@@ -1342,7 +1342,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "alexi_olson",
+                                                          "id": "0143",
                                                           "name": "Alexi LaRae Olson Thompson",
                                                           "birth": 1975,
                                                           "birthplace": "Bloomington, Minnesota",
@@ -1352,7 +1352,7 @@
                                                           "notes": "Zachary Thompson is a pastor.",
                                                           "children": [
                                                             {
-                                                              "id": "soren_thompson",
+                                                              "id": "0144",
                                                               "name": "Soren Jack Thompson",
                                                               "birth": 2004,
                                                               "birthplace": "Burnsville, Minnesota",
@@ -1360,7 +1360,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "elise_thompson",
+                                                              "id": "0145",
                                                               "name": "Elise Rae Thompson",
                                                               "birth": 2007,
                                                               "birthplace": "Woodbury, Minnesota",
@@ -1373,7 +1373,7 @@
                                                       ]
                                                     },
                                                     {
-                                                      "id": "orland_larson",
+                                                      "id": "0146",
                                                       "name": "Orland John Larson",
                                                       "birth": 1944,
                                                       "gender": "M",
@@ -1382,7 +1382,7 @@
                                                       "notes": "2 sons."
                                                     },
                                                     {
-                                                      "id": "laurel_larson",
+                                                      "id": "0147",
                                                       "name": "Laurel Jean Larson",
                                                       "birth": 1947,
                                                       "birthplace": "Menomonie, Wisconsin",
@@ -1392,7 +1392,7 @@
                                                       "notes": "Reading teacher (ret.). 3 children. Her husband Ollie encountered Kendall Thomas Fortney in Vietnam.",
                                                       "children": [
                                                         {
-                                                          "id": "luke_madsen",
+                                                          "id": "0148",
                                                           "name": "Luke Everett Madsen",
                                                           "birth": 1972,
                                                           "birthplace": "Menomonie, Wisconsin",
@@ -1402,7 +1402,7 @@
                                                           "notes": "Spanish teacher, varsity coach. Married Jennifer Krenzelok (b. 10 Feb 1973, special ed teacher), 3 August 1996, Grace Lutheran, Eau Claire WI.",
                                                           "children": [
                                                             {
-                                                              "id": "hattie_madsen",
+                                                              "id": "0149",
                                                               "name": "Hattie Jean Madsen",
                                                               "birth": 1999,
                                                               "birthplace": "Eau Claire, Wisconsin",
@@ -1410,7 +1410,7 @@
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "gabriel_madsen",
+                                                              "id": "0150",
                                                               "name": "Gabriel Dean Madsen",
                                                               "birth": 2001,
                                                               "birthplace": "Eau Claire, Wisconsin",
@@ -1419,7 +1419,7 @@
                                                               "notes": "Twin."
                                                             },
                                                             {
-                                                              "id": "mason_madsen",
+                                                              "id": "0151",
                                                               "name": "Mason Daniel Madsen",
                                                               "birth": 2001,
                                                               "birthplace": "Eau Claire, Wisconsin",
@@ -1430,7 +1430,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "jed_madsen",
+                                                          "id": "0152",
                                                           "name": "Jed Thomas Matthew Madsen",
                                                           "birth": 1976,
                                                           "gender": "M",
@@ -1439,14 +1439,14 @@
                                                           "notes": "Tru-Green Lawn Care manager. Married Cindy Diadoo (b. 30 Jun 1975, environmental health/safety manager), 7 May 2005, Menomonie WI.",
                                                           "children": [
                                                             {
-                                                              "id": "julienne_madsen",
+                                                              "id": "0153",
                                                               "name": "Julienne Marie Madsen",
                                                               "birth": 2004,
                                                               "gender": "F",
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "collin_madsen",
+                                                              "id": "0154",
                                                               "name": "Collin Matthew Madsen",
                                                               "birth": 2006,
                                                               "gender": "M",
@@ -1455,7 +1455,7 @@
                                                           ]
                                                         },
                                                         {
-                                                          "id": "jesse_madsen",
+                                                          "id": "0155",
                                                           "name": "Jesse Jacob Madsen",
                                                           "birth": 1979,
                                                           "birthplace": "Menomonie, Wisconsin",
@@ -1465,14 +1465,14 @@
                                                           "notes": "Math teacher, coach. Married Devan Keith (b. 22 Jun 1979), 2 September 2003, Fresno CA.",
                                                           "children": [
                                                             {
-                                                              "id": "morgan_madsen",
+                                                              "id": "0156",
                                                               "name": "Morgan Kathryn Madsen",
                                                               "birth": 2002,
                                                               "gender": "F",
                                                               "branch": "fortney"
                                                             },
                                                             {
-                                                              "id": "julia_madsen",
+                                                              "id": "0157",
                                                               "name": "Julia Grace Madsen",
                                                               "birth": 2005,
                                                               "gender": "F",
@@ -1507,7 +1507,7 @@
       ]
     },
     {
-      "id": "sodergren_branch",
+      "id": "0158",
       "name": "Södergren Branch",
       "subtitle": "Swedish-American Lutheran Ministry · Moline, Illinois",
       "branch": "sodergren",
@@ -1515,14 +1515,14 @@
       "url": "sodergren.html",
       "children": [
         {
-          "id": "carl_sodergren",
+          "id": "0159",
           "name": "Rev. Carl Johannes Södergren",
           "gender": "M",
           "branch": "sodergren",
           "notes": "Lutheran minister. Father of six children, including Anita Linnea. Family deeply rooted in Lutheran ministry.",
           "children": [
             {
-              "id": "anita_sodergren",
+              "id": "0160",
               "name": "Anita Linnea Södergren",
               "birth": 1907,
               "death": 1990,
@@ -1530,25 +1530,25 @@
               "deathplace": "Stoughton, Wisconsin",
               "gender": "F",
               "branch": "sodergren",
-              "spouseId": "albin_leonard",
+              "spouseId": "0100",
               "notes": "Born in Moline, IL; family moved to Burlington, IA. Married Albin Leonard Fortney, 28 May 1935, Minneapolis. Died 4 July 1990, before breakfast, in Skaalen Home after 22 years as a widow. Mother of four."
             },
             {
-              "id": "una_sodergren",
+              "id": "0161",
               "name": "Una Elizabeth Södergren",
               "gender": "F",
               "branch": "sodergren",
               "notes": "Married John Milton MD."
             },
             {
-              "id": "carlw_sodergren",
+              "id": "0162",
               "name": "Rev. Carl Wendell Södergren",
               "gender": "M",
               "branch": "sodergren",
               "notes": "Lutheran minister. Married Eunice. Anita's family stayed near him in Portland, OR during WWII."
             },
             {
-              "id": "phoebe_sodergren",
+              "id": "0163",
               "name": "Phoebe Echo Södergren",
               "gender": "F",
               "branch": "sodergren",
@@ -1559,7 +1559,7 @@
       ]
     },
     {
-      "id": "mulhearn_branch",
+      "id": "0164",
       "name": "Mulhearn / O'Brien Branch",
       "subtitle": "Irish Origins · County Roscommon / Clare / Donegal · Newark, New Jersey",
       "branch": "mulhearn",
@@ -1567,7 +1567,7 @@
       "url": "mulhearn.html",
       "children": [
         {
-          "id": "william_mulhearn",
+          "id": "0165",
           "name": "William Mulhearn",
           "birthplace": "Ballyshannon, County Clare, Ireland",
           "gender": "M",
@@ -1575,7 +1575,7 @@
           "notes": "Emigrated from Ireland (County Clare / County Roscommon area) to Newark, New Jersey, arriving 1880s via Castle Garden, New York (the precursor to Ellis Island). Castle Garden records were later destroyed by fire. His son Robert Mulhearn Sr. was born in the United States.",
           "children": [
             {
-              "id": "robert_mulhearn_sr",
+              "id": "0166",
               "name": "Robert Mulhearn Sr.",
               "birthplace": "United States (possibly New Jersey)",
               "gender": "M",
@@ -1584,7 +1584,7 @@
               "spouse": "Sarah Gans",
               "children": [
                 {
-                  "id": "robert_mulhearn",
+                  "id": "0167",
                   "name": "Robert Mulhearn",
                   "birthplace": "Newark, New Jersey",
                   "gender": "M",
@@ -1592,38 +1592,39 @@
                   "notes": "Born in Newark, New Jersey. Son of Robert Mulhearn Sr. and Sarah Gans. Married Agnes McEntee. Together had ten children. The American Mulhearn family descends from this couple.",
                   "children": [
                     {
-                      "id": "shirley_mulhearn",
+                      "id": "0168",
                       "name": "Shirley Mulhearn",
                       "gender": "F",
                       "branch": "mulhearn",
+                      "spouseId": "0199",
                       "notes": "Born 20 April 1922, New Jersey. Fifth child of Robert and Agnes Mulhearn. Married Andrew B. Andersen II in 1948; together had six children including Jill Andersen Fortney. Died 4 March 1994, New Jersey. Buried in Veterans Cemetery, New Jersey. She was in the Women's Auxiliary Corps during World War II, where she met Andrew.",
                       "children": [
                         {
-                          "id": "teeo_dalessio",
+                          "id": "0169",
                           "name": "Teeo (Lawrence) D'Alessio",
                           "gender": "F",
-                          "branch": "mulhearn",
+                          "branch": "andersen",
                           "notes": "Oldest child of Andrew B. Andersen II and Shirley Mulhearn. Lives in McKinney, Texas. Children: Lori (m. Billy Lunz → Olivia, Kellen); Jeffrey D'Alessio (m. Suzanne → Julia, Amanda, Michael).",
-                          "spouseId": "person_1774468608808",
+                          "spouseId": "0190",
                           "children": [
                             {
-                              "id": "person_1774468672421",
+                              "id": "0170",
                               "name": "Lori Lunz",
-                              "branch": "mulhearn",
+                              "branch": "andersen",
                               "children": [
                                 {
-                                  "id": "person_1774468679883",
+                                  "id": "0171",
                                   "name": "Olivia Lunz",
-                                  "branch": "mulhearn",
+                                  "branch": "andersen",
                                   "children": [],
                                   "gender": "F",
                                   "birthplace": "TX",
                                   "birth": 2006
                                 },
                                 {
-                                  "id": "person_1774468770204",
+                                  "id": "0172",
                                   "name": "Kellen Lunz",
-                                  "branch": "mulhearn",
+                                  "branch": "andersen",
                                   "children": [],
                                   "gender": "M",
                                   "birth": 2010
@@ -1631,54 +1632,72 @@
                               ],
                               "gender": "F",
                               "birth": 1967,
-                              "spouseId": "person_1774468792743"
+                              "spouseId": "0191",
+                              "marriages": [
+                                {
+                                  "spouseName": "William Lunz",
+                                  "spouseId": "0191"
+                                }
+                              ]
                             },
                             {
-                              "id": "person_1774468836082",
+                              "id": "0173",
                               "name": "Jeffery D'Alessio",
-                              "branch": "mulhearn",
+                              "branch": "andersen",
                               "children": [
                                 {
-                                  "id": "person_1774468970603",
+                                  "id": "0174",
                                   "name": "Julia D'Alessio",
-                                  "branch": "mulhearn",
+                                  "branch": "andersen",
                                   "children": [],
                                   "birth": 1998
                                 },
                                 {
-                                  "id": "person_1774468992159",
+                                  "id": "0175",
                                   "name": "Amanda D'Alessio",
-                                  "branch": "mulhearn",
+                                  "branch": "andersen",
                                   "children": []
                                 },
                                 {
-                                  "id": "person_1774469008251",
+                                  "id": "0176",
                                   "name": "Michael D'Alessio",
-                                  "branch": "mulhearn",
+                                  "branch": "andersen",
                                   "children": []
                                 }
                               ],
                               "gender": "M",
                               "birth": 1969,
-                              "spouseId": "person_1774468899077"
+                              "spouseId": "0192",
+                              "marriages": [
+                                {
+                                  "spouseName": "Suzanne D'Alessio",
+                                  "spouseId": "0192"
+                                }
+                              ]
+                            }
+                          ],
+                          "marriages": [
+                            {
+                              "spouseName": "Laurence (Larry) D'Alessio",
+                              "spouseId": "0190"
                             }
                           ]
                         },
                         {
-                          "id": "jeffrey_andersen",
+                          "id": "0177",
                           "name": "Jeffrey Andersen",
                           "gender": "M",
                           "branch": "andersen",
                           "notes": "Son of Andrew B. Andersen II and Shirley Mulhearn. Lives in Rockwall, Texas. Child: Todd (→ Zachary).",
-                          "spouseId": "person_1774469037014",
+                          "spouseId": "0193",
                           "children": [
                             {
-                              "id": "person_1774469077240",
+                              "id": "0178",
                               "name": "Todd Andersen",
                               "branch": "andersen",
                               "children": [
                                 {
-                                  "id": "person_1774469096164",
+                                  "id": "0179",
                                   "name": "Zachary Andersen",
                                   "branch": "andersen",
                                   "children": [],
@@ -1690,7 +1709,7 @@
                           ]
                         },
                         {
-                          "id": "gregory_andersen",
+                          "id": "0180",
                           "name": "Gregory Andersen",
                           "gender": "M",
                           "branch": "andersen",
@@ -1698,12 +1717,12 @@
                           "notes": "Son of Andrew B. Andersen II and Shirley Mulhearn. Lives in Roseburg, Oregon. Married Ginny. Child: Erin Andersen (→ Kylie).",
                           "children": [
                             {
-                              "id": "person_1774469113952",
+                              "id": "0181",
                               "name": "Erin Andersen",
                               "branch": "andersen",
                               "children": [
                                 {
-                                  "id": "person_1774469132183",
+                                  "id": "0182",
                                   "name": "Kylie Andersen?",
                                   "branch": "andersen",
                                   "children": [],
@@ -1718,30 +1737,36 @@
                           ]
                         },
                         {
-                          "id": "jill_andersen",
+                          "id": "0183",
                           "name": "Jill Andersen Fortney",
                           "birth": 1951,
                           "gender": "F",
-                          "branch": "mulhearn",
-                          "spouseId": "alan_jon",
-                          "notes": "Born 15 June 1951. Art teacher and sixth-grade teacher in Bennington, VT schools. BS Summa Cum Laude, North Adams State College (1978). Married Alan Jon Fortney. Photographer — Forthun village photos were taken by Jill during the 2005 Norway trip. Children: Rachael Fortney (Dana Point, CA) and Kendall Fortney (Burlington, VT)."
+                          "branch": "andersen",
+                          "spouseId": "0101",
+                          "notes": "Born 15 June 1951. Art teacher and sixth-grade teacher in Bennington, VT schools. BS Summa Cum Laude, North Adams State College (1978). Married Alan Jon Fortney. Photographer — Forthun village photos were taken by Jill during the 2005 Norway trip. Children: Rachael Fortney (Dana Point, CA) and Kendall Fortney (Burlington, VT).",
+                          "marriages": [
+                            {
+                              "spouseName": "Alan Jon Fortney",
+                              "spouseId": "0101"
+                            }
+                          ]
                         },
                         {
-                          "id": "judi_andersen",
+                          "id": "0184",
                           "name": "Judi Andersen",
                           "gender": "F",
                           "branch": "andersen",
                           "spouse": "Pat Thompson",
                           "notes": "Daughter of Andrew B. Andersen II and Shirley Mulhearn. Lives in Cheektowaga, New York. Married Pat Thompson. Child: Rebecca (m. Patrick Lonzi → Jordan, Aiden).",
-                          "spouseId": "person_1774469161107",
+                          "spouseId": "0194",
                           "children": [
                             {
-                              "id": "person_1774469201947",
+                              "id": "0185",
                               "name": "Rebecca Lonzi",
                               "branch": "andersen",
                               "children": [
                                 {
-                                  "id": "person_1774469232757",
+                                  "id": "0186",
                                   "name": "Jordan Lonzi",
                                   "branch": "andersen",
                                   "children": [],
@@ -1749,7 +1774,7 @@
                                   "birth": 2000
                                 },
                                 {
-                                  "id": "person_1774469255667",
+                                  "id": "0187",
                                   "name": "Aiden Lonzi",
                                   "branch": "andersen",
                                   "children": [],
@@ -1761,12 +1786,12 @@
                               "gender": "F",
                               "birthplace": "NY",
                               "birth": 82,
-                              "spouseId": "person_1774469292503"
+                              "spouseId": "0195"
                             }
                           ]
                         },
                         {
-                          "id": "andrew_andersen_iii",
+                          "id": "0188",
                           "name": "Andrew B. Andersen III",
                           "gender": "M",
                           "branch": "andersen",
@@ -1785,7 +1810,7 @@
           ]
         },
         {
-          "id": "agnes_mcentee",
+          "id": "0189",
           "name": "Agnes McEntee ('Nanny Agnes')",
           "gender": "F",
           "branch": "mulhearn",
@@ -1793,9 +1818,8 @@
           "birthplace": "Newark, New Jersey"
         },
         {
-          "id": "person_1774468608808",
+          "id": "0190",
           "name": "Laurence (Larry) D'Alessio",
-          "branch": "mulhearn",
           "children": [],
           "gender": "M",
           "birthplace": "NJ",
@@ -1805,71 +1829,66 @@
           "marriages": [
             {
               "spouseName": "Teeo D'Alessio",
-              "spouseId": "teeo_dalessio"
+              "spouseId": "0169"
             }
           ],
-          "spouseId": "teeo_dalessio"
+          "spouseId": "0169"
         },
         {
-          "id": "person_1774468792743",
+          "id": "0191",
           "name": "William Lunz",
-          "branch": "mulhearn",
           "children": [],
           "gender": "M",
           "marriages": [
             {
               "spouseName": "Lori D'Alessio",
-              "spouseId": "person_1774468672421"
+              "spouseId": "0170"
             }
           ],
-          "spouseId": "person_1774468672421"
+          "spouseId": "0170"
         },
         {
-          "id": "person_1774468899077",
+          "id": "0192",
           "name": "Suzanne D'Alessio",
-          "branch": "mulhearn",
           "children": [],
           "gender": "F",
           "marriages": [
             {
               "spouseName": "Jeffery Andersen",
-              "spouseId": "person_1774468836082"
+              "spouseId": "0173"
             }
           ],
-          "spouseId": "person_1774468836082"
+          "spouseId": "0173"
         },
         {
-          "id": "person_1774469037014",
+          "id": "0193",
           "name": "Sherri Andersen",
-          "branch": "mulhearn",
           "children": [],
           "gender": "F",
           "marriages": [
             {
               "spouseName": "Jeffery Andersen",
-              "spouseId": "jeffrey_andersen"
+              "spouseId": "0177"
             }
           ],
-          "spouseId": "jeffrey_andersen"
+          "spouseId": "0177"
         },
         {
-          "id": "person_1774469161107",
+          "id": "0194",
           "name": "Robert (Bob) Thompson",
-          "branch": "mulhearn",
           "children": [],
           "gender": "M",
           "marriages": [
             {
               "spouseName": "Judi Thompson",
-              "spouseId": "judi_andersen"
+              "spouseId": "0184"
             }
           ],
-          "spouseId": "judi_andersen"
+          "spouseId": "0184"
         },
         {
-          "id": "person_1774469292503",
+          "id": "0195",
           "name": "Patrick Lonzi",
-          "branch": "mulhearn",
           "children": [],
           "gender": "M",
           "birthplace": "NY",
@@ -1877,18 +1896,15 @@
           "marriages": [
             {
               "spouseName": "Rebecca Lonzi",
-              "spouseId": "person_1774469201947"
-            },
-            {
-              "spouseId": "person_1774469201947"
+              "spouseId": "0185"
             }
           ],
-          "spouseId": "person_1774469201947"
+          "spouseId": "0185"
         }
       ]
     },
     {
-      "id": "andersen_branch",
+      "id": "0196",
       "name": "Andersen Branch",
       "subtitle": "Norwegian-American · Michigan",
       "branch": "andersen",
@@ -1896,7 +1912,7 @@
       "url": "andersen.html",
       "children": [
         {
-          "id": "ole_andersen_norway",
+          "id": "0197",
           "name": "Ole Andersen",
           "birthplace": "Kragerø, Norway",
           "gender": "M",
@@ -1905,19 +1921,20 @@
           "spouse": "[Mortland] Andersen",
           "children": [
             {
-              "id": "andrew_andersen_sr",
+              "id": "0198",
               "name": "Andrew Bernard Andersen Sr.",
               "birthplace": "Kragerø, Norway",
               "gender": "M",
               "branch": "andersen",
-              "spouse": "Guerena Knutson",
+              "spouseId": "0200",
               "notes": "Emigrated from Krageroe, Norway to Holland, Michigan in 1914, through Ellis Island, New York. Son of Ole Andersen and [Mortland], who came from a neighboring town in Norway. Married Guerena Knutson, born in Wisconsin of Norwegian immigrant parents. Father of Andrew B. Andersen II (born 1918 in Michigan).",
               "children": [
                 {
-                  "id": "andrew_andersen_ii",
+                  "id": "0199",
                   "name": "Andrew B. Andersen II",
                   "gender": "M",
                   "branch": "andersen",
+                  "spouseId": "0168",
                   "notes": "Born 7 August 1918, Michigan. Son of Andrew Bernard Andersen Sr. and Guerena Knutson. Married Shirley Mulhearn in 1948. Father of six children including Jill Andersen Fortney. Served in World War II with post-Normandy forces in Paris; met Shirley in England just before his unit was moved to France — she was in the Women's Auxiliary Corps. Died in Texas. Death year uncertain (possibly 1960 or 1990 — to be confirmed from family records).",
                   "birth": 1918,
                   "birthplace": "Michigan",
@@ -1928,13 +1945,13 @@
           ]
         },
         {
-          "id": "guerena_knutson",
+          "id": "0200",
           "name": "Guerena Knutson Andersen",
           "gender": "F",
           "branch": "andersen",
           "birthplace": "Wisconsin",
           "notes": "Wife of Andrew Bernard Andersen Sr. Born in Wisconsin. Her parents emigrated from Norway to Wisconsin the generation before her. Further ancestry not yet documented.",
-          "spouseId": "andrew_andersen_sr"
+          "spouseId": "0198"
         }
       ]
     }

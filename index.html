@@ -84,21 +84,19 @@
         <div class="section-divider"></div>
       </div>
 
-      <!-- Branch filter — acts as radio buttons to switch families -->
+      <!-- Branch filter — pairs show intersecting families together -->
       <div class="branch-filter-bar">
-        <button class="branch-filter-btn active" data-branch="fortney"   onclick="filterBranchTree('fortney')">
-          <span class="filter-dot" style="background:var(--color-fortney);"></span>Fortney / Forthun
+        <button class="branch-filter-btn active" data-branch="fortney+sodergren" onclick="filterBranchTree('fortney+sodergren')">
+          <span class="filter-dot" style="background:var(--color-fortney);"></span>
+          <span class="filter-dot" style="background:var(--color-sodergren);margin-left:-6px;"></span>
+          Fortney &amp; Södergren
         </button>
-        <button class="branch-filter-btn" data-branch="sodergren" onclick="filterBranchTree('sodergren')">
-          <span class="filter-dot" style="background:var(--color-sodergren);"></span>Södergren
+        <button class="branch-filter-btn" data-branch="mulhearn+andersen" onclick="filterBranchTree('mulhearn+andersen')">
+          <span class="filter-dot" style="background:var(--color-mulhearn);"></span>
+          <span class="filter-dot" style="background:var(--color-andersen);margin-left:-6px;"></span>
+          Mulhearn &amp; Andersen
         </button>
-        <button class="branch-filter-btn" data-branch="mulhearn"  onclick="filterBranchTree('mulhearn')">
-          <span class="filter-dot" style="background:var(--color-mulhearn);"></span>Mulhearn / O'Brien
-        </button>
-        <button class="branch-filter-btn" data-branch="andersen"  onclick="filterBranchTree('andersen')">
-          <span class="filter-dot" style="background:var(--color-andersen);"></span>Andersen
-        </button>
-        <button class="branch-filter-btn" data-branch="all"       onclick="filterBranchTree('all')">
+        <button class="branch-filter-btn" data-branch="all" onclick="filterBranchTree('all')">
           All Branches
         </button>
       </div>
