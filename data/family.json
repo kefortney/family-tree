@@ -958,7 +958,7 @@
                                                           "birth": 1981,
                                                           "gender": "M",
                                                           "branch": "fortney",
-                                                          "notes": "Artist & filmmaker. Born 5 July 1981. Named for his uncle Kendall Thomas Fortney, KIA Vietnam 1968. Studied Okinawan karate; Vermont Statehouse Page (8th grade). Early interest in public television film production.",
+                                                          "notes": "Artist & filmmaker. Born 5 July 1981. Lives in Burlington, VT. Named for his uncle Kendall Thomas Fortney, KIA Vietnam 1968. Studied Okinawan karate; Vermont Statehouse Page (8th grade). Early interest in public television film production.",
                                                           "children": [
                                                             {
                                                               "id": "person_1774305185961",
@@ -1561,7 +1561,7 @@
     {
       "id": "mulhearn_branch",
       "name": "Mulhearn / O'Brien Branch",
-      "subtitle": "Irish Origins · County Clare & County Donegal",
+      "subtitle": "Irish Origins · County Roscommon / Clare / Donegal · Newark, New Jersey",
       "branch": "mulhearn",
       "type": "branch",
       "url": "mulhearn.html",
@@ -1572,30 +1572,83 @@
           "birthplace": "Ballyshannon, County Clare, Ireland",
           "gender": "M",
           "branch": "mulhearn",
-          "notes": "Emigrated from Ballyshannon, County Clare. Father of Robert Mulhearn.",
+          "notes": "Emigrated from Ireland (County Clare / County Roscommon area) to Newark, New Jersey, arriving 1880s via Castle Garden, New York (the precursor to Ellis Island). Castle Garden records were later destroyed by fire. His son Robert Mulhearn Sr. was born in the United States.",
           "children": [
             {
-              "id": "robert_mulhearn",
-              "name": "Robert Mulhearn",
+              "id": "robert_mulhearn_sr",
+              "name": "Robert Mulhearn Sr.",
+              "birthplace": "United States (possibly New Jersey)",
               "gender": "M",
               "branch": "mulhearn",
-              "notes": "Married Agnes McEntee. Together had ten children. The American Mulhearn family descends from this couple.",
+              "notes": "Son of William Mulhearn. Different middle initial from his son Robert Jr. Married Sarah Gans, an Austrian Jewish immigrant born in the United States. Further details to be confirmed from family records.",
+              "spouse": "Sarah Gans",
               "children": [
                 {
-                  "id": "shirley_mulhearn",
-                  "name": "Shirley Mulhearn",
-                  "gender": "F",
+                  "id": "robert_mulhearn",
+                  "name": "Robert Mulhearn",
+                  "birthplace": "Newark, New Jersey",
+                  "gender": "M",
                   "branch": "mulhearn",
-                  "notes": "Married Andrew B. Andersen II. Together had six children including Jill Andersen (Fortney).",
+                  "notes": "Born in Newark, New Jersey. Son of Robert Mulhearn Sr. and Sarah Gans. Married Agnes McEntee. Together had ten children. The American Mulhearn family descends from this couple.",
                   "children": [
                     {
-                      "id": "jill_andersen",
-                      "name": "Jill Andersen Fortney",
-                      "birth": 1951,
+                      "id": "shirley_mulhearn",
+                      "name": "Shirley Mulhearn",
                       "gender": "F",
                       "branch": "mulhearn",
-                      "spouseId": "alan_jon",
-                      "notes": "Born 15 June 1951. Art teacher and sixth-grade teacher in Bennington, VT schools. BS Summa Cum Laude, North Adams State College (1978). Married Alan Jon Fortney. Photographer — Forthun village photos were taken by Jill during the 2005 Norway trip."
+                      "notes": "Born 20 April 1922, New Jersey. Fifth child of Robert and Agnes Mulhearn. Married Andrew B. Andersen II in 1948; together had six children including Jill Andersen Fortney. Died 4 March 1994, New Jersey. Buried in Veterans Cemetery, New Jersey. She was in the Women's Auxiliary Corps during World War II, where she met Andrew.",
+                      "children": [
+                        {
+                          "id": "teeo_dalessio",
+                          "name": "Teeo (Lawrence) D'Alessio",
+                          "gender": "F",
+                          "branch": "mulhearn",
+                          "notes": "Oldest child of Andrew B. Andersen II and Shirley Mulhearn. Lives in McKinney, Texas. Children: Lori (m. Billy Lunz → Olivia, Kellen); Jeffrey D'Alessio (m. Suzanne → Julia, Amanda, Michael)."
+                        },
+                        {
+                          "id": "jeffrey_andersen",
+                          "name": "Jeffrey Andersen",
+                          "gender": "M",
+                          "branch": "andersen",
+                          "notes": "Son of Andrew B. Andersen II and Shirley Mulhearn. Lives in Rockwall, Texas. Child: Todd (→ Zachary)."
+                        },
+                        {
+                          "id": "gregory_andersen",
+                          "name": "Gregory Andersen",
+                          "gender": "M",
+                          "branch": "andersen",
+                          "spouse": "Ginny",
+                          "notes": "Son of Andrew B. Andersen II and Shirley Mulhearn. Lives in Roseburg, Oregon. Married Ginny. Child: Erin Andersen (→ Kylie)."
+                        },
+                        {
+                          "id": "jill_andersen",
+                          "name": "Jill Andersen Fortney",
+                          "birth": 1951,
+                          "gender": "F",
+                          "branch": "mulhearn",
+                          "spouseId": "alan_jon",
+                          "notes": "Born 15 June 1951. Art teacher and sixth-grade teacher in Bennington, VT schools. BS Summa Cum Laude, North Adams State College (1978). Married Alan Jon Fortney. Photographer — Forthun village photos were taken by Jill during the 2005 Norway trip. Children: Rachael Fortney (Dana Point, CA) and Kendall Fortney (Burlington, VT)."
+                        },
+                        {
+                          "id": "judi_andersen",
+                          "name": "Judi Andersen",
+                          "gender": "F",
+                          "branch": "andersen",
+                          "spouse": "Pat Thompson",
+                          "notes": "Daughter of Andrew B. Andersen II and Shirley Mulhearn. Lives in Cheektowaga, New York. Married Pat Thompson. Child: Rebecca (m. Patrick Lonzi → Jordan, Aiden)."
+                        },
+                        {
+                          "id": "andrew_andersen_iii",
+                          "name": "Andrew B. Andersen III",
+                          "gender": "M",
+                          "branch": "andersen",
+                          "notes": "Youngest son of Andrew B. Andersen II and Shirley Mulhearn."
+                        }
+                      ],
+                      "birth": 1922,
+                      "birthplace": "New Jersey",
+                      "death": 1994,
+                      "deathplace": "New Jersey"
                     }
                   ]
                 }
@@ -1608,24 +1661,59 @@
           "name": "Agnes McEntee ('Nanny Agnes')",
           "gender": "F",
           "branch": "mulhearn",
-          "notes": "Matriarch. Daughter of Bernard Sylvester McEntee and Sarah O'Brien. McEntee name (Gaelic: Mac an tSaoi, 'Son of the Scholar') traces to County Donegal, Ireland. Married Robert Mulhearn; together had ten children."
+          "notes": "Born in Newark, New Jersey. Married Robert Mulhearn; together had ten children. Daughter of [McEntee] and [O'Brien], both born in the United States. The McEntee line (Gaelic: Mac an tSaoi, \"Son of the Scholar\") traces to County Donegal, Ireland. The O'Brien line descends from Brian Boru, King of Thomond.",
+          "birthplace": "Newark, New Jersey"
         }
       ]
     },
     {
       "id": "andersen_branch",
       "name": "Andersen Branch",
-      "subtitle": "American · Wisconsin",
+      "subtitle": "Norwegian-American · Michigan",
       "branch": "andersen",
       "type": "branch",
       "url": "andersen.html",
       "children": [
         {
-          "id": "andrew_andersen_ii",
-          "name": "Andrew B. Andersen II",
+          "id": "ole_andersen_norway",
+          "name": "Ole Andersen",
+          "birthplace": "Kragerø, Norway",
           "gender": "M",
           "branch": "andersen",
-          "notes": "Married Shirley Mulhearn. Father of six children including Jill Andersen Fortney. Served in World War 2 as post-Normandy forces in Paris. He met Shirley in England just before his unit was moved to France, she was in the Women's Auxiliary Corps."
+          "notes": "Father of Andrew Bernard Andersen Sr. From the Kragerø area of Norway. His wife (maiden name Mortland) came from a neighboring town.",
+          "spouse": "[Mortland] Andersen",
+          "children": [
+            {
+              "id": "andrew_andersen_sr",
+              "name": "Andrew Bernard Andersen Sr.",
+              "birthplace": "Kragerø, Norway",
+              "gender": "M",
+              "branch": "andersen",
+              "spouse": "Guerena Knutson",
+              "notes": "Emigrated from Krageroe, Norway to Holland, Michigan in 1914, through Ellis Island, New York. Son of Ole Andersen and [Mortland], who came from a neighboring town in Norway. Married Guerena Knutson, born in Wisconsin of Norwegian immigrant parents. Father of Andrew B. Andersen II (born 1918 in Michigan).",
+              "children": [
+                {
+                  "id": "andrew_andersen_ii",
+                  "name": "Andrew B. Andersen II",
+                  "gender": "M",
+                  "branch": "andersen",
+                  "notes": "Born 7 August 1918, Michigan. Son of Andrew Bernard Andersen Sr. and Guerena Knutson. Married Shirley Mulhearn in 1948. Father of six children including Jill Andersen Fortney. Served in World War II with post-Normandy forces in Paris; met Shirley in England just before his unit was moved to France — she was in the Women's Auxiliary Corps. Died in Texas. Death year uncertain (possibly 1960 or 1990 — to be confirmed from family records).",
+                  "birth": 1918,
+                  "birthplace": "Michigan",
+                  "deathplace": "Texas"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "guerena_knutson",
+          "name": "Guerena Knutson Andersen",
+          "gender": "F",
+          "branch": "andersen",
+          "birthplace": "Wisconsin",
+          "notes": "Wife of Andrew Bernard Andersen Sr. Born in Wisconsin. Her parents emigrated from Norway to Wisconsin the generation before her. Further ancestry not yet documented.",
+          "spouseId": "andrew_andersen_sr"
         }
       ]
     }
