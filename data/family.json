@@ -1804,6 +1804,7 @@
           "death": 2010,
           "marriages": [
             {
+              "spouseName": "Teeo D'Alessio",
               "spouseId": "teeo_dalessio"
             }
           ],
@@ -1817,6 +1818,7 @@
           "gender": "M",
           "marriages": [
             {
+              "spouseName": "Lori D'Alessio",
               "spouseId": "person_1774468672421"
             }
           ],
@@ -1830,6 +1832,7 @@
           "gender": "F",
           "marriages": [
             {
+              "spouseName": "Jeffery Andersen",
               "spouseId": "person_1774468836082"
             }
           ],
@@ -1843,6 +1846,7 @@
           "gender": "F",
           "marriages": [
             {
+              "spouseName": "Jeffery Andersen",
               "spouseId": "jeffrey_andersen"
             }
           ],
@@ -1856,6 +1860,7 @@
           "gender": "M",
           "marriages": [
             {
+              "spouseName": "Judi Thompson",
               "spouseId": "judi_andersen"
             }
           ],
@@ -1870,6 +1875,10 @@
           "birthplace": "NY",
           "birth": 81,
           "marriages": [
+            {
+              "spouseName": "Rebecca Lonzi",
+              "spouseId": "person_1774469201947"
+            },
             {
               "spouseId": "person_1774469201947"
             }
