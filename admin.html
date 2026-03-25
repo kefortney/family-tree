@@ -748,7 +748,7 @@
   function branchPath(branch) {
     if (branch === 'all') return [];
     const children = familyData?.children || [];
-    const idx = children.findIndex(c => c.id === branch + '_branch');
+    const idx = children.findIndex(c => c.type === 'branch' && c.branch === branch);
     return idx >= 0 ? [idx] : [];
   }
 

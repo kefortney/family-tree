@@ -1948,10 +1948,15 @@
           "id": "0200",
           "name": "Guerena Knutson Andersen",
           "gender": "F",
-          "branch": "andersen",
           "birthplace": "Wisconsin",
           "notes": "Wife of Andrew Bernard Andersen Sr. Born in Wisconsin. Her parents emigrated from Norway to Wisconsin the generation before her. Further ancestry not yet documented.",
-          "spouseId": "0198"
+          "spouseId": "0198",
+          "marriages": [
+            {
+              "spouseName": "Andrew Bernard Andersen Sr.",
+              "spouseId": "0198"
+            }
+          ]
         }
       ]
     }
