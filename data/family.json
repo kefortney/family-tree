@@ -958,7 +958,7 @@
                                                           "birth": 1981,
                                                           "gender": "M",
                                                           "branch": "fortney",
-                                                          "notes": "Artist & filmmaker. Born 5 July 1981. Lives in Burlington, VT. Named for his uncle Kendall Thomas Fortney, KIA Vietnam 1968. Studied Okinawan karate; Vermont Statehouse Page (8th grade). Early interest in public television film production.",
+                                                          "notes": "Artist Lives in Burlington, VT. Named for his uncle Kendall Thomas Fortney, KIA Vietnam 1968. Studied Okinawan karate; Vermont Statehouse Page (8th grade).",
                                                           "children": [
                                                             {
                                                               "id": "0104",
@@ -1592,6 +1592,81 @@
                   "notes": "Born in Newark, New Jersey. Son of Robert Mulhearn Sr. and Sarah Gans. Married Agnes McEntee. Together had ten children. The American Mulhearn family descends from this couple.",
                   "children": [
                     {
+                      "id": "0201",
+                      "name": "Mae Mulhearn",
+                      "gender": "F",
+                      "branch": "mulhearn",
+                      "notes": "Deceased. Eldest daughter of Robert and Agnes Mulhearn.",
+                      "children": [
+                        {
+                          "id": "0202",
+                          "name": "Kitty",
+                          "gender": "F",
+                          "branch": "mulhearn",
+                          "notes": "Daughter of Mae Mulhearn. Additional siblings may exist — details unknown.",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "0203",
+                      "name": "Harry Mulhearn",
+                      "gender": "M",
+                      "branch": "mulhearn",
+                      "notes": "Deceased. Son of Robert and Agnes Mulhearn. Children unknown.",
+                      "children": []
+                    },
+                    {
+                      "id": "0204",
+                      "name": "Agnes Mulhearn Carolan",
+                      "gender": "F",
+                      "branch": "mulhearn",
+                      "spouse": "John Carolan",
+                      "notes": "Daughter of Robert and Agnes Mulhearn. Married John Carolan.",
+                      "children": [
+                        {
+                          "id": "0205",
+                          "name": "Kathleen Carolan",
+                          "gender": "F",
+                          "branch": "mulhearn",
+                          "notes": "5 children and 1 stepson — details not yet recorded.",
+                          "children": []
+                        },
+                        {
+                          "id": "0206",
+                          "name": "Patty Carolan",
+                          "gender": "F",
+                          "branch": "mulhearn",
+                          "notes": "Known as \"Pat-Pat.\" 2 children — details not yet recorded.",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "0207",
+                      "name": "Robert Mulhearn Jr.",
+                      "gender": "M",
+                      "branch": "mulhearn",
+                      "spouse": "Helen",
+                      "notes": "Deceased. Son of Robert and Agnes Mulhearn. Married Helen.",
+                      "children": [
+                        {
+                          "id": "0208",
+                          "name": "Eileen Mulhearn",
+                          "gender": "F",
+                          "branch": "mulhearn",
+                          "children": []
+                        },
+                        {
+                          "id": "0209",
+                          "name": "Robert Mulhearn III",
+                          "gender": "M",
+                          "branch": "mulhearn",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
                       "id": "0168",
                       "name": "Shirley Mulhearn",
                       "gender": "F",
@@ -1802,8 +1877,200 @@
                       "birthplace": "New Jersey",
                       "death": 1994,
                       "deathplace": "New Jersey"
+                    },
+                    {
+                      "id": "0210",
+                      "name": "Rheta Mulhearn Gotz",
+                      "gender": "F",
+                      "branch": "mulhearn",
+                      "spouse": "Eddy Gotz",
+                      "notes": "Daughter of Robert and Agnes Mulhearn. Married Eddy Gotz.",
+                      "children": [
+                        {
+                          "id": "0211",
+                          "name": "Rheta Gotz",
+                          "gender": "F",
+                          "branch": "mulhearn",
+                          "notes": "Known as \"Rita girl.\"",
+                          "children": []
+                        },
+                        {
+                          "id": "0212",
+                          "name": "Cecilia Gotz",
+                          "gender": "F",
+                          "branch": "mulhearn",
+                          "notes": "Known as \"Ceil.\"",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "0213",
+                      "name": "Raymond Mulhearn",
+                      "gender": "M",
+                      "branch": "mulhearn",
+                      "spouse": "Josie",
+                      "notes": "Deceased. Son of Robert and Agnes Mulhearn. Married Josie. Children unknown.",
+                      "children": []
+                    },
+                    {
+                      "id": "0214",
+                      "name": "[Name unknown] Mulhearn",
+                      "gender": "F",
+                      "branch": "mulhearn",
+                      "notes": "Eighth child of Robert and Agnes Mulhearn. Given name not recorded in available sources.",
+                      "children": [
+                        {
+                          "id": "0215",
+                          "name": "Joanne",
+                          "gender": "F",
+                          "branch": "mulhearn",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "0216",
+                      "name": "Pat Mulhearn",
+                      "gender": "F",
+                      "branch": "mulhearn",
+                      "spouse": "Eddie",
+                      "notes": "Daughter of Robert and Agnes Mulhearn. Married Eddie.",
+                      "children": [
+                        {
+                          "id": "0217",
+                          "name": "Sheila",
+                          "gender": "F",
+                          "branch": "mulhearn",
+                          "children": [
+                            {
+                              "id": "0218",
+                              "name": "Donna",
+                              "gender": "F",
+                              "branch": "mulhearn",
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "id": "0219",
+                          "name": "Kenneth",
+                          "gender": "M",
+                          "branch": "mulhearn",
+                          "children": []
+                        },
+                        {
+                          "id": "0220",
+                          "name": "Rebecca",
+                          "gender": "F",
+                          "branch": "mulhearn",
+                          "children": []
+                        },
+                        {
+                          "id": "0221",
+                          "name": "Pat",
+                          "gender": "F",
+                          "branch": "mulhearn",
+                          "notes": "Known as \"Little Pat.\"",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": "0222",
+                      "name": "Myrtle Mulhearn Caprigleone",
+                      "gender": "F",
+                      "branch": "mulhearn",
+                      "birth": 1929,
+                      "death": 2011,
+                      "spouse": "Barney Caprigleone",
+                      "notes": "Born 25 May 1929. Died 2011. Tenth child of Robert and Agnes Mulhearn. Married Barney Caprigleone (deceased).",
+                      "children": [
+                        {
+                          "id": "0223",
+                          "name": "Barbara Caprigleone",
+                          "gender": "F",
+                          "branch": "mulhearn",
+                          "children": [
+                            {
+                              "id": "0224",
+                              "name": "Jennifer",
+                              "gender": "F",
+                              "branch": "mulhearn",
+                              "children": []
+                            },
+                            {
+                              "id": "0225",
+                              "name": "Jacki",
+                              "gender": "F",
+                              "branch": "mulhearn",
+                              "children": []
+                            },
+                            {
+                              "id": "0226",
+                              "name": "Michelle",
+                              "gender": "F",
+                              "branch": "mulhearn",
+                              "children": []
+                            },
+                            {
+                              "id": "0227",
+                              "name": "Edward Jr.",
+                              "gender": "M",
+                              "branch": "mulhearn",
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "id": "0228",
+                          "name": "Barney Caprigleone Jr.",
+                          "gender": "M",
+                          "branch": "mulhearn",
+                          "children": [
+                            {
+                              "id": "0229",
+                              "name": "Jacqui",
+                              "gender": "F",
+                              "branch": "mulhearn",
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "id": "0230",
+                          "name": "Lynne Caprigleone",
+                          "gender": "F",
+                          "branch": "mulhearn",
+                          "children": [
+                            {
+                              "id": "0231",
+                              "name": "Mark",
+                              "gender": "M",
+                              "branch": "mulhearn",
+                              "children": []
+                            },
+                            {
+                              "id": "0232",
+                              "name": "Lisa",
+                              "gender": "F",
+                              "branch": "mulhearn",
+                              "children": [
+                                {
+                                  "id": "0233",
+                                  "name": "Henry",
+                                  "gender": "M",
+                                  "branch": "mulhearn",
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
                     }
-                  ]
+                  ],
+                  "spouseId": "0189"
                 }
               ]
             }
@@ -1815,7 +2082,9 @@
           "gender": "F",
           "branch": "mulhearn",
           "notes": "Born in Newark, New Jersey. Married Robert Mulhearn; together had ten children. Daughter of [McEntee] and [O'Brien], both born in the United States. The McEntee line (Gaelic: Mac an tSaoi, \"Son of the Scholar\") traces to County Donegal, Ireland. The O'Brien line descends from Brian Boru, King of Thomond.",
-          "birthplace": "Newark, New Jersey"
+          "birthplace": "Newark, New Jersey",
+          "spouseId": "0167",
+          "proxyOnly": true
         },
         {
           "id": "0190",

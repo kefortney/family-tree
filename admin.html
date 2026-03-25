@@ -786,6 +786,33 @@
     selectNode(path);
   }
 
+  /**
+   * Switch the branch filter to whichever branch contains the given person,
+   * then select them in the tree.
+   */
+  function jumpToSpouse(spouseId) {
+    if (!idIndex.has(spouseId)) return;
+    const path  = idIndex.get(spouseId);
+    const node  = nodeAt(path);
+    const targetBranch = node.branch || 'all';
+
+    // If current view doesn't include this branch, switch to it
+    const bPath = branchPath(targetBranch);
+    if (bPath.length > 0 && !isAncestorPath(bPath, path)) {
+      setAdminBranchFilter(targetBranch);
+    } else if (currentBranch !== 'all' && currentBranch !== targetBranch) {
+      setAdminBranchFilter(targetBranch);
+    }
+
+    // Select the node (expand ancestors so it's visible)
+    selectById(spouseId);
+    // Scroll the tree list so the selected row is visible
+    setTimeout(() => {
+      const row = document.querySelector('.tree-item-row.selected');
+      if (row) row.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }, 50);
+  }
+
   function refreshAfterMutation(selectId) {
     rebuildIndexes();
     renderTree();
@@ -1505,11 +1532,14 @@
           <label>Spouse Name</label>
           <input type="text" class="m-name" placeholder="Full name…" value="${escHtml(m.spouseName || '')}">
         </div>
-        <div>
-          <label>Linked (in tree)</label>
-          <select class="m-id">
-            <option value="">— external spouse —</option>
-          </select>
+        <div style="display:flex;gap:0.35rem;align-items:flex-end;">
+          <div style="flex:1;">
+            <label>Linked (in tree)</label>
+            <select class="m-id">
+              <option value="">— external spouse —</option>
+            </select>
+          </div>
+          <button class="btn m-goto" title="Go to this person in the tree" style="padding:0.3rem 0.55rem;flex-shrink:0;display:none;">→</button>
         </div>
       </div>
       <div class="m-grid-3">
@@ -1540,12 +1570,28 @@
         sel.appendChild(o);
       });
 
-    // Auto-populate spouse name when an in-tree person is chosen
+    const gotoBtn = div.querySelector('button.m-goto');
+
+    function updateGotoBtn(spouseId) {
+      if (spouseId && idIndex.has(spouseId)) {
+        gotoBtn.style.display = '';
+        gotoBtn.onclick = () => jumpToSpouse(spouseId);
+      } else {
+        gotoBtn.style.display = 'none';
+        gotoBtn.onclick = null;
+      }
+    }
+
+    // Show Go-to button if marriage already has a linked spouse
+    updateGotoBtn(m.spouseId || '');
+
+    // Auto-populate spouse name and show/hide Go-to when dropdown changes
     sel.addEventListener('change', function () {
       if (this.value) {
         const person = personOptions.find(p => p.id === this.value);
         if (person) nameInput.value = person.name || '';
       }
+      updateGotoBtn(this.value);
     });
 
     return div;
@@ -1623,6 +1669,7 @@
   }
 
   // Expose button handlers
+  window.jumpToSpouse = jumpToSpouse;
   window.setAdminBranchFilter = setAdminBranchFilter;
   window.expandAllTree = expandAllTree;
   window.collapseAllTree = collapseAllTree;
