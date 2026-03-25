@@ -1832,7 +1832,8 @@
               "spouseId": "0169"
             }
           ],
-          "spouseId": "0169"
+          "spouseId": "0169",
+          "proxyOnly": true
         },
         {
           "id": "0191",
@@ -1845,7 +1846,8 @@
               "spouseId": "0170"
             }
           ],
-          "spouseId": "0170"
+          "spouseId": "0170",
+          "proxyOnly": true
         },
         {
           "id": "0192",
@@ -1858,7 +1860,8 @@
               "spouseId": "0173"
             }
           ],
-          "spouseId": "0173"
+          "spouseId": "0173",
+          "proxyOnly": true
         },
         {
           "id": "0193",
@@ -1871,7 +1874,8 @@
               "spouseId": "0177"
             }
           ],
-          "spouseId": "0177"
+          "spouseId": "0177",
+          "proxyOnly": true
         },
         {
           "id": "0194",
@@ -1884,7 +1888,8 @@
               "spouseId": "0184"
             }
           ],
-          "spouseId": "0184"
+          "spouseId": "0184",
+          "proxyOnly": true
         },
         {
           "id": "0195",
@@ -1899,7 +1904,8 @@
               "spouseId": "0185"
             }
           ],
-          "spouseId": "0185"
+          "spouseId": "0185",
+          "proxyOnly": true
         }
       ]
     },
@@ -1956,7 +1962,8 @@
               "spouseName": "Andrew Bernard Andersen Sr.",
               "spouseId": "0198"
             }
-          ]
+          ],
+          "proxyOnly": true
         }
       ]
     }

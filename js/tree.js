@@ -73,6 +73,12 @@
     })(treeData);
   }
 
+  /** Returns true for nodes that should never appear as standalone tree nodes —
+   *  they are external spouses stored in the branch for admin editing only. */
+  function isProxyOnly(data) {
+    return data && data.proxyOnly === true;
+  }
+
   /**
    * Get all marriages for a node.
    * Supports new `marriages` array format and legacy `spouse`/`spouseId` fields.
@@ -264,9 +270,15 @@
     const nodes = root.descendants();
     const links = root.links();
 
-    // In all-branches mode, hide the virtual root
-    const visibleNodes = (isAllMode ? nodes.filter(d => d.depth > 0) : nodes);
-    const visibleLinks = (isAllMode ? links.filter(d => d.source.depth > 0) : links);
+    // In all-branches/combined mode hide the virtual root; always hide proxyOnly nodes
+    const visibleNodes = nodes.filter(d => {
+      if (isAllMode && d.depth === 0) return false;
+      return !isProxyOnly(d.data);
+    });
+    const visibleLinks = links.filter(d =>
+      !(isAllMode && d.source.depth === 0) &&
+      !isProxyOnly(d.target.data)
+    );
 
     applySpouseCompaction(visibleNodes);
 

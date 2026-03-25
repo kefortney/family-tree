@@ -888,6 +888,14 @@
     nameEl.textContent = name.length > 38 ? name.slice(0, 36) + '…' : name;
     row.appendChild(nameEl);
 
+    if (node.proxyOnly) {
+      const badge = document.createElement('span');
+      badge.title = 'Married-in partner — shown as proxy in tree view';
+      badge.style.cssText = 'font-size:0.68rem;opacity:0.6;margin-left:0.3rem;';
+      badge.textContent = '↔';
+      row.appendChild(badge);
+    }
+
     if (node.birth || node.death) {
       const meta = document.createElement('span');
       meta.className = 'item-meta';
