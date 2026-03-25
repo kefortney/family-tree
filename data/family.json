@@ -1603,14 +1603,91 @@
                           "name": "Teeo (Lawrence) D'Alessio",
                           "gender": "F",
                           "branch": "mulhearn",
-                          "notes": "Oldest child of Andrew B. Andersen II and Shirley Mulhearn. Lives in McKinney, Texas. Children: Lori (m. Billy Lunz → Olivia, Kellen); Jeffrey D'Alessio (m. Suzanne → Julia, Amanda, Michael)."
+                          "notes": "Oldest child of Andrew B. Andersen II and Shirley Mulhearn. Lives in McKinney, Texas. Children: Lori (m. Billy Lunz → Olivia, Kellen); Jeffrey D'Alessio (m. Suzanne → Julia, Amanda, Michael).",
+                          "spouseId": "person_1774468608808",
+                          "children": [
+                            {
+                              "id": "person_1774468672421",
+                              "name": "Lori Lunz",
+                              "branch": "mulhearn",
+                              "children": [
+                                {
+                                  "id": "person_1774468679883",
+                                  "name": "Olivia Lunz",
+                                  "branch": "mulhearn",
+                                  "children": [],
+                                  "gender": "F",
+                                  "birthplace": "TX",
+                                  "birth": 2006
+                                },
+                                {
+                                  "id": "person_1774468770204",
+                                  "name": "Kellen Lunz",
+                                  "branch": "mulhearn",
+                                  "children": [],
+                                  "gender": "M",
+                                  "birth": 2010
+                                }
+                              ],
+                              "gender": "F",
+                              "birth": 1967,
+                              "spouseId": "person_1774468792743"
+                            },
+                            {
+                              "id": "person_1774468836082",
+                              "name": "Jeffery D'Alessio",
+                              "branch": "mulhearn",
+                              "children": [
+                                {
+                                  "id": "person_1774468970603",
+                                  "name": "Julia D'Alessio",
+                                  "branch": "mulhearn",
+                                  "children": [],
+                                  "birth": 1998
+                                },
+                                {
+                                  "id": "person_1774468992159",
+                                  "name": "Amanda D'Alessio",
+                                  "branch": "mulhearn",
+                                  "children": []
+                                },
+                                {
+                                  "id": "person_1774469008251",
+                                  "name": "Michael D'Alessio",
+                                  "branch": "mulhearn",
+                                  "children": []
+                                }
+                              ],
+                              "gender": "M",
+                              "birth": 1969,
+                              "spouseId": "person_1774468899077"
+                            }
+                          ]
                         },
                         {
                           "id": "jeffrey_andersen",
                           "name": "Jeffrey Andersen",
                           "gender": "M",
                           "branch": "andersen",
-                          "notes": "Son of Andrew B. Andersen II and Shirley Mulhearn. Lives in Rockwall, Texas. Child: Todd (→ Zachary)."
+                          "notes": "Son of Andrew B. Andersen II and Shirley Mulhearn. Lives in Rockwall, Texas. Child: Todd (→ Zachary).",
+                          "spouseId": "person_1774469037014",
+                          "children": [
+                            {
+                              "id": "person_1774469077240",
+                              "name": "Todd Andersen",
+                              "branch": "andersen",
+                              "children": [
+                                {
+                                  "id": "person_1774469096164",
+                                  "name": "Zachary Andersen",
+                                  "branch": "andersen",
+                                  "children": [],
+                                  "gender": "M"
+                                }
+                              ],
+                              "gender": "M"
+                            }
+                          ]
                         },
                         {
                           "id": "gregory_andersen",
@@ -1618,7 +1695,27 @@
                           "gender": "M",
                           "branch": "andersen",
                           "spouse": "Ginny",
-                          "notes": "Son of Andrew B. Andersen II and Shirley Mulhearn. Lives in Roseburg, Oregon. Married Ginny. Child: Erin Andersen (→ Kylie)."
+                          "notes": "Son of Andrew B. Andersen II and Shirley Mulhearn. Lives in Roseburg, Oregon. Married Ginny. Child: Erin Andersen (→ Kylie).",
+                          "children": [
+                            {
+                              "id": "person_1774469113952",
+                              "name": "Erin Andersen",
+                              "branch": "andersen",
+                              "children": [
+                                {
+                                  "id": "person_1774469132183",
+                                  "name": "Kylie Andersen?",
+                                  "branch": "andersen",
+                                  "children": [],
+                                  "gender": "F",
+                                  "birth": 2010
+                                }
+                              ],
+                              "gender": "F",
+                              "birthplace": "OR",
+                              "birth": 81
+                            }
+                          ]
                         },
                         {
                           "id": "jill_andersen",
@@ -1635,7 +1732,38 @@
                           "gender": "F",
                           "branch": "andersen",
                           "spouse": "Pat Thompson",
-                          "notes": "Daughter of Andrew B. Andersen II and Shirley Mulhearn. Lives in Cheektowaga, New York. Married Pat Thompson. Child: Rebecca (m. Patrick Lonzi → Jordan, Aiden)."
+                          "notes": "Daughter of Andrew B. Andersen II and Shirley Mulhearn. Lives in Cheektowaga, New York. Married Pat Thompson. Child: Rebecca (m. Patrick Lonzi → Jordan, Aiden).",
+                          "spouseId": "person_1774469161107",
+                          "children": [
+                            {
+                              "id": "person_1774469201947",
+                              "name": "Rebecca Lonzi",
+                              "branch": "andersen",
+                              "children": [
+                                {
+                                  "id": "person_1774469232757",
+                                  "name": "Jordan Lonzi",
+                                  "branch": "andersen",
+                                  "children": [],
+                                  "gender": "M",
+                                  "birth": 2000
+                                },
+                                {
+                                  "id": "person_1774469255667",
+                                  "name": "Aiden Lonzi",
+                                  "branch": "andersen",
+                                  "children": [],
+                                  "gender": "M",
+                                  "birthplace": "Cheektowaga NY",
+                                  "birth": 2007
+                                }
+                              ],
+                              "gender": "F",
+                              "birthplace": "NY",
+                              "birth": 82,
+                              "spouseId": "person_1774469292503"
+                            }
+                          ]
                         },
                         {
                           "id": "andrew_andersen_iii",
@@ -1663,6 +1791,90 @@
           "branch": "mulhearn",
           "notes": "Born in Newark, New Jersey. Married Robert Mulhearn; together had ten children. Daughter of [McEntee] and [O'Brien], both born in the United States. The McEntee line (Gaelic: Mac an tSaoi, \"Son of the Scholar\") traces to County Donegal, Ireland. The O'Brien line descends from Brian Boru, King of Thomond.",
           "birthplace": "Newark, New Jersey"
+        },
+        {
+          "id": "person_1774468608808",
+          "name": "Laurence (Larry) D'Alessio",
+          "branch": "mulhearn",
+          "children": [],
+          "gender": "M",
+          "birthplace": "NJ",
+          "deathplace": "TX",
+          "birth": 36,
+          "death": 2010,
+          "marriages": [
+            {
+              "spouseId": "teeo_dalessio"
+            }
+          ],
+          "spouseId": "teeo_dalessio"
+        },
+        {
+          "id": "person_1774468792743",
+          "name": "William Lunz",
+          "branch": "mulhearn",
+          "children": [],
+          "gender": "M",
+          "marriages": [
+            {
+              "spouseId": "person_1774468672421"
+            }
+          ],
+          "spouseId": "person_1774468672421"
+        },
+        {
+          "id": "person_1774468899077",
+          "name": "Suzanne D'Alessio",
+          "branch": "mulhearn",
+          "children": [],
+          "gender": "F",
+          "marriages": [
+            {
+              "spouseId": "person_1774468836082"
+            }
+          ],
+          "spouseId": "person_1774468836082"
+        },
+        {
+          "id": "person_1774469037014",
+          "name": "Sherri Andersen",
+          "branch": "mulhearn",
+          "children": [],
+          "gender": "F",
+          "marriages": [
+            {
+              "spouseId": "jeffrey_andersen"
+            }
+          ],
+          "spouseId": "jeffrey_andersen"
+        },
+        {
+          "id": "person_1774469161107",
+          "name": "Robert (Bob) Thompson",
+          "branch": "mulhearn",
+          "children": [],
+          "gender": "M",
+          "marriages": [
+            {
+              "spouseId": "judi_andersen"
+            }
+          ],
+          "spouseId": "judi_andersen"
+        },
+        {
+          "id": "person_1774469292503",
+          "name": "Patrick Lonzi",
+          "branch": "mulhearn",
+          "children": [],
+          "gender": "M",
+          "birthplace": "NY",
+          "birth": 81,
+          "marriages": [
+            {
+              "spouseId": "person_1774469201947"
+            }
+          ],
+          "spouseId": "person_1774469201947"
         }
       ]
     },
