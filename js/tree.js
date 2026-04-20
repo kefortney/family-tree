@@ -166,12 +166,11 @@
     g = svg.append('g');
 
     zoomBehavior = d3.zoom()
-      .scaleExtent([0.35, 4])
+      .scaleExtent([0.05, 4])
       .extent([[0, 0], [svgW, svgH]])
-      .translateExtent([[-5000, -5000], [12000, 5000]])
+      .translateExtent([[-8000, -8000], [16000, 8000]])
       .filter((event) => {
-        // Let normal page scrolling work; only zoom with Ctrl/Cmd + wheel.
-        if (event.type === 'wheel') return !!(event.ctrlKey || event.metaKey);
+        if (event.type === 'wheel') return true; // plain scroll zooms
         return !event.button;
       })
       .on('zoom', (event) => g.attr('transform', event.transform));
@@ -249,15 +248,38 @@
 
   // Expose for inline onclick in index.html
   window.filterBranchTree = buildTree;
+  window.fitTreeView = fitView;
 
   function centerView() {
-    // LTR: d.y → screen X (generation depth), d.x → screen Y (sibling spread).
-    // Top-justify: shift so the topmost node sits at TOP_PADDING.
-    const nodes = root ? root.descendants() : [];
-    const minX  = nodes.length ? d3.min(nodes, d => d.x) : 0;
+    fitView();
+  }
+
+  function fitView() {
+    if (!root) return;
+    const nodes = root.descendants();
+    if (!nodes.length) return;
+
+    // LTR: screen x = d.y (depth), screen y = d.x (breadth)
+    const minSX = d3.min(nodes, d => d.y);
+    const maxSX = d3.max(nodes, d => d.y);
+    const minSY = d3.min(nodes, d => d.x);
+    const maxSY = d3.max(nodes, d => d.x);
+
+    const treeW = (maxSX - minSX) + 180; // extra for labels on the right
+    const treeH = (maxSY - minSY) + 60;
+
+    const rect  = container.getBoundingClientRect();
+    const vw    = rect.width  || svgW;
+    const vh    = rect.height || svgH;
+
+    const scale = Math.min(vw / treeW, vh / treeH, 1) * 0.92;
+
+    const tx = (vw  - treeW * scale) / 2 - minSX * scale;
+    const ty = (vh  - treeH * scale) / 2 - minSY * scale;
+
     svg.call(
       zoomBehavior.transform,
-      d3.zoomIdentity.translate(TOP_PADDING + 8, TOP_PADDING - minX)
+      d3.zoomIdentity.translate(tx, ty).scale(scale)
     );
   }
 
@@ -606,6 +628,37 @@
     document.getElementById('detail-close')?.addEventListener('click', () =>
       detailPanel?.classList.remove('visible')
     );
+
+    document.getElementById('btn-zoom-in')?.addEventListener('click', () => {
+      svg.transition().duration(250).call(zoomBehavior.scaleBy, 1.4);
+    });
+
+    document.getElementById('btn-zoom-out')?.addEventListener('click', () => {
+      svg.transition().duration(250).call(zoomBehavior.scaleBy, 1 / 1.4);
+    });
+
+    document.getElementById('btn-zoom-fit')?.addEventListener('click', () => {
+      svg.transition().duration(400).call(
+        zoomBehavior.transform,
+        (() => {
+          if (!root) return d3.zoomIdentity;
+          const nodes = root.descendants();
+          const minSX = d3.min(nodes, d => d.y);
+          const maxSX = d3.max(nodes, d => d.y);
+          const minSY = d3.min(nodes, d => d.x);
+          const maxSY = d3.max(nodes, d => d.x);
+          const treeW = (maxSX - minSX) + 180;
+          const treeH = (maxSY - minSY) + 60;
+          const rect  = container.getBoundingClientRect();
+          const vw    = rect.width  || svgW;
+          const vh    = rect.height || svgH;
+          const scale = Math.min(vw / treeW, vh / treeH, 1) * 0.92;
+          const tx = (vw - treeW * scale) / 2 - minSX * scale;
+          const ty = (vh - treeH * scale) / 2 - minSY * scale;
+          return d3.zoomIdentity.translate(tx, ty).scale(scale);
+        })()
+      );
+    });
   }
 
   // ── Bootstrap ─────────────────────────────────────────────
