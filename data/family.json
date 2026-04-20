@@ -1007,17 +1007,51 @@
                                                           "children": [
                                                             {
                                                               "id": "0107",
-                                                              "name": "Emily Shanks",
+                                                              "name": "Emile Shanks Bissen",
                                                               "gender": "F",
-                                                              "branch": "fortney"
+                                                              "branch": "fortney",
+                                                              "spouse": "Matthew Bissen",
+                                                              "children": [
+                                                                {
+                                                                  "id": "0107a",
+                                                                  "name": "Elizabeth Rey Bissen",
+                                                                  "birth": 2016,
+                                                                  "gender": "F",
+                                                                  "branch": "fortney"
+                                                                },
+                                                                {
+                                                                  "id": "0107b",
+                                                                  "name": "Hannah Kristine Bissen",
+                                                                  "birth": 2018,
+                                                                  "gender": "F",
+                                                                  "branch": "fortney"
+                                                                }
+                                                              ]
                                                             },
                                                             {
                                                               "id": "0108",
-                                                              "name": "Cassie Shanks",
-                                                              "birth": 2006,
+                                                              "name": "Cassandra Shanks Muehlenberg",
+                                                              "birth": 1991,
                                                               "birthplace": "Madison, Wisconsin",
                                                               "gender": "F",
-                                                              "branch": "fortney"
+                                                              "branch": "fortney",
+                                                              "spouse": "Otto Muehlenberg",
+                                                              "children": [
+                                                                {
+                                                                  "id": "0108a",
+                                                                  "name": "Finley Jean Muehlenberg",
+                                                                  "birth": 2022,
+                                                                  "gender": "F",
+                                                                  "branch": "fortney"
+                                                                },
+                                                                {
+                                                                  "id": "0108b",
+                                                                  "name": "Amelia James Muehlenberg",
+                                                                  "birth": 2024,
+                                                                  "gender": "F",
+                                                                  "branch": "fortney"
+                                                                }
+                                                              ]
                                                             }
                                                           ]
                                                         },
@@ -1079,19 +1113,25 @@
                                                         },
                                                         {
                                                           "id": "0116",
-                                                          "name": "Sigrid Fortney Alekal",
+                                                          "name": "Sigrid Fortney Alakel",
                                                           "birth": 1970,
                                                           "birthplace": "Stoughton, Wisconsin",
                                                           "gender": "F",
                                                           "branch": "fortney",
-                                                          "spouse": "Christopher Alekal",
+                                                          "spouse": "Christopher Alakel",
                                                           "children": [
                                                             {
                                                               "id": "0117",
-                                                              "name": "Leila Blue Alekal",
+                                                              "name": "Leila Blue Alakel",
                                                               "birth": 2007,
                                                               "birthplace": "California",
                                                               "gender": "F",
+                                                              "branch": "fortney"
+                                                            },
+                                                            {
+                                                              "id": "0117b",
+                                                              "name": "Cyrus Hauk Alakel",
+                                                              "gender": "M",
                                                               "branch": "fortney"
                                                             }
                                                           ]
