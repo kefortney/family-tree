@@ -21,8 +21,8 @@
   };
 
   // Layout constants
-  const LEVEL_GAP     = 50;   // pixels between generation rows
-  const SIBLING_GAP   = 76;   // horizontal spacing hint between siblings
+  const LEVEL_GAP     = 170;  // pixels between generation columns (LTR)
+  const SIBLING_GAP   = 76;   // vertical spacing between siblings (LTR)
   const TOP_PADDING   = 28;
   const NODE_RADIUS   = 6;
   const BRANCH_RADIUS = 9;
@@ -168,7 +168,7 @@
     zoomBehavior = d3.zoom()
       .scaleExtent([0.35, 4])
       .extent([[0, 0], [svgW, svgH]])
-      .translateExtent([[-5000, -5000], [5000, 12000]])
+      .translateExtent([[-5000, -5000], [12000, 5000]])
       .filter((event) => {
         // Let normal page scrolling work; only zoom with Ctrl/Cmd + wheel.
         if (event.type === 'wheel') return !!(event.ctrlKey || event.metaKey);
@@ -238,9 +238,9 @@
     root.x0 = 0;
     root.y0 = 0;
 
-    // Center the view
-    centerView();
+    // Render first so layout positions are computed, then snap view to top-left
     update(root);
+    centerView();
 
     document.querySelectorAll('.branch-filter-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.branch === branchFilter);
@@ -251,9 +251,13 @@
   window.filterBranchTree = buildTree;
 
   function centerView() {
+    // LTR: d.y → screen X (generation depth), d.x → screen Y (sibling spread).
+    // Top-justify: shift so the topmost node sits at TOP_PADDING.
+    const nodes = root ? root.descendants() : [];
+    const minX  = nodes.length ? d3.min(nodes, d => d.x) : 0;
     svg.call(
       zoomBehavior.transform,
-      d3.zoomIdentity.translate(svgW / 2, TOP_PADDING)
+      d3.zoomIdentity.translate(TOP_PADDING + 8, TOP_PADDING - minX)
     );
   }
 
@@ -303,12 +307,13 @@
         if (marriageSeen.has(pairKey)) return;
         marriageSeen.add(pairKey);
 
+        // LTR: swap d.x/d.y → screen x = d.y, screen y = d.x
         marriageLinks.push({
           id: pairKey,
-          x1: n.x,
-          y1: n.y,
-          x2: spouseNode.x,
-          y2: spouseNode.y,
+          x1: n.y,
+          y1: n.x,
+          x2: spouseNode.y,
+          y2: spouseNode.x,
           color: colorFor(n).stroke,
         });
       });
@@ -322,10 +327,10 @@
       .attr('stroke-width', 1.5)
       .attr('stroke-dasharray', '1.5,2.5')
       .attr('opacity', 0.68)
-      .attr('x1', sourceX)
-      .attr('y1', sourceY)
-      .attr('x2', sourceX)
-      .attr('y2', sourceY)
+      .attr('x1', sourceY)
+      .attr('y1', sourceX)
+      .attr('x2', sourceY)
+      .attr('y2', sourceX)
       .merge(marriageSel)
       .attr('stroke', d => d.color)
       .transition().duration(350)
@@ -359,12 +364,14 @@
         // If spouse is also in the tree, skip rendering here — they have their own node
         if (m.spouseId && nodeById.has(m.spouseId)) return;
 
-        const [nx, ny] = nodeXY(n);
+        // LTR: screen x = n.y (depth), screen y = n.x (breadth)
+        const nx = n.y;
+        const ny = n.x;
 
-        // External spouses are rendered directly beside the person with a short link.
+        // External spouses offset vertically (above/below) in LTR layout
         const direction = (mi % 2 === 0) ? 1 : -1;
-        const sx = nx + (direction * EXTERNAL_SPOUSE_OFFSET);
-        const sy = ny;
+        const sx = nx;
+        const sy = ny + (direction * EXTERNAL_SPOUSE_OFFSET);
 
         spouseUnits.push({
           id: pairKey,
@@ -402,34 +409,34 @@
       .attr('dy', '0.35em')
       .text(d => d.label.length > 28 ? d.label.slice(0, 26) + '…' : d.label)
       .transition().duration(350)
-      .attr('x', d => d.sx)
-      .attr('y', d => d.sy - 10)
-      .attr('text-anchor', 'middle');
+      .attr('x', d => d.sx + 8)
+      .attr('y', d => d.sy)
+      .attr('text-anchor', 'start');
 
     unionSel.exit().remove();
 
-    // ── Links ───────────────────────────────────────────
-    const verticalLink = d3.linkVertical()
-      .x(d => d.x)
-      .y(d => d.y);
+    // ── Links (LTR: x = d.y depth, y = d.x breadth) ────
+    const horizontalLink = d3.linkHorizontal()
+      .x(d => d.y)
+      .y(d => d.x);
 
     const link      = g.selectAll('path.link').data(visibleLinks, d => (d.source.data?.id || '') + '>' + (d.target.data?.id || ''));
     const linkEnter = link.enter().append('path').attr('class', 'link')
       .attr('d', () => {
         const o = { x: sourceX, y: sourceY };
-        return verticalLink({ source: o, target: o });
+        return horizontalLink({ source: o, target: o });
       });
 
     link.merge(linkEnter)
       .transition().duration(350)
-      .attr('d', verticalLink)
+      .attr('d', horizontalLink)
       .attr('stroke', '#5a5a5a');
 
     link.exit()
       .transition().duration(350)
       .attr('d', () => {
         const o = { x: sourceX, y: sourceY };
-        return verticalLink({ source: o, target: o });
+        return horizontalLink({ source: o, target: o });
       })
       .remove();
 
@@ -439,8 +446,8 @@
     const nodeEnter = node.enter().append('g')
       .attr('class', d => `node branch-${d.data.branch || 'root'} type-${d.data.type || 'person'}`)
       .attr('transform', () => {
-        // Enter from parent's position
-        return `translate(${sourceX},${sourceY})`;
+        // LTR: enter from parent's position (screen x = sourceY, screen y = sourceX)
+        return `translate(${sourceY},${sourceX})`;
       })
       .style('opacity', 0)
       .style('cursor', 'pointer')
@@ -460,7 +467,7 @@
 
     nodeUpdate.transition().duration(350)
       .style('opacity', d => (isAllMode && d.depth === 0) ? 0 : 1)
-      .attr('transform', d => `translate(${d.x},${d.y})`);
+      .attr('transform', d => `translate(${d.y},${d.x})`);
 
     nodeUpdate.style('pointer-events', d => (isAllMode && d.depth === 0) ? 'none' : null);
 
@@ -481,19 +488,20 @@
         const el = d3.select(this);
         el.selectAll('tspan').remove();
 
+        // LTR: labels appear to the right of the node circle, top-justified
         if (d.data.type === 'root' || d.data.type === 'branch') {
-          el.attr('text-anchor', 'middle');
+          el.attr('text-anchor', 'start');
           el.append('tspan')
-            .attr('x', 0).attr('dy', `${-(BRANCH_RADIUS + 5)}px`)
+            .attr('x', BRANCH_RADIUS + 6).attr('dy', '0.35em')
             .text(d.data.name || '');
           return;
         }
 
-        el.attr('text-anchor', 'middle');
+        el.attr('text-anchor', 'start');
 
         const name = d.data.name || '';
         el.append('tspan')
-          .attr('x', 0).attr('dy', `${NODE_RADIUS + 12}px`)
+          .attr('x', NODE_RADIUS + 5).attr('dy', '-0.1em')
           .text(name.length > 28 ? name.slice(0, 26) + '…' : name);
 
         if (d.data.birth || d.data.death) {
@@ -501,7 +509,7 @@
           const de = d.data.death  || '';
           const txt = (b && de) ? `${b}–${de}` : b ? `b.${b}` : `d.${de}`;
           el.append('tspan')
-            .attr('x', 0).attr('dy', '1.15em')
+            .attr('x', NODE_RADIUS + 5).attr('dy', '1.1em')
             .style('font-size', '8.5px').style('fill', '#8b6b52').style('font-weight', '400')
             .text(txt);
         }
@@ -510,7 +518,7 @@
     node.exit()
       .transition().duration(350)
       .style('opacity', 0)
-      .attr('transform', () => `translate(${sourceX},${sourceY})`)
+      .attr('transform', () => `translate(${sourceY},${sourceX})`)
       .remove();
 
     nodes.forEach(d => { d.x0 = d.x; d.y0 = d.y; });
