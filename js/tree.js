@@ -22,7 +22,7 @@
 
   // Layout constants
   const LEVEL_GAP     = 170;  // pixels between generation columns (LTR)
-  const SIBLING_GAP   = 76;   // vertical spacing between siblings (LTR)
+  const SIBLING_GAP   = 53;   // vertical spacing between siblings (LTR)
   const TOP_PADDING   = 28;
   const NODE_RADIUS   = 6;
   const BRANCH_RADIUS = 9;
